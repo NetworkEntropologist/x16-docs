@@ -1074,6 +1074,15 @@ Registers affected: .A .X .Y
       .Y, byte 2:
                   $00 = joystick present
                   $FF = joystick not present
+
+SEL = SELECT
+STA = START
+UP = D-PAD UP
+DN = D-PAD DOWN
+LT = D-PAD LEFT
+RT = D-PAD RIGHT
+L = LEFT SHOULDER BUTTON
+R = RIGHT SHOULDER BUTTON
 ```
 
 If a button is pressed, the corresponding bit is zero.
@@ -1088,8 +1097,8 @@ The keyboard joystick uses the standard SNES9X/ZSNES mapping:
 | B              | Z            | Left Alt          |
 | X              | S            |                   |
 | Y              | A            |                   |
-| L              | D            |                   |
-| R              | C            |                   |
+| L (SHOULDER)   | D            |                   |
+| R (SHOULDER)   | C            |                   |
 | START          | Enter        |                   |
 | SELECT         | Left Shift   |                   |
 | D-Pad          | Cursor Keys  |                   |
