@@ -969,10 +969,12 @@ The arguments in .X and .Y specify the screen resolution in 8 pixel increments. 
 
 **EXAMPLE:**
 
- SEC
- JSR screen_mode ; get current screen size (in 8px) into .X and .Y
- LDA #1
- JSR mouse_config ; show the default mouse pointer
+```ASM
+SEC
+JSR screen_mode ; get current screen size (in 8px) into .X and .Y
+LDA #1
+JSR mouse_config ; show the default mouse pointer
+```
 
 ---
 
