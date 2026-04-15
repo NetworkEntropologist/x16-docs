@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 7: Machine Language Monitor - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 7: Machine Language Monitor";
+        var mkdocs_page_input_path = "X16 Reference - 07 - Machine Language Monitor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 7: Machine Language Monitor</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 7: Machine Language Monitor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-7-machine-language-monitor">Chapter 7: Machine Language Monitor<a class="headerlink" href="#chapter-7-machine-language-monitor" title="Permanent link">&para;</a></h1>
+<p><img src="images/monitor.png"></p>
+<p>The built-in machine language monitor can be started with the <code>MON</code> BASIC command. It is based on the monitor of the Final Cartridge III and supports most of its features.</p>
+<p>If you invoke the monitor by mistake, you can exit with by typing <code>X</code>, followed by the <code>RETURN</code> key.</p>
+<p>Some features specific to this monitor are:</p>
+<ul>
+<li>The <code>I</code> command prints a PETSCII/ISO-encoded memory dump.</li>
+<li>The <code>EC</code> command prints a binary memory dump. This is also useful for character sets.</li>
+<li>Scrolling the screen with the cursor keys or F3/F5 will continue memory dumps and disassemblies, and even disassemble backwards.</li>
+</ul>
+<p>The following commands are used to dump memory contents in various formats:</p>
+<table>
+<thead>
+<tr>
+<th>Dump</th>
+<th>Prefix</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>M</code></td>
+<td><code>:</code></td>
+<td>8 hex bytes</td>
+</tr>
+<tr>
+<td><code>I</code></td>
+<td><code>'</code></td>
+<td>32 PETSCII/ISO characters</td>
+</tr>
+<tr>
+<td><code>EC</code></td>
+<td><code>[</code></td>
+<td>1 binary byte (character data)</td>
+</tr>
+<tr>
+<td><code>ES</code></td>
+<td><code>]</code></td>
+<td>3 binary bytes (sprite data)</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td><code>,</code></td>
+<td>disassemble</td>
+</tr>
+<tr>
+<td><code>R</code></td>
+<td><code>;</code></td>
+<td>registers</td>
+</tr>
+</tbody>
+</table>
+<p>Except for <code>R</code>, these commands take a start address and an optional end address (inclusive). The dumps are prefixed with one of the "Prefix" characters in the table above, so they can be edited by navigating the cursor over a printed line, changing the data and pressing RETURN.</p>
+<p>Note that editing a disassembled line (prefix <code>,</code>) only allows changing the 1-3 opcode bytes. To edit the assembly, change the prefix to <code>A</code> (see below).</p>
+<p>These are the remaining commands:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>F</code></td>
+<td><em>start</em> <em>end</em> <em>byte</em></td>
+<td>fill</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td><em>start</em> <em>end</em> <em>byte</em> [<em>byte</em>...]</td>
+<td>hunt</td>
+</tr>
+<tr>
+<td><code>C</code></td>
+<td><em>start</em> <em>end</em> <em>start</em></td>
+<td>compare</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td><em>start</em> <em>end</em> <em>start</em></td>
+<td>transfer</td>
+</tr>
+<tr>
+<td><code>A</code></td>
+<td><em>address</em> <em>instruction</em></td>
+<td>assemble</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>[<em>address</em>]</td>
+<td>run code</td>
+</tr>
+<tr>
+<td><code>J</code></td>
+<td>[<em>address</em>]</td>
+<td>run subroutine</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td><em>value</em></td>
+<td>convert hex to decimal</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td><em>value</em></td>
+<td>convert decimal to hex</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td></td>
+<td>exit monitor</td>
+</tr>
+<tr>
+<td><code>O</code></td>
+<td><em>bank</em></td>
+<td>set ROM bank</td>
+</tr>
+<tr>
+<td><code>K</code></td>
+<td><em>bank</em></td>
+<td>set RAM/VRAM bank/I2C</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>["<em>filename</em>"[,<em>dev</em>[,<em>start</em>]]]</td>
+<td>load file</td>
+</tr>
+<tr>
+<td><code>S</code></td>
+<td>"<em>filename</em>",<em>dev</em>,<em>start</em>,<em>end</em></td>
+<td>save file</td>
+</tr>
+<tr>
+<td><code>@</code></td>
+<td><em>command</em></td>
+<td>send drive command</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>All addresses have to be 4 digits.</li>
+<li>All bytes have to be 2 digits (including device numbers).</li>
+<li>The end address of <code>S</code> is exclusive.</li>
+<li>The bank argument for <code>K</code> is</li>
+<li><code>00</code>-<code>FF</code>: switch to main RAM, set RAM bank</li>
+<li><code>V0</code>-<code>V1</code>: switch to Video RAM, set VRAM bank</li>
+<li><code>I</code>: switch to the I2C address space</li>
+<li>The bank argument for <code>O</code> is</li>
+<li><code>00</code>-<code>FF</code>: set ROM bank</li>
+<li><code>@</code> takes:</li>
+<li><code>8</code>, <code>9</code> to change the default drive (also for <code>L</code>)</li>
+<li><code>$</code> to display the disk directory</li>
+<li>anything else as a disk command</li>
+</ul>
+<p>Monitor Display
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>MON
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>C*
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   PC  RA RO AC XR YR SP NV#BDIZC
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>.;E3bb 01 04 00 00 00 F6 ........
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>.
+</span></code></pre></div>
+| Column  | Description |
+|---------|-------------|
+|PC       | Program Counter and the current address
+|RA       | Active RAM Bank
+|RO       | Active ROM Bank
+|AC       | Accumulator Value
+|XR       | X Register Value
+|YR       | Y Register Value
+|SP       | Stack Pointer
+|NV#BDIZC | Status Register</p>
+<table>
+<thead>
+<tr>
+<th>Status Register Bits</th>
+<th>Bit Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td>V</td>
+<td>Overflow Vector</td>
+</tr>
+<tr>
+<td>#</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>B</td>
+<td>A Break Point is Active</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Decimal Mode Active (also known as Binary Code Decimal)</td>
+</tr>
+<tr>
+<td>I</td>
+<td>IRQ is Inhibited</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>Zero Bit</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Carry Bit</td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2006%20-%20Math%20Library/" class="btn btn-neutral float-left" title="Chapter 6: Math Library"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" class="btn btn-neutral float-right" title="Chapter 8: Memory Map">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2006%20-%20Math%20Library/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

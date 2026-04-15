@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix A: Sound - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix A: Sound";
+        var mkdocs_page_input_path = "X16 Reference - Appendix A - Sound.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix A: Sound</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#fm-instrument-patch-presets">FM instrument patch presets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fm-extended-instrument-patch-presets">FM extended instrument patch presets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#drum-presets">Drum presets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-fmplay-and-psgplay-string-macros">BASIC FMPLAY and PSGPLAY string macros</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#token-definitions">Token definitions:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#musical-notes">Musical notes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rests">Rests</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#note-length">Note Length</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#articulation">Articulation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#explicit-retrigger">Explicit retrigger</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#octave">Octave</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#octave-up">Octave Up</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#octave-down">Octave Down</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tempo">Tempo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#volume">Volume</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#panning">Panning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instrument-change">Instrument change</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix A: Sound</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-a-sound">Appendix A: Sound<a class="headerlink" href="#appendix-a-sound" title="Permanent link">&para;</a></h1>
+<h2 id="fm-instrument-patch-presets">FM instrument patch presets<a class="headerlink" href="#fm-instrument-patch-presets" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Instrument Name</th>
+<th></th>
+<th>#</th>
+<th>Instrument Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Acoustic Grand Piano</td>
+<td></td>
+<td>64</td>
+<td>Soprano Sax &#8224;</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Bright Acoustic Piano</td>
+<td></td>
+<td>65</td>
+<td>Alto Sax &#8224;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Electric Grand Piano</td>
+<td></td>
+<td>66</td>
+<td>Tenor Sax &#8224;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Honky-tonk Piano</td>
+<td></td>
+<td>67</td>
+<td>Baritone Sax</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Electric Piano 1</td>
+<td></td>
+<td>68</td>
+<td>Oboe &#8224;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Electric Piano 2</td>
+<td></td>
+<td>69</td>
+<td>English Horn &#8224;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Harpsichord</td>
+<td></td>
+<td>70</td>
+<td>Bassoon</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Clavinet</td>
+<td></td>
+<td>71</td>
+<td>Clarinet &#8224;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Celesta</td>
+<td></td>
+<td>72</td>
+<td>Piccolo</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Glockenspiel</td>
+<td></td>
+<td>73</td>
+<td>Flute &#8224;</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Music Box</td>
+<td></td>
+<td>74</td>
+<td>Recorder</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Vibraphone &#8224;</td>
+<td></td>
+<td>75</td>
+<td>Pan Flute</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Marimba</td>
+<td></td>
+<td>76</td>
+<td>Blown Bottle</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Xylophone</td>
+<td></td>
+<td>77</td>
+<td>Shakuhachi</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Tubular Bells</td>
+<td></td>
+<td>78</td>
+<td>Whistle &#8224;</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Dulcimer</td>
+<td></td>
+<td>79</td>
+<td>Ocarina</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Drawbar Organ &#8224;</td>
+<td></td>
+<td>80</td>
+<td>Lead 1 (Square) &#8224;</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Percussive Organ &#8224;</td>
+<td></td>
+<td>81</td>
+<td>Lead 2 (Sawtooth) &#8224;</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Rock Organ &#8224;</td>
+<td></td>
+<td>82</td>
+<td>Lead 3 (Triangle) &#8224;</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Church Organ</td>
+<td></td>
+<td>83</td>
+<td>Lead 4 (Chiff+Sine) &#8224;</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Reed Organ</td>
+<td></td>
+<td>84</td>
+<td>Lead 5 (Charang) &#8224;</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Accordion</td>
+<td></td>
+<td>85</td>
+<td>Lead 6 (Voice) &#8224;</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Harmonica</td>
+<td></td>
+<td>86</td>
+<td>Lead 7 (Fifths) &#8224;</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Bandoneon</td>
+<td></td>
+<td>87</td>
+<td>Lead 8 (Solo) &#8224;</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Acoustic Guitar (Nylon)</td>
+<td></td>
+<td>88</td>
+<td>Pad 1 (Fantasia) &#8224;</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Acoustic Guitar (Steel)</td>
+<td></td>
+<td>89</td>
+<td>Pad 2 (Warm) &#8224;</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Electric Guitar (Jazz)</td>
+<td></td>
+<td>90</td>
+<td>Pad 3 (Polysynth) &#8224;</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Electric Guitar (Clean)</td>
+<td></td>
+<td>91</td>
+<td>Pad 4 (Choir) &#8224;</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Electric Guitar (Muted)</td>
+<td></td>
+<td>92</td>
+<td>Pad 5 (Bowed)</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Electric Guitar (Overdriven)</td>
+<td></td>
+<td>93</td>
+<td>Pad 6 (Metallic)</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Electric Guitar (Distortion)</td>
+<td></td>
+<td>94</td>
+<td>Pad 7 (Halo) &#8224;</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Electric Guitar (Harmonics)</td>
+<td></td>
+<td>95</td>
+<td>Pad 8 (Sweep) &#8224;</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Acoustic Bass</td>
+<td></td>
+<td>96</td>
+<td>FX 1 (Raindrop)</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Electric Bass (finger)</td>
+<td></td>
+<td>97</td>
+<td>FX 2 (Soundtrack) &#8224;</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Electric Bass (picked)</td>
+<td></td>
+<td>98</td>
+<td>FX 3 (Crystal)</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Fretless Bass</td>
+<td></td>
+<td>99</td>
+<td>FX 4 (Atmosphere) &#8224;</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Slap Bass 1</td>
+<td></td>
+<td>100</td>
+<td>FX 5 (Brightness) &#8224;</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Slap Bass 2</td>
+<td></td>
+<td>101</td>
+<td>FX 6 (Goblin)</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Synth Bass 1</td>
+<td></td>
+<td>102</td>
+<td>FX 7 (Echo)</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Synth Bass 2</td>
+<td></td>
+<td>103</td>
+<td>FX 8 (Sci-Fi) &#8224;</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Violin &#8224;</td>
+<td></td>
+<td>104</td>
+<td>Sitar</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Viola &#8224;</td>
+<td></td>
+<td>105</td>
+<td>Banjo</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Cello &#8224;</td>
+<td></td>
+<td>106</td>
+<td>Shamisen</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Contrabass &#8224;</td>
+<td></td>
+<td>107</td>
+<td>Koto</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Tremolo Strings &#8224;</td>
+<td></td>
+<td>108</td>
+<td>Kalimba</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Pizzicato Strings</td>
+<td></td>
+<td>109</td>
+<td>Bagpipe</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Orchestral Harp</td>
+<td></td>
+<td>110</td>
+<td>Fiddle &#8224;</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Timpani</td>
+<td></td>
+<td>111</td>
+<td>Shanai &#8224;</td>
+</tr>
+<tr>
+<td>48</td>
+<td>String Ensemble 1 &#8224;</td>
+<td></td>
+<td>112</td>
+<td>Tinkle Bell</td>
+</tr>
+<tr>
+<td>49</td>
+<td>String Ensemble 2 &#8224;</td>
+<td></td>
+<td>113</td>
+<td>Agogo</td>
+</tr>
+<tr>
+<td>50</td>
+<td>Synth Strings 1 &#8224;</td>
+<td></td>
+<td>114</td>
+<td>Steel Drum</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Synth Strings 2 &#8224;</td>
+<td></td>
+<td>115</td>
+<td>Woodblock</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Choir Aahs &#8224;</td>
+<td></td>
+<td>116</td>
+<td>Taiko Drum</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Voice Doos</td>
+<td></td>
+<td>117</td>
+<td>Melodic Tom</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Synth Voice &#8224;</td>
+<td></td>
+<td>118</td>
+<td>Synth Drum</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Orchestra Hit</td>
+<td></td>
+<td>119</td>
+<td>Reverse Cymbal</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Trumpet &#8224;</td>
+<td></td>
+<td>120</td>
+<td>Fret Noise</td>
+</tr>
+<tr>
+<td>57</td>
+<td>Trombone</td>
+<td></td>
+<td>121</td>
+<td>Breath Noise</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Tuba</td>
+<td></td>
+<td>122</td>
+<td>Seashore &#8224;</td>
+</tr>
+<tr>
+<td>59</td>
+<td>Muted Trumpet &#8224;</td>
+<td></td>
+<td>123</td>
+<td>Bird Tweet</td>
+</tr>
+<tr>
+<td>60</td>
+<td>French Horn</td>
+<td></td>
+<td>124</td>
+<td>Telephone Ring</td>
+</tr>
+<tr>
+<td>61</td>
+<td>Brass Section</td>
+<td></td>
+<td>125</td>
+<td>Helicopter</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Synth Brass 1</td>
+<td></td>
+<td>126</td>
+<td>Applause &#8224;</td>
+</tr>
+<tr>
+<td>63</td>
+<td>Synth Brass 2</td>
+<td></td>
+<td>127</td>
+<td>Gunshot</td>
+</tr>
+</tbody>
+</table>
+<p>&#8224; Instrument is affected by the LFO, giving it a vibrato or tremolo effect.</p>
+<h2 id="fm-extended-instrument-patch-presets">FM extended instrument patch presets<a class="headerlink" href="#fm-extended-instrument-patch-presets" title="Permanent link">&para;</a></h2>
+<p>These presets exist mainly to support playback of drum sounds, and many of them only work correctly or sound musical at certain pitches or within a small range of pitches.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Instrument Name</th>
+<th></th>
+<th>#</th>
+<th>Instrument Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128</td>
+<td>Silent</td>
+<td></td>
+<td>146</td>
+<td>Vibraslap</td>
+</tr>
+<tr>
+<td>129</td>
+<td>Snare Roll</td>
+<td></td>
+<td>147</td>
+<td>Bongo</td>
+</tr>
+<tr>
+<td>130</td>
+<td>Snap</td>
+<td></td>
+<td>148</td>
+<td>Maracas</td>
+</tr>
+<tr>
+<td>131</td>
+<td>High Q</td>
+<td></td>
+<td>149</td>
+<td>Short Whistle</td>
+</tr>
+<tr>
+<td>132</td>
+<td>Scratch</td>
+<td></td>
+<td>150</td>
+<td>Long Whistle</td>
+</tr>
+<tr>
+<td>133</td>
+<td>Square Click</td>
+<td></td>
+<td>151</td>
+<td>Short Guiro</td>
+</tr>
+<tr>
+<td>134</td>
+<td>Kick</td>
+<td></td>
+<td>152</td>
+<td>Long Guiro</td>
+</tr>
+<tr>
+<td>135</td>
+<td>Rim</td>
+<td></td>
+<td>153</td>
+<td>Mute Cuica</td>
+</tr>
+<tr>
+<td>136</td>
+<td>Snare</td>
+<td></td>
+<td>154</td>
+<td>Open Cuica</td>
+</tr>
+<tr>
+<td>137</td>
+<td>Clap</td>
+<td></td>
+<td>155</td>
+<td>Mute Triangle</td>
+</tr>
+<tr>
+<td>138</td>
+<td>Tom</td>
+<td></td>
+<td>156</td>
+<td>Open Triangle</td>
+</tr>
+<tr>
+<td>139</td>
+<td>Closed Hi-Hat</td>
+<td></td>
+<td>157</td>
+<td>Jingle Bell</td>
+</tr>
+<tr>
+<td>140</td>
+<td>Pedal Hi-Hat</td>
+<td></td>
+<td>158</td>
+<td>Bell Tree</td>
+</tr>
+<tr>
+<td>141</td>
+<td>Open Hi-Hat</td>
+<td></td>
+<td>159</td>
+<td>Mute Surdo</td>
+</tr>
+<tr>
+<td>142</td>
+<td>Crash</td>
+<td></td>
+<td>160</td>
+<td>Pure Sine</td>
+</tr>
+<tr>
+<td>143</td>
+<td>Ride Cymbal</td>
+<td></td>
+<td>161</td>
+<td>Timbale</td>
+</tr>
+<tr>
+<td>144</td>
+<td>Splash Cymbal</td>
+<td></td>
+<td>162</td>
+<td>Open Surdo</td>
+</tr>
+<tr>
+<td>145</td>
+<td>Tambourine</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="drum-presets">Drum presets<a class="headerlink" href="#drum-presets" title="Permanent link">&para;</a></h2>
+<p>These are the percussion instrument mappings for the drum number argument of the <code>ym_playdrum</code> and <code>ym_setdrum</code> API calls, and the <code>FMDRUM</code> BASIC command.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Instrument Name</th>
+<th></th>
+<th>#</th>
+<th>Instrument Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>56</td>
+<td>Cowbell</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Snare Roll</td>
+<td></td>
+<td>57</td>
+<td>Crash Cymbal 2</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Finger Snap</td>
+<td></td>
+<td>58</td>
+<td>Vibraslap</td>
+</tr>
+<tr>
+<td>27</td>
+<td>High Q</td>
+<td></td>
+<td>59</td>
+<td>Ride Cymbal 2</td>
+</tr>
+<tr>
+<td>28</td>
+<td>Slap</td>
+<td></td>
+<td>60</td>
+<td>High Bongo</td>
+</tr>
+<tr>
+<td>29</td>
+<td>Scratch Pull</td>
+<td></td>
+<td>61</td>
+<td>Low Bongo</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Scratch Push</td>
+<td></td>
+<td>62</td>
+<td>Mute High Conga</td>
+</tr>
+<tr>
+<td>31</td>
+<td>Sticks</td>
+<td></td>
+<td>63</td>
+<td>Open High Conga</td>
+</tr>
+<tr>
+<td>32</td>
+<td>Square Click</td>
+<td></td>
+<td>64</td>
+<td>Low Conga</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Metronome Bell</td>
+<td></td>
+<td>65</td>
+<td>High Timbale</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Metronome Click</td>
+<td></td>
+<td>66</td>
+<td>Low Timbale</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Acoustic Bass Drum</td>
+<td></td>
+<td>67</td>
+<td>High Agogo</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Electric Bass Drum</td>
+<td></td>
+<td>68</td>
+<td>Low Agogo</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Side Stick</td>
+<td></td>
+<td>69</td>
+<td>Cabasa</td>
+</tr>
+<tr>
+<td>38</td>
+<td>Acoustic Snare</td>
+<td></td>
+<td>70</td>
+<td>Maracas</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Hand Clap</td>
+<td></td>
+<td>71</td>
+<td>Short Whistle</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Electric Snare</td>
+<td></td>
+<td>72</td>
+<td>Long Whistle</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Low Floor Tom</td>
+<td></td>
+<td>73</td>
+<td>Short Guiro</td>
+</tr>
+<tr>
+<td>42</td>
+<td>Closed Hi-Hat</td>
+<td></td>
+<td>74</td>
+<td>Long Guiro</td>
+</tr>
+<tr>
+<td>43</td>
+<td>High Floor Tom</td>
+<td></td>
+<td>75</td>
+<td>Claves</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Pedal Hi-Hat</td>
+<td></td>
+<td>76</td>
+<td>High Woodblock</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Low Tom</td>
+<td></td>
+<td>77</td>
+<td>Low Woodblock</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Open Hi-Hat</td>
+<td></td>
+<td>78</td>
+<td>Mute Cuica</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Low-Mid Tom</td>
+<td></td>
+<td>79</td>
+<td>Open Cuica</td>
+</tr>
+<tr>
+<td>48</td>
+<td>High-Mid Tom</td>
+<td></td>
+<td>80</td>
+<td>Mute Triangle</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Crash Cymbal 1</td>
+<td></td>
+<td>81</td>
+<td>Open Triangle</td>
+</tr>
+<tr>
+<td>50</td>
+<td>High Tom</td>
+<td></td>
+<td>82</td>
+<td>Shaker</td>
+</tr>
+<tr>
+<td>51</td>
+<td>Ride Cymbal 1</td>
+<td></td>
+<td>83</td>
+<td>Jingle Bell</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Chinese Cymbal</td>
+<td></td>
+<td>84</td>
+<td>Belltree</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Ride Bell</td>
+<td></td>
+<td>85</td>
+<td>Castanets</td>
+</tr>
+<tr>
+<td>54</td>
+<td>Tambourine</td>
+<td></td>
+<td>86</td>
+<td>Mute Surdo</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Splash Cymbal</td>
+<td></td>
+<td>87</td>
+<td>Open Surdo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="basic-fmplay-and-psgplay-string-macros">BASIC FMPLAY and PSGPLAY string macros<a class="headerlink" href="#basic-fmplay-and-psgplay-string-macros" title="Permanent link">&para;</a></h2>
+<h3 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h3>
+<p>The play commands use a string of tokens to define sequences of notes to be played on a single voice of the corresponding sound chip. Tokens cause various effects to happen, such as triggering notes, changing the playback speed, etc. In order to
+minimize the amount of text required to specify a sequence of sound, the player
+maintains an internal state for most note parameters.</p>
+<h5 id="stateful-player-behavior">Stateful Player Behavior:<a class="headerlink" href="#stateful-player-behavior" title="Permanent link">&para;</a></h5>
+<p>Playback parameters such as tempo, octave, volume, note duration, etc do not need to be specified for each note. These states are global between all voices of both the FM and PSG sound chips. The player maintains parameter state during and after playback. For instance, setting the octave to 5 in an <code>FMPLAY</code> command will result in subsequent <code>FMPLAY</code> and <code>PSGPLAY</code> statements beginning with the octave set to 5.</p>
+<p>The player state is reset to default values whenever <code>FMINIT</code> or <code>PSGINIT</code> are used.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Equivalent Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tempo</td>
+<td>120</td>
+<td>T120</td>
+</tr>
+<tr>
+<td>Octave</td>
+<td>4</td>
+<td>O4</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>4</td>
+<td>L4</td>
+</tr>
+<tr>
+<td>Note Spacing</td>
+<td>1</td>
+<td>S1</td>
+</tr>
+</tbody>
+</table>
+<h5 id="using-tokens">Using Tokens:<a class="headerlink" href="#using-tokens" title="Permanent link">&para;</a></h5>
+<p>The valid tokens are: <strong><code>A-G,I,K,L,O,P,R,S,T,V,&lt;,&gt;</code></strong>.</p>
+<p>Each token may be followed by optional modifiers such as numbers or symbols. Options to a token must be given in the order they are expected, and must have no spacing between them. Tokens may have spaces between them as desired. Any unknown
+characters are ignored.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4&quot;</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">DEFAULT</span><span class="w"> </span><span class="vg">LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">QUARTER</span><span class="w"> </span><span class="vg">NOTE</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A2. C+.&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">VALID</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A.2 C.+&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">INVALID</span>
+</span></code></pre></div>
+The valid command plays A as a dotted half, followed by C&#9839; as a dotted quarter.</p>
+<p>The invalid example would play A as a dotted quarter (not half) because length must come before dots. Next, it would ignore the 2 as garbage. Then it would play natural C (not sharp) as a dotted quarter. Finally, it would ignore the + as garbage, because sharp/flat must precede length and dot.</p>
+<h3 id="token-definitions">Token definitions:<a class="headerlink" href="#token-definitions" title="Permanent link">&para;</a></h3>
+<h3 id="musical-notes">Musical notes<a class="headerlink" href="#musical-notes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Play a musical note, optionally setting the length.</li>
+<li>Syntax: <code>&lt;A-G&gt;[&lt;+/-&gt;][&lt;length&gt;][.]</code></li>
+</ul>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A+2A4C.G-8.&quot;</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, plays in the current octave an <strong>A&#9839;</strong> <a href="#" title="minim">half note<sup>?</sup></a> followed by an <strong>A</strong> <a href="#" title="crotchet">quarter note<sup>?</sup></a>, followed by <strong>C</strong> dotted quarter note, followed by <strong>G&#9837;</strong> dotted <a href="#" title="quaver">eighth note<sup>?</sup></a>.</p>
+<p>Lengths and dots after the note name or rest set the length just for the current note or rest.  To set the default length for subsequent notes and rests, use the <code>L</code> macro.</p>
+<h3 id="rests">Rests<a class="headerlink" href="#rests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Wait for a period of silence equal to the length of a note, optionally setting the length.</li>
+<li>Syntax: <code>R[&lt;length&gt;][.]</code></li>
+</ul>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;CR2DRE&quot;</span>
+</span></code></pre></div>
+On the VERA PSG using voice 0, plays in the current octave a <strong>C</strong> quarter note, followed by a half rest (silence), followed by a quarter <strong>D</strong>, followed by a quarter rest (silence), and finally a quarter <strong>E</strong>.</p>
+<p>The numeral <code>2</code> in <code>R2</code> sets the length for the <code>R</code> itself but does not alter the
+default note length (assumed as 4 - quarter notes in this example).</p>
+<h3 id="note-length">Note Length<a class="headerlink" href="#note-length" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Set the default length for notes and rests that follow</li>
+<li>Syntax: <code>L[&lt;length&gt;][.]</code></li>
+</ul>
+<p>Example values:
+* L4 = quarter note (crotchet)
+* L16 = sixteenth note (semiquaver)
+* L12 = 8th note triplets (quaver triplet)
+* L4. = dotted quarter note (1.5x the length)
+* L4.. = double-dotted quarter note (1.75x the length)</p>
+<p>Example program:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nl">20</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">I</span><span class="o">=</span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="il">2</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;CDECL8&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nl">40</span><span class="w"> </span><span class="kr">NEXT</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, this program, when RUN, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> <strong>C</strong> first as quarter notes, then as eighth notes the second time around.</p>
+<h3 id="articulation">Articulation<a class="headerlink" href="#articulation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Set the spacing between notes, from legato to extreme staccato</li>
+<li>Syntax: <code>S&lt;0-7&gt;</code></li>
+</ul>
+<p><code>S0</code> indicates legato. For FMPLAY, this also means that notes after the first in a phrase don't implicitly retrigger.</p>
+<p><code>S1</code> is the default value, which plays a note for 7/8 of the duration of the note, and releases the note for the remaining 1/8 of the note's duration.</p>
+<p>You can think of <code>S</code> is, out of 8, how much space is put between the notes.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4S1CDES0CDES4CDE&quot;</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> three times, first with normal articulation, next with legato (notes all run together and without retriggering), and finally with a moderate staccato.</p>
+<h3 id="explicit-retrigger">Explicit retrigger<a class="headerlink" href="#explicit-retrigger" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: on the YM2151, when using <code>S0</code> legato, retrigger on the next note.</li>
+<li>Syntax: <code>K</code></li>
+</ul>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;S0CDEKFGA&quot;</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> using legato, only triggering on the first note, then the sequence <strong>F</strong> <strong>G</strong> <strong>A</strong> the same way. The note <strong>F</strong> is triggered without needing to release the previous note early.</p>
+<h3 id="octave">Octave<a class="headerlink" href="#octave" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Explicitly set the octave number for notes that follow</li>
+<li>Syntax: <code>O&lt;0-7&gt;</code></li>
+</ul>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O4AO2AO6CDE&quot;</span>
+</span></code></pre></div>
+On the VERA PSG using voice 0, changes to octave 4 and plays <strong>A</strong> (440Hz), then switches to octave 2, and plays <strong>A</strong> (110Hz), then switches to octave 6 and plays the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong></p>
+<h3 id="octave-up">Octave Up<a class="headerlink" href="#octave-up" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Increases the octave by 1</li>
+<li>Syntax: <code>&gt;</code></li>
+</ul>
+<p>If the octave would go above 7, this macro has no effect.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O4AB&gt;C+DE&quot;</span>
+</span></code></pre></div>
+On the VERA PSG using voice 0, changes to octave 4 and plays the first five notes of the <strong>A major</strong> scale by switching to octave 5 starting at the <strong>C&#9839;</strong></p>
+<h3 id="octave-down">Octave Down<a class="headerlink" href="#octave-down" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Decreases the octave by 1</li>
+<li>Syntax: <code>&lt;</code></li>
+</ul>
+<p>If the octave would go below 0, this macro has no effect.
+Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O5GF+EDC&lt;BAG&quot;</span>
+</span></code></pre></div>
+On the VERA PSG using voice 0, changes to octave 5 and plays the <strong>G major</strong> scale from the top down by switching to octave 4 starting at the <strong>B</strong></p>
+<h3 id="tempo">Tempo<a class="headerlink" href="#tempo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Sets the BPM, the number of quarter notes per minute</li>
+<li>Syntax: <code>T&lt;1-255&gt;</code></li>
+</ul>
+<p>High tempo values and short notes tend to have inaccurate lengths due to quantization error. Delays within a string do keep track of fractional frames so the overall playback length should be relatively consistent.</p>
+<p>Low tempo values that cause delays (lengths) to exceed 255 frames will also end up being inaccurate. For very long notes, it may be better to use legato to string several together.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;T120C4CGGAAGR&quot;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;T180C4CGGAAGR&quot;</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, plays in the current octave the first 7 notes of <em>Twinkle Twinkle Little Star</em>, first at 120 beats per minute, then again 1.5 times as fast at 180 beats per minute.</p>
+<h3 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Set the channel or voice volume</li>
+<li>Syntax: <code>V&lt;0-63&gt;</code></li>
+</ul>
+<p>This macro mirrors the <code>PSGVOL</code> and <code>FMVOL</code> BASIC commands for setting a channel or voice's volume. 0 is silent, 63 is maximum volume.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;V40ECV45ECV50ECV55ECV60ECV63EC&quot;</span>
+</span></code></pre></div>
+On the YM2151 using channel 0, starting at a moderate volume, plays the sequence <strong>E</strong> <strong>C</strong>, repeatedly, increasing the volume steadily each time.</p>
+<h3 id="panning">Panning<a class="headerlink" href="#panning" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Sets the stereo output of a channel or voice to left, right, or both.</li>
+<li>Syntax: <code>P&lt;1-3&gt;</code></li>
+</ul>
+<p>1 = Left<br />
+2 = Right<br />
+3 = Both  </p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nl">10</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">I</span><span class="o">=</span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="il">4</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;P1CP2B+&quot;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nl">30</span><span class="w"> </span><span class="kr">NEXT</span><span class="w"> </span><span class="vg">I</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nl">40</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;P3C&quot;</span>
+</span></code></pre></div>
+On the VERA PSG using voice 0, in the current octave, repeatedly plays a <strong>C</strong> out of the left speaker, then a <strong>B&#9839;</strong> (effectively a <strong>C</strong> one octave higher) out of the right speaker.  After 4 such loops, it plays a <strong>C</strong> out of both speakers.</p>
+<h3 id="instrument-change">Instrument change<a class="headerlink" href="#instrument-change" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Synopsis: Sets the FM instrument (like FMINST) or PSG waveform (like PSGWAV)</li>
+<li>Syntax: <code>I&lt;0-255&gt;</code> (0-162 for FM)</li>
+</ul>
+<p>Note: This macro is available starting in ROM version R43.</p>
+<p>Example:
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMINIT</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">FMVIB</span><span class="w"> </span><span class="il">200</span><span class="p">,</span><span class="il">15</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMCHORD</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;I11CI11EI11G&quot;</span>
+</span></code></pre></div>
+This program sets up appropriate vibrato/tremolo and plays a C major chord with the vibraphone patch across FM channels 0, 1, and 2.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" class="btn btn-neutral float-left" title="Chapter 15: Upgrade Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" class="btn btn-neutral float-right" title="Appendix B: VERA Firmware Recovery">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

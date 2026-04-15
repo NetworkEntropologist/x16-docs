@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix B: VERA Firmware Recovery - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix B: VERA Firmware Recovery";
+        var mkdocs_page_input_path = "X16 Reference - Appendix B - VERA Recovery.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix B: VERA Firmware Recovery</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#using-a-windows-pc-to-upgrade-or-recover-a-vera">Using a Windows PC to upgrade or recover a VERA</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#before-you-start">Before You Start</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programmer-wiring-setup">Programmer Wiring Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#powering-the-target-component">Powering the Target Component</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programmer-software-setup">Programmer Software Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updateflash-procedure">Update/Flash Procedure</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix B: VERA Firmware Recovery</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-b-vera-firmware-recovery">Appendix B: VERA Firmware Recovery<a class="headerlink" href="#appendix-b-vera-firmware-recovery" title="Permanent link">&para;</a></h1>
+<p><strong>WARNING: This is a draft that may contain errors or omissions that could damage your hardware.</strong></p>
+<h2 id="using-a-windows-pc-to-upgrade-or-recover-a-vera">Using a Windows PC to upgrade or recover a VERA<a class="headerlink" href="#using-a-windows-pc-to-upgrade-or-recover-a-vera" title="Permanent link">&para;</a></h2>
+<p><strong>Target Component:</strong> VERA<br />
+<strong>Programmer:</strong> TL866-3G/T48<br />
+<strong>Software:</strong> Xgpro<br />
+<strong>Host OS:</strong> Windows  </p>
+<h3 id="before-you-start">Before You Start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h3>
+<p>Before starting, it is recommended to disconnect the Commander X16's PSU's power from the wall socket.  You will need to reconnect power later, but while connecting the programmer to the system, it is safer to disconnect mains power from the power supply. Power is supplied to parts of the main board even when the computer is turned off.use_directory_urls
+To perform the upgrade, you will need the following:
+- A TL866-3G/T48 programmer
+- The Xgpro software
+- Female-to-female jumper wires</p>
+<h3 id="programmer-wiring-setup">Programmer Wiring Setup<a class="headerlink" href="#programmer-wiring-setup" title="Permanent link">&para;</a></h3>
+<p>The VERA 8-pin header should be connected as follows:</p>
+<table>
+<thead>
+<tr>
+<th>VERA J2 Pin</th>
+<th>Connect to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (+5V)</td>
+<td>Not connected</td>
+</tr>
+<tr>
+<td>2 (CDONE)</td>
+<td>Not connected</td>
+</tr>
+<tr>
+<td>3 (CRESET_B)</td>
+<td>VERA, J7 GND pin</td>
+</tr>
+<tr>
+<td>4 (SPI_MISO)</td>
+<td>TL866-3G/T48, ICSP pin 5 (MISO)</td>
+</tr>
+<tr>
+<td>5 (SPI_MOSI)</td>
+<td>TL866-3G/T48, ICSP pin 15 (MOSI)</td>
+</tr>
+<tr>
+<td>6 (SPI_SCK)</td>
+<td>TL866-3G/T48, ICSP pin 7 (SCK)</td>
+</tr>
+<tr>
+<td>7 (SPI_SEL_N)</td>
+<td>TL866-3G/T48, ICSP pin 1 (/CS)</td>
+</tr>
+<tr>
+<td>8 (GND)</td>
+<td>TL866-3G/T48, ICSP pin 16 (GND)</td>
+</tr>
+</tbody>
+</table>
+<p>Image 1: Vera J2 programming header and J7 header.<br>
+<img src="images/vera-prg-hdr.jpg" width="400" /></p>
+<p>Image 2: TL866-3G/T48 ICSP header.<br>
+<img src="images/tl866-3g-icsp.jpg" width="400" /></p>
+<p>Image 3: Schematics for connection between the VERA board and the TL866-3G/T48.<br>
+<img src="images/tl866-3g-to-vera.png" width="400" /></p>
+<h3 id="powering-the-target-component">Powering the Target Component<a class="headerlink" href="#powering-the-target-component" title="Permanent link">&para;</a></h3>
+<p>The VERA board is programmed while it is still mounted in the Commander X16 and 
+will be powered by the computer's PSU, not by the programmer.</p>
+<p>Before proceeding with the firmware upgrade, ensure that the wiring is correct. 
+Then, connect the Commander X16 to the wall socket and press the computer's power 
+button to ensure that 5V is supplied to the VERA board.</p>
+<p>Please note that the VERA's FPGA is held in reset because 
+VERA pin 3 (CRESET_B) is connected to ground. As a result, 
+you will not see any screen output during the upgrade process.</p>
+<h3 id="programmer-software-setup">Programmer Software Setup<a class="headerlink" href="#programmer-software-setup" title="Permanent link">&para;</a></h3>
+<p>Open the Xgpro software and configure the following settings:</p>
+<ul>
+<li>Select target chip: W25Q16JV</li>
+<li>Setup interface: <ul>
+<li>Choose ICSP port</li>
+<li>Uncheck ICSP_VCC_Enable (as VERA is powered by the X16)</li>
+</ul>
+</li>
+<li>Click on "ID Check" to verify the connection<ul>
+<li>The response value should be EF 40 15</li>
+<li>If it is not, double-check the wiring before proceeding</li>
+</ul>
+</li>
+</ul>
+<p><img width="600" alt="xgpro-window" src="https://github.com/user-attachments/assets/cdaebea2-df90-4abe-8805-a2e42f936f87" /></p>
+<h3 id="updateflash-procedure">Update/Flash Procedure<a class="headerlink" href="#updateflash-procedure" title="Permanent link">&para;</a></h3>
+<p>In the Xgpro software, follow these steps:</p>
+<ul>
+<li>Click on "Load" to load the firmware into the software buffer</li>
+<li>After loading the firmware into the software buffer, click on "Prog." to upload the firmware to the VERA board.</li>
+</ul>
+<p>Once the update is complete, press the power button to turn off the Commander X16. Then, disconnect the computer from the wall socket. Finally, remove all wires from the VERA pin header.</p>
+<p>Congratulations! The firmware update for VERA is now complete.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" class="btn btn-neutral float-left" title="Appendix A: Sound"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/" class="btn btn-neutral float-right" title="Appendix C: The 65C02 Processor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

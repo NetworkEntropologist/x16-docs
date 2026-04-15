@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 15: Upgrade Guide - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 15: Upgrade Guide";
+        var mkdocs_page_input_path = "X16 Reference - 15 - Upgrade Guide.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 15: Upgrade Guide</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#flashable-components">Flashable components</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#system-rom">System ROM</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#smc">SMC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vera">VERA</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 15: Upgrade Guide</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-15-upgrade-guide">Chapter 15: Upgrade Guide<a class="headerlink" href="#chapter-15-upgrade-guide" title="Permanent link">&para;</a></h1>
+<p>This chapter provides tips for running upgrades on the various programmable chips.</p>
+<p><strong>WARNING</strong>: flashing any of these components has a risk of leading to an unbootable system. At the current time, doing hardware flash updates requires skill and knowledge beyond that of an ordinary end user and is not recommended without guidance from the community on the Commander X16 Discord.</p>
+<p>Under the headings of each component is a matrix which indicates which software tools can be used to perform the flash of that component, depending on which flashing hardware you have access to and the operating system of the computer you have the device connected to. Some components of the Commander X16 can be self-flashed, but the risk of a failed flash rendering your X16 unbootable is high, in which case an external programmer must be used to flash the component and thus "unbrick" the system.</p>
+<h3 id="flashable-components">Flashable components<a class="headerlink" href="#flashable-components" title="Permanent link">&para;</a></h3>
+<ul>
+<li>System ROM</li>
+<li>SMC (PS/2 and Power controller)</li>
+<li>VERA</li>
+</ul>
+<h2 id="system-rom">System ROM<a class="headerlink" href="#system-rom" title="Permanent link">&para;</a></h2>
+<p>Official community system ROMs will be posted as releases at <a href="https://github.com/X16Community/x16-emulator/releases">X16Community/x16-emulator</a> inside the distribution for the Emulator.</p>
+<p>TODO: link to instructions for each solution in the matrix</p>
+<table>
+<thead>
+<tr>
+<th>↓ Hardware / OS →</th>
+<th>Windows</th>
+<th>Linux</th>
+<th>Mac OS</th>
+<th>Commander X16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commander X16</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>x16-flash</td>
+</tr>
+<tr>
+<td>XGecu TL866II+</td>
+<td>Xgpro</td>
+<td>minipro</td>
+<td>minipro</td>
+<td>-</td>
+</tr>
+<tr>
+<td>XGecu TL866-3G / T48</td>
+<td>Xgpro</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="smc">SMC<a class="headerlink" href="#smc" title="Permanent link">&para;</a></h2>
+<p>Official community SMC ROMs will be posted as releases at <a href="https://github.com/X16Community/x16-smc/releases">X16Community/x16-smc</a>.</p>
+<p>TODO: link to instructions for each solution in the matrix</p>
+<table>
+<thead>
+<tr>
+<th>↓ Hardware / OS →</th>
+<th>Windows</th>
+<th>Linux</th>
+<th>Mac OS</th>
+<th>Commander X16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commander X16</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>USBtinyISP</td>
+<td>arduino</td>
+<td>arduino</td>
+<td>arduino</td>
+<td>-</td>
+</tr>
+<tr>
+<td>XGecu TL866II+</td>
+<td>Xgpro</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>XGecu TL866-3G / T48</td>
+<td>Xgpro</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vera">VERA<a class="headerlink" href="#vera" title="Permanent link">&para;</a></h2>
+<p>TODO: link to instructions for each solution in the matrix</p>
+<p>Official community VERA bitstreams will be posted as releases at <a href="https://github.com/X16Community/vera-module/releases">X16Community/vera-module</a></p>
+<table>
+<thead>
+<tr>
+<th>↓ Hardware / OS →</th>
+<th>Windows</th>
+<th>Linux</th>
+<th>Mac OS</th>
+<th>Commander X16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commander X16</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>flashvera</td>
+</tr>
+<tr>
+<td>XGecu TL866II+</td>
+<td>Xgpro</td>
+<td>minipro</td>
+<td>minipro</td>
+<td>-</td>
+</tr>
+<tr>
+<td>XGecu TL866-3G / T48</td>
+<td><a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/#appendix-b-vera-firmware-recovery">Xgpro</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2014%20-%20Hardware/" class="btn btn-neutral float-left" title="Chapter 14: Hardware Pinouts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" class="btn btn-neutral float-right" title="Appendix A: Sound">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2014%20-%20Hardware/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

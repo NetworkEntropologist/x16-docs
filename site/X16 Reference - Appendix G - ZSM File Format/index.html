@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix G: ZSM File Format - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix G: ZSM File Format";
+        var mkdocs_page_input_path = "X16 Reference - Appendix G - ZSM File Format.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix G: ZSM File Format</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#zsm-file-composition">ZSM file composition</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#zsm-header">ZSM Header</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#zsm-music-data-stream-format">ZSM Music Data Stream Format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pcm-header">PCM Header</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#instrument-definition">Instrument definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pcm-sample-data">PCM Sample Data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#extcmd-channel-specifications">EXTCMD Channel Specifications</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#extcmd-channel">EXTCMD Channel:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix G: ZSM File Format</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-g-zsm-file-format">Appendix G: ZSM File Format<a class="headerlink" href="#appendix-g-zsm-file-format" title="Permanent link">&para;</a></h1>
+<h4 id="zsound-repo">Zsound Repo<a class="headerlink" href="#zsound-repo" title="Permanent link">&para;</a></h4>
+<p>The Zsound suite of Commander X16 audio tools contains the original ZSM reference player, found at:<br />
+https://github.com/ZeroByteOrg/zsound/</p>
+<p>A newer, more flexible, and more recently maintained library with PCM support, ZSMKit, is available at:<br />
+https://github.com/mooinglemur/ZSMKit/</p>
+<h4 id="current-zsm-revision-1">Current ZSM Revision: 1<a class="headerlink" href="#current-zsm-revision-1" title="Permanent link">&para;</a></h4>
+<p>ZSM is a standard specifying both a data stream format and a file structure for containing the data stream. This document provides the standard for both the ZSM stream format and for the ZSM container file format.</p>
+<p>Whenever it becomes necessary to modify the ZSM standard in such a way that existing software will not be compatible with files using the newer standard, this version number will be incremented, up to a maximum value of 254.</p>
+<p>Version 255 (-1) is reserved for internal use by the player</p>
+<h4 id="headerless-data-file-format">Headerless Data File Format:<a class="headerlink" href="#headerless-data-file-format" title="Permanent link">&para;</a></h4>
+<p>Since Kernal version r39, it is possible to load data files that do not have the CBM 2-byte load-to-address header. As of version r41, this functionality is equally accessible in the standard interactive BASIC interface. As the "PRG" header is no longer necessary, ZSM files will NOT contain this header in order to appear as any other common data file such as <code>.wav</code>, <code>.png</code>, etc. As such, users and programs must use the "headerless mode" when loading a ZSM into memory on the Commander X16. The previously-suggested dummy PRG header has been incorporated to the ZSM header as a magic header for file identity verification purposes.</p>
+<h2 id="zsm-file-composition">ZSM file composition<a class="headerlink" href="#zsm-file-composition" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Length</th>
+<th>Field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>16</td>
+<td>ZSM HEADER</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>variable</td>
+<td>ZSM STREAM</td>
+</tr>
+<tr>
+<td>?</td>
+<td>?</td>
+<td>(optional) PCM HEADER</td>
+</tr>
+<tr>
+<td>?</td>
+<td>variable</td>
+<td>(optional) PCM DATA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zsm-header">ZSM Header<a class="headerlink" href="#zsm-header" title="Permanent link">&para;</a></h3>
+<p>The ZSM header is 16 bytes long.</p>
+<ul>
+<li>All multi-byte values are little endian unless specified otherwise</li>
+<li>All offsets are relative to the beginning of the ZSM header</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Length</th>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>2</td>
+<td>Magic Header</td>
+<td>The string 'zm' (binary 0x7a 0x6d)</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>1</td>
+<td>Version</td>
+<td>ZSM Version. 0-0xFE (0xFF is reserved)</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>3</td>
+<td>Loop Point</td>
+<td>Offset to the starting point of song loop. 0 = no loop.</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>3</td>
+<td>PCM offset</td>
+<td>Offset to the beginning of the PCM index table (if present). 0 = no PCM header or data is present.</td>
+</tr>
+<tr>
+<td>0x09</td>
+<td>1</td>
+<td>FM channel mask</td>
+<td>Bit 0-7 are set if the corresponding OPM channel is used by the music.</td>
+</tr>
+<tr>
+<td>0x0a</td>
+<td>2</td>
+<td>PSG channel mask</td>
+<td>Bits 0-15 are set if the corresponding PSG channel is used by the music.</td>
+</tr>
+<tr>
+<td>0x0c</td>
+<td>2</td>
+<td>Tick Rate</td>
+<td>The rate (in Hz) for song delay ticks. <em>60Hz (one tick per frame) is recommended.</em></td>
+</tr>
+<tr>
+<td>0x0e</td>
+<td>2</td>
+<td>reserved</td>
+<td>Reserved for future use. Set to zero.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="zsm-music-data-stream-format">ZSM Music Data Stream Format<a class="headerlink" href="#zsm-music-data-stream-format" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Byte 0</th>
+<th>Byte 1 (variable)</th>
+<th>Byte n</th>
+<th>Byte n+1 (variable)</th>
+<th>...</th>
+<th>End of stream</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMD</td>
+<td>DATA</td>
+<td>CMD</td>
+<td>DATA</td>
+<td>...</td>
+<td>0x80</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cmd-command-byte-values">CMD (command) byte values<a class="headerlink" href="#cmd-command-byte-values" title="Permanent link">&para;</a></h4>
+<p>CMD bytes are bit-packed to hold a command Type ID and a value (n) as follows:</p>
+<table>
+<thead>
+<tr>
+<th>CMD</th>
+<th>Bit Pattern</th>
+<th>Type</th>
+<th>Arg. Bytes</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00-0x3F</td>
+<td><code>00nnnnnn</code></td>
+<td>PSG write</td>
+<td>1</td>
+<td>Write the following byte into PSG register offset <em>n</em>. (from 0x1F9C0 in VRAM)</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td><code>01000000</code></td>
+<td>EXTCMD</td>
+<td>1+?</td>
+<td>The following byte is an extension command. (see below for EXTCMD syntax)</td>
+</tr>
+<tr>
+<td>0x41-0x7F</td>
+<td><code>01nnnnnn</code></td>
+<td>FM write</td>
+<td>2<em>n</em></td>
+<td>Write the following <em>n</em> reg/val pairs into the YM2151.</td>
+</tr>
+<tr>
+<td>0x80</td>
+<td><code>10000000</code></td>
+<td>EOF</td>
+<td>0</td>
+<td>This byte MUST be present at the end of the data stream. Player may loop or halt as necessary.</td>
+</tr>
+<tr>
+<td>0x81-0xFF</td>
+<td><code>1nnnnnnn</code></td>
+<td>Delay</td>
+<td>0</td>
+<td>Delay <em>n</em> ticks.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="extcmd">EXTCMD:<a class="headerlink" href="#extcmd" title="Permanent link">&para;</a></h4>
+<p>The EXTCMD byte is formatted as <code>ccnnnnnn</code> where <code>c</code>=channel and <code>n</code>=number of bytes that follow. If the player wishes to ignore a channel, it can simply advance <code>n</code> bytes and continue processing. See EXTCMD Channel Specifications below for more details.</p>
+<h3 id="pcm-header">PCM Header<a class="headerlink" href="#pcm-header" title="Permanent link">&para;</a></h3>
+<p>If the PCM header exists in the ZSM file, it will immediately follow the 0x80 end-of-data marker. The PCM header exists only if at least one PCM instrument exists.</p>
+<p>Since each instrument defined is 16 bytes, the size of the PCM header can be calculated
+as 4+(16*(last_instrument_index+1)).</p>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00-0x02</td>
+<td>String</td>
+<td>"PCM"</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>Byte</td>
+<td>The last PCM instrument index</td>
+</tr>
+<tr>
+<td>0x04-0x13</td>
+<td>Mixed</td>
+<td>Instrument definition for instrument 0x00</td>
+</tr>
+<tr>
+<td>0x14-0x23</td>
+<td>Mixed</td>
+<td>(optional) Instrument definition for instrument 0x01</td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="instrument-definition">Instrument definition<a class="headerlink" href="#instrument-definition" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Type</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>Byte</td>
+<td>This instrument's index</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>Bitmask</td>
+<td>AUDIO_CTRL: 00<strong>DC</strong>0000: D is set for 16-bit, and clear for 8-bit. C is set for stereo and clear for mono</td>
+</tr>
+<tr>
+<td>0x02-0x04</td>
+<td>24-bit int</td>
+<td>Little-endian offset into the PCM data block</td>
+</tr>
+<tr>
+<td>0x05-0x07</td>
+<td>24-bit int</td>
+<td>Little-endian length of PCM data</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>Bitmask</td>
+<td>Features: <strong>L</strong>xxxxxxx: L is set if the sample is looped</td>
+</tr>
+<tr>
+<td>0x09-0x0b</td>
+<td>24-bit int</td>
+<td>Little-endian loop point offset (relative, 0 is the beginning of this instrument's sample)</td>
+</tr>
+<tr>
+<td>0x0c-0x0f</td>
+<td>...</td>
+<td>Reserved for expansion</td>
+</tr>
+</tbody>
+</table>
+<p>Any offset values contained in the PCM data header block are relative to the beginning of the PCM sample data section, not to the PCM header or ZSM header. The intention is to present the digital audio portion as a set of digi clips ("samples" in tracker terminology) whose playback can be triggered by EXTCMD channel zero.</p>
+<h3 id="pcm-sample-data">PCM Sample Data<a class="headerlink" href="#pcm-sample-data" title="Permanent link">&para;</a></h3>
+<p>This is a blob of PCM data with no internal formatting. Offsets into this blob are provided via the PCM header. The end of this blob will be the end of the ZSM file.</p>
+<h2 id="extcmd-channel-specifications">EXTCMD Channel Specifications<a class="headerlink" href="#extcmd-channel-specifications" title="Permanent link">&para;</a></h2>
+<p>Extension commands provide optional functionality within a ZSM music file. EXTCMD may be ignored by any player. EXTCMD defines 4 "channels" of message streams. Players may implement support for any, all, or none of the channels as desired. An EXTCMD may specify up to 63 bytes of data. If more data than this is required, then it must be broken up into multiple EXTCMDs.</p>
+<h5 id="extcmd-in-zsm-stream-context">EXTCMD in ZSM stream context:<a class="headerlink" href="#extcmd-in-zsm-stream-context" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>...</th>
+<th>CMD 0x40</th>
+<th>EXTCMD</th>
+<th>N bytes</th>
+<th>CMD</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="extcmd-byte-format">EXTCMD byte format:<a class="headerlink" href="#extcmd-byte-format" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Bit Pattern</th>
+<th>C</th>
+<th>N</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ccnnnnnn</code></td>
+<td>Extension Channel ID</td>
+<td>Number of bytes that follow</td>
+</tr>
+</tbody>
+</table>
+<h5 id="extcmd-channels">EXTCMD Channels:<a class="headerlink" href="#extcmd-channels" title="Permanent link">&para;</a></h5>
+<ol>
+<li>PCM instrument channel</li>
+<li>Expansion Sound Devices</li>
+<li>Synchronization events</li>
+<li>Custom</li>
+</ol>
+<p>The formatting of the data within these 4 channels is presently a work in progress. Definitions for channels 0-3 will be part of the official ZSM specifications and implemented in the Zsound library. Significant changes within one of these three channels' structure may result in a new ZSM version number being issued. The formatting and content of the 3 official EXTCMD channels will be covered here.</p>
+<p>The Custom channel data may take whatever format is desired for any particular purpose with the understanding that the general ecosystem of ZSM-aware applications will most likely ignore them.</p>
+<h3 id="extcmd-channel">EXTCMD Channel:<a class="headerlink" href="#extcmd-channel" title="Permanent link">&para;</a></h3>
+<h4 id="0-pcm-audio">0: PCM audio<a class="headerlink" href="#0-pcm-audio" title="Permanent link">&para;</a></h4>
+<p>This EXTCMD stream can contain one or more command + argument pairs.</p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>meaning</th>
+<th>argument</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>AUDIO_CTRL byte</td>
+<td>byte</td>
+<td>This byte sets PCM channel volume and/or clears the FIFO</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>AUDIO_RATE byte</td>
+<td>byte</td>
+<td>A value from 0x00-0x80 to set the sample rate (playback speed)</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>Instrument trigger</td>
+<td>byte</td>
+<td>Triggers the PCM instrument specified by this byte index</td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-expansion-sound-devices">1: Expansion Sound Devices<a class="headerlink" href="#1-expansion-sound-devices" title="Permanent link">&para;</a></h4>
+<p>This channel is for data intended for "well-known" expansion hardware used with the Commander X16. As the community adopts various expansion hardware, such devices will be given a standard "ID" number so that all ZSM files will agree on which device is being referenced by expansion HW data.</p>
+<p>The specification of new chip IDs should not affect the format of ZSM itself, and thus will not result in a ZSM version update. Players will simply need to update their list of known hardware.</p>
+<p>Players implementing this channel should implement detection routines during init to determine which (if any) expansion hardware is present. Any messages intended for a chip that is not present in the system should be skipped.</p>
+<p>An expansion HW write will contain the following data:</p>
+<table>
+<thead>
+<tr>
+<th>Chip ID</th>
+<th><code>nnnnnn-1</code> bytes of data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>one byte</td>
+<td>nnnnnn-1 bytes</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The length of the EXTCMD <code>nnnnnn</code> encompasses the chip_id byte and the data bytes which follow.</li>
+</ul>
+<h5 id="chip-ids">Chip IDs<a class="headerlink" href="#chip-ids" title="Permanent link">&para;</a></h5>
+<ul>
+<li>0x00 - reserved</li>
+<li>0x01 - MIDI 1 (Primary MIDI)<ul>
+<li>MIDI data embedded in ZSM is limited to status bytes 0x80-0xF8 inclusive, and their arguments, i.e. data which is intended to be transmitted to a synthesizer.</li>
+<li>Metadata such as MIDI header data, ticks per beat, track names, lyrics, and tempo are not included in the data.</li>
+<li>Delta times are not embedded in the MIDI data. Native ZSM delays are used instead.</li>
+<li>With the exception of multiple EXTCMDs for the same Chip ID within the same tick, the first byte of data must be a status byte 0x80-0xF8.</li>
+<li>Status continuation is not permitted from prior ticks, but is allowed within the same tick.<ul>
+<li>This restriction allows for simultaneous access to the MIDI device by multiple agents, such as a song player and sound effects player on non-overlapping MIDI channels.</li>
+</ul>
+</li>
+<li>An example of an EXTCMD containing a single note-on event might look as follows: <code>0x40 0x44 0x01 0x90 0x69 0x7F</code></li>
+</ul>
+</li>
+<li>0x02 - MIDI 2 (Secondary MIDI)<ul>
+<li>A second separate MIDI stream can be used by players that support multiple active MIDI devices. The data format and restrictions are the same as for Chip ID 0x01.</li>
+</ul>
+</li>
+<li>0x03 - reserved</li>
+<li>0x70-0x7F - Private use area<ul>
+<li>These will be ignored by the stock reference players, but can be used for testing or for custom purposes for a particular application.</li>
+</ul>
+</li>
+<li>0x80-0xFF - reserved for possible expansion to 15-bit chip IDs</li>
+</ul>
+<h4 id="2-synchronization-events">2: Synchronization Events<a class="headerlink" href="#2-synchronization-events" title="Permanent link">&para;</a></h4>
+<p>The purpose of this channel is to provide for music synchronization cues that applications may use to perform operations in sync with the music (such as when the Goombas jump in New Super Mario Bros in time with the BOP! BOP! notes in the music). It is intended for the reference player to provide a sync channel callback, passing the data bytes to the callback function, and then to proceed with playback.</p>
+<p>The synchronization format currently defines these event types:</p>
+<table>
+<thead>
+<tr>
+<th>Event Type</th>
+<th>Description</th>
+<th>Message Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00</code></td>
+<td>Generic sync message</td>
+<td><code>xx</code> (any value from <code>0x00</code>-<code>0xff</code>)</td>
+</tr>
+<tr>
+<td><code>0x01</code></td>
+<td>Song tuning</td>
+<td>a signed byte indicating an offset from A-440 tuning represented in 256ths of a semitone</td>
+</tr>
+</tbody>
+</table>
+<p>An example of an EXTCMD containing one sync event might look as follows: <code>0x40 0x82 0x00 0x05</code></p>
+<h4 id="3-custom">3: Custom<a class="headerlink" href="#3-custom" title="Permanent link">&para;</a></h4>
+<p>The purpose for this channel is that any project with an idea that does not fit neatly into the above categories may pack data into the project's music files in whatever form is required. It should be understood that these ZSMs will not be expected to use the extended behaviors outside of the project they were designed for. The music itself, however, should play properly. The only constraint is that the data must conform to the EXTCMD byte - supplying exactly the specified number of bytes per EXTCMD.</p>
+<p>The reference playback library in Zsound will implement this channel as a simple callback passing the memory location and data size to the referenced function, and take no further action internally.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" class="btn btn-neutral float-left" title="Appendix F: The 65C816 Processor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/" class="btn btn-neutral float-right" title="Appendix H: How to update your X16 to latest release">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

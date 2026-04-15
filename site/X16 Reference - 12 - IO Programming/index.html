@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 12: I/O Programming - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 12: I/O Programming";
+        var mkdocs_page_input_path = "X16 Reference - 12 - IO Programming.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 12: I/O Programming</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#i2c-bus">I2C Bus</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#system-management-controller">System Management Controller</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#non-volatile-storage-for-cartridges">Non-volatile storage for cartridges</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-time-clock">Real-Time-Clock</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 12: I/O Programming</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-12-io-programming">Chapter 12: I/O Programming<a class="headerlink" href="#chapter-12-io-programming" title="Permanent link">&para;</a></h1>
+<p>There are two 65C22 "Versatile Interface Adapter" (VIA) I/O controllers in the system, VIA#1 and VIA#2. The address range \$9F00 to \$9F0F maps to VIA#1's internal registers \$0 to \$F. Likewise, the address range \$9F10 to \$9F1F maps to VIA#2's internal registers. Details on the internal registers can be found in the published datasheet: <a href="https://www.westerndesigncenter.com/wdc/documentation/w65c22.pdf">https://www.westerndesigncenter.com/wdc/documentation/w65c22.pdf</a>.</p>
+<p>The IRQ out pin of VIA#1 is connected to the CPU's IRQ line, while the IRQ out pin of VIA#2 can be configured via jumper to connect to either the CPU's IRQ or NMI line on production boards (those beginning with serial PR), or hardwired to the CPU's IRQ line on earlier boards.</p>
+<p>The-following tables describe the connections of the I/O pins:</p>
+<p><strong>VIA#1</strong></p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA0</td>
+<td>I2CDATA</td>
+<td>I2C Data</td>
+</tr>
+<tr>
+<td>PA1</td>
+<td>I2CCLK</td>
+<td>I2C Clock</td>
+</tr>
+<tr>
+<td>PA2</td>
+<td>NESLATCH</td>
+<td>NES LATCH (for all controllers)</td>
+</tr>
+<tr>
+<td>PA3</td>
+<td>NESCLK</td>
+<td>NES CLK   (for all controllers)</td>
+</tr>
+<tr>
+<td>PA4</td>
+<td>NESDAT3</td>
+<td>NES DATA  (controller 3)</td>
+</tr>
+<tr>
+<td>PA5</td>
+<td>NESDAT2</td>
+<td>NES DATA  (controller 2)</td>
+</tr>
+<tr>
+<td>PA6</td>
+<td>NESDAT1</td>
+<td>NES DATA  (controller 1)</td>
+</tr>
+<tr>
+<td>PA7</td>
+<td>NESDAT0</td>
+<td>NES DATA  (controller 0)</td>
+</tr>
+<tr>
+<td>PB0</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+<tr>
+<td>PB1</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+<tr>
+<td>PB2</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+<tr>
+<td>PB3</td>
+<td>SERATNO</td>
+<td>Serial ATN  out</td>
+</tr>
+<tr>
+<td>PB4</td>
+<td>SERCLKO</td>
+<td>Serial CLK  out</td>
+</tr>
+<tr>
+<td>PB5</td>
+<td>SERDATAO</td>
+<td>Serial DATA out</td>
+</tr>
+<tr>
+<td>PB6</td>
+<td>SERCLKI</td>
+<td>Serial CLK  in</td>
+</tr>
+<tr>
+<td>PB7</td>
+<td>SERDATAI</td>
+<td>Serial DATA in</td>
+</tr>
+<tr>
+<td>CA1</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+<tr>
+<td>CA2</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+<tr>
+<td>CB1</td>
+<td>IECSRQ</td>
+<td></td>
+</tr>
+<tr>
+<td>CB2</td>
+<td><em>Unused</em></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The KERNAL uses Timer 2 for timing transmissions on the Serial Bus.</p>
+<p><strong>VIA#2</strong></p>
+<p>The second VIA is completely unused by the KERNAL. All its 16 GPIOs and 4 handshake I/Os can be freely used by user software.</p>
+<h2 id="i2c-bus">I2C Bus<a class="headerlink" href="#i2c-bus" title="Permanent link">&para;</a></h2>
+<p>The Commander X16 contains an I2C bus, which is implemented through two pins of VIA#1. The system management controller (SMC) and the real-time clock (RTC) are connected through this bus. The KERNAL APIs <code>i2c_read_byte</code> and <code>i2c_write_byte</code> allow talking to these devices.</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1000010 ($42)</code></td>
+<td><a href="#system-Management-Controller">System Management Controller (SMC)</a></td>
+</tr>
+<tr>
+<td><code>1010??? ($50-$57)</code></td>
+<td><a href="#non-volatile-storage-for-cartridges">Non-volatile storage for cartridges</a></td>
+</tr>
+<tr>
+<td><code>1101111 ($6F)</code></td>
+<td><a href="#real-time-clock">Real-Time Clock (RTC)</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="system-management-controller">System Management Controller<a class="headerlink" href="#system-management-controller" title="Permanent link">&para;</a></h3>
+<p><strong>I2C address: $42</strong></p>
+<p>The system management controller (SMC) is device $42 on the I2C bus. It controls the activity LED, and can be used to power down the system or inject RESET and NMI signals. It also handles communication with
+the PS/2 keyboard and mouse.</p>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$01</td>
+<td>$00</td>
+<td>Power off</td>
+</tr>
+<tr>
+<td>$01</td>
+<td>$01</td>
+<td>Hard reboot</td>
+</tr>
+<tr>
+<td>$02</td>
+<td>$00</td>
+<td>Inject RESET</td>
+</tr>
+<tr>
+<td>$03</td>
+<td>$00</td>
+<td>Inject NMI</td>
+</tr>
+<tr>
+<td>$05</td>
+<td>\$00/\$FF</td>
+<td>Activity LED off/on</td>
+</tr>
+<tr>
+<td>$07</td>
+<td>-</td>
+<td>Read from keyboard buffer</td>
+</tr>
+<tr>
+<td>$08</td>
+<td>\$00..\$FF</td>
+<td>Echo</td>
+</tr>
+<tr>
+<td>$18</td>
+<td>-</td>
+<td>Read ps2 status</td>
+</tr>
+<tr>
+<td>$19</td>
+<td>\$00..\$FF</td>
+<td>Send ps2 command</td>
+</tr>
+<tr>
+<td>$1A</td>
+<td>\$0000..\$FFFF</td>
+<td>Send ps2 command (2 bytes)</td>
+</tr>
+<tr>
+<td>$20</td>
+<td>$00</td>
+<td>Set mouse device ID, standard mouse</td>
+</tr>
+<tr>
+<td>$20</td>
+<td>$03</td>
+<td>Set mouse device ID, Intellimouse with scroll wheel</td>
+</tr>
+<tr>
+<td>$20</td>
+<td>$04</td>
+<td>Set mouse device ID, Intellimouse with scroll wheel+extra buttons</td>
+</tr>
+<tr>
+<td>$21</td>
+<td>-</td>
+<td>Read from mouse buffer</td>
+</tr>
+<tr>
+<td>$22</td>
+<td>-</td>
+<td>Get mouse device ID</td>
+</tr>
+<tr>
+<td>$30</td>
+<td>-</td>
+<td>Get SMC firmware version, major</td>
+</tr>
+<tr>
+<td>$31</td>
+<td>-</td>
+<td>Get SMC firmware version, minor</td>
+</tr>
+<tr>
+<td>$32</td>
+<td>-</td>
+<td>Get SMC firwmare version, patch</td>
+</tr>
+<tr>
+<td>$8F</td>
+<td>$31</td>
+<td>Start bootloader, if present</td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-volatile-storage-for-cartridges">Non-volatile storage for cartridges<a class="headerlink" href="#non-volatile-storage-for-cartridges" title="Permanent link">&para;</a></h3>
+<p><strong>I2C address: $50-$57</strong></p>
+<h4 id="commander-x16-rom-cartridge">Commander X16 ROM Cartridge<a class="headerlink" href="#commander-x16-rom-cartridge" title="Permanent link">&para;</a></h4>
+<p><a href="https://texelec.com/product/commander-x16-cartridge/">Commander X16 ROM Cartridge</a> supports up to 4 128kB EEPROM chips in the $50-$57 address range. Address is chosen based on IC slot on the PCB. Chip type: <strong>Onsemi CAT24M01</strong></p>
+<h4 id="roam-commander-x16-cartridge">ROAM Commander X16 Cartridge<a class="headerlink" href="#roam-commander-x16-cartridge" title="Permanent link">&para;</a></h4>
+<p><a href="https://www.tindie.com/products/wavicle/roam-commander-x16-cartridge/">ROAM Commander X16 Cartridge</a>, by Wavicle, features 1 8kB FRAM chip in the $50-$57 address range. Address is configurable by dip-switches. Chip type: <strong>FM24C64B</strong></p>
+<h3 id="real-time-clock">Real-Time-Clock<a class="headerlink" href="#real-time-clock" title="Permanent link">&para;</a></h3>
+<p><strong>I2C address: $6F</strong></p>
+<p>The Commander X16 contains a battery-backed Microchip MCP7940N real-time-clock (RTC) chip as device $6F. It provides a real-time clock/calendar, two alarms and 64 bytes of battery-backed SRAM (non-volatile RAM).</p>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$00</td>
+<td>Clock seconds</td>
+</tr>
+<tr>
+<td>$01</td>
+<td>Clock minutes</td>
+</tr>
+<tr>
+<td>$02</td>
+<td>Clock hours</td>
+</tr>
+<tr>
+<td>$03</td>
+<td>Clock weekday</td>
+</tr>
+<tr>
+<td>$04</td>
+<td>Clock day</td>
+</tr>
+<tr>
+<td>$05</td>
+<td>Clock month</td>
+</tr>
+<tr>
+<td>$06</td>
+<td>Clock year</td>
+</tr>
+<tr>
+<td>$07</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>$08</td>
+<td>Oscillator trim</td>
+</tr>
+<tr>
+<td>$09</td>
+<td><em>reserved</em></td>
+</tr>
+<tr>
+<td>$0A</td>
+<td>Alarm 0 seconds</td>
+</tr>
+<tr>
+<td>$0B</td>
+<td>Alarm 0 minutes</td>
+</tr>
+<tr>
+<td>$0C</td>
+<td>Alarm 0 hours</td>
+</tr>
+<tr>
+<td>$0D</td>
+<td>Alarm 0 weekday</td>
+</tr>
+<tr>
+<td>$0E</td>
+<td>Alarm 0 day</td>
+</tr>
+<tr>
+<td>$0F</td>
+<td>Alarm 0 month</td>
+</tr>
+<tr>
+<td>$10</td>
+<td><em>reserved</em></td>
+</tr>
+<tr>
+<td>$11</td>
+<td>Alarm 1 seconds</td>
+</tr>
+<tr>
+<td>$12</td>
+<td>Alarm 1 minutes</td>
+</tr>
+<tr>
+<td>$13</td>
+<td>Alarm 1 hours</td>
+</tr>
+<tr>
+<td>$14</td>
+<td>Alarm 1 weekday</td>
+</tr>
+<tr>
+<td>$15</td>
+<td>Alarm 1 day</td>
+</tr>
+<tr>
+<td>$16</td>
+<td>Alarm 1 month</td>
+</tr>
+<tr>
+<td>$17</td>
+<td><em>reserved</em></td>
+</tr>
+<tr>
+<td>$18</td>
+<td>Power-fail minutes</td>
+</tr>
+<tr>
+<td>$19</td>
+<td>Power-fail hours</td>
+</tr>
+<tr>
+<td>$1A</td>
+<td>Power-fail day</td>
+</tr>
+<tr>
+<td>$1B</td>
+<td>Power-fail month</td>
+</tr>
+<tr>
+<td>$1C</td>
+<td>Power-up minutes</td>
+</tr>
+<tr>
+<td>$1D</td>
+<td>Power-up hours</td>
+</tr>
+<tr>
+<td>$1E</td>
+<td>Power-up day</td>
+</tr>
+<tr>
+<td>$1F</td>
+<td>Power-up month</td>
+</tr>
+<tr>
+<td>\$20-\$5F</td>
+<td>64 Bytes SRAM</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sram-nvram">SRAM (NVRAM)<a class="headerlink" href="#sram-nvram" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$20-\$3F</td>
+<td>User NVRAM</td>
+</tr>
+<tr>
+<td>\$40-\$5F</td>
+<td>KERNAL NVRAM</td>
+</tr>
+<tr>
+<td>$40</td>
+<td>Active profile</td>
+</tr>
+<tr>
+<td>\$41-\$4D</td>
+<td>Profile 0 (80x60)</td>
+</tr>
+<tr>
+<td>\$4E-\$5A</td>
+<td>Profile 1 (40x30)</td>
+</tr>
+<tr>
+<td>\$41/\$4E</td>
+<td>Screen mode</td>
+</tr>
+<tr>
+<td>\$42/\$4F</td>
+<td>VERA_DC_VIDEO</td>
+</tr>
+<tr>
+<td>\$43/\$50</td>
+<td>VERA_DC_HSCALE</td>
+</tr>
+<tr>
+<td>\$44/\$51</td>
+<td>VERA_DC_VSCALE</td>
+</tr>
+<tr>
+<td>\$45/\$52</td>
+<td>VERA_DC_BORDER</td>
+</tr>
+<tr>
+<td>\$46/\$53</td>
+<td>VERA_DC_HSTART</td>
+</tr>
+<tr>
+<td>\$47/\$54</td>
+<td>VERA_DC_HSTOP</td>
+</tr>
+<tr>
+<td>\$48/\$55</td>
+<td>VERA_DC_VSTART</td>
+</tr>
+<tr>
+<td>\$49/\$56</td>
+<td>VERA_DC_VSTOP</td>
+</tr>
+<tr>
+<td>\$4A/\$57</td>
+<td>Color (bg/fg)</td>
+</tr>
+<tr>
+<td>\$4B/\$58</td>
+<td>Keymap</td>
+</tr>
+<tr>
+<td>\$4C/\$59</td>
+<td>Typematic</td>
+</tr>
+<tr>
+<td>\$4D/\$5A</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>\$5B-\$5E</td>
+<td>Expansion (unused)</td>
+</tr>
+<tr>
+<td>$5F</td>
+<td>Checksum</td>
+</tr>
+</tbody>
+</table>
+<p>The second half of the RTC's SRAM (NVRAM) is reserved for use by the KERNAL. \$20-\$3F is available for use by user programs.</p>
+<p>For more information, please refer to this device's datasheet.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" class="btn btn-neutral float-left" title="Chapter 11: Sound Programming"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" class="btn btn-neutral float-right" title="Chapter 13: Working With CMDR-DOS">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

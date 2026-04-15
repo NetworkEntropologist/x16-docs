@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix J: ROM Recovery - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix J: ROM Recovery";
+        var mkdocs_page_input_path = "X16 Reference - Appendix J - ROM Recovery.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix J: ROM Recovery</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#option-1-using-a-pc-to-upgrade-or-recover-rom-using-relatively-universal-rom-programmer-rurp">Option 1: Using a PC to upgrade or recover ROM using Relatively Universal ROM Programmer (RURP)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#before-you-start-read-project-page-and-watch-instruction-videos-optional">Before you start: Read project page and watch instruction videos (optional)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#warning-sst39sf040-only">Warning: SST39SF040 only</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-the-programmer">Get the programmer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#solder-through-hole-components">Solder through-hole components</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-firestarter-app">Install Firestarter app</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#install-firestarter-firmware">Install Firestarter firmware</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#disconnect-rom-chip">Disconnect ROM chip</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#warning-high-voltage">Warning: High voltage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#insert-rom-chip-into-programmer">Insert ROM chip into programmer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#program-new-rom-file">Program new rom file</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#insert-rom-chip-into-x16">Insert ROM chip into X16</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#option-2-using-a-cartridge-to-programrecover-rom">Option 2: Using a cartridge to program/recover ROM</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connect-rom-via-cartridge-to-cx16">Connect ROM via cartridge to CX16</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prepare-sd-card">Prepare SD card</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#power-on-the-machine-and-enter-basic">Power on the machine and enter BASIC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-cx16-update">Start CX16-UPDATE</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix J: ROM Recovery</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-j-rom-recovery">Appendix J: ROM Recovery<a class="headerlink" href="#appendix-j-rom-recovery" title="Permanent link">&para;</a></h1>
+<p><strong>WARNING: This is a draft that may contain errors or omissions that could damage your hardware.</strong></p>
+<h2 id="option-1-using-a-pc-to-upgrade-or-recover-rom-using-relatively-universal-rom-programmer-rurp">Option 1: Using a PC to upgrade or recover ROM using Relatively Universal ROM Programmer (RURP)<a class="headerlink" href="#option-1-using-a-pc-to-upgrade-or-recover-rom-using-relatively-universal-rom-programmer-rurp" title="Permanent link">&para;</a></h2>
+<p><strong>Target Component:</strong> ROM</p>
+<p><strong>Programmer:</strong> Relatively Universal ROM Programmer (RURP) + Arduino UNO</p>
+<p><strong>Software:</strong> Firestarter</p>
+<p><strong>Host OS:</strong> Windows (should also be compatible with Mac/Linux)</p>
+<h3 id="before-you-start-read-project-page-and-watch-instruction-videos-optional">Before you start: Read project page and watch instruction videos (optional)<a class="headerlink" href="#before-you-start-read-project-page-and-watch-instruction-videos-optional" title="Permanent link">&para;</a></h3>
+<p>https://github.com/AndersBNielsen/Relatively-Universal-ROM-Programmer</p>
+<p>https://hackaday.io/project/192273-relatively-universal-rom-programmer</p>
+<p>https://www.youtube.com/watch?v=SZQ50XZlk5o</p>
+<p>https://www.youtube.com/watch?v=JDHOKbyNnrE</p>
+<p>https://discord.com/invite/kmhbxAjQc3</p>
+<h3 id="warning-sst39sf040-only">Warning: SST39SF040 only<a class="headerlink" href="#warning-sst39sf040-only" title="Permanent link">&para;</a></h3>
+<p>These instructions are only intended for the SST39SF040 parallel flash chip, used by X16.</p>
+<p>If you follow these instructions but have a different chip, make sure to adjust voltage and jumpers accordingly. You may also want to consult with the videos and/or the RURP discord server.</p>
+<p>These instructions have only been tested with V2 hardware.</p>
+<h3 id="get-the-programmer">Get the programmer<a class="headerlink" href="#get-the-programmer" title="Permanent link">&para;</a></h3>
+<p>Follow instructions at https://github.com/AndersBNielsen/Relatively-Universal-ROM-Programmer . You also need an Arduino Uno.</p>
+<p>(Pro tip: Buy one additional black ZIF socket. It can be placed directly into the ROM socket, no soldering needed. Makes it much easier to remove the ROM IC later.)</p>
+<h3 id="solder-through-hole-components">Solder through-hole components<a class="headerlink" href="#solder-through-hole-components" title="Permanent link">&para;</a></h3>
+<p>Instruction video: https://www.youtube.com/watch?v=SZQ50XZlk5o</p>
+<p>For use with the x16 rom (SST39SF040), you only need to solder the Arduino headers and the socket. Jumper and OLED headers are not needed, assuming HW revision 2.</p>
+<h3 id="install-firestarter-app">Install Firestarter app<a class="headerlink" href="#install-firestarter-app" title="Permanent link">&para;</a></h3>
+<p>Instruction video: https://www.youtube.com/watch?v=JDHOKbyNnrE</p>
+<p>Firestarter is a 3rd party software/firmware improvement to the ROM programmer, which includes a large database of chip definitions, including SST39SF040.</p>
+<p>Install using <code>pip install firestarter</code></p>
+<p>Test version using <code>firestarter --version</code>. These instructions are tested with app version 1.3.39.</p>
+<p>Firestarter commands are explained by adding <code>-h</code> to it. To get more detailed output, use <code>-v</code>.</p>
+<h3 id="install-firestarter-firmware">Install Firestarter firmware<a class="headerlink" href="#install-firestarter-firmware" title="Permanent link">&para;</a></h3>
+<p>Do not have anything connected to your Arduino UNO. Connect the UNO to the PC.</p>
+<p>Use <code>firestarter fw -h</code> to get instructions for how to program and verify firmware.</p>
+<p>Install the firmware using the command <code>firestarter fw -i</code>. You may need to specify path to avrdude, if it is not in path. On Windows, it may be here: <code>C:\Program Files (x86)\Arduino\hardware\tools\avr\bin</code>. You may also specify path to avrdude.conf, e.g <code>-c "C:\Program Files (x86)\Arduino\hardware\tools\avr\etc"</code>.</p>
+<p>After install, confirm version using <code>firestarter fw</code>. These instructions are tested with firmware 1.4.2.</p>
+<p>Disconnect UNO from PC. Connect RURP shield to Arduino, without any ROM chip. Connect UNO to PC.</p>
+<p>Identify hardware revision using <code>firestarter hw</code>. These instructions are tested with Rev2.</p>
+<h3 id="disconnect-rom-chip">Disconnect ROM chip<a class="headerlink" href="#disconnect-rom-chip" title="Permanent link">&para;</a></h3>
+<p>Disconnect power from the Commander X16. Remove the ROM chip, which is a SST39SF040 parallel flash IC, inside the "SYSTEM ROM" socket in the lower left corner of the board.</p>
+<h3 id="warning-high-voltage">Warning: High voltage<a class="headerlink" href="#warning-high-voltage" title="Permanent link">&para;</a></h3>
+<p>EEPROM chips requires high voltage (12-24V) to program and to erase. The parallel flash chip used by X16 does not need high voltage for anything. However, RURP can output high voltage to some of the pins, based on the control register. During Arduino reset, this control register is uninitialized, and may be in a state where it causes high voltage to some pins, which may damage a flash IC. Because of this, it is NOT recommended to connect an IC to RURP while it is powered off. Instead, power on RURP first, and then connect your IC just before programming it.</p>
+<h3 id="insert-rom-chip-into-programmer">Insert ROM chip into programmer<a class="headerlink" href="#insert-rom-chip-into-programmer" title="Permanent link">&para;</a></h3>
+<p>Send the command <code>firestarter info SST39SF040</code> to view the IC details and jumper config, based on the database. For HW rev2, no jumper is needed.</p>
+<p>Make sure RURP is powered.</p>
+<p>Connect the IC. The notch should go toward the nearest PCB edge. (For the record: If connecting a 24 or 28 pin IC, connect it according to the drawing on the back of the PCB).</p>
+<p>To test communication with the flash chip, send <code>firestarter id SST39SF040</code>.</p>
+<p>If you want to dump the contents of the chip, use the command <code>firestarter read SST39SF040</code>. This should dump to <code>SST39SF040.bin</code>, taking approx. 2 minutes.</p>
+<h3 id="program-new-rom-file">Program new rom file<a class="headerlink" href="#program-new-rom-file" title="Permanent link">&para;</a></h3>
+<p>Make sure the new rom file (e.g <code>rom.bin</code> for r48) is in the current folder.</p>
+<p>To erase the chip and program this rom file, use the command <code>firestarter write SST39SF040 rom.bin</code>. This command will erase the chip, then verify that the entire chip is blank (0xFF), and then program the file.</p>
+<p>Erase + blank check takes 45 seconds. Writing 256 kB, takes 1.5 additional minutes.</p>
+<p>After write, you may want to verify that the contents of flash matches the contents of the <code>rom.bin</code> file. This can be done with <code>firestarter verify SST39SF040 rom.bin</code>. This takes a little over 1 minute.</p>
+<h3 id="insert-rom-chip-into-x16">Insert ROM chip into X16<a class="headerlink" href="#insert-rom-chip-into-x16" title="Permanent link">&para;</a></h3>
+<p>Make sure there are no blinkenlight activity on the RURP. There may be a few red stationary LEDs.</p>
+<p>Remove the flash IC from RURP. If you have a ZIF socket on RURP, it is likely least risk of damaging anything if IC is disconnected while RURP is powered, since a sudden reconnect may give high voltage to a pin.</p>
+<p>Insert the flash IC into X16, while X16 is disconnected from power. (You may optionally insert a ZIF socket into the ROM socket first, to make the ROM easier to remove next time.)</p>
+<p>Power on your X16. Enjoy!</p>
+<h2 id="option-2-using-a-cartridge-to-programrecover-rom">Option 2: Using a cartridge to program/recover ROM<a class="headerlink" href="#option-2-using-a-cartridge-to-programrecover-rom" title="Permanent link">&para;</a></h2>
+<p><strong>Target Component:</strong> ROM</p>
+<p><strong>Programmer:</strong> X16 + cartridge</p>
+<p><strong>Software:</strong> CX16-UPDATE</p>
+<p><strong>Host OS:</strong> CBM Basic</p>
+<h3 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>If you have a working Commander X16, and a cartridge with a ROM socket, and an extra ROM IC (SST39SF040), you can use it to make a backup ROM IC using CX16-UPDATE. In case you later brick your ROM IC, you can replace it with the backup. Using the backup, you can program the ROM IC again, using CX16-UPDATE.</p>
+<h3 id="connect-rom-via-cartridge-to-cx16">Connect ROM via cartridge to CX16<a class="headerlink" href="#connect-rom-via-cartridge-to-cx16" title="Permanent link">&para;</a></h3>
+<p>Disconnect power from the Commander X16.</p>
+<p>Ensure that there is a working ROM in CX16.</p>
+<p>Connect the ROM to be programmed, to a socket in the cartridge.</p>
+<p>If the cartridge requires a "write enable" jumper, insert it.</p>
+<p>Connect cartridge to CX16.</p>
+<h3 id="prepare-sd-card">Prepare SD card<a class="headerlink" href="#prepare-sd-card" title="Permanent link">&para;</a></h3>
+<p>Prepare a new folder on the SD card which contains CX16-UPDATE, and the rom.bin file to program.</p>
+<p>Rename rom.bin to e.g "ROM1.BIN", if the ROM IC is inserted into the slot corresponding to ROM bank 32-63, which is the cartridge starting point. (You can also use ROM2.BIN .. ROM7.BIN, depending on how this ROM IC is accessed by the system).</p>
+<p>Ensure that there are no files called rom.bin, smc.bin or vera.bin in this folder. Only CX16-UPDATE.PRG and e.g ROM1.BIN.</p>
+<h3 id="power-on-the-machine-and-enter-basic">Power on the machine and enter BASIC<a class="headerlink" href="#power-on-the-machine-and-enter-basic" title="Permanent link">&para;</a></h3>
+<p>Power on the machine.</p>
+<p>If you get the READY prompt, proceed to the next step.</p>
+<p>If not, Commander X16 may try to boot the cartridge. This is done if the machine reads "CX16" at offset $20:$C000.</p>
+<p>If you have ROM R49 or newer:
+- Press and hold the "shift" key, while powering on CX16. This will bypass cartridge boot.</p>
+<p>If you have older ROM:
+- Press NMI. This may start BASIC or monitor.</p>
+<p>If you are in monitor:
+- Change RO to 00 (set ROM bank to $00)
+- Set carry flag (ensure it have an asterisk, "*")
+- Press "enter" at end of line to apply the new registers
+- Enter <code>R</code> (show registers, confirm that registers are updated)
+- Enter <code>G FF47</code> (Jump to FF47, enter_basic)</p>
+<h3 id="start-cx16-update">Start CX16-UPDATE<a class="headerlink" href="#start-cx16-update" title="Permanent link">&para;</a></h3>
+<p>Enter the correct folder using <code>@CD:name_of_folder</code>. Use <code>@$</code> to view contents of current folder.</p>
+<p>Start CX16-UPDATE.</p>
+<p>Run the program. This should program the IC with the contents from e.g ROM1.BIN.</p>
+<p>Power off the machine. Disconnect power. Place the ROM IC where appropriate (backup storage, or, into ROM socket).</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/" class="btn btn-neutral float-left" title="Appendix I: Character Sets"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

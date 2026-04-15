@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 6: Math Library - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 6: Math Library";
+        var mkdocs_page_input_path = "X16 Reference - 06 - Math Library.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 6: Math Library</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#format-conversions">Format Conversions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#movement">Movement</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#math-functions">Math Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-the-routines">How to use the routines</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 6: Math Library</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-6-math-library">Chapter 6: Math Library<a class="headerlink" href="#chapter-6-math-library" title="Permanent link">&para;</a></h1>
+<p>The Commander X16 contains a floating point Math library with a precision of 40 bits, which corresponds to 9 decimal digits. It is a stand-alone derivative of the library contained in Microsoft BASIC. Except for the different base address, it is compatible with the C128 and C65 libraries.</p>
+<p>The full documentation of these functions can be found in the book <a href="http://www.zimmers.net/anonftp/pub/cbm/schematics/computers/c128/servicemanuals/C128_Developers_Package_for_Commodore_6502_Development_(1987_Oct).pdf">C128 Developers Package for Commodore 6502 Development</a>. The Math Library documentation starts in Chapter 13. (PDF page 257)</p>
+<p>The following functions are available from machine language code after setting the ROM bank to 4, which is the default.</p>
+<h2 id="format-conversions">Format Conversions<a class="headerlink" href="#format-conversions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE00</td>
+<td><code>AYINT</code></td>
+<td>convert floating point to integer (signed word)</td>
+</tr>
+<tr>
+<td>$FE03</td>
+<td><code>GIVAYF</code></td>
+<td>convert integer (signed word) to floating point</td>
+</tr>
+<tr>
+<td>$FE06</td>
+<td><code>FOUT</code></td>
+<td>convert floating point to ASCII string. (See below)</td>
+</tr>
+<tr>
+<td>$FE09</td>
+<td><code>VAL_1</code></td>
+<td>convert ASCII string in .X:.Y length in .A, to floating point in FACC. <em>Caveat! Read below!</em></td>
+</tr>
+<tr>
+<td>$FE0C</td>
+<td><code>GETADR</code></td>
+<td>convert floating point to an address (unsigned word)</td>
+</tr>
+<tr>
+<td>$FE0F</td>
+<td><code>FLOATC</code></td>
+<td>convert address (unsigned word) to floating point</td>
+</tr>
+<tr>
+<td>$FE8D</td>
+<td><code>QINT</code></td>
+<td>convert floating point to signed 32-bit integer (which is stored in the FACC mantissa bytes in big-endian order)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Difference in X16 Behavior of FOUT</strong></p>
+<p>The version of FOUT described in the book leaves a pointer to the result string
+in the AY register pair; the X16 version does not do that. Instead, rely on the
+string always being placed in the FBUFFR location at $0100. </p>
+<p><strong>Important caveat ragarding the <code>VAL_1</code> routine in its current implementation:</strong></p>
+<p>Unlike the other routines in the math library, this routine calls into the VAL implementation
+that is inside BASIC, and so it requires much of the BASIC zeropage to be intact to function correctly.
+The reason is that that routine ultimately relies on some internal BASIC routines that use a lot of BASIC zero page space.
+Ideally in the future, the <code>VAL_1</code> routine gets a new implementation that doesn't rely on the code in BASIC, thereby removing this restriction.</p>
+<p><strong>X16 Additions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE87</td>
+<td><code>FLOAT</code></td>
+<td>FACC = (s8).A   convert signed byte to float</td>
+</tr>
+<tr>
+<td>$FE8A</td>
+<td><code>FLOATS</code></td>
+<td>FACC = (s16)facho+1:facho</td>
+</tr>
+<tr>
+<td>$FE93</td>
+<td><code>FOUTC</code></td>
+<td>Convert FACC to ASCIIZ string at fbuffr - 1 + .Y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="movement">Movement<a class="headerlink" href="#movement" title="Permanent link">&para;</a></h2>
+<p><code>PACK</code> indicates a conversion from a normalized floating-point number in FACC to its packed format in memory; <code>UNPACK</code> indicates a conversion from the packed format in memory to the normalized format in the destination.</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE5A</td>
+<td><code>CONUPK</code></td>
+<td>ARG = UNPACK(RAM MEM)</td>
+</tr>
+<tr>
+<td>$FE5D</td>
+<td><code>ROMUPK</code></td>
+<td>ARG = UNPACK(ROM MEM) (use <code>CONUPK</code>)</td>
+</tr>
+<tr>
+<td>$FE60</td>
+<td><code>MOVFRM</code></td>
+<td>FACC = UNPACK(RAM MEM) (use <code>MOVFM</code>)</td>
+</tr>
+<tr>
+<td>$FE63</td>
+<td><code>MOVFM</code></td>
+<td>FACC = UNPACK(ROM MEM)</td>
+</tr>
+<tr>
+<td>$FE66</td>
+<td><code>MOVMF</code></td>
+<td>MEM = PACK(ROUND(FACC))</td>
+</tr>
+<tr>
+<td>$FE69</td>
+<td><code>MOVFA</code></td>
+<td>FACC = ARG</td>
+</tr>
+<tr>
+<td>$FE6C</td>
+<td><code>MOVAF</code></td>
+<td>FACC = ROUND(FACC); ARG = FACC</td>
+</tr>
+</tbody>
+</table>
+<p><strong>X16 Additions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE81</td>
+<td><code>MOVEF</code></td>
+<td>ARG = FACC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="math-functions">Math Functions<a class="headerlink" href="#math-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE12</td>
+<td><code>FSUB</code></td>
+<td>FACC = MEM - FACC</td>
+</tr>
+<tr>
+<td>$FE15</td>
+<td><code>FSUBT</code></td>
+<td>FACC = ARG - FACC</td>
+</tr>
+<tr>
+<td>$FE18</td>
+<td><code>FADD</code></td>
+<td>FACC = MEM + FACC</td>
+</tr>
+<tr>
+<td>$FE1B</td>
+<td><code>FADDT</code></td>
+<td>FACC = ARG + FACC</td>
+</tr>
+<tr>
+<td>$FE1E</td>
+<td><code>FMULT</code></td>
+<td>FACC = MEM * FACC</td>
+</tr>
+<tr>
+<td>$FE21</td>
+<td><code>FMULTT</code></td>
+<td>FACC = ARG * FACC</td>
+</tr>
+<tr>
+<td>$FE24</td>
+<td><code>FDIV</code></td>
+<td>FACC = MEM / FACC</td>
+</tr>
+<tr>
+<td>$FE27</td>
+<td><code>FDIVT</code></td>
+<td>FACC = ARG / FACC</td>
+</tr>
+<tr>
+<td>$FE2A</td>
+<td><code>LOG</code></td>
+<td>FACC = natural log of FACC</td>
+</tr>
+<tr>
+<td>$FE2D</td>
+<td><code>INT</code></td>
+<td>FACC = INT() truncate of FACC</td>
+</tr>
+<tr>
+<td>$FE30</td>
+<td><code>SQR</code></td>
+<td>FACC = square root of FACC</td>
+</tr>
+<tr>
+<td>$FE33</td>
+<td><code>NEGOP</code></td>
+<td>negate FACC (switch sign)</td>
+</tr>
+<tr>
+<td>$FE36</td>
+<td><code>FPWR</code></td>
+<td>FACC = raise ARG to the MEM power</td>
+</tr>
+<tr>
+<td>$FE39</td>
+<td><code>FPWRT</code></td>
+<td>FACC = raise ARG to the FACC power</td>
+</tr>
+<tr>
+<td>$FE3C</td>
+<td><code>EXP</code></td>
+<td>FACC = EXP of FACC</td>
+</tr>
+<tr>
+<td>$FE3F</td>
+<td><code>COS</code></td>
+<td>FACC = COS of FACC</td>
+</tr>
+<tr>
+<td>$FE42</td>
+<td><code>SIN</code></td>
+<td>FACC = SIN of FACC</td>
+</tr>
+<tr>
+<td>$FE45</td>
+<td><code>TAN</code></td>
+<td>FACC = TAN of FACC</td>
+</tr>
+<tr>
+<td>$FE48</td>
+<td><code>ATN</code></td>
+<td>FACC = ATN of FACC</td>
+</tr>
+<tr>
+<td>$FE4B</td>
+<td><code>ROUND</code></td>
+<td>FACC = round FACC</td>
+</tr>
+<tr>
+<td>$FE4E</td>
+<td><code>ABS</code></td>
+<td>FACC = absolute value of FACC</td>
+</tr>
+<tr>
+<td>$FE51</td>
+<td><code>SIGN</code></td>
+<td>.A = test sign of FACC</td>
+</tr>
+<tr>
+<td>$FE54</td>
+<td><code>FCOMP</code></td>
+<td>.A = compare FACC with MEM</td>
+</tr>
+<tr>
+<td>$FE57</td>
+<td><code>RND_0</code></td>
+<td>FACC = random floating point number</td>
+</tr>
+</tbody>
+</table>
+<p><strong>X16 Additions to math functions</strong></p>
+<p>The following calls are new to the X16 and were not part of the C128 math library API:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$FE6F</td>
+<td><code>FADDH</code></td>
+<td>FACC += .5</td>
+</tr>
+<tr>
+<td>$FE72</td>
+<td><code>ZEROFC</code></td>
+<td>FACC = 0</td>
+</tr>
+<tr>
+<td>$FE75</td>
+<td><code>NORMAL</code></td>
+<td>Normalize FACC</td>
+</tr>
+<tr>
+<td>$FE78</td>
+<td><code>NEGFAC</code></td>
+<td>FACC = -FACC   (just use NEGOP)</td>
+</tr>
+<tr>
+<td>$FE7B</td>
+<td><code>MUL10</code></td>
+<td>FACC *= 10</td>
+</tr>
+<tr>
+<td>$FE7E</td>
+<td><code>DIV10</code></td>
+<td>FACC /= 10</td>
+</tr>
+<tr>
+<td>$FE84</td>
+<td><code>SGN</code></td>
+<td>FACC = sgn(FACC)</td>
+</tr>
+<tr>
+<td>$FE90</td>
+<td><code>FINLOG</code></td>
+<td>FACC += (s8).A   add signed byte to float</td>
+</tr>
+<tr>
+<td>$FE96</td>
+<td><code>POLYX</code></td>
+<td>Polynomial Evaluation 1 (SIN/COS/ATN/LOG)</td>
+</tr>
+<tr>
+<td>$FE99</td>
+<td><code>POLY</code></td>
+<td>Polynomial Evaluation 2 (EXP)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-use-the-routines">How to use the routines<a class="headerlink" href="#how-to-use-the-routines" title="Permanent link">&para;</a></h2>
+<p><strong>Concepts:</strong></p>
+<ul>
+<li><strong>FACC</strong> (sometimes abbreviated to FAC): the floating point accumulator. You can compare this to the 6502 CPU's .A register,
+  which is the accumulator for most integer operations performed by the CPU.
+  FACC is the primary floating point register. Calculations are done on the value in this register,
+  usually combined with ARG. After the operation, usually the original value in FACC has been replaced by the result of the calculation.</li>
+<li><strong>ARG</strong>: the second floating point register, used in most calculation functions. Often the value in this register will be lost after a calculation.</li>
+<li><strong>MEM</strong>: means a floating point value stored in system memory somewhere.  The format is <a href="https://en.wikipedia.org/wiki/Microsoft_Binary_Format">40 bits (5 bytes) Microsoft binary format</a>.
+  To be able to work with given values in calculations, they need to be stored in memory somewhere in this format.
+  To do this you'll likely need to use a separate program to pre-convert floating point numbers to this format, unless you are using a compiler that
+  directly supports it.</li>
+</ul>
+<p><em>Note that FACC and ARG are just a bunch of zero page locations. This means you can poke around in them.
+But that's not good practice because their locations aren't guaranteed/public, and the format is slightly different
+than how the 5-byte floats are normally stored into memory. Just use one of the Movement routines to
+copy values into or out of FACC and ARG.</em></p>
+<p>To perform a floating point calculation, follow the following pattern:</p>
+<ol>
+<li>load a value into FACC. You can convert an integer, or move a MEM float number into FACC.</li>
+<li>do the same but for ARG, the second floating point register.</li>
+<li>call the required floating point calculation routine that will perform a calculation on FACC with ARG.</li>
+<li>repeat the previous 2 steps if required.</li>
+<li>the result is in FACC, move it into MEM somewhere or convert it to another type or string.</li>
+</ol>
+<p>An example program that calculates and prints the distance an object has fallen over a certain period
+using the formula $d = \dfrac{1}{2} g {t}^{2}$</p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">; calculate how far an object has fallen:  d = 1/2 * g * t^2.</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1">; we set g = 9.81 m/sec^2, time = 5 sec -&gt; d = 122.625 m.</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">CHROUT</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$ffd2</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">FOUT</span><span class="w">   </span><span class="err">=</span><span class="w"> </span><span class="no">$fe06</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">FMULTT</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$fe21</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">FDIV</span><span class="w">   </span><span class="err">=</span><span class="w"> </span><span class="no">$fe24</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">CONUPK</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$fe5a</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">MOVFM</span><span class="w">  </span><span class="err">=</span><span class="w"> </span><span class="no">$fe63</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="mi">#4</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nf">sta</span><span class="w">  </span><span class="no">$01</span><span class="w">         </span><span class="c1">; rom bank 4 (BASIC) contains the fp routines.</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_two</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_two</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">MOVFM</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_g</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_g</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FDIV</span><span class="w">        </span><span class="c1">; FACC= g/2</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_time</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_time</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CONUPK</span><span class="w">      </span><span class="c1">; ARG = time</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FMULTT</span><span class="w">      </span><span class="c1">; FACC = g/2 * time</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="c1">#&lt;flt_time</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="c1">#&gt;flt_time</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CONUPK</span><span class="w">      </span><span class="c1">; again ARG = time</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FMULTT</span><span class="w">      </span><span class="c1">; FACC = g/2 * time * time</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">FOUT</span><span class="w">        </span><span class="c1">; to string</span>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="c1">; print string in AY</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="nf">sta</span><span class="w">  </span><span class="no">$02</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="nf">sty</span><span class="w">  </span><span class="no">$03</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="nf">ldy</span><span class="w">  </span><span class="mi">#0</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="nl">loop:</span>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="nf">lda</span><span class="w">  </span><span class="p">(</span><span class="no">$02</span><span class="p">),</span><span class="no">y</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="nf">beq</span><span class="w">  </span><span class="no">done</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="nf">jsr</span><span class="w">  </span><span class="no">CHROUT</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="nf">iny</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="nf">bne</span><span class="w">  </span><span class="no">loop</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="nl">done:</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="nl">flt_g:</span><span class="w">      </span><span class="na">.byte</span><span class="w">  </span><span class="no">$84</span><span class="p">,</span><span class="w"> </span><span class="no">$1c</span><span class="p">,</span><span class="w"> </span><span class="no">$f5</span><span class="p">,</span><span class="w"> </span><span class="no">$c2</span><span class="p">,</span><span class="w"> </span><span class="no">$8f</span><span class="w">  </span><span class="c1">; float 9.81</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="nl">flt_time:</span><span class="w">   </span><span class="na">.byte</span><span class="w">  </span><span class="no">$83</span><span class="p">,</span><span class="w"> </span><span class="no">$20</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="w">  </span><span class="c1">; float 5.0</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="nl">flt_two:</span><span class="w">    </span><span class="na">.byte</span><span class="w">  </span><span class="no">$82</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="p">,</span><span class="w"> </span><span class="no">$00</span><span class="w">  </span><span class="c1">; float 2.0</span>
+</span></code></pre></div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>RND_0</code>: For .Z=1, the X16 behaves differently than the C128 and C65 versions. The X16 version takes entropy from .A/.X/.Y instead of from a CIA timer. So in order to get a "real" random number, you would use code like this:</li>
+</ul>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$00</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">PHP</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">entropy_get</span><span class="w"> </span><span class="c1">; KERNAL call to get entropy into .A/.X/.Y</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">PLP</span><span class="w">             </span><span class="c1">; restore .Z=1</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">RND_0</span>
+</span></code></pre></div>
+<ul>
+<li>The calls <code>FADDT</code>, <code>FMULTT</code>, <code>FDIVT</code> and <code>FPWRT</code> were broken on the C128/C65. They are fixed on the X16.</li>
+<li>For more information on the additional calls, refer to <a href="http://unusedino.de/ec64/technical/project64/mapping_c64.html">Mapping the Commodore 64</a> by Sheldon Leemon, ISBN 0-942386-23-X, but note these errata:</li>
+<li><code>FMULT</code> adds mem to FACC, not ARG to FACC</li>
+</ul>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2005%20-%20KERNAL/" class="btn btn-neutral float-left" title="Chapter 5: KERNAL"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="btn btn-neutral float-right" title="Chapter 7: Machine Language Monitor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2005%20-%20KERNAL/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

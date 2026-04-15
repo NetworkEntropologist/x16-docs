@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 3: Editor - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 3: Editor";
+        var mkdocs_page_input_path = "X16 Reference - 03 - Editor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 3: Editor</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#modes">Modes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#iso-mode">ISO Mode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#background-color">Background Color</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scrolling">Scrolling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#new-control-characters">New Control Characters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#keyboard-layouts">Keyboard Layouts</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#default-layout">Default Layout</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rom-keyboard-layouts">ROM Keyboard Layouts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#loadable-keyboard-layouts">Loadable Keyboard Layouts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#custom-basin-petscii-code-override-handler">Custom BASIN PETSCII code override handler</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#custom-keyboard-keynum-code-handler">Custom Keyboard Keynum Code Handler</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#function-key-shortcuts">Function Key Shortcuts</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 3: Editor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-3-editor">Chapter 3: Editor<a class="headerlink" href="#chapter-3-editor" title="Permanent link">&para;</a></h1>
+<p>The X16 has a built-in screen editor that is backwards-compatible with the C64, but has many new features.</p>
+<h2 id="modes">Modes<a class="headerlink" href="#modes" title="Permanent link">&para;</a></h2>
+<p>The editor's default mode is 80x60 text mode. The following text mode resolutions are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$00</td>
+<td>80x60 text</td>
+</tr>
+<tr>
+<td>$01</td>
+<td>80x30 text</td>
+</tr>
+<tr>
+<td>$02</td>
+<td>40x60 text</td>
+</tr>
+<tr>
+<td>$03</td>
+<td>40x30 text</td>
+</tr>
+<tr>
+<td>$04</td>
+<td>40x15 text</td>
+</tr>
+<tr>
+<td>$05</td>
+<td>20x30 text</td>
+</tr>
+<tr>
+<td>$06</td>
+<td>20x15 text</td>
+</tr>
+<tr>
+<td>$07</td>
+<td>22x23 text</td>
+</tr>
+<tr>
+<td>$08</td>
+<td>64x50 text</td>
+</tr>
+<tr>
+<td>$09</td>
+<td>64x25 text</td>
+</tr>
+<tr>
+<td>$0A</td>
+<td>32x50 text</td>
+</tr>
+<tr>
+<td>$0B</td>
+<td>32x25 text</td>
+</tr>
+<tr>
+<td>$80</td>
+<td>320x240@256c<br/>40x30 text</td>
+</tr>
+</tbody>
+</table>
+<p>Mode $80 contains two layers: a text layer on top of a graphics screen. In this mode, text color 0 is translucent instead of black.</p>
+<p>To switch modes, use the BASIC statement <code>SCREEN</code> or the KERNAL API <code>screen_mode</code>. In the BASIC editor, the F4 key toggles between modes 0 (80x60) and 3 (40x30).</p>
+<p>All modes use layer 1 (the uppermost layer) for text. Mode $80 also uses layer 0 for graphics.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h2 id="iso-mode">ISO Mode<a class="headerlink" href="#iso-mode" title="Permanent link">&para;</a></h2>
+<p>In addition to PETSCII, the X16 also supports the ISO-8859-15 character encoding. In ISO-8859-15 mode ("ISO mode"):</p>
+<ul>
+<li>The character set is switched from Commodore-style (with PETSCII drawing characters) to a new ASCII/ISO-8859-15 compatible set, which covers most Western European writing systems.</li>
+<li>The encoding (<code>CHR$()</code> in BASIC and <code>BSOUT</code> in machine language) now complies with ASCII and ISO-8859-15.</li>
+<li>The keyboard driver will return ASCII/ISO-8859-15 codes.</li>
+</ul>
+<p>This is the encoding:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x0</th>
+<th>x1</th>
+<th>x2</th>
+<th>x3</th>
+<th>x4</th>
+<th>x5</th>
+<th>x6</th>
+<th>x7</th>
+<th>x8</th>
+<th>x9</th>
+<th>xA</th>
+<th>xB</th>
+<th>xC</th>
+<th>xD</th>
+<th>xE</th>
+<th>xF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0x</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>1x</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>2x</strong></td>
+<td></td>
+<td>!</td>
+<td>"</td>
+<td>#</td>
+<td>$</td>
+<td>%</td>
+<td>&amp;</td>
+<td>'</td>
+<td>(</td>
+<td>)</td>
+<td>*</td>
+<td>+</td>
+<td>,</td>
+<td>-</td>
+<td>.</td>
+<td>/</td>
+</tr>
+<tr>
+<td><strong>3x</strong></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>:</td>
+<td>;</td>
+<td>&lt;</td>
+<td>=</td>
+<td>&gt;</td>
+<td>?</td>
+</tr>
+<tr>
+<td><strong>4x</strong></td>
+<td>@</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+<td>M</td>
+<td>N</td>
+<td>O</td>
+</tr>
+<tr>
+<td><strong>5x</strong></td>
+<td>P</td>
+<td>Q</td>
+<td>R</td>
+<td>S</td>
+<td>T</td>
+<td>U</td>
+<td>V</td>
+<td>W</td>
+<td>X</td>
+<td>Y</td>
+<td>Z</td>
+<td>[</td>
+<td>\</td>
+<td>]</td>
+<td>^</td>
+<td>_</td>
+</tr>
+<tr>
+<td><strong>6x</strong></td>
+<td>`</td>
+<td>a</td>
+<td>b</td>
+<td>c</td>
+<td>d</td>
+<td>e</td>
+<td>f</td>
+<td>g</td>
+<td>h</td>
+<td>i</td>
+<td>j</td>
+<td>k</td>
+<td>l</td>
+<td>m</td>
+<td>n</td>
+<td>o</td>
+</tr>
+<tr>
+<td><strong>7x</strong></td>
+<td>p</td>
+<td>q</td>
+<td>r</td>
+<td>s</td>
+<td>t</td>
+<td>u</td>
+<td>v</td>
+<td>w</td>
+<td>x</td>
+<td>y</td>
+<td>z</td>
+<td>{</td>
+<td>|</td>
+<td>}</td>
+<td>~</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>8x</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>9x</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Ax</strong></td>
+<td></td>
+<td>¡</td>
+<td>¢</td>
+<td>£</td>
+<td>€</td>
+<td>¥</td>
+<td>Š</td>
+<td>§</td>
+<td>š</td>
+<td>©</td>
+<td>ª</td>
+<td>«</td>
+<td>¬</td>
+<td>🦋</td>
+<td>®</td>
+<td>¯</td>
+</tr>
+<tr>
+<td><strong>Bx</strong></td>
+<td>°</td>
+<td>±</td>
+<td>²</td>
+<td>³</td>
+<td>Ž</td>
+<td>µ</td>
+<td>¶</td>
+<td>·</td>
+<td>ž</td>
+<td>¹</td>
+<td>º</td>
+<td>»</td>
+<td>Œ</td>
+<td>œ</td>
+<td>Ÿ</td>
+<td>¿</td>
+</tr>
+<tr>
+<td><strong>Cx</strong></td>
+<td>À</td>
+<td>Á</td>
+<td>Â</td>
+<td>Ã</td>
+<td>Ä</td>
+<td>Å</td>
+<td>Æ</td>
+<td>Ç</td>
+<td>È</td>
+<td>É</td>
+<td>Ê</td>
+<td>Ë</td>
+<td>Ì</td>
+<td>Í</td>
+<td>Î</td>
+<td>Ï</td>
+</tr>
+<tr>
+<td><strong>Dx</strong></td>
+<td>Ð</td>
+<td>Ñ</td>
+<td>Ò</td>
+<td>Ó</td>
+<td>Ô</td>
+<td>Õ</td>
+<td>Ö</td>
+<td>×</td>
+<td>Ø</td>
+<td>Ù</td>
+<td>Ú</td>
+<td>Û</td>
+<td>Ü</td>
+<td>Ý</td>
+<td>Þ</td>
+<td>ß</td>
+</tr>
+<tr>
+<td><strong>Ex</strong></td>
+<td>à</td>
+<td>á</td>
+<td>â</td>
+<td>ã</td>
+<td>ä</td>
+<td>å</td>
+<td>æ</td>
+<td>ç</td>
+<td>è</td>
+<td>é</td>
+<td>ê</td>
+<td>ë</td>
+<td>ì</td>
+<td>í</td>
+<td>î</td>
+<td>ï</td>
+</tr>
+<tr>
+<td><strong>Fx</strong></td>
+<td>ð</td>
+<td>ñ</td>
+<td>ò</td>
+<td>ó</td>
+<td>ô</td>
+<td>õ</td>
+<td>ö</td>
+<td>÷</td>
+<td>ø</td>
+<td>ù</td>
+<td>ú</td>
+<td>û</td>
+<td>ü</td>
+<td>ý</td>
+<td>þ</td>
+<td>ÿ</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The non-printable areas $00-$1F and $80-$9F in the character set are filled with inverted variants of the codes $40-$5F and $60-$7F, respectively.</li>
+<li>The code $AD is a non-printable soft hyphen in ISO-8859-15. The ROM character set contains the Commander X16 logo at this location.</li>
+</ul>
+<p>ISO mode can be enabled and disabled using two new control codes:</p>
+<ul>
+<li><code>CHR$($0F)</code>: enable ISO mode</li>
+<li><code>CHR$($8F)</code>: enable PETSCII mode (default)</li>
+</ul>
+<p>You can also enable ISO mode in direct mode by pressing Ctrl+<code>O</code>.</p>
+<p><strong>Important:</strong> In ISO mode, BASIC keywords need to be written in upper case, that is, they have to be entered with the Shift key down, and abbreviating keywords is no longer possible.</p>
+<h2 id="background-color">Background Color<a class="headerlink" href="#background-color" title="Permanent link">&para;</a></h2>
+<p>In regular BASIC text mode, the video controller supports 16 foreground colors and 16 background colors for each character on the screen.</p>
+<p>The new "swap fg/bg color" code is useful to change the background color of the cursor, like this:</p>
+<div class="language-basic highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">PRINT</span><span class="w"> </span><span class="kr">CHR$</span><span class="p">(</span><span class="il">1</span><span class="p">);</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="kr">SWAP</span><span class="w"> </span><span class="vg">FG</span><span class="o">/</span><span class="vg">BG</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kr">PRINT</span><span class="w"> </span><span class="kr">CHR$</span><span class="p">(</span><span class="err">$</span><span class="il">1</span><span class="vg">C</span><span class="p">);</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">SET</span><span class="w"> </span><span class="vg">FG</span><span class="w"> </span><span class="kr">COLOR</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="vg">RED</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kr">PRINT</span><span class="w"> </span><span class="kr">CHR$</span><span class="p">(</span><span class="il">1</span><span class="p">);</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="kr">SWAP</span><span class="w"> </span><span class="vg">FG</span><span class="o">/</span><span class="vg">BG</span>
+</span></code></pre></div>
+<p>The new BASIC instruction <code>COLOR</code> makes this easier, but the trick above can also be used from machine code programs.</p>
+<p>To set the background color of the complete screen, it just has to be cleared after setting the color:</p>
+<div class="language-basic highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">PRINT</span><span class="w"> </span><span class="kr">CHR$</span><span class="p">(</span><span class="il">147</span><span class="p">);</span>
+</span></code></pre></div>
+<h2 id="scrolling">Scrolling<a class="headerlink" href="#scrolling" title="Permanent link">&para;</a></h2>
+<p>The C64 editor could only scroll the screen up (when overflowing the last line or printing or entering DOWN on the last line). The X16 editor scrolls both ways: When the cursor is on the first line and UP is printed or entered, the screen contents scroll down by a line.</p>
+<h2 id="new-control-characters">New Control Characters<a class="headerlink" href="#new-control-characters" title="Permanent link">&para;</a></h2>
+<p>This is the set of all supported PETSCII control characters. Entries in bold indicate new codes compared to the C64:</p>
+<p>If there are two meanings listed, the first indicates input (a keypress) and the second indicates output.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th></th>
+<th></th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$00</td>
+<td>NULL</td>
+<td><strong>VERBATIM MODE</strong></td>
+<td>$80</td>
+</tr>
+<tr>
+<td>$01</td>
+<td><strong>SWAP COLORS</strong></td>
+<td>COLOR: ORANGE</td>
+<td>$81</td>
+</tr>
+<tr>
+<td>$02</td>
+<td><strong>PAGE DOWN</strong></td>
+<td><strong>PAGE UP</strong></td>
+<td>$82</td>
+</tr>
+<tr>
+<td>$03</td>
+<td>STOP</td>
+<td>RUN</td>
+<td>$83</td>
+</tr>
+<tr>
+<td>$04</td>
+<td><strong>END</strong></td>
+<td><strong>HELP</strong></td>
+<td>$84</td>
+</tr>
+<tr>
+<td>$05</td>
+<td>COLOR: WHITE</td>
+<td>F1</td>
+<td>$85</td>
+</tr>
+<tr>
+<td>$06</td>
+<td><strong>MENU</strong></td>
+<td>F3</td>
+<td>$86</td>
+</tr>
+<tr>
+<td>$07</td>
+<td><strong>BELL</strong></td>
+<td>F5</td>
+<td>$87</td>
+</tr>
+<tr>
+<td>$08</td>
+<td>DISALLOW CHARSET SW (SHIFT+ALT)</td>
+<td>F7</td>
+<td>$88</td>
+</tr>
+<tr>
+<td>$09</td>
+<td><strong>TAB</strong> / ALLOW CHARSET SW</td>
+<td>F2</td>
+<td>$89</td>
+</tr>
+<tr>
+<td>$0A</td>
+<td><strong>LF</strong></td>
+<td>F4</td>
+<td>$8A</td>
+</tr>
+<tr>
+<td>$0B</td>
+<td><strong>LAYOUT SWAP</strong></td>
+<td>F6</td>
+<td>$8B</td>
+</tr>
+<tr>
+<td>$0C</td>
+<td>-</td>
+<td>F8</td>
+<td>$8C</td>
+</tr>
+<tr>
+<td>$0D</td>
+<td>RETURN</td>
+<td>SHIFTED RETURN</td>
+<td>$8D</td>
+</tr>
+<tr>
+<td>$0E</td>
+<td>CHARSET: LOWER/UPPER</td>
+<td>CHARSET: UPPER/PETSCII</td>
+<td>$8E</td>
+</tr>
+<tr>
+<td>$0F</td>
+<td><strong>CHARSET: ISO ON</strong></td>
+<td><strong>CHARSET: ISO OFF</strong></td>
+<td>$8F</td>
+</tr>
+<tr>
+<td>$10</td>
+<td><strong>F9</strong></td>
+<td>COLOR: BLACK</td>
+<td>$90</td>
+</tr>
+<tr>
+<td>$11</td>
+<td>CURSOR: DOWN</td>
+<td>CURSOR: UP</td>
+<td>$91</td>
+</tr>
+<tr>
+<td>$12</td>
+<td>REVERSE ON</td>
+<td>REVERSE OFF</td>
+<td>$92</td>
+</tr>
+<tr>
+<td>$13</td>
+<td>HOME</td>
+<td>CLEAR</td>
+<td>$93</td>
+</tr>
+<tr>
+<td>$14</td>
+<td>DEL (PS/2 BACKSPACE)</td>
+<td>INSERT</td>
+<td>$94</td>
+</tr>
+<tr>
+<td>$15</td>
+<td><strong>F10</strong></td>
+<td>COLOR: BROWN</td>
+<td>$95</td>
+</tr>
+<tr>
+<td>$16</td>
+<td><strong>F11</strong></td>
+<td>COLOR: LIGHT RED</td>
+<td>$96</td>
+</tr>
+<tr>
+<td>$17</td>
+<td><strong>F12</strong></td>
+<td>COLOR: DARK GRAY</td>
+<td>$97</td>
+</tr>
+<tr>
+<td>$18</td>
+<td><strong>SHIFT+TAB</strong></td>
+<td>COLOR: MIDDLE GRAY</td>
+<td>$98</td>
+</tr>
+<tr>
+<td>$19</td>
+<td><strong>FWD DEL (PS/2 DEL)</strong></td>
+<td>COLOR: LIGHT GREEN</td>
+<td>$99</td>
+</tr>
+<tr>
+<td>$1A</td>
+<td>-</td>
+<td>COLOR: LIGHT BLUE</td>
+<td>$9A</td>
+</tr>
+<tr>
+<td>$1B</td>
+<td>ESC</td>
+<td>COLOR: LIGHT GRAY</td>
+<td>$9B</td>
+</tr>
+<tr>
+<td>$1C</td>
+<td>COLOR: RED</td>
+<td>COLOR: PURPLE</td>
+<td>$9C</td>
+</tr>
+<tr>
+<td>$1D</td>
+<td>CURSOR: RIGHT</td>
+<td>CURSOR: LEFT</td>
+<td>$9D</td>
+</tr>
+<tr>
+<td>$1E</td>
+<td>COLOR: GREEN</td>
+<td>COLOR: YELLOW</td>
+<td>$9E</td>
+</tr>
+<tr>
+<td>$1F</td>
+<td>COLOR: BLUE</td>
+<td>COLOR: CYAN</td>
+<td>$9F</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>$01: SWAP COLORS swaps the foreground and background colors in text mode</li>
+<li>\$07/\$09/\$0A/\$18/\$1B: have been added for ASCII compatibility. <em>[\$0A/\$18/\$1B do not have any effect on output. Outputs of \$08/\$09 have their traditional C64 effect]</em></li>
+<li>\$80: VERBATIM MODE prints the next character (only!) as a glyph without interpretation. This is similar to quote mode, but also includes codes CR (\$0D) and DEL (\$14).</li>
+<li>F9-F12: these codes match the C65 additions</li>
+<li>$84: This code is generated when pressing SHIFT+END.</li>
+<li>Additionally, the codes \$04/\$06/\$0B/\$0C are interpreted when printing in graphics mode using <code>GRAPH_put_char</code>.</li>
+</ul>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h2 id="keyboard-layouts">Keyboard Layouts<a class="headerlink" href="#keyboard-layouts" title="Permanent link">&para;</a></h2>
+<p>The editor supports multiple keyboard layouts.</p>
+<h2 id="default-layout">Default Layout<a class="headerlink" href="#default-layout" title="Permanent link">&para;</a></h2>
+<p>On boot, the US layout (<code>ABC/X16</code>) is active:</p>
+<ul>
+<li>In PETSCII mode, it matches the US layout where possible, and can reach all PETSCII symbols.</li>
+<li>In ISO mode, it matches the Macintosh US keyboard and can reach all ISO-8859-15 characters. Some characters are reachable through key combinations:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+<code>1</code></td>
+<td>¡</td>
+</tr>
+<tr>
+<td>Alt+<code>3</code></td>
+<td>£</td>
+</tr>
+<tr>
+<td>Alt+<code>4</code></td>
+<td>¢</td>
+</tr>
+<tr>
+<td>Alt+<code>5</code></td>
+<td>§</td>
+</tr>
+<tr>
+<td>Alt+<code>7</code></td>
+<td>¶</td>
+</tr>
+<tr>
+<td>Alt+<code>9</code></td>
+<td>ª</td>
+</tr>
+<tr>
+<td>Alt+<code>0</code></td>
+<td>º</td>
+</tr>
+<tr>
+<td>Alt+<code>q</code></td>
+<td>œ</td>
+</tr>
+<tr>
+<td>Alt+<code>r</code></td>
+<td>®</td>
+</tr>
+<tr>
+<td>Alt+<code>t</code></td>
+<td>Þ</td>
+</tr>
+<tr>
+<td>Alt+<code>y</code></td>
+<td>¥</td>
+</tr>
+<tr>
+<td>Alt+<code>o</code></td>
+<td>ø</td>
+</tr>
+<tr>
+<td>Alt+<code>\</code></td>
+<td>«</td>
+</tr>
+<tr>
+<td>Alt+<code>s</code></td>
+<td>ß</td>
+</tr>
+<tr>
+<td>Alt+<code>d</code></td>
+<td>ð</td>
+</tr>
+<tr>
+<td>Alt+<code>g</code></td>
+<td>©</td>
+</tr>
+<tr>
+<td>Alt+<code>l</code></td>
+<td>¬</td>
+</tr>
+<tr>
+<td>Alt+<code>'</code></td>
+<td>æ</td>
+</tr>
+<tr>
+<td>Alt+<code>m</code></td>
+<td>µ</td>
+</tr>
+<tr>
+<td>Alt+<code>/</code></td>
+<td>÷</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>2</code></td>
+<td>€</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>8</code></td>
+<td>°</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>9</code></td>
+<td>·</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>-</code></td>
+<td>X16 logo</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>=</code></td>
+<td>±</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>q</code></td>
+<td>Œ</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>t</code></td>
+<td>þ</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>\</code></td>
+<td>»</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>a</code></td>
+<td>¹</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>d</code></td>
+<td>Ð</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>k</code></td>
+<td>X16 logo</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>'</code></td>
+<td>Æ</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>c</code></td>
+<td>³</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>b</code></td>
+<td>²</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>/</code></td>
+<td>¿</td>
+</tr>
+</tbody>
+</table>
+<p>(The X16 logo is code point \xad, SHY, soft-hyphen.)</p>
+<p>The following combinations are dead keys:</p>
+<ul>
+<li>Alt+<tt>&#96;</tt></li>
+<li>Alt+<code>6</code></li>
+<li>Alt+<code>e</code></li>
+<li>Alt+<code>u</code></li>
+<li>Alt+<code>p</code></li>
+<li>Alt+<code>a</code></li>
+<li>Alt+<code>k</code></li>
+<li>Alt+<code>;</code></li>
+<li>Alt+<code>x</code></li>
+<li>Alt+<code>c</code></li>
+<li>Alt+<code>v</code></li>
+<li>Alt+<code>n</code></li>
+<li>Alt+<code>,</code></li>
+<li>Alt+<code>.</code></li>
+<li>Shift+Alt+<code>S</code></li>
+</ul>
+<p>They generate additional characters when combined with a second keypress:</p>
+<table>
+<thead>
+<tr>
+<th>First <br/>Key</th>
+<th>Second <br/>Key</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>a</code></td>
+<td>à</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>e</code></td>
+<td>è</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>i</code></td>
+<td>ì</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>o</code></td>
+<td>ò</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>u</code></td>
+<td>ù</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>A</code></td>
+<td>À</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>E</code></td>
+<td>È</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>I</code></td>
+<td>Ì</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>O</code></td>
+<td>Ò</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>U</code></td>
+<td>Ù</td>
+</tr>
+<tr>
+<td>Alt+<tt>&#96;</tt></td>
+<td><code>␣</code></td>
+<td>&#96;</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>e</code></td>
+<td>ê</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>u</code></td>
+<td>û</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>i</code></td>
+<td>î</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>o</code></td>
+<td>ô</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>a</code></td>
+<td>â</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>E</code></td>
+<td>Ê</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>U</code></td>
+<td>Û</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>I</code></td>
+<td>Î</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>O</code></td>
+<td>Ô</td>
+</tr>
+<tr>
+<td>Alt+<code>6</code></td>
+<td><code>A</code></td>
+<td>Â</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>e</code></td>
+<td>é</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>y</code></td>
+<td>ý</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>u</code></td>
+<td>ú</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>i</code></td>
+<td>í</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>o</code></td>
+<td>ó</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>a</code></td>
+<td>á</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>E</code></td>
+<td>É</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>Y</code></td>
+<td>Ý</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>U</code></td>
+<td>Ú</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>I</code></td>
+<td>Í</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>O</code></td>
+<td>Ó</td>
+</tr>
+<tr>
+<td>Alt+<code>e</code></td>
+<td><code>A</code></td>
+<td>Á</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>e</code></td>
+<td>ë</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>y</code></td>
+<td>ÿ</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>u</code></td>
+<td>ü</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>i</code></td>
+<td>ï</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>o</code></td>
+<td>ö</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>a</code></td>
+<td>ä</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>E</code></td>
+<td>Ë</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>Y</code></td>
+<td>Ÿ</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>U</code></td>
+<td>Ü</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>I</code></td>
+<td>Ï</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>O</code></td>
+<td>Ö</td>
+</tr>
+<tr>
+<td>Alt+<code>u</code></td>
+<td><code>A</code></td>
+<td>Ä</td>
+</tr>
+<tr>
+<td>Alt+<code>p</code></td>
+<td><code>␣</code></td>
+<td>,</td>
+</tr>
+<tr>
+<td>Alt+<code>a</code></td>
+<td><code>␣</code></td>
+<td>¯</td>
+</tr>
+<tr>
+<td>Alt+<code>k</code></td>
+<td><code>a</code></td>
+<td>å</td>
+</tr>
+<tr>
+<td>Alt+<code>k</code></td>
+<td><code>A</code></td>
+<td>Å</td>
+</tr>
+<tr>
+<td>Alt+<code>x</code></td>
+<td><code>␣</code></td>
+<td>.</td>
+</tr>
+<tr>
+<td>Alt+<code>c</code></td>
+<td><code>c</code></td>
+<td>ç</td>
+</tr>
+<tr>
+<td>Alt+<code>c</code></td>
+<td><code>C</code></td>
+<td>Ç</td>
+</tr>
+<tr>
+<td>Alt+<code>v</code></td>
+<td><code>s</code></td>
+<td>š</td>
+</tr>
+<tr>
+<td>Alt+<code>v</code></td>
+<td><code>z</code></td>
+<td>ž</td>
+</tr>
+<tr>
+<td>Alt+<code>v</code></td>
+<td><code>S</code></td>
+<td>Š</td>
+</tr>
+<tr>
+<td>Alt+<code>v</code></td>
+<td><code>Z</code></td>
+<td>Ž</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>o</code></td>
+<td>õ</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>a</code></td>
+<td>ã</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>n</code></td>
+<td>ñ</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>O</code></td>
+<td>Õ</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>A</code></td>
+<td>Ã</td>
+</tr>
+<tr>
+<td>Alt+<code>n</code></td>
+<td><code>N</code></td>
+<td>Ñ</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>s</code></td>
+<td><code>␣</code></td>
+<td>\xa0</td>
+</tr>
+<tr>
+<td>Shift+Alt+<code>;</code></td>
+<td><code>=</code></td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>"␣" denotes the space bar.</p>
+<h3 id="rom-keyboard-layouts">ROM Keyboard Layouts<a class="headerlink" href="#rom-keyboard-layouts" title="Permanent link">&para;</a></h3>
+<p>The following keyboard layouts are available from ROM. You can select one directly with the BASIC <code>KEYMAP</code> command, e.g. <code>KEYMAP"ABC/X16"</code>, or via the X16 Control Panel with the BASIC <code>MENU</code> command.</p>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ABC/X16</code></td>
+<td>ABC - Extended (X16)</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>EN-US/INT</code></td>
+<td>United States - International</td>
+<td><a href="http://kbdlayout.info/00020409">00020409</a></td>
+</tr>
+<tr>
+<td><code>EN-GB</code></td>
+<td>United Kingdom</td>
+<td><a href="http://kbdlayout.info/00000809">00000809</a></td>
+</tr>
+<tr>
+<td><code>SV-SE</code></td>
+<td>Swedish</td>
+<td><a href="http://kbdlayout.info/0000041D">0000041D</a></td>
+</tr>
+<tr>
+<td><code>DE-DE</code></td>
+<td>German</td>
+<td><a href="http://kbdlayout.info/00000407">00000407</a></td>
+</tr>
+<tr>
+<td><code>DA-DK</code></td>
+<td>Danish</td>
+<td><a href="http://kbdlayout.info/00000406">00000406</a></td>
+</tr>
+<tr>
+<td><code>IT-IT</code></td>
+<td>Italian</td>
+<td><a href="http://kbdlayout.info/00000410">00000410</a></td>
+</tr>
+<tr>
+<td><code>PL-PL</code></td>
+<td>Polish (Programmers)</td>
+<td><a href="http://kbdlayout.info/00000415">00000415</a></td>
+</tr>
+<tr>
+<td><code>NB-NO</code></td>
+<td>Norwegian</td>
+<td><a href="http://kbdlayout.info/00000414">00000414</a></td>
+</tr>
+<tr>
+<td><code>HU-HU</code></td>
+<td>Hungarian</td>
+<td><a href="http://kbdlayout.info/0000040E">0000040E</a></td>
+</tr>
+<tr>
+<td><code>ES-ES</code></td>
+<td>Spanish</td>
+<td><a href="http://kbdlayout.info/0000040A">0000040A</a></td>
+</tr>
+<tr>
+<td><code>FI-FI</code></td>
+<td>Finnish</td>
+<td><a href="http://kbdlayout.info/0000040B">0000040B</a></td>
+</tr>
+<tr>
+<td><code>PT-BR</code></td>
+<td>Portuguese (Brazil ABNT)</td>
+<td><a href="http://kbdlayout.info/00000416">00000416</a></td>
+</tr>
+<tr>
+<td><code>CS-CZ</code></td>
+<td>Czech</td>
+<td><a href="http://kbdlayout.info/00000405">00000405</a></td>
+</tr>
+<tr>
+<td><code>JA-JP</code></td>
+<td>Japanese</td>
+<td><a href="https://github.com/X16Community/x16-rom/pull/364">Custom IME</a> (since r49)</td>
+</tr>
+<tr>
+<td><code>FR-FR</code></td>
+<td>French</td>
+<td><a href="http://kbdlayout.info/0000040C">0000040C</a></td>
+</tr>
+<tr>
+<td><code>DE-CH</code></td>
+<td>Swiss German</td>
+<td><a href="http://kbdlayout.info/00000807">00000807</a></td>
+</tr>
+<tr>
+<td><code>EN-US/DVO</code></td>
+<td>United States - Dvorak</td>
+<td><a href="http://kbdlayout.info/00010409">00010409</a></td>
+</tr>
+<tr>
+<td><code>ET-EE</code></td>
+<td>Estonian</td>
+<td><a href="http://kbdlayout.info/00000425">00000425</a></td>
+</tr>
+<tr>
+<td><code>FR-BE</code></td>
+<td>Belgian French</td>
+<td><a href="http://kbdlayout.info/0000080C">0000080C</a></td>
+</tr>
+<tr>
+<td><code>EN-CA</code></td>
+<td>Canadian French</td>
+<td><a href="http://kbdlayout.info/00001009">00001009</a></td>
+</tr>
+<tr>
+<td><code>IS-IS</code></td>
+<td>Icelandic</td>
+<td><a href="http://kbdlayout.info/0000040F">0000040F</a></td>
+</tr>
+<tr>
+<td><code>PT-PT</code></td>
+<td>Portuguese</td>
+<td><a href="http://kbdlayout.info/00000816">00000816</a></td>
+</tr>
+<tr>
+<td><code>HR-HR</code></td>
+<td>Croatian</td>
+<td><a href="http://kbdlayout.info/0000041A">0000041A</a></td>
+</tr>
+<tr>
+<td><code>SK-SK</code></td>
+<td>Slovak</td>
+<td><a href="http://kbdlayout.info/0000041B">0000041B</a></td>
+</tr>
+<tr>
+<td><code>SL-SI</code></td>
+<td>Slovenian</td>
+<td><a href="http://kbdlayout.info/00000424">00000424</a></td>
+</tr>
+<tr>
+<td><code>LV-LV</code></td>
+<td>Latvian</td>
+<td><a href="http://kbdlayout.info/00000426">00000426</a></td>
+</tr>
+<tr>
+<td><code>LT-LT</code></td>
+<td>Lithuanian IBM</td>
+<td><a href="http://kbdlayout.info/00000427">00000427</a></td>
+</tr>
+</tbody>
+</table>
+<p>All remaining keyboards are based on the respective Windows layouts. <code>EN-US/INT</code> differs from <code>EN-US</code> only in Alt/AltGr combinations and some dead keys.</p>
+<p>The BASIC command <code>KEYMAP</code> allows activating a specific keyboard layout. It can be added to the auto-boot file, e.g.:</p>
+<div class="language-basic highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">KEYMAP</span><span class="s2">&quot;NB-NO&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="vg">SAVE</span><span class="err">&quot;</span><span class="vg">AUTOBOOT</span><span class="o">.</span><span class="vg">X16</span>
+</span></code></pre></div>
+<p>PETSCII code 11 ($0B) or Ctrl+K is used to toggle between the current keyboard layout and the previously loaded one.  This function can be activated by pressing Ctrl+K in the BASIC editor or by sending the code to the screen with the BASIC PRINT command or the CHROUT KERNAL API call.  The layout swap function works only with built-in ROM-based layouts and will not properly swap back to a custom layout in RAM.</p>
+<h3 id="loadable-keyboard-layouts">Loadable Keyboard Layouts<a class="headerlink" href="#loadable-keyboard-layouts" title="Permanent link">&para;</a></h3>
+<p>The tables for the active keyboard layout reside in banked RAM, at $A000 on bank 0:</p>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$A000-\$A07F</td>
+<td>Table 0</td>
+</tr>
+<tr>
+<td>\$A080-\$A0FF</td>
+<td>Table 1</td>
+</tr>
+<tr>
+<td>\$A100-\$A17F</td>
+<td>Table 2</td>
+</tr>
+<tr>
+<td>\$A180-\$A1FF</td>
+<td>Table 3</td>
+</tr>
+<tr>
+<td>\$A200-\$A27F</td>
+<td>Table 4</td>
+</tr>
+<tr>
+<td>\$A280-\$A07F</td>
+<td>Table 5</td>
+</tr>
+<tr>
+<td>\$A300-\$A37F</td>
+<td>Table 6</td>
+</tr>
+<tr>
+<td>\$A380-\$A3FF</td>
+<td>Table 7</td>
+</tr>
+<tr>
+<td>\$A400-\$A47F</td>
+<td>Table 8</td>
+</tr>
+<tr>
+<td>\$A480-\$A4FF</td>
+<td>Table 9</td>
+</tr>
+<tr>
+<td>\$A500-\$A57F</td>
+<td>Table 10</td>
+</tr>
+<tr>
+<td>\$A580-\$A58F</td>
+<td>big-endian bitfield:<br/>keynum codes for which Caps means Shift</td>
+</tr>
+<tr>
+<td>\$A590-\$A66F</td>
+<td>dead key table</td>
+</tr>
+<tr>
+<td>\$A670-\$A67E</td>
+<td>ASCIIZ identifier (e.g. "ABC/X16")</td>
+</tr>
+</tbody>
+</table>
+<p>The first byte of each of the 11 tables is the table ID which contains the encoding and the combination of modifiers that this table is for.</p>
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>0: PETSCII, 1: ISO</td>
+</tr>
+<tr>
+<td>6-3</td>
+<td>always 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Ctrl</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Alt</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Shift</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AltGr is represented by Ctrl+Alt.</li>
+<li>ID $C6 represents Alt <em>or</em> AltGr (ISO only)</li>
+<li>ID $C7 represents Shift+Alt <em>or</em> Shift+AltGr (ISO only)</li>
+<li>Empty tables have an ID of $FF.</li>
+</ul>
+<p>The identifier is followed by 127 output codes for the keynum inputs 1-127.</p>
+<ul>
+<li>Dead keys (i.e. keys that don't generate anything by themselves but modify the next key) have a code of 0 and are further described in the dead key table (ISO only)</li>
+<li>Keys that produce nothing have an entry of 0. (They can be distinguished from dead keys as they don't have an entry in the dead key table.)</li>
+</ul>
+<p>The dead key table has one section for every dead key with the following layout:</p>
+<table>
+<thead>
+<tr>
+<th>Byte</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>dead key ID (PETSCII/ISO and Shift/Alt/Ctrl)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>dead key scancode</td>
+</tr>
+<tr>
+<td>2</td>
+<td>full length of this table in bytes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>first additional key ISO code</td>
+</tr>
+<tr>
+<td>4</td>
+<td>first effective key ISO code</td>
+</tr>
+<tr>
+<td>5</td>
+<td>second additional key ISO code</td>
+</tr>
+<tr>
+<td>6</td>
+<td>second effective key ISO code</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>n-1</td>
+<td>terminator 0xFF</td>
+</tr>
+</tbody>
+</table>
+<p>Custom layouts can be loaded from disk like this:</p>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">BLOAD</span><span class="s2">&quot;KEYMAP&quot;</span><span class="p">,</span><span class="il">8</span><span class="p">,</span><span class="il">0</span><span class="p">,</span><span class="err">$</span><span class="vg">A000</span>
+</span></code></pre></div>
+<p>Here is an example that activates a layout derived from "ABC/X16", with unshifted Y and Z swapped in PETSCII mode:</p>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nl">100</span><span class="w"> </span><span class="vg">KEYMAP</span><span class="s2">&quot;ABC/X16&quot;</span><span class="w">                               </span><span class="o">:</span><span class="kr">REM</span><span class="w"> </span><span class="vg">START</span><span class="w"> </span><span class="vg">WITH</span><span class="w"> </span><span class="vg">DEFAULT</span><span class="w"> </span><span class="vg">LAYOUT</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nl">110</span><span class="w"> </span><span class="vg">BANK</span><span class="w"> </span><span class="il">0</span><span class="w">                                        </span><span class="o">:</span><span class="kr">REM</span><span class="w"> </span><span class="vg">ACTIVATE</span><span class="w"> </span><span class="vg">RAM</span><span class="w"> </span><span class="vg">BANK</span><span class="w"> </span><span class="il">0</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nl">120</span><span class="w"> </span><span class="vg">FORI</span><span class="o">=</span><span class="il">0</span><span class="nl">TO11:</span><span class="vg">B</span><span class="o">=</span><span class="err">$</span><span class="vg">A000</span><span class="o">+</span><span class="il">128</span><span class="o">*</span><span class="nl">I:</span><span class="vg">IFPEEK</span><span class="p">(</span><span class="vg">B</span><span class="p">)</span><span class="o">&lt;&gt;</span><span class="il">0</span><span class="vg">THENNEXT</span><span class="w"> </span><span class="o">:</span><span class="kr">REM</span><span class="w"> </span><span class="vg">SEARCH</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">TABLE</span><span class="w"> </span><span class="err">$</span><span class="il">00</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nl">130</span><span class="w"> </span><span class="vg">POKEB</span><span class="o">+</span><span class="err">$</span><span class="il">2</span><span class="vg">E</span><span class="p">,</span><span class="kr">ASC</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span><span class="w">                            </span><span class="o">:</span><span class="kr">REM</span><span class="w"> </span><span class="vg">SET</span><span class="w"> </span><span class="vg">KEYNUM</span><span class="w"> </span><span class="err">$</span><span class="il">2</span><span class="vg">E</span><span class="w"> </span><span class="p">(</span><span class="c1">&#39;Z&#39;) to &#39;Y&#39;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nl">140</span><span class="w"> </span><span class="vg">POKEB</span><span class="o">+</span><span class="err">$</span><span class="il">16</span><span class="p">,</span><span class="kr">ASC</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span><span class="w">                            </span><span class="o">:</span><span class="kr">REM</span><span class="w"> </span><span class="vg">SET</span><span class="w"> </span><span class="vg">KEYNUM</span><span class="w"> </span><span class="err">$</span><span class="il">16</span><span class="w"> </span><span class="p">(</span><span class="c1">&#39;Y&#39;) to &#39;Z&#39;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nl">170</span><span class="w"> </span><span class="kr">REM</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nl">180</span><span class="w"> </span><span class="c1">REM *** DOING THE SAME FOR SHIFTED CHARACTERS</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nl">190</span><span class="w"> </span><span class="c1">REM *** IS LEFT AS AN EXERCISE TO THE READER</span>
+</span></code></pre></div>
+<h3 id="custom-basin-petscii-code-override-handler">Custom BASIN PETSCII code override handler<a class="headerlink" href="#custom-basin-petscii-code-override-handler" title="Permanent link">&para;</a></h3>
+<p><strong>Note</strong>: This behavior only exists in R44 or later</p>
+<p>Some use cases of the BASIN (CHRIN) API call may benefit from being able to modify its behavior, such as intercepting or redirecting certain PETSCII codes.  The Machine Language Monitor uses this mechanism to implement custom behavior for F-keys and for loading additional disassembly or memory display when scrolling the screen.</p>
+<p>To set up a custom handler, one must configure it before each call to BASIN.</p>
+<p>The key handler vector is in RAM bank 0 at addresses $ac03-$ac05.  The first two bytes are the call address, and the next byte is the RAM or ROM bank.  If your callback routine is in low ram, specifying the bank in $ac05 is not necessary.</p>
+<p>The editor will call your callback for every keystroke received and pass the PETSCII code in the A register with carry set.  If your handler does not want to override, simply return with carry set.</p>
+<p>If you do wish to override, return with carry clear.  The editor will then unblink the cursor and call your callback a second time with carry clear <em>for the same PETSCII code</em>.  This is your opportunity to override. Before returning, you are free to update the screen or perform other KERNAL API calls (with the exception of BASIN). At the end of your routine, set <code>A</code> to the PETSCII code you wish the editor to process. If you wish to suppress the input keystroke, set <code>A</code> to <code>0</code>.</p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">ram_bank</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$00</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">edkeyvec</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$ac03</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nf">edkeybk</span><span class="w">  </span><span class="err">=</span><span class="w"> </span><span class="no">$ac05</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">BASIN</span><span class="w">    </span><span class="err">=</span><span class="w"> </span><span class="no">$ffcf</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">BSOUT</span><span class="w">    </span><span class="err">=</span><span class="w"> </span><span class="no">$ffd2</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="na">.segment</span><span class="w"> </span><span class="s">&quot;ONCE&quot;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="na">.segment</span><span class="w"> </span><span class="s">&quot;STARTUP&quot;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nf">jmp</span><span class="w"> </span><span class="no">start</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="na">.segment</span><span class="w"> </span><span class="s">&quot;CODE&quot;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nl">keyhandler:</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nf">bcs</span><span class="w"> </span><span class="err">@</span><span class="no">check</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="c1">#$54 ; &#39;T&#39;</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nf">bne</span><span class="w"> </span><span class="p">:</span><span class="err">+</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#$57 ; &#39;W&#39;</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="err">:</span><span class="w">   </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#$54 ; &#39;T&#39;</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="err">@</span><span class="nl">check:</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="c1">#$54 ; &#39;T&#39;</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="nf">beq</span><span class="w"> </span><span class="err">@</span><span class="no">will_override</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="c1">#$57 ; &#39;W&#39;</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">    </span><span class="nf">beq</span><span class="w"> </span><span class="err">@</span><span class="no">will_override</span>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="nf">sec</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="err">@</span><span class="nl">will_override:</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="nf">clc</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="nl">enable_basin_callback:</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="no">ram_bank</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">    </span><span class="nf">pha</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">    </span><span class="nf">stz</span><span class="w"> </span><span class="no">ram_bank</span><span class="w"> </span><span class="c1">; RAM bank 0 contains the handler vector</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="nf">php</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span><span class="nf">sei</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&lt;keyhandler</span>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">edkeyvec</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&gt;keyhandler</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">edkeyvec</span><span class="err">+</span><span class="mi">1</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">    </span><span class="c1">; setting the bank is optional and unnecessary</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="c1">; if the handler is in low RAM.</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">    </span><span class="c1">; lda #0</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">    </span><span class="c1">; sta edkeybk</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">    </span><span class="nf">plp</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">    </span><span class="nf">pla</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">ram_bank</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="nl">start:</span>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">    </span><span class="nf">jsr</span><span class="w"> </span><span class="no">enable_basin_callback</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">    </span><span class="c1">; T and W are swapped</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="err">@1:</span><span class="w"> </span><span class="nf">jsr</span><span class="w"> </span><span class="no">BASIN</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="mi">#13</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">    </span><span class="nf">bne</span><span class="w"> </span><span class="err">@</span><span class="mi">1</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">    </span><span class="nf">jsr</span><span class="w"> </span><span class="no">BSOUT</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">    </span><span class="c1">; normal BASIN</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="err">@2:</span><span class="w"> </span><span class="nf">jsr</span><span class="w"> </span><span class="no">BASIN</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="mi">#13</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">    </span><span class="nf">bne</span><span class="w"> </span><span class="err">@</span><span class="mi">2</span>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">    </span><span class="nf">rts</span>
+</span></code></pre></div>
+<h3 id="custom-keyboard-keynum-code-handler">Custom Keyboard Keynum Code Handler<a class="headerlink" href="#custom-keyboard-keynum-code-handler" title="Permanent link">&para;</a></h3>
+<p><strong>Note</strong>: This behavior is for R43 or later, differing from previous releases.</p>
+<p>If you need more control over the translation of keynum codes into PETSCII/ISO codes, or if you need to intercept any key down or up event, you can hook the custom scancode handler vector at $032E/$032F.</p>
+<p>On all key down and key up events, the keyboard driver calls this vector with</p>
+<ul>
+<li>.A: keycode, where bit 7 (most-significant) is clear on key down, and set on key up.</li>
+</ul>
+<p>The keynum codes are enumerated <a href="https://github.com/X16Community/x16-rom/blob/master/inc/keycode.inc">here</a>, and their names, similar to that of PS/2 codes, are based on their function in the US layout.</p>
+<p>The handler needs to return a key event the same way in .A</p>
+<ul>
+<li>To remove a keypress so that it is not added to the keyboard queue, return .A = 0.</li>
+<li>To manually add a key to the keyboard queue, use the <code>kbdbuf_put</code> KERNAL API.</li>
+</ul>
+<p>You can even write a completely custom keyboard translation layer:</p>
+<ul>
+<li>Place the code at $A000-$A58F in RAM bank 0. This is safe, since the tables won't be used in this case, and the active RAM bank will be set to 0 before entry to the handler.</li>
+<li>Fill the locale at $A590.</li>
+<li>For every keynum that should produce a PETSCII/ISO code, use <code>kbdbuf_put</code> to store it in the keyboard buffer.</li>
+<li>Always set .A = 0 before return from the custom handler.</li>
+</ul>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">;EXAMPLE: A custom handler that prints &quot;A&quot; on Alt key down</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nl">setup:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nf">sei</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&lt;keyhandler</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">$032e</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&gt;keyhandler</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">$032f</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="nf">cli</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nf">rts</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nl">keyhandler:</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="nf">pha</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="nf">and</span><span class="w"> </span><span class="c1">#$ff    ;ensure A sets flags</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nf">bmi</span><span class="w"> </span><span class="no">exit</span><span class="w">    </span><span class="c1">;A &amp; 0x80 is key up</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="nf">cmp</span><span class="w"> </span><span class="c1">#$3c    ;Left Alt keynum</span>
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span><span class="nf">bne</span><span class="w"> </span><span class="no">exit</span>
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#&#39;a&#39;</span>
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nf">jsr</span><span class="w"> </span><span class="no">$ffd2</span>
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
+</span><span id="__span-6-24"><a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="nl">exit:</span>
+</span><span id="__span-6-25"><a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span><span class="nf">pla</span>
+</span><span id="__span-6-26"><a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span><span class="nf">rts</span>
+</span></code></pre></div>
+<h3 id="function-key-shortcuts">Function Key Shortcuts<a class="headerlink" href="#function-key-shortcuts" title="Permanent link">&para;</a></h3>
+<p>The following Function key macros are pre-defined for your convenience. These shortcuts only work in the screen editor. When a program is running, the F-keys generate the corresponding PETSCII character code.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td><code>LIST:</code></td>
+<td>Lists the current program</td>
+</tr>
+<tr>
+<td>F2</td>
+<td><code>SAVE"@:</code></td>
+<td>Press F2 and then type a filename to save your program. The <code>@:</code> instructs DOS to allow overwrite.</td>
+</tr>
+<tr>
+<td>F3</td>
+<td><code>LOAD "</code></td>
+<td>Load a file directly, or cursor up over a file listing and press F3 to load a program.</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>40/80</td>
+<td>Toggles between 40 and 80 column screen modes, clearing the screen. Pressing return is required to prevent accidental mode switches.</td>
+</tr>
+<tr>
+<td>F5</td>
+<td><code>RUN:</code></td>
+<td>Run the current program.</td>
+</tr>
+<tr>
+<td>F6</td>
+<td><code>MONITOR</code></td>
+<td>Opens the Supermon machine language monitor.</td>
+</tr>
+<tr>
+<td>F7</td>
+<td><code>DOS"$&lt;cr&gt;</code></td>
+<td>Displays a directory listing.</td>
+</tr>
+<tr>
+<td>F8</td>
+<td><code>DOS"</code></td>
+<td>Issue DOS commands.</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>-</td>
+<td>Not defined.  Formerly cycled through keyboard layouts. Instead, use the <code>MENU</code> command to enter the X16 Control Panel, select one, and optionally save the layout as a boot preference.</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>-</td>
+<td>Not defined</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>-</td>
+<td>Not defined</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>debug</td>
+<td>debug features in emulators</td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2002%20-%20Getting%20Started/" class="btn btn-neutral float-left" title="Chapter 2: Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2004%20-%20BASIC/" class="btn btn-neutral float-right" title="Chapter 4: BASIC Programming">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2002%20-%20Getting%20Started/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2004%20-%20BASIC/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
