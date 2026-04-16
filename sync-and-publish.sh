@@ -13,15 +13,15 @@ echo "📁 Reorganizing files into docs directory..."
 mv X16\ Reference\ -\ *.md docs/ 2>/dev/null || true
 
 # Copy README.md to docs/index.md
-if [ -f "README.md" ]; then
-  cp README.md docs/index.md || true
-fi
+# if [ -f "README.md" ]; then
+cp README.md docs/index.md || true
+# fi
 
 # Move images directory to docs/ if it exists
-if [ -d "images" ]; then
-  rm -rf docs/images
-  mv images docs/images
-fi
+# if [ -d "images" ]; then
+#   rm -rf docs/images
+mv images docs/images
+# fi
 
 # Clean up root - remove any remaining reference markdown files
 # rm -f X16\ Reference\ -\ *.md 2>/dev/null || true
@@ -35,7 +35,7 @@ git add .
 git commit -m "Sync with upstream, reorganize files, and prepare for deployment: $(date)" || true
 
 # Save the built site to a temp location before switching branches
-cp -r site _site_temp
+cp -r site ../_site_temp
 
 echo "📤 Deploying to gh-pages..."
 git branch -f gh-pages master
@@ -59,6 +59,6 @@ echo "✅ Back to master..."
 git checkout master
 
 # Clean up temp directory
-rm -rf _site_temp
+rm -rf ../_site_temp
 
 echo "✨ All done! Synced, reorganized, built, and deployed!"
