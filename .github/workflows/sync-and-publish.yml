@@ -58,6 +58,7 @@ jobs:
         run: |
           git add .
           git commit -m "Sync with upstream and build: $(date)" || true
+          git pull origin master --rebase
           git push origin master
 
       - name: Upload Pages artifact
