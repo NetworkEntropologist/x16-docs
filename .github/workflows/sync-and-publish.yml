@@ -46,10 +46,6 @@ jobs:
           git fetch upstream
           git merge upstream/master --no-edit
 
-          # Remove unwanted upstream workflow
-          rm -f .github/workflows/build.yml
-          git add .github/workflows/build.yml
-          
           # Reorganize files
           mv X16\ Reference\ -\ *.md docs/ 2>/dev/null || true
           cp README.md docs/index.md 2>/dev/null || true
