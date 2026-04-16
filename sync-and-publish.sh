@@ -24,10 +24,15 @@ if [ -d "images" ]; then
 fi
 
 # Clean up root - remove any remaining reference markdown files
-rm -f X16\ Reference\ -\ *.md 2>/dev/null || true
+# rm -f X16\ Reference\ -\ *.md 2>/dev/null || true
 
 echo "🏗️ Building documentation..."
 mkdocs build
+
+
+echo "Staging and committing changes..."
+git add .
+git commit -m "Sync with upstream, reorganize files, and prepare for deployment: $(date)" || true
 
 # Save the built site to a temp location before switching branches
 cp -r site _site_temp
@@ -35,20 +40,20 @@ cp -r site _site_temp
 echo "📤 Deploying to gh-pages..."
 git branch -f gh-pages master
 git checkout gh-pages
-rm -rf *
+# rm -rf *
 cp -r ../_site_temp/* .
 git add -A
 git commit -m "Deploy to gh-pages: $(date)" || true
 git push origin gh-pages
 
-echo "📤 Deploying to rtd branch..."
-git branch -f rtd master
-git checkout rtd
-rm -rf *
-cp -r ../_site_temp/* .
-git add -A
-git commit -m "Deploy to rtd: $(date)" || true
-git push origin rtd
+# echo "📤 Deploying to rtd branch..."
+# git branch -f rtd master
+# git checkout rtd
+# # rm -rf *
+# cp -r ../_site_temp/* .
+# git add -A
+# git commit -m "Deploy to rtd: $(date)" || true
+# git push origin rtd
 
 echo "✅ Back to master..."
 git checkout master
