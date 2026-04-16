@@ -90,6 +90,5 @@ jobs:
                   "branch": "${{ github.ref }}"
                 }
               }'
-              }
             }'
       
