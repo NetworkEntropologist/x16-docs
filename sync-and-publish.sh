@@ -9,19 +9,26 @@ git merge upstream/master --no-edit
 
 echo "📁 Reorganizing files into docs directory..."
 
+echo "📂 Moving markdown files to docs/..."
 # Move all X16 Reference markdown files to docs/
-mv X16\ Reference\ -\ *.md docs/ 2>/dev/null || true
+mv *.md docs/ 2>/dev/null || true
 
+echo " 📄 Converting README.md to index.md in docs/..."
 # Copy README.md to docs/index.md
 # if [ -f "README.md" ]; then
-cp README.md docs/index.md || true
+mv docs/README.md docs/index.md 2>/dev/null || true
 # fi
 
+echo "📂 Moving images to docs/..."
 # Move images directory to docs/ if it exists
 # if [ -d "images" ]; then
 #   rm -rf docs/images
-mv images docs/images
+mv images docs/images 2>/dev/null || true
 # fi
+
+echo "Deleting symlinks in docs/ if they exist..."
+# Remove any existing symlinks in docs/ that point to files in the root
+find docs/ -type l -exec rm -f {} \; 2>/dev/null || true
 
 # Clean up root - remove any remaining reference markdown files
 # rm -f X16\ Reference\ -\ *.md 2>/dev/null || true
