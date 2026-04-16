@@ -22,38 +22,11 @@ mv images docs/images 2>/dev/null || true
 echo "Deleting symlinks in docs/ if they exist..."
 find docs/ -type l -exec rm -f {} \; 2>/dev/null || true
 
-echo "🏗️ Building documentation..."
-mkdocs build
-
-# echo "Deleting docs/ directory from git tracking..."
-# git rm -r --cached docs/ 2>/dev/null || true
+echo "📤 Deploying to gh-pages..."
+mkdocs gh-deploy
 
 echo "Staging and committing changes..."
 git add .
-git commit -m "Sync with upstream, reorganize files, and prepare for deployment: $(date)" || true
-
-# cp -r site ../_site_temp
-
-echo "📤 Deploying to gh-pages..."
-mkdocs gh-deploy
-# git branch -f gh-pages master
-# git checkout gh-pages
-# # rm -rf *
-# cp -r ../_site_temp/* .
-# git add -A
-# git commit -m "Deploy to gh-pages: $(date)" || true
-# git push origin gh-pages
-
-# echo "📤 Deploying to rtd branch..."
-# git branch -f rtd master
-# git checkout rtd
-# # rm -rf *
-# cp -r ../_site_temp/* .
-# git add -A
-# git commit -m "Deploy to rtd: $(date)" || true
-# git push origin rtd
-
-# echo "✅ Back to master..."
-# git checkout master
+git commit -m "Sync, reorganize files, and prepare for deployment: $(date)" || true
 
 echo "✨ All done! Synced, reorganized, built, and deployed!"

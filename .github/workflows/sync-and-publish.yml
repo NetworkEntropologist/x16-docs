@@ -1,0 +1,66 @@
+name: Sync and Publish
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  # Also allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  sync-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/X16Community/x16-docs.git
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r docs/requirements.txt
+
+      - name: Sync and build
+        run: |
+          git fetch upstream
+          git merge upstream/master --no-edit
+          
+          # Reorganize files
+          mv X16\ Reference\ -\ *.md docs/ 2>/dev/null || true
+          cp README.md docs/index.md 2>/dev/null || true
+          mv images docs/images 2>/dev/null || true
+          
+          # Build
+          mkdocs build
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Sync with upstream and build: $(date)" || true
+          git push origin master
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
