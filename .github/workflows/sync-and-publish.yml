@@ -87,7 +87,7 @@ jobs:
                   "run_date": "${{ github.run_started_at }}",
                   "workflow_url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
                   "status": "${{ job.status }}",
-                  "branch": "${{ github.ref }}",
+                  "branch": "${{ github.ref }}"
                 }
               }'
               }
