@@ -54,6 +54,11 @@ jobs:
           # Build
           mkdocs build
 
+      - name: Remove unwanted upstream workflow
+        run: |
+          rm -f .github/workflows/build.yml
+          git add .github/workflows/build.yml
+
       - name: Commit changes
         run: |
           git add .
