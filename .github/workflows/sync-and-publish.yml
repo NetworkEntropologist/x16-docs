@@ -89,6 +89,6 @@ jobs:
                   "status": "${{ job.status }}",
                   "branch": "${{ github.ref }}"
                 }
-              }'
+              }
             }'
       
