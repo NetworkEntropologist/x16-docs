@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 2: Getting Started - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 2: Getting Started";
+        var mkdocs_page_input_path = "X16 Reference - 02 - Getting Started.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 2: Getting Started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#finding-and-starting-programs">Finding and starting programs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#dos">DOS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load">LOAD</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run">RUN</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stop">STOP</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-the-keyboard">Using The Keyboard</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#petscii-characters">PETSCII Characters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lower-case-mode">Lower Case Mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iso-mode">ISO Mode</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#edit-text-modes">EDIT text modes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#special-keys">Special Keys</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#run-stop">RUN STOP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#restore">RESTORE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#controlalt_delete">Control+Alt_Delete</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4080-display">40/80 DISPLAY</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#f-keys">F-KEYS</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-pc-ra-ro-ac-xr-yr-sp-nvbdizc">WHAT IS PC RA RO AC XR YR SP NV#BDIZC?</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 2: Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-2-getting-started">Chapter 2: Getting Started<a class="headerlink" href="#chapter-2-getting-started" title="Permanent link">&para;</a></h1>
+<p>This is a brief guide to your first few minutes on the Commander X16. For a
+complete New User experience, please refer to the
+<a href="https://github.com/X16Community/x16-user-guide">Commander X16 User Guide</a>.</p>
+<h2 id="finding-and-starting-programs">Finding and starting programs<a class="headerlink" href="#finding-and-starting-programs" title="Permanent link">&para;</a></h2>
+<p>When starting your Commander X16, you'll notice that it's not like other
+computers. There is no GUI, and command line commands like <code>DIR</code> or <code>LS</code> don't
+get you anywhere. Here are some quick tips to getting started:</p>
+<p>The Commander X16 uses a full screen interface known as "Editor". This was unique
+when it was introduced on the PET in 1977, when most computers still treated the
+screen as if it was a teletype display. The full screen Editor lets you use the
+arrow keys to move around the screen and edit or re-enter input from previous
+interactions.</p>
+<p>The first thing you will want to do is view a list of files on your SD card.
+Type the below command and press the Return key (or Enter key) to see a list of
+files:</p>
+<h3 id="dos">DOS<a class="headerlink" href="#dos" title="Permanent link">&para;</a></h3>
+<p><code>DOS "$"</code></p>
+<p>You can also type <code>@$</code> and press Return. All of the commands you type must be
+followed by the Return or Enter key, to actually execute the command.</p>
+<p>Let's try some variations on this command:</p>
+<p><code>DOS "$=D"</code> lists just the subdirectories in the current directory.</p>
+<p>To get the DOS command a little faster, try pressing F8, then typing <code>$=D</code>. You
+can even leave off the last quote; DOS doesn't care.</p>
+<p>So now that you have a list of directories, try moving to one:</p>
+<p><code>DOS "CD:BASIC"</code></p>
+<p>Press F7 or type <code>DOS"$</code> again to list the files in this directory. A file with
+.PRG at the end is a "Program" file and can be loaded with the LOAD command. The
+shortcut for LOAD" is the F3 key. Try it now:</p>
+<h3 id="load">LOAD<a class="headerlink" href="#load" title="Permanent link">&para;</a></h3>
+<p><code>LOAD "MAD.PRG"</code></p>
+<p>You can see that the program list loaded by typing <code>LIST</code> and pressing Enter.</p>
+<h3 id="run">RUN<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
+<p>Now type <code>RUN</code> and Enter. This will start the loaded program.</p>
+<h3 id="stop">STOP<a class="headerlink" href="#stop" title="Permanent link">&para;</a></h3>
+<p>STOP isn't a command: it's a key. Press it to stop the running program.</p>
+<p>If you are using the official Commander X16 keyboard, the key is labeled
+<code>RUN STOP</code> and is up near the upper right corner of the keyboard.</p>
+<p>If you are using a PC keyboard, it's probably labeled <code>Pause</code> or <code>Pause Brk</code>.</p>
+<p>Holding Control and pressing C (also written as <code>Control+C</code> or <code>^C</code>) will also
+stop the running program.</p>
+<p>There are a few ways to get back to the text screen, but the quickest is to
+hold Control, Alt, and press the Del key. (Or just press the RESET button.)</p>
+<h2 id="using-the-keyboard">Using The Keyboard<a class="headerlink" href="#using-the-keyboard" title="Permanent link">&para;</a></h2>
+<p>The Commander X16's keyboard is a little different than a standard PC: there are
+three distinct modes of operation, and the keyboard can create graphic symbols
+known as PETSCII characters. There are also some special keys used for
+controlling the computer.</p>
+<h3 id="petscii-characters">PETSCII Characters<a class="headerlink" href="#petscii-characters" title="Permanent link">&para;</a></h3>
+<p>When the system first boots up, the X16 will be in PETSCII Upper Case/Graphic
+mode. Pressing a letter key without the shift key will generate an upper case
+letter. Unlike a PC or Mac, this mode does not have any lower case text, so
+everything you type is UPPER CASE.</p>
+<p>Now, notice the extra symbols on your keycaps? There are two sets of extra
+symbols: the ones on the lower-right can be accessed by holding SHIFT and a
+letter. Go ahead: try pressing Shift and S. You should see a small heart symbol
+on your screen. We know you'll love the Commander X16 as much as we do. Press
+Alt and a letter, and you'll get the symbol on the lower-left corner of the
+screen. Try pressing Alt and the ` key next to the number 1. You should get a
+large + symbol. One of the Plusses of PETSCII is using these line drawing
+symbols to draw shapes on the screen.</p>
+<p>You can also change colors by pressing Control and a number. Go ahead: Press
+Control+1 and type a few letters. Notice they come out in black. Now try Alt+1.
+Notice the cursor changes to orange, and notice the next thing you type comes
+out orange.</p>
+<p>You can also use Control+9 to turn on Reverse Print and Control+0 to turn it off.</p>
+<p>There are some unexpected changes to the PC keyboard layout, as follows:</p>
+<ul>
+<li>The Grave key (`) prints a left arrow (←) symbol.</li>
+<li>Shift+Grave prints the Pi symbol (π). This is actually the constant "pi". Try it by typing <code>PRINT π</code> and RETURN.</li>
+<li>Shift+6 prints an up arrow (↑)</li>
+<li>The \ key prints the British Pound (£).</li>
+<li>The pipe (|) is replaced with a triangle corner symbol.</li>
+<li>{ and } are replaced with two box drawing symbols.</li>
+<li>Underline (Shift+-) is replaced with a | symbol.</li>
+</ul>
+<p>Note that programming languages that need {, }, and _ will alter the character
+set to show those symbols on the appropriate keys when needed. Or you can use
+ISO mode when editing C code in EDIT.</p>
+<h3 id="lower-case-mode">Lower Case Mode<a class="headerlink" href="#lower-case-mode" title="Permanent link">&para;</a></h3>
+<p>WORKING IN <em>PETSCII</em> MIGHT MAKE PEOPLE THINK YOU'RE YELLING ALL THE TIME.
+Fortunately, there's an upper/lower case mode, too: Hold the Alt key and tap
+Shift to activate lower case. Notice that the upper case letters shift to lower
+case, and the shifted graphic symbols (such as the heart) shift to upper case
+letters. The tradeoff of upper/lower case mode is that half of the graphic
+symbols are unavailable, but you you get lower case letters.</p>
+<p>Now try typing a command. <code>print "Hello World"</code> and press RETURN. Notice that
+you need to type <code>print</code> in lower case. If you did it right, you should see
+"Hello World" appear on the next line.</p>
+<p>Now tap Alt+Shift again. The text will change to |ELLO oORLD. Again, this is the
+tradeoff: you can have the Shifted graphic symbols or lower case, but not both.</p>
+<h3 id="iso-mode">ISO Mode<a class="headerlink" href="#iso-mode" title="Permanent link">&para;</a></h3>
+<p>Finally, the computer has ISO mode. The ISO mode character set operates more
+like a PC, with upper case text, lower case text, and an assortment of accented
+and other letters. In addition, ISO mode has the \, ~, {, and } symbols, which
+are not available in PETSCII modes. ISO mode is useful when you need PC
+compatibility or want the letters with accents. Elsewhere in this guide, we have
+a full manual on using the Right Alt key to compose accented symbols, like é or
+ō. Getting back to PETSCII mode from ISO mode is a little more complicated.
+Press Control+Alt+RESTORE (or Control+Alt+PrintScreen) to warm start BASIC and
+switch back to PETSCII mode.</p>
+<h3 id="edit-text-modes">EDIT text modes<a class="headerlink" href="#edit-text-modes" title="Permanent link">&para;</a></h3>
+<p>The built-in EDIT utility includes a character set mode switch: Press Control+E
+to cycle through Upper/Graphic, Upper/Lower, and ISO mode.</p>
+<h2 id="special-keys">Special Keys<a class="headerlink" href="#special-keys" title="Permanent link">&para;</a></h2>
+<h3 id="run-stop">RUN STOP<a class="headerlink" href="#run-stop" title="Permanent link">&para;</a></h3>
+<p>This key actually has two separate functions: "RUN" and "STOP". Holding
+Shift+RUN will load the first program on your SD card and automatically run it.
+If you are using the SD card that came with your Commander X16, this will print
+some information on getting started with your computer.</p>
+<p>If you are running a BASIC program, pressing STOP will stop the program.</p>
+<h3 id="restore">RESTORE<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
+<p>As mentioned above, RESTORE can be used with Control+Alt to perform a
+warm start of BASIC. Less drastic than a cold boot, this stops a running
+program and returns you to the <code>READY.</code> prompt. If you had a BASIC program
+loaded, you can still re-start it with RUN or view it with LIST.</p>
+<h3 id="controlalt_delete">Control+Alt_Delete<a class="headerlink" href="#controlalt_delete" title="Permanent link">&para;</a></h3>
+<p>Yes, the Commander X16 has the famous "3 fingered salute." This performs a cold
+boot of the computer, including a full power cycle. You will be returned to the
+boot screen, and if you have an AUTOEXEC.X16, it will execute on startup.</p>
+<h3 id="4080-display">40/80 DISPLAY<a class="headerlink" href="#4080-display" title="Permanent link">&para;</a></h3>
+<p>This switches the computer between 80x60 text mode and 40x30 text mode. 40x30
+is more useful on CRT screens, so you may want to boot up into 40x30 mode. You
+can set these modes with BASIC by typing</p>
+<p><code>SCREEN 1</code> or <code>SCREEN 3</code>.</p>
+<p>Protip: you can force your computer to start in 40-column mode by modifying your
+AUTOBOOT.X16 file:</p>
+<div class="language-basic highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="vg">LOAD</span><span class="w"> </span><span class="s2">&quot;AUTOBOOT.X16&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nl">0</span><span class="w"> </span><span class="kr">SCREEN</span><span class="w"> </span><span class="il">3</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="vg">SAVE</span><span class="w"> </span><span class="s2">&quot;@:AUTOBOOT.X16&quot;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="vg">BOOT</span>
+</span></code></pre></div>
+<p>Don't worry, if you don't like this change, you can change it back:</p>
+<div class="language-basic highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="vg">LOAD</span><span class="w"> </span><span class="s2">&quot;AUTOBOOT.X16&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kr">SCREEN</span><span class="w"> </span><span class="il">1</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="vg">SAVE</span><span class="w"> </span><span class="s2">&quot;@:AUTOBOOT.X16&quot;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="vg">BOOT</span>
+</span></code></pre></div>
+<h3 id="f-keys">F-KEYS<a class="headerlink" href="#f-keys" title="Permanent link">&para;</a></h3>
+<p>The F-keys, also known as the "Function Keys" are pre-loaded with special
+shortcuts:</p>
+<p><strong>F1</strong> <code>LIST</code> Displays your currently loaded BASIC program.</p>
+<p><strong>F2</strong> <code>SAVE"@:</code> is a quick shortcut for saving a program. The @: allows you to
+overwrite an existing file with the same name.</p>
+<p><strong>F3</strong> <code>LOAD "</code> helps you load a program. Protip: if you use @$ to get a
+directory listing, you can then use the arrow keys to move up to a line with a
+filename. Press F3 and press RETURN to load a file.</p>
+<p><strong>F4</strong> and RETURN swaps between 40 and 80 column screen modes.</p>
+<p><strong>F5</strong> <code>RUN</code> runs the currently loaded program</p>
+<p><strong>F6</strong> <code>MONITOR</code> Runs the machine monitor. The monitor allows you to directly
+edit memory, view assembly language dumps, and even write short assembly
+language programs at your keyboard.</p>
+<p><strong>F7</strong> <code>DOS"$</code> Lists the current directory</p>
+<p><strong>F8</strong> <code>DOS"</code> allows you to enter a disk command, such as CD:. More info can be
+found in chapter 13.</p>
+<h2 id="what-is-pc-ra-ro-ac-xr-yr-sp-nvbdizc">WHAT IS <code>PC  RA RO AC XR YR SP NV#BDIZC</code>?<a class="headerlink" href="#what-is-pc-ra-ro-ac-xr-yr-sp-nvbdizc" title="Permanent link">&para;</a></h2>
+<p>There are times when the computer will drop to the MONITOR prompt. That looks
+like this:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>C*
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>   PC  RA RO AC XR YR SP NV#BDIZC
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>.;E3BB 01 04 00 65 2B F6 ........
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>.█
+</span></code></pre></div>
+<p>This is the MONITOR screen. You can get there in BASIC by typing <code>MON</code>.</p>
+<p>Type <code>X</code> and Enter to exit back to BASIC. If you just get bounced to MONITOR
+again, then you'll need to Control+Alt+Restore or Control+Alt+Delete to restore
+to a working state.</p>
+<p>MONITOR is covered in <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/#chapter-6-machine-language-monitor">Chapter 7</a>.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2001%20-%20Overview/" class="btn btn-neutral float-left" title="Chapter 1: Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2003%20-%20Editor/" class="btn btn-neutral float-right" title="Chapter 3: Editor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2001%20-%20Overview/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2003%20-%20Editor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

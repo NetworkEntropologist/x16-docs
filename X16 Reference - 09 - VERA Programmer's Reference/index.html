@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 9: VERA Programmer's Reference - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 9: VERA Programmer\u0027s Reference";
+        var mkdocs_page_input_path = "X16 Reference - 09 - VERA Programmer\u0027s Reference.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 9: VERA Programmer's Reference</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 9: VERA Programmer's Reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-9-vera-programmers-reference">Chapter 9: VERA Programmer's Reference<a class="headerlink" href="#chapter-9-vera-programmers-reference" title="Permanent link">&para;</a></h1>
+<p>This document describes the <strong>V</strong>ersatile <strong>E</strong>mbedded <strong>R</strong>etro <strong>A</strong>dapter or VERA.
+Which was originally written and conceived by Frank van den Hoef.</p>
+<p>The VERA video chip supports resolutions up to 640x480 with up to 256 colors
+from a palette of 4096, two layers of either a bitmap or tiles, 128 sprites of
+up to 64x64 pixels in size. It can output VGA as well as a 525 line interlaced
+signal, either as NTSC or as RGB (Amiga-style).</p>
+<p>The FPGA core used in the Commander X16 has been forked from Version 0.9 of the
+VERA. The original documentation can be found
+<a href="https://github.com/fvdhoef/vera-module/blob/rev4/doc/VERA%20Programmer's%20Reference.md#vera-programmers-reference">here</a>.</p>
+<p>The Commander X16 uses a modified version of VERA which includes extra
+functionality, notably the FX Aid additions. See
+<a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/#chapter-10-vera-fx-reference">Chapter 10</a>
+for more information on the FX additions.</p>
+<p>The VERA consists of:</p>
+<ul>
+<li>Video generator featuring:</li>
+<li>Multiple output formats (VGA, NTSC Composite, NTSC S-Video, RGB video) at a fixed resolution of 640x480@60Hz</li>
+<li>Support for 2 layers, both supporting either tile or bitmap mode.</li>
+<li>Support for up to 128 sprites.</li>
+<li>Embedded video RAM of 128kB.</li>
+<li>Palette with 256 colors selected from a total range of 4096 colors.</li>
+<li>16-channel Programmable Sound Generator with multiple waveforms (Pulse, Sawtooth, Triangle, Noise)</li>
+<li>High quality PCM audio playback from an 4kB FIFO buffer featuring up to 48kHz 16-bit stereo sound.</li>
+<li>SPI controller for SecureDigital storage.</li>
+</ul>
+<h1 id="registers">Registers<a class="headerlink" href="#registers" title="Permanent link">&para;</a></h1>
+<h2 id="9f20-9f28">\$9F20-\$9F28<a class="headerlink" href="#9f20-9f28" title="Permanent link">&para;</a></h2>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5 </th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3 </th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1 </th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F20</td>
+        <td>ADDRx_L (x=ADDRSEL)</td>
+        <td colspan="8" align="center">VRAM Address (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F21</td>
+        <td>ADDRx_M (x=ADDRSEL)</td>
+        <td colspan="8" align="center">VRAM Address (15:8)</td>
+    </tr>
+    <tr>
+        <td>$9F22</td>
+        <td>ADDRx_H (x=ADDRSEL)</td>
+        <td colspan="4" align="center">Address Increment</td>
+        <td align="center">DECR</td>
+        <td align="center">Nibble Increment</td>
+        <td align="center">Nibble Address</td>
+        <td align="center">VRAM Address (16)</td>
+    </tr>
+    <tr>
+        <td>$9F23</td>
+        <td>DATA0</td>
+        <td colspan="8" align="center">VRAM Data port 0</td>
+    </tr>
+    <tr>
+        <td>$9F24</td>
+        <td>DATA1</td>
+        <td colspan="8" align="center">VRAM Data port 1</td>
+    </tr>
+    <tr>
+        <td>$9F25</td>
+        <td>CTRL</td>
+        <td colspan="1" align="center">Reset</td>
+        <td colspan="6" align="center">DCSEL</td>
+        <td colspan="1" align="center">ADDRSEL</td>
+    </tr>
+    <tr>
+        <td>$9F26</td>
+        <td>IEN</td>
+        <td colspan="1" align="center">IRQ line (8)</td>
+        <td colspan="1" align="center">Scan line (8)</td>
+        <td colspan="2" align="center">-</td>
+        <td colspan="1" align="center">AFLOW</td>
+        <td colspan="1" align="center">SPRCOL</td>
+        <td colspan="1" align="center">LINE</td>
+        <td colspan="1" align="center">VSYNC</td>
+    </tr>
+    <tr>
+        <td>$9F27</td>
+        <td>ISR</td>
+        <td colspan="4" align="center">Sprite collisions</td>
+        <td colspan="1" align="center">AFLOW</td>
+        <td colspan="1" align="center">SPRCOL</td>
+        <td colspan="1" align="center">LINE</td>
+        <td colspan="1" align="center">VSYNC</td>
+    </tr>
+    <tr>
+        <td>$9F28</td>
+        <td>IRQLINE_L (Write only)</td>
+        <td colspan="8" align="center">IRQ line (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F28</td>
+        <td>SCANLINE_L (Read only)</td>
+        <td colspan="8" align="center">Scan line (7:0)</td>
+    </tr>
+</table>
+
+<h2 id="9f29-9f2c">\$9F29-\$9F2C<a class="headerlink" href="#9f29-9f2c" title="Permanent link">&para;</a></h2>
+<details open>
+    <summary>DCSEL=0</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>DC_VIDEO</td>
+            <td colspan="1" align="center">Current Field</td>
+            <td colspan="1" align="center">Sprites Enable</td>
+            <td colspan="1" align="center">Layer1 Enable</td>
+            <td colspan="1" align="center">Layer0 Enable</td>
+            <td colspan="1" align="center">NTSC/RGB: 240P</td>
+            <td colspan="1" align="center">NTSC: Chroma Disable / RGB: HV Sync </td>
+            <td colspan="2" align="center">Output Mode</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>DC_HSCALE<br></td>
+            <td colspan="8" align="center">Active Display H-Scale</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>DC_VSCALE<br></td>
+            <td colspan="8" align="center">Active Display V-Scale</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>DC_BORDER<br></td>
+            <td colspan="8" align="center">Border Color</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=1</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>DC_HSTART</td>
+            <td colspan="8" align="center">Active Display H-Start (9:2)</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>DC_HSTOP</td>
+            <td colspan="8" align="center">Active Display H-Stop (9:2)</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>DC_VSTART</td>
+            <td colspan="8" align="center">Active Display V-Start (8:1)</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>DC_VSTOP</td>
+            <td colspan="8" align="center">Active Display V-Stop (8:1)</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=2</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_CTRL</td>
+            <td align="center">Transp. Writes</td>
+            <td align="center">Cache Write Enable</td>
+            <td align="center">Cache Fill Enable</td>
+            <td align="center">One-byte Cache Cycling</td>
+            <td align="center">16-bit Hop</td>
+            <td align="center">4-bit Mode</td>
+            <td colspan="2" align="center">Addr1 Mode</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_TILEBASE<br>(Write only)</td>
+            <td colspan="6" align="center">FX Tile Base Address (16:11)</td>
+            <td align="center">Affine Clip Enable</td>
+            <td align="center">2-bit Polygon</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_MAPBASE<br>(Write only)</td>
+            <td colspan="6" align="center">FX Map Base Address (16:11)</td>
+            <td colspan="2" align="center">Map Size</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>FX_MULT<br>(Write only)</td>
+            <td align="center">Reset Accum.</td>
+            <td align="center">Accumulate</td>
+            <td align="center">Subtract Enable</td>
+            <td align="center">Multiplier Enable</td>
+            <td colspan="2" align="center">Cache Byte Index</td>
+            <td align="center">Cache Nibble Index</td>
+            <td align="center">Two-byte Cache Incr. Mode</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=3</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_X_INCR_L<br>(Write only)</td>
+            <td colspan="8" align="center">X Increment (-2:-9) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_X_INCR_H<br>(Write only)</td>
+            <td align="center">X Incr. 32x</td>
+            <td colspan="7" align="center">X Increment (5:-1) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_Y_INCR_L<br>(Write only)</td>
+            <td colspan="8" align="center">Y/X2 Increment (-2:-9) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>FX_Y_INCR_H<br>(Write only)</td>
+            <td align="center">Y/X2 Incr. 32x</td>
+            <td colspan="7" align="center">Y/X2 Increment (5:-1) (signed)</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=4</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_X_POS_L<br>(Write only)</td>
+            <td colspan="8" align="center">X Position (7:0)</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_X_POS_H<br>(Write only)</td>
+            <td align="center">X Pos. (-9)</td>
+            <td colspan="4" align="center">-</td>
+            <td colspan="3" align="center">X Position (10:8)</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_Y_POS_L<br>(Write only)</td>
+            <td colspan="8" align="center">Y/X2 Position (7:0)</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>FX_Y_POS_H<br>(Write only)</td>
+            <td align="center">Y/X2 Pos. (-9)</td>
+            <td colspan="4" align="center">-</td>
+            <td colspan="3" align="center">Y/X2 Position (10:8)</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=5</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_X_POS_S<br>(Write only)</td>
+            <td colspan="8" align="center">X Position (-1:-8)</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_Y_POS_S<br>(Write only)</td>
+            <td colspan="8" align="center">Y/X2 Position (-1:-8)</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_POLY_FILL_L<br>(4-bit Mode=0)<br>(Read only)</td>
+            <td align="center">Fill Len >= 16</td>
+            <td colspan="2" align="center">X Position (1:0)</td>
+            <td colspan="4" align="center">Fill Len (3:0)</td>
+            <td align="center">0</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_POLY_FILL_L<br>(4-bit Mode=1, 2-bit Polygon=0)<br>(Read only)</td>
+            <td align="center">Fill Len >= 8</td>
+            <td colspan="2" align="center">X Position (1:0)</td>
+            <td align="center">X Pos. (2)</td>
+            <td colspan="3" align="center">Fill Len (2:0)</td>
+            <td align="center">0</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_POLY_FILL_L<br>(4-bit Mode=1, 2-bit Polygon=1)<br>(Read only)</td>
+            <td align="center">X2 Pos. (-1)</td>
+            <td colspan="2" align="center">X Position (1:0)</td>
+            <td align="center">X Pos. (2)</td>
+            <td colspan="3" align="center">Fill Len (2:0)</td>
+            <td align="center">X Pos. (-1)</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>FX_POLY_FILL_H<br>(Read only)</td>
+            <td colspan="7" align="center">Fill Len (9:3)</td>
+            <td align="center">0</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=6</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_CACHE_L<br>(Write only)</td>
+            <td colspan="8" align="center">Cache (7:0) | Multiplicand (7:0) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>FX_ACCUM_RESET<br>(Read only)</td>
+            <td colspan="8" align="center">Reset Accumulator</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_CACHE_M<br>(Write only)</td>
+            <td colspan="8" align="center">Cache (15:8) | Multiplicand (15:8) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>FX_ACCUM<br>(Read only)</td>
+            <td colspan="8" align="center">Accumulate</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>FX_CACHE_H<br>(Write only)</td>
+            <td colspan="8" align="center">Cache (23:16) | Multiplier (7:0) (signed)</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>FX_CACHE_U<br>(Write only)</td>
+            <td colspan="8" align="center">Cache (31:24) | Multiplier (15:8) (signed)</td>
+        </tr>
+    </table>
+</details>
+
+<details open>
+    <summary>DCSEL=63</summary>
+    <table>
+        <tr>
+            <th>Addr</th>
+            <th>Name</th>
+            <th>Bit&nbsp;7</th>
+            <th>Bit&nbsp;6</th>
+            <th>Bit&nbsp;5 </th>
+            <th>Bit&nbsp;4</th>
+            <th>Bit&nbsp;3 </th>
+            <th>Bit&nbsp;2</th>
+            <th>Bit&nbsp;1 </th>
+            <th>Bit&nbsp;0</th>
+        </tr>
+        <tr>
+            <td>$9F29</td>
+            <td>DC_VER0<br>(Read only)</td>
+            <td colspan="8" align="center">The ASCII character "V"</td>
+        </tr>
+        <tr>
+            <td>$9F2A</td>
+            <td>DC_VER1<br>(Read only)</td>
+            <td colspan="8" align="center">Major release</td>
+        </tr>
+        <tr>
+            <td>$9F2B</td>
+            <td>DC_VER2<br>(Read only)</td>
+            <td colspan="8" align="center">Minor release</td>
+        </tr>
+        <tr>
+            <td>$9F2C</td>
+            <td>DC_VER3<br>(Read only)</td>
+            <td colspan="8" align="center">Minor build number</td>
+        </tr>
+    </table>
+</details>
+
+<h2 id="9f2d-9f3f">\$9F2D-\$9F3F<a class="headerlink" href="#9f2d-9f3f" title="Permanent link">&para;</a></h2>
+<table>
+    <tr>
+        <th>Addr</th>
+        <th>Name</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5 </th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3 </th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1 </th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>$9F2D</td>
+        <td>L0_CONFIG</td>
+        <td colspan="2" align="center">Map Height</td>
+        <td colspan="2" align="center">Map Width</td>
+        <td colspan="1" align="center">T256C</td>
+        <td colspan="1" align="center">Bitmap Mode</td>
+        <td colspan="2" align="center">Color Depth</td>
+    </tr>
+    <tr>
+        <td>$9F2E</td>
+        <td>L0_MAPBASE</td>
+        <td colspan="8" align="center">Map Base Address (16:9)</td>
+    </tr>
+    <tr>
+        <td>$9F2F</td>
+        <td>L0_TILEBASE</td>
+        <td colspan="6" align="center">Tile Base Address (16:11)</td>
+        <td colspan="1" align="center">Tile Height</td>
+        <td colspan="1" align="center">Tile Width</td>
+    </tr>
+    <tr>
+        <td>$9F30</td>
+        <td>L0_HSCROLL_L</td>
+        <td colspan="8" align="center">H-Scroll (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F31</td>
+        <td>L0_HSCROLL_H</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="8" align="center">H-Scroll (11:8)</td>
+    </tr>
+    <tr>
+        <td>$9F32</td>
+        <td>L0_VSCROLL_L</td>
+        <td colspan="8" align="center">V-Scroll (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F33</td>
+        <td>L0_VSCROLL_H</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="8" align="center">V-Scroll (11:8)</td>
+    </tr>
+    <tr>
+        <td>$9F34</td>
+        <td>L1_CONFIG</td>
+        <td colspan="2" align="center">Map Height</td>
+        <td colspan="2" align="center">Map Width</td>
+        <td colspan="1" align="center">T256C</td>
+        <td colspan="1" align="center">Bitmap Mode</td>
+        <td colspan="2" align="center">Color Depth</td>
+    </tr>
+    <tr>
+        <td>$9F35</td>
+        <td>L1_MAPBASE</td>
+        <td colspan="8" align="center">Map Base Address (16:9)</td>
+    </tr>
+    <tr>
+        <td>$9F36</td>
+        <td>L1_TILEBASE</td>
+        <td colspan="6" align="center">Tile Base Address (16:11)</td>
+        <td colspan="1" align="center">Tile Height</td>
+        <td colspan="1" align="center">Tile Width</td>
+    </tr>
+    <tr>
+        <td>$9F37</td>
+        <td>L1_HSCROLL_L</td>
+        <td colspan="8" align="center">H-Scroll (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F38</td>
+        <td>L1_HSCROLL_H</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="8" align="center">H-Scroll (11:8)</td>
+    </tr>
+    <tr>
+        <td>$9F39</td>
+        <td>L1_VSCROLL_L</td>
+        <td colspan="8" align="center">V-Scroll (7:0)</td>
+    </tr>
+    <tr>
+        <td>$9F3A</td>
+        <td>L1_VSCROLL_H</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="8" align="center">V-Scroll (11:8)</td>
+    </tr>
+    <tr>
+        <td>$9F3B</td>
+        <td>AUDIO_CTRL</td>
+        <td align="center">FIFO Full / FIFO Reset</td>
+        <td align="center">FIFO Empty<br />(read-only)</td>
+        <td align="center">16-Bit</td>
+        <td align="center">Stereo</td>
+        <td colspan="4" align="center">PCM Volume</td>
+    </tr>
+    <tr>
+        <td>$9F3C</td>
+        <td>AUDIO_RATE</td>
+        <td colspan="8" align="center">PCM Sample Rate</td>
+    </tr>
+    <tr>
+        <td>$9F3D</td>
+        <td>AUDIO_DATA</td>
+        <td colspan="8" align="center">Audio FIFO data (write-only)</td>
+    </tr>
+    <tr>
+        <td>$9F3E</td>
+        <td>SPI_DATA</td>
+        <td colspan="8" align="center">Data</td>
+    </tr>
+    <tr>
+        <td>$9F3F</td>
+        <td>SPI_CTRL</td>
+        <td colspan="1" align="center">Busy</td>
+        <td colspan="4" align="center">-</td>
+        <td colspan="1" align="center">Auto-TX</td>
+        <td colspan="1" align="center">Slow clock</td>
+        <td colspan="1" align="center">Select</td>
+    </tr>
+</table>
+
+<h2 id="vram-address-space-layout">VRAM address space layout<a class="headerlink" href="#vram-address-space-layout" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Address range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$0:0000 - \$1:F9BF</td>
+<td>Video RAM</td>
+</tr>
+<tr>
+<td>\$1:F9C0 - \$1:F9FF</td>
+<td>PSG registers</td>
+</tr>
+<tr>
+<td>\$1:FA00 - \$1:FBFF</td>
+<td>Palette</td>
+</tr>
+<tr>
+<td>\$1:FC00 - \$1:FFFF</td>
+<td>Sprite attributes</td>
+</tr>
+</tbody>
+</table>
+<p>The X16 KERNAL uses the following video memory layout:</p>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$0:0000-\$1:2BFF</td>
+<td>320x240@256c Bitmap</td>
+</tr>
+<tr>
+<td>\$1:2C00-\$1:2FFF</td>
+<td><em>unused</em> (1024 bytes)</td>
+</tr>
+<tr>
+<td>\$1:3000-\$1:AFFF</td>
+<td>Sprite Image Data (up to $1000 per sprite at 64x64 8-bit)</td>
+</tr>
+<tr>
+<td>\$1:B000-\$1:EBFF</td>
+<td>Text Mode</td>
+</tr>
+<tr>
+<td>\$1:EC00-\$1:EFFF</td>
+<td><em>unused</em> (1024 bytes)</td>
+</tr>
+<tr>
+<td>\$1:F000-\$1:F7FF</td>
+<td>Charset</td>
+</tr>
+<tr>
+<td>\$1:F800-\$1:F9BF</td>
+<td><em>unused</em> (448 bytes)</td>
+</tr>
+<tr>
+<td>\$1:F9C0-\$1:F9FF</td>
+<td>VERA PSG Registers (16 x 4 bytes)</td>
+</tr>
+<tr>
+<td>\$1:FA00-\$1:FBFF</td>
+<td>VERA Color Palette (256 x 2 bytes)</td>
+</tr>
+<tr>
+<td>\$1:FC00-\$1:FFFF</td>
+<td>VERA Sprite Attributes (128 x 8 bytes)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>This memory map is not fixed</strong>: All of the address space between \$0:0000 and \$1:F9BF is available for any use in your programs, if you do not need text displayed by KERNAL or BASIC. This includes allocating multiple text or graphic buffers, or simply re-arranging the buffers to allow for
+certain tile set layouts. Just be aware that once you move things around, you'll have to fully manage your bitmaps, tiles, and text/tile buffers. </p>
+<p>To restore the standard text mode, call <code>CINT</code> ($FF81). This will reset the screen to the default screen mode. If you have configured custom settings in your NVRAM, these will be used.</p>
+<p>Also, the registers in \$1:F9C0-\$1:FFFF are actually write-only. However, they share the same address as part of the video RAM. Be aware that when you read back the register data, you are actually reading the last value sent by the host system, which is not necessarily the value in the register.
+To make sure this data is filled with known values, we recommend fully initializng the registers before use. Normally, the X16 KERNAL handles this for you, but if you are writing a cartridge program, using the system with a custom ROM, or even running VERA on another computer, then you'll 
+need to make sure this block gets initialized to known values. </p>
+<h2 id="video-ram-access">Video RAM access<a class="headerlink" href="#video-ram-access" title="Permanent link">&para;</a></h2>
+<p>The video RAM (VRAM) isn't directly accessible on the CPU bus. VERA only exposes an address space of 32 bytes to the CPU as described in the section <a href="#registers">Registers</a>. To access the VRAM (which is 128kB in size) an indirection mechanism is used. First the address to be accessed needs to be set (ADDRx_L/ADDRx_M/ADDRx_H) and then the data on that VRAM address can be read from or written to via the DATA0/1 register. To make accessing the VRAM more efficient an auto-increment mechanism is present.</p>
+<p>There are 2 data ports to the VRAM. Which can be accessed using DATA0 and DATA1. The address and increment associated with the data port is specified in ADDRx_L/ADDRx_M/ADDRx_H. These 3 registers are multiplexed using the ADDR_SEL in the CTRL register. When ADDR_SEL = 0, ADDRx_L/ADDRx_M/ADDRx_H become ADDR0_L/ADDR0_M/ADDR0_H.<br />
+When ADDR_SEL = 1, ADDRx_L/ADDRx_M/ADDRx_H become ADDR1_L/ADDR1_M/ADDR1_H.</p>
+<p>By setting the 'Address Increment' field in ADDRx_H, the address will be increment after each access to the data register. The increment register values and corresponding increment amounts are shown in the following table:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Register value</th>
+<th style="text-align: right;">Increment amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">128</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">256</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">512</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">160</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">320</td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">640</td>
+</tr>
+</tbody>
+</table>
+<p>Setting the <strong>DECR</strong> bit, will decrement instead of increment by the value set by the 'Address Increment' field.</p>
+<h2 id="reset">Reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h2>
+<p>When <strong>RESET</strong> in <strong>CTRL</strong> is set to 1, the FPGA will reconfigure itself. All registers will be reset. The palette RAM will be set to its default values.</p>
+<h2 id="interrupts">Interrupts<a class="headerlink" href="#interrupts" title="Permanent link">&para;</a></h2>
+<p>Interrupts will be generated for the interrupt sources set in the lower 4 bits of <strong>IEN</strong>.
+<strong>ISR</strong> will indicate the interrupts that have occurred. Writing a 1 to one of the lower 3 bits in <strong>ISR</strong> will clear that interrupt status. <strong>AFLOW</strong> can only be cleared by filling the audio FIFO for at least 1/4.</p>
+<p><strong>IRQ_LINE</strong> (write-only) specifies at which line the <strong>LINE</strong> interrupt will be generated. Note that bit 8 of this value is present in the <strong>IEN</strong> register. For interlaced modes the interrupt will be generated each field and the bit 0 of <strong>IRQ_LINE</strong> is ignored.</p>
+<p><strong>SCANLINE</strong> (read-only) indicates the current scanline being sent to the screen. Bit 8 of this value is present in the <strong>IEN</strong> register. The value is 0 during the first visible line and 479 during the last. This value continues to count beyond the last visible line, but returns $1FF for lines 512-524 that are beyond its 9-bit resolution. <strong>SCANLINE</strong> is not affected by interlaced modes and will return either all even or all odd values during an even or odd field, respectively. Note that VERA renders lines ahead of scanout such that line 1 is being rendered while line 0 is being scanned out. Visible changes may be delayed one scanline because of this.</p>
+<p>The upper 4 (read-only) bits of the <strong>ISR</strong> register contain the <a href="#sprite-collisions">sprite collisions</a> as determined by the sprite renderer.</p>
+<h2 id="display-composer">Display composer<a class="headerlink" href="#display-composer" title="Permanent link">&para;</a></h2>
+<p>The display composer is responsible of combining the output of the 2 layer renderers and the sprite renderer into the image that is sent to the video output.</p>
+<p>The video output mode can be selected using OUT_MODE in DC_VIDEO.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">OUT_MODE</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>Video disabled</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>VGA output</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>NTSC (composite/S-Video)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>RGB 15KHz, composite or separate H/V sync, via VGA connector</td>
+</tr>
+</tbody>
+</table>
+<p>Setting <strong>'Chroma Disable'</strong> disables output of chroma in NTSC composite mode and will give a better picture on a monochrome display. <em>(Setting this bit will also disable the chroma output on the S-video output.)</em></p>
+<p>Setting <strong>'HV Sync'</strong> enables separate HSync/VSync signals in RGB output mode. Clearing the bit will enable the default of composite sync over RGB.</p>
+<p>Setting <strong>'240P'</strong> enables 240P progressive mode over NTSC or RGB. It has no effect if the VGA output mode is active. Instead of 262.5 scanlines per field, this mode outputs 263 scanlines per field.  On CRT displays, the scanlines from both the even and odd fields will be displayed on even scanlines.</p>
+<p><strong>'Current Field'</strong> is a read-only bit which reflects the active interlaced field in composite and RGB modes. In non-interlaced modes, this reflects if the current line is even or odd. (0: even, 1: odd)</p>
+<p>Setting <strong>'Layer0 Enable'</strong> / <strong>'Layer1 Enable'</strong> / <strong>'Sprites Enable'</strong> will respectively enable output from layer0 / layer1 and the sprites renderer.</p>
+<p><strong>DC_HSCALE</strong> and <strong>DC_VSCALE</strong> will set the fractional scaling factor of the active part of the display. Setting this value to 128 will output 1 output pixel for every input pixel. Setting this to 64 will output 2 output pixels for every input pixel.</p>
+<p><strong>DC_BORDER</strong> determines the palette index which is used for the non-active area of the screen.</p>
+<p><strong>DC_HSTART</strong>/<strong>DC_HSTOP</strong> and <strong>DC_VSTART</strong>/<strong>DC_VSTOP</strong> determines the active part of the screen. The values here are specified in the native 640x480 display space. HSTART=0, HSTOP=640, VSTART=0, VSTOP=480 will set the active area to the full resolution. Note that the lower 2 bits of <strong>DC_HSTART</strong>/<strong>DC_HSTOP</strong> and the lower 1 bit of <strong>DC_VSTART</strong>/<strong>DC_VSTOP</strong> isn't available. This means that horizontally the start and stop values can be set at a multiple of 4 pixels, vertically at a multiple of 2 pixels.</p>
+<p><strong>DC_VER0</strong>, <strong>DC_VER1</strong>, <strong>DC_VER2</strong>, and <strong>DC_VER3</strong> can be queried for the version number of the VERA bitstream.  If reading <strong>DC_VER0</strong> returns <code>$56</code>, the remaining registers returns values forming the major, minor, and build numbers respectively.  If <strong>DC_VER0</strong> returns a value other than <code>$56</code>, the VERA bitstream version number is undefined.</p>
+<h2 id="layer-01-registers">Layer 0/1 registers<a class="headerlink" href="#layer-01-registers" title="Permanent link">&para;</a></h2>
+<p><strong>'Map Base Address'</strong> specifies the base address of the tile map. <em>Note that the register only specifies bits 16:9 of the address, so the address is always aligned to a multiple of 512 bytes.</em></p>
+<p><strong>'Tile Base Address'</strong> specifies the base address of the tile data. <em>Note that the register only specifies bits 16:11 of the address, so the address is always aligned to a multiple of 2048 bytes.</em></p>
+<p><strong>'H-Scroll'</strong> specifies the horizontal scroll offset. A value between 0 and 4095 can be used. Increasing the value will cause the picture to move left, decreasing will cause the picture to move right.
+Hardware scrolling is only possible in tile mode; in bitmap mode, this register is not functional for scrolling. Also half of it is repurposed: the <strong>'H-Scroll (11:8)'</strong> register is instead used to specify the palette offset for the bitmap.</p>
+<p><strong>'V-Scroll'</strong> specifies the vertical scroll offset. A value between 0 and 4095 can be used. Increasing the value will cause the picture to move up, decreasing will cause the picture to move down.
+Hardware scrolling is only possible in tile mode; in bitmap mode, this register is not functional.</p>
+<p><strong>'Map Width'</strong>, <strong>'Map Height'</strong> specify the dimensions of the tile map:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Value</th>
+<th>Map width / height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>32 tiles</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>64 tiles</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>128 tiles</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>256 tiles</td>
+</tr>
+</tbody>
+</table>
+<p><strong>'Tile Width'</strong>, <strong>'Tile Height'</strong> specify the dimensions of a single tile:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Value</th>
+<th>Tile width / height</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>8 pixels</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>16 pixels</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layer-display-modes">Layer display modes<a class="headerlink" href="#layer-display-modes" title="Permanent link">&para;</a></h3>
+<p>The features of the 2 layers are the same. Each layer supports a few different modes which are specified using <strong>T256C</strong> / <strong>'Bitmap Mode'</strong> / <strong>'Color Depth'</strong> in Lx_CONFIG.</p>
+<p><strong>'Color Depth'</strong> specifies the number of bits used per pixel to encode color information:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Color Depth</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>1 bpp</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>2 bpp</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>4 bpp</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>8 bpp</td>
+</tr>
+</tbody>
+</table>
+<p>The layer can either operate in tile mode or bitmap mode. This is selected using the <strong>'Bitmap Mode'</strong> bit; 0 selects tile mode, 1 selects bitmap mode.</p>
+<p>The handling of 1 bpp tile mode is different from the other tile modes. Depending on the <strong>T256C</strong> bit the tiles use either a 16-color foreground and background color or a 256-color foreground color. Other modes ignore the <strong>T256C</strong> bit.</p>
+<h3 id="tile-mode-1-bpp-16-color-text-mode">Tile mode 1 bpp (16 color text mode)<a class="headerlink" href="#tile-mode-1-bpp-16-color-text-mode" title="Permanent link">&para;</a></h3>
+<p><strong>T256C</strong> should be set to 0.</p>
+<p><strong>MAP_BASE</strong> points to a tile map containing tile map entries, which are 2 bytes each:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="8">Character index</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td align="center" colspan="4">Background color</td>
+        <td align="center" colspan="4">Foreground color</td>
+    </tr>
+</table>
+
+<p><strong>TILE_BASE</strong> points to the tile data.</p>
+<p>Each bit in the tile data specifies one pixel. If the bit is set the foreground color as specified in the map data is used, otherwise the background color as specified in the map data is used.</p>
+<h3 id="tile-mode-1-bpp-256-color-text-mode">Tile mode 1 bpp (256 color text mode)<a class="headerlink" href="#tile-mode-1-bpp-256-color-text-mode" title="Permanent link">&para;</a></h3>
+<p><strong>T256C</strong> should be set to 1.</p>
+<p><strong>MAP_BASE</strong> points to a tile map containing tile map entries, which are 2 bytes each:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="8">Character index</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td align="center" colspan="8">Foreground color</td>
+    </tr>
+</table>
+
+<p><strong>TILE_BASE</strong> points to the tile data.</p>
+<p>Each bit in the tile data specifies one pixel. If the bit is set the foreground color as specified in the map data is used, otherwise color 0 is used (transparent).</p>
+<h3 id="tile-mode-248-bpp">Tile mode 2/4/8 bpp<a class="headerlink" href="#tile-mode-248-bpp" title="Permanent link">&para;</a></h3>
+<p><strong>MAP_BASE</strong> points to a tile map containing tile map entries, which are 2 bytes each:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="8">Tile index (7:0)</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td align="center" colspan="4">Palette offset</td>
+        <td align="center">V-flip</td>
+        <td align="center">H-flip</td>
+        <td align="center" colspan="2">Tile index (9:8)</td>
+    </tr>
+</table>
+
+<p><strong>TILE_BASE</strong> points to the tile data.</p>
+<p>Each pixel in the tile data gives a color index of either 0-3 (2bpp), 0-15 (4bpp), 0-255 (8bpp). This color index is modified by the palette offset in the tile map data using the following logic:</p>
+<ul>
+<li>Color index 0 (transparent) and 16-255 are unmodified.</li>
+<li>Color index 1-15 is modified by adding 16 x palette offset.</li>
+<li>T256C causes bit 7 of the color index to become 1.</li>
+</ul>
+<p>Note that 2bpp mode packs 4 pixels per byte and 4bpp mode packs 2 pixels per byte. For packed pixels, bit 7 refers to the leftmost pixel and bit 0 refers to the rightmost pixel.</p>
+<h3 id="bitmap-mode-1248-bpp">Bitmap mode 1/2/4/8 bpp<a class="headerlink" href="#bitmap-mode-1248-bpp" title="Permanent link">&para;</a></h3>
+<p><strong>MAP_BASE</strong> isn’t used in these modes. <strong>TILE_BASE</strong> points to the bitmap data.</p>
+<p><strong>TILEW</strong> specifies the bitmap width. TILEW=0 results in 320 pixels width and TILEW=1 results in 640 pixels width.</p>
+<p>When a layer is in bitmap mode, it can no longer be hardware scrolled using the HSCROLL and VSCROLL registers.
+<strong>'H-Scroll (7:0)'</strong> and both <strong>'V-Scroll (7:0)'</strong> and <strong>'V-Scroll (11:8)'</strong> are not functional in this mode.</p>
+<p>The palette offset (in <strong>'H-Scroll (11:8)'</strong>), as well as T256C in non-1bpp mode modifies the color indexes of the bitmap in the same way as in the tile modes.</p>
+<h2 id="spi-controller">SPI controller<a class="headerlink" href="#spi-controller" title="Permanent link">&para;</a></h2>
+<p>VERA contains a built-in SPI controller. This is connected to both the SD card connector, and the flash chip used for VERA bitstream.</p>
+<p>An SPI transfer causes one byte to be clocked out to the slave, simultaneously as one byte is clocked in to the master, one bit at a time.</p>
+<p>When JP1 jumper is unconnected, chip-select will select the SD card. When JP1 jumper is connected, chip-select will select the flash chip.</p>
+<p>The speed of the clock output of the SPI controller can be controlled by the <strong>'Slow Clock'</strong> bit. When this bit is 0 the clock is 12.5MHz, when 1 the clock is about 390kHz. The slow clock speed is to be used during the initialization phase of the SD card. Some SD cards require a clock less than 400kHz during part of the initialization.</p>
+<p>A transfer can be started by writing to <strong>SPI_DATA</strong>. While the transfer is in progress the <strong>BUSY</strong> bit will be set. After the transfer is done, the received byte can be read from the <strong>SPI_DATA</strong> register.</p>
+<p>The chip select can be controlled by writing the <strong>SELECT</strong> bit. Writing 1 will assert the chip-select (logic-0) and writing 0 will release the chip-select (logic-1).</p>
+<p>If the <strong>Auto-TX</strong> bit is set, reading from <strong>SPI_DATA</strong> will automatically start a new SPI transfer, in addition to returning the latest received value. Useful when reading many consecutive bytes from SPI. The new SPI transfer will transmit the dummy byte $FF.</p>
+<h2 id="palette">Palette<a class="headerlink" href="#palette" title="Permanent link">&para;</a></h2>
+<p>The palette translates 8-bit color indexes into 12-bit output colors. The palette has 256 entries, each with the following format:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="4">Green</td>
+        <td align="center" colspan="4">Blue</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td align="center" colspan="4">-</td>
+        <td align="center" colspan="4">Red</td>
+    </tr>
+</table>
+
+<p>At reset, the palette will contain a predefined palette:</p>
+<p><img alt="A picture of the Commander X16 palette" src="../images/cx16palette.png" /></p>
+<ul>
+<li>Color indexes 0-15 contain a palette somewhat similar to the C64 color palette.</li>
+<li>Color indexes 16-31 contain a grayscale ramp.</li>
+<li>Color indexes 32-255 contain various hues, saturation levels, brightness levels.</li>
+</ul>
+<h2 id="sprite-attributes">Sprite attributes<a class="headerlink" href="#sprite-attributes" title="Permanent link">&para;</a></h2>
+<p>128 entries of the following format:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="8">Address (12:5)</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Mode</td>
+        <td align="center" colspan="3">-</td>
+        <td align="center" colspan="4">Address (16:13)</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td align="center" colspan="8">X (7:0)</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td align="center" colspan="6">-</td>
+        <td align="center" colspan="2">X (9:8)</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td align="center" colspan="8">Y (7:0)</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td align="center" colspan="6">-</td>
+        <td align="center" colspan="2">Y (9:8)</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td align="center" colspan="4">Collision mask</td>
+        <td align="center" colspan="2">Z-depth</td>
+        <td align="center">V-flip</td>
+        <td align="center">H-flip</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td align="center" colspan="2">Sprite height</td>
+        <td align="center" colspan="2">Sprite width</td>
+        <td align="center" colspan="4">Palette offset</td>
+    </tr>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>4 bpp</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8 bpp</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Z-depth</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Sprite disabled</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Sprite between background and layer 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sprite between layer 0 and layer 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Sprite in front of layer 1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Sprite width / height</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>8 pixels</td>
+</tr>
+<tr>
+<td>1</td>
+<td>16 pixels</td>
+</tr>
+<tr>
+<td>2</td>
+<td>32 pixels</td>
+</tr>
+<tr>
+<td>3</td>
+<td>64 pixels</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rendering Priority</strong> Sprites are rendered in ascending order in memory. If a pixel has already been rendered by a sprite with a given Z-depth, it will not be rendered again by another sprite with the same Z-depth. If Z-depth of the new sprite is higher, the pixel is overwritten.</p>
+<p><strong>Palette offset</strong> works in the same way as with the layers.</p>
+<h2 id="composite-video">Composite video<a class="headerlink" href="#composite-video" title="Permanent link">&para;</a></h2>
+<h3 id="color-bleed">Color bleed<a class="headerlink" href="#color-bleed" title="Permanent link">&para;</a></h3>
+<p>CRT Televisions and composite monitors experience color bleeding when certain colors are placed next to each other.  Color bleed is especially apparent when choosing text color against certain background colors.  Sprite pixel colors, character colors, and tiles will require careful color choice for better contrast.  This chart shows which color combinations to avoid, and which work especially well together.</p>
+<p><img src="images/CompositeColors.png"></p>
+<h3 id="overscan">Overscan<a class="headerlink" href="#overscan" title="Permanent link">&para;</a></h3>
+<p>Overscan is the border region in composite televisions and monitors that extend off screen.  This overscan region varies by device, so there are no exact pixel measurements to describe the overscan region.  Enabling the border can be a guideline for the visible draw region.</p>
+<p><img src="images/CompositeOverscan.png"></p>
+<p>A game or application developer can use techniques adjust on-screen artifacts when composite video is in use.  </p>
+<ul>
+<li>V-scale and H-scale registers to shrink the screen </li>
+<li>move some of the screen assets in closer</li>
+<li>develop in a screen mode with an enabled border</li>
+</ul>
+<p>Setting to screen mode 3 or 11 while RGB or NTSC out is selected will also set 240p mode for games that are 320x240.  However, a high resolution program may have poor presentation in 240p.</p>
+<h2 id="sprite-collisions">Sprite collisions<a class="headerlink" href="#sprite-collisions" title="Permanent link">&para;</a></h2>
+<p>At the start of the vertical blank <strong>Collisions</strong> in <strong>ISR</strong> is updated. This field indicates which groups of sprites have collided. If the field is non-zero the <strong>SPRCOL</strong> interrupt will be set. The interrupt is generated once per field / frame and can be cleared by making sure the sprites no longer collide.</p>
+<p><em>Note that collisions are only detected on lines that are actually rendered. This can result in subtle differences between non-interlaced and interlaced video modes.</em></p>
+<h2 id="vera-fx">VERA FX<a class="headerlink" href="#vera-fx" title="Permanent link">&para;</a></h2>
+<p>The FX feature set is available in VERA firmware version v0.3.1 or later. The Commander X16 emulators also have this feature officially as of R44.</p>
+<p>FX is a set of mainly addressing mode changes. VERA FX does not accelerate rendering, but it merely assists the CPU with some of the slower tasks, and when used cleverly, can allow for the programmer to perform some limited perspective transforms or basic 3D effects.</p>
+<p>FX features are controlled mainly by registers $9F29-$9F2C with DCSEL set to 2 through 6.  FX_CTRL ($9F29 w/ DCSEL=2) is the master switch for enabling or disabling FX behaviors.  When writing an application that uses FX, it is important that the FX mode be preserved and disabled in interrupt handlers in cases where the handler accesses VERA registers or VRAM, including the PSG sound registers. Reading from FX_CTRL returns the current state, and writing 0 to FX_CTRL suspends the FX behaviors so that the VERA can be accessed normally without mutating other FX state.</p>
+<p>Preliminary documentation for the feature can be found in <a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/#chapter-10-vera-fx-reference">Chapter 10</a>, but as this is a brand new
+ feature, examples and documentation still need to be written.</p>
+<h2 id="video-pipeline">Video pipeline<a class="headerlink" href="#video-pipeline" title="Permanent link">&para;</a></h2>
+<p>The active area of the screen consist of layers stacked in this order. They are rendered from bottom to top, by the display composer.</p>
+<ul>
+<li>Sprite, if Z=3  <em>(top)</em></li>
+<li>Layer 1</li>
+<li>Sprite, if Z=2</li>
+<li>Layer 0</li>
+<li>Sprite, if Z=1</li>
+<li>The color of palette index 0, black by default <em>(bottom)</em></li>
+</ul>
+<p>If a pixel in a layer is transparent (palette index 0), or, the entire layer is hidden (<strong>DC_VIDEO</strong>), the output becomes what is visible in the layer(s) below.</p>
+<h3 id="sprite-renderer-line-buffer">Sprite renderer / line buffer<a class="headerlink" href="#sprite-renderer-line-buffer" title="Permanent link">&para;</a></h3>
+<p>There are 128 sprites, which are rendered to a double scanline buffer. This buffer contains, for each pixel:
+- Palette index (transparent if 0)
+- Z depth
+- Sprite collision mask</p>
+<p>The display composer reads the pre-rendered data from line buffer A, pixel by pixel. At the same time, it requests the sprite renderer to render the next line to line buffer B. One scanline is written to the VGA port in 800 clock cycles. The deadline for rendering all of the sprite pixels for the next scan-out is 798 cycles.</p>
+<p>Sprite rendering can be interrupted by the CPU and the layer renderers accessing VRAM. If this happens, the sprite renderer will wait extra cycles until the VRAM no longer has contention. In addition, finding a sprite for rendering happens in parallel to the renderer doing the VRAM fetch and rendering pixels into the line buffer. This makes the number of sprites that can be rendered on one scanline non-trivial to predict.</p>
+<p>Cost:<br />
+Sprite finder:
+- 1 cycle per sprite index, 1 additional cycle per sprite that is handed off to the renderer.</p>
+<p>Sprite renderer:
+- Handoff from sprite finder: 1 cycle
+- Positioning line buffer pointer: 1 cycle
+- Fetching 32 bits of sprite image data: 1 cycle
+- VRAM ack latency: 1-4 cycles per fetch, depending on contention
+- Rendering one pixel: 1 cycle
+- Becoming ready for next sprite: 1 cycle</p>
+<p>Example:
+- Smallest (4bpp 8px): 13-17 cycles
+- Biggest (8bpp 64px): 99-147 cycles</p>
+<p>Sprites are rendered from lowest to highest index. If a sprite is to be rendered, the image data is loaded from video ram. Then, individual non-transparent pixels are written to the buffer IF the Z-depth is bigger than existing pixel, OR if existing pixel is transparent. Sprite collision mask may reveal a collision between sprites.</p>
+<h2 id="audio">Audio<a class="headerlink" href="#audio" title="Permanent link">&para;</a></h2>
+<p>The audio functionality contains of 2 independent systems. The first is the PSG or Programmable Sound Generator. The second is the PCM (or Pulse-Code Modulation) playback system.</p>
+<h3 id="programmable-sound-generator-psg">Programmable Sound Generator (PSG)<a class="headerlink" href="#programmable-sound-generator-psg" title="Permanent link">&para;</a></h3>
+<p>The PSG consists of 16 voices, each with their own set of registers:</p>
+<table>
+    <tr>
+        <th>Offset</th>
+        <th>Bit&nbsp;7</th>
+        <th>Bit&nbsp;6</th>
+        <th>Bit&nbsp;5</th>
+        <th>Bit&nbsp;4</th>
+        <th>Bit&nbsp;3</th>
+        <th>Bit&nbsp;2</th>
+        <th>Bit&nbsp;1</th>
+        <th>Bit&nbsp;0</th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td align="center" colspan="8">Frequency word (7:0)</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td align="center" colspan="8">Frequency word (15:8)</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td align="center" colspan=1">Right</td>
+        <td align="center" colspan=1">Left</td>
+        <td align="center" colspan=6">Volume</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td align="center" colspan="2">Waveform</td>
+        <td align="center" colspan="6">Pulse Width / XOR</td>
+    </tr>
+</table>
+
+<p><strong>Frequency word</strong> sets the frequency of the sound.
+The formula for calculating the output frequency is:</p>
+<div class="language-text highlight"><pre><span></span><code>sample_rate = 25MHz / 512 = 48828.125 Hz
+
+output_frequency = sample_rate / (2^17) * frequency_word
+</code></pre></div>
+<p>Thus the output frequency can be set in steps of about 0.373 Hz.</p>
+<p><em>Example: to output a frequency of 440Hz (note A4) the </em><em>Frequency word</em><em> should be set to  440 / (48828.125 / (2^17)) = 1181</em></p>
+<p><strong>Volume</strong> controls the volume of the sound with a logarithmic curve; 0 is silent, 63 ($3F)
+is the loudest. The <strong>Left</strong> and <strong>Right</strong> bits control to which channels the sound
+should be output.</p>
+<p><strong>Waveform</strong> controls the waveform of the sound:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Waveform</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td>Pulse</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Sawtooth</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Triangle</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Noise</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pulse Width / XOR</strong> controls the duty cycle of the pulse waveform or the XOR 
+permutation when used with the triangle or saw. For pulse, a value of 63 ($3F) will
+give a 50% duty cycle or square wave, 0 will give a very narrow pulse.</p>
+<p>When the triangle or saw waveform is selected, the value influences an XOR calculation
+that changes the resulting waveform. This is most noticeable with the triangle waveform.
+It can be used to provide an NES-like fuzzy triangle as well as an overdriven saw sound
+(similar to the VRC6 NES chip) among several other varieties of sounds.</p>
+<p>When used with the saw, the result is more subtle. It adds some overtones to the saw.</p>
+<p>Setting the PW/XOR to 0 for Tri/Saw inverts the waveform from what it was prior
+to the addition of the XOR feature, and PW of 63 results in the original waveform.
+Be aware of phasing effects that this difference could cause.</p>
+<p><strong>Noise</strong> Just like the other waveform types, the frequency of the noise waveform can be controlled using frequency. In this case a higher frequency will give brighter noise and a lower value will give darker noise. The PWM/XOR values do not influence
+the noise shape.</p>
+<h3 id="pcm-audio">PCM audio<a class="headerlink" href="#pcm-audio" title="Permanent link">&para;</a></h3>
+<p>For PCM playback, VERA contains a 4kB FIFO buffer. This buffer needs to be filled in a timely fashion by the CPU. To facilitate this an <strong>AFLOW</strong> (Audio FIFO low) interrupt can be generated when the FIFO is less than 1/4 filled.</p>
+<h4 id="audio-registers">Audio registers<a class="headerlink" href="#audio-registers" title="Permanent link">&para;</a></h4>
+<h4 id="audio_ctrl-9f3b"><code>AUDIO_CTRL ($9F3B)</code><a class="headerlink" href="#audio_ctrl-9f3b" title="Permanent link">&para;</a></h4>
+<p><strong>FIFO Full</strong> (bit 7) is a read-only flag that indicates whether the FIFO is full. Any writes to the FIFO while this flag is 1 will be ignored. Writing a 1 to this register
+<strong>FIFO Reset</strong> will perform a FIFO reset, which will clear the contents of the FIFO buffer.</p>
+<p><strong>FIFO Empty</strong> (bit 6) is a read-only flag that indicates whether the FIFO is empty.</p>
+<p><strong>16-bit</strong> (bit 5) sets the data format to 16-bit. If this bit is 0, 8-bit data is expected.</p>
+<p><strong>Stereo</strong> (bit 4) sets the data format to stereo. If this bit is 0 (mono), the same audio data is send to both channels.</p>
+<p><strong>PCM Volume</strong> (bits 0..3)controls the volume of the PCM playback, this has a logarithmic curve. A value of 0 is silence, 15 is the loudest.</p>
+<h5 id="audio_rate-9f3c"><code>AUDIO_RATE ($9F3C)</code><a class="headerlink" href="#audio_rate-9f3c" title="Permanent link">&para;</a></h5>
+<p><strong>PCM sample rate</strong> controls the speed at which samples are read from the FIFO. A few example values:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">PCM sample rate</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">128</td>
+<td>normal speed   (25MHz / 512 = 48828.125 Hz)</td>
+</tr>
+<tr>
+<td style="text-align: right;">64</td>
+<td>half speed     (24414 Hz)</td>
+</tr>
+<tr>
+<td style="text-align: right;">32</td>
+<td>quarter speed  (12207 Hz)</td>
+</tr>
+<tr>
+<td style="text-align: right;">0</td>
+<td>stop playback</td>
+</tr>
+<tr>
+<td style="text-align: right;"><em>&gt;128</em></td>
+<td><em>invalid</em></td>
+</tr>
+</tbody>
+</table>
+<p>Using a value of 128 will give the best quality (lowest distortion); at this value for every output sample, an input sample from the FIFO is read. Lower values will output the same sample multiple times to the audio DAC. Input samples are always read as a complete set (being 1/2/4 bytes).</p>
+<h5 id="audio_data-9f3d"><code>AUDIO_DATA ($9F3D)</code><a class="headerlink" href="#audio_data-9f3d" title="Permanent link">&para;</a></h5>
+<p><strong>Audio FIFO data</strong> Writes to this register add one byte to the PCM FIFO. If the FIFO is full, the write will be ignored.</p>
+<p><em>NOTE: When setting up for PCM playback it is advised to first set the sample rate at 0 to stop playback. First fill the FIFO buffer with some initial data and then set the desired sample rate. This can prevent undesired FIFO underruns.</em></p>
+<h3 id="audio-data-formats">Audio data formats<a class="headerlink" href="#audio-data-formats" title="Permanent link">&para;</a></h3>
+<p>Audio data is two's complement signed.
+Depending on the selected mode the data needs to be written to the FIFO in the following order:</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Order in which to write data to FIFO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8-bit mono</td>
+<td>&lt;mono sample&gt;</td>
+</tr>
+<tr>
+<td>8-bit stereo</td>
+<td>&lt;left sample&gt; &lt;right sample&gt;</td>
+</tr>
+<tr>
+<td>16-bit mono</td>
+<td>&lt;mono sample (7:0)&gt; &lt;mono sample (15:8)&gt;</td>
+</tr>
+<tr>
+<td>16-bit stereo</td>
+<td>&lt;left sample (7:0)&gt; &lt;left sample (15:8)&gt; &lt;right sample (7:0)&gt; &lt;right sample (15:8)&gt;</td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" class="btn btn-neutral float-left" title="Chapter 8: Memory Map"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" class="btn btn-neutral float-right" title="Chapter 10: VERA FX Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2008%20-%20Memory%20Map/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

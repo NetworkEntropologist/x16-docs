@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix C: The 65C02 Processor - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix C: The 65C02 Processor";
+        var mkdocs_page_input_path = "X16 Reference - Appendix C - 65C02 Processor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix C: The 65C02 Processor</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-note-about-65c816-compatibility">A note about 65C816 Compatibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instruction-tables">Instruction Tables</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instructions-by-number">Instructions By Number</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instructions-by-name">Instructions By Name</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instructions-by-category">Instructions By Category</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#adc">ADC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#and">AND</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#asl">ASL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bbrx">BBRx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bbsx">BBSx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bit">BIT</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bcc">Bcc</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#brk">BRK</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clc">CLC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cld">CLD</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cli">CLI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clv">CLV</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cmp">CMP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cpx">CPX</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cpy">CPY</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dec">DEC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eor">EOR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#inc">INC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jmp">JMP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jsr">JSR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lda">LDA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ldx">LDX</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ldy">LDY</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lsr">LSR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nop">NOP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ora">ORA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pha">PHA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pla">PLA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rmbx">RMBx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rol">ROL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ror">ROR</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rti">RTI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rts">RTS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sbc">SBC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sec">SEC</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sed">SED</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sei">SEI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#smbx">SMBx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sta">STA</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stp">STP</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stx">STX</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sty">STY</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stz">STZ</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#trb">TRB</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tsb">TSB</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#txx">Txx</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#wai">WAI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#status-flags">Status Flags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#replacement-macros-for-bit-instructions">Replacement Macros for Bit Instructions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix C: The 65C02 Processor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-c-the-65c02-processor">Appendix C: The 65C02 Processor<a class="headerlink" href="#appendix-c-the-65c02-processor" title="Permanent link">&para;</a></h1>
+<p>This is not meant to be a complete manual on the 65C02 processor, though is
+meant to serve as a convenient quick reference. Much of this information comes
+from 6502.org and pagetable.com. It is been placed here for convenience though
+further information can be found at those (and other) sources.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The WDC65C02 CPU is a modern version of the MOS6502 with a few additional
+instructions and addressing modes and is capable of running at up to 14 MHz. On
+the Commander X16, it is clocked at 8 MHz.</p>
+<h2 id="a-note-about-65c816-compatibility">A note about 65C816 Compatibility<a class="headerlink" href="#a-note-about-65c816-compatibility" title="Permanent link">&para;</a></h2>
+<p>The Commander X16 may be upgraded at some point to use the WDC 65C816 CPU.
+The 65C816 is mostly compatible with the 65C02, except for 4 instructions
+(<code>BBRx</code>, <code>BBSx</code>, <code>RMBx</code>, and <code>SMBx</code>).</p>
+<p>These instructions <em>may</em> be deprecated in a future release of the emulator, and
+so we suggest not using these instructions. Some people are already using the
+65C816 in their X16 systems, and so using these instructions will cause your
+programs to malfunction on these computers.</p>
+<h2 id="instruction-tables">Instruction Tables<a class="headerlink" href="#instruction-tables" title="Permanent link">&para;</a></h2>
+<h2 id="instructions-by-number">Instructions By Number<a class="headerlink" href="#instructions-by-number" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>x0</th>
+<th>x1</th>
+<th>x2</th>
+<th>x3</th>
+<th>x4</th>
+<th>x5</th>
+<th>x6</th>
+<th>x7</th>
+<th>x8</th>
+<th>x9</th>
+<th>xA</th>
+<th>xB</th>
+<th>xC</th>
+<th>xD</th>
+<th>xE</th>
+<th>xF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x</td>
+<td><a href="#brk">BRK</a></td>
+<td><a href="#ora">ORA</a></td>
+<td></td>
+<td></td>
+<td><a href="#tsb">TSB</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#rmbx">RMB0</a></td>
+<td><a href="#pha">PHP</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#asl">ASL</a></td>
+<td></td>
+<td><a href="#tsb">TSB</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#bbrx">BBR0</a></td>
+</tr>
+<tr>
+<td>1x</td>
+<td><a href="#bcc">BPL</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#ora">ORA</a></td>
+<td></td>
+<td><a href="#trb">TRB</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#rmbx">RMB1</a></td>
+<td><a href="#clc">CLC</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#inc">INC</a></td>
+<td></td>
+<td><a href="#trb">TRB</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#bbrx">BBR1</a></td>
+</tr>
+<tr>
+<td>2x</td>
+<td><a href="#jsr">JSR</a></td>
+<td><a href="#and">AND</a></td>
+<td></td>
+<td></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#rol">ROL</a></td>
+<td><a href="#rmbx">RMB2</a></td>
+<td><a href="#pla">PLP</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#rol">ROL</a></td>
+<td></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#rol">ROL</a></td>
+<td><a href="#bbrx">BBR2</a></td>
+</tr>
+<tr>
+<td>3x</td>
+<td><a href="#bcc">BMI</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#and">AND</a></td>
+<td></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#rol">ROL</a></td>
+<td><a href="#rmbx">RMB3</a></td>
+<td><a href="#sec">SEC</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#dec">DEC</a></td>
+<td></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#rol">ROL</a></td>
+<td><a href="#bbrx">BBR3</a></td>
+</tr>
+<tr>
+<td>4x</td>
+<td><a href="#rti">RTI</a></td>
+<td><a href="#eor">EOR</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#rmbx">RMB4</a></td>
+<td><a href="#pha">PHA</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td></td>
+<td><a href="#jmp">JMP</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#bbrx">BBR4</a></td>
+</tr>
+<tr>
+<td>5x</td>
+<td><a href="#bcc">BVC</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#eor">EOR</a></td>
+<td></td>
+<td></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#rmbx">RMB5</a></td>
+<td><a href="#cli">CLI</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#pha">PHY</a></td>
+<td></td>
+<td></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#bbrx">BBR5</a></td>
+</tr>
+<tr>
+<td>6x</td>
+<td><a href="#rts">RTS</a></td>
+<td><a href="#adc">ADC</a></td>
+<td></td>
+<td></td>
+<td><a href="#stz">STZ</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#ror">ROR</a></td>
+<td><a href="#rmbx">RMB6</a></td>
+<td><a href="#pla">PLA</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#ror">ROR</a></td>
+<td></td>
+<td><a href="#jmp">JMP</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#ror">ROR</a></td>
+<td><a href="#bbrx">BBR6</a></td>
+</tr>
+<tr>
+<td>7x</td>
+<td><a href="#bcc">BVS</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#adc">ADC</a></td>
+<td></td>
+<td><a href="#stz">STZ</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#ror">ROR</a></td>
+<td><a href="#rmbx">RMB7</a></td>
+<td><a href="#sei">SEI</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#pla">PLY</a></td>
+<td></td>
+<td><a href="#jmp">JMP</a></td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#ror">ROR</a></td>
+<td><a href="#bbrx">BBR7</a></td>
+</tr>
+<tr>
+<td>8x</td>
+<td><a href="#bcc">BRA</a></td>
+<td><a href="#sta">STA</a></td>
+<td></td>
+<td></td>
+<td><a href="#sty">STY</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stx">STX</a></td>
+<td><a href="#smbx">SMB0</a></td>
+<td><a href="#dec">DEY</a></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#txx">TXA</a></td>
+<td></td>
+<td><a href="#sty">STY</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stx">STX</a></td>
+<td><a href="#bbsx">BBS0</a></td>
+</tr>
+<tr>
+<td>9x</td>
+<td><a href="#bcc">BCC</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#sta">STA</a></td>
+<td></td>
+<td><a href="#sty">STY</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stx">STX</a></td>
+<td><a href="#smbx">SMB1</a></td>
+<td><a href="#txx">TYA</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#txx">TXS</a></td>
+<td></td>
+<td><a href="#stz">STZ</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stz">STZ</a></td>
+<td><a href="#bbsx">BBS1</a></td>
+</tr>
+<tr>
+<td>Ax</td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td></td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#smbx">SMB2</a></td>
+<td><a href="#txx">TAY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#txx">TAX</a></td>
+<td></td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#bbsx">BBS2</a></td>
+</tr>
+<tr>
+<td>Bx</td>
+<td><a href="#bcc">BCS</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#lda">LDA</a></td>
+<td></td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#smbx">SMB3</a></td>
+<td><a href="#clv">CLV</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#txx">TSX</a></td>
+<td></td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#bbsx">BBS3</a></td>
+</tr>
+<tr>
+<td>Cx</td>
+<td><a href="#cpy">CPY</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td></td>
+<td></td>
+<td><a href="#cpy">CPY</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#smbx">SMB4</a></td>
+<td><a href="#inc">INY</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#dec">DEX</a></td>
+<td><a href="#wai">WAI</a></td>
+<td><a href="#cpy">CPY</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#bbsx">BBS4</a></td>
+</tr>
+<tr>
+<td>Dx</td>
+<td><a href="#bcc">BNE</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td></td>
+<td></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#smbx">SMB5</a></td>
+<td><a href="#cld">CLD</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#pha">PHX</a></td>
+<td><a href="#stp">STP</a></td>
+<td></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#bbsx">BBS5</a></td>
+</tr>
+<tr>
+<td>Ex</td>
+<td><a href="#cpx">CPX</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td></td>
+<td></td>
+<td><a href="#cpx">CPX</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#inc">INC</a></td>
+<td><a href="#smbx">SMB6</a></td>
+<td><a href="#inc">INX</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#nop">NOP</a></td>
+<td></td>
+<td><a href="#cpx">CPX</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#inc">INC</a></td>
+<td><a href="#bbsx">BBS6</a></td>
+</tr>
+<tr>
+<td>Fx</td>
+<td><a href="#bcc">BEQ</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td></td>
+<td></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#inc">INC</a></td>
+<td><a href="#smbx">SMB7</a></td>
+<td><a href="#sed">SED</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#pla">PLX</a></td>
+<td></td>
+<td></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#inc">INC</a></td>
+<td><a href="#bbsx">BBS7</a></td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h2 id="instructions-by-name">Instructions By Name<a class="headerlink" href="#instructions-by-name" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#and">AND</a></td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#bbrx">BBRx</a></td>
+<td><a href="#bbsx">BBSx</a></td>
+<td><a href="#bcc">BCC</a></td>
+<td><a href="#bcc">BCS</a></td>
+<td><a href="#bcc">BEQ</a></td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#bcc">BMI</a></td>
+<td><a href="#bcc">BNE</a></td>
+<td><a href="#bcc">BPL</a></td>
+<td><a href="#bcc">BRA</a></td>
+<td><a href="#brk">BRK</a></td>
+<td><a href="#bcc">BVC</a></td>
+<td><a href="#bcc">BVS</a></td>
+</tr>
+<tr>
+<td><a href="#clc">CLC</a></td>
+<td><a href="#cld">CLD</a></td>
+<td><a href="#cli">CLI</a></td>
+<td><a href="#clv">CLV</a></td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#cpx">CPX</a></td>
+<td><a href="#cpy">CPY</a></td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#dec">DEX</a></td>
+<td><a href="#dec">DEY</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#inc">INC</a></td>
+<td><a href="#inc">INX</a></td>
+<td><a href="#inc">INY</a></td>
+<td><a href="#jmp">JMP</a></td>
+<td><a href="#jsr">JSR</a></td>
+</tr>
+<tr>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#ldy">LDY</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#nop">NOP</a></td>
+<td><a href="#ora">ORA</a></td>
+<td><a href="#pha">PHA</a></td>
+<td><a href="#pha">PHP</a></td>
+<td><a href="#pha">PHX</a></td>
+<td><a href="#pha">PHY</a></td>
+<td><a href="#pla">PLA</a></td>
+<td><a href="#pla">PLP</a></td>
+<td><a href="#pla">PLX</a></td>
+<td><a href="#pla">PLY</a></td>
+<td><a href="#rmbx">RMBx</a></td>
+<td><a href="#rol">ROL</a></td>
+</tr>
+<tr>
+<td><a href="#ror">ROR</a></td>
+<td><a href="#rti">RTI</a></td>
+<td><a href="#rts">RTS</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td><a href="#sec">SEC</a></td>
+<td><a href="#sed">SED</a></td>
+<td><a href="#sei">SEI</a></td>
+<td><a href="#smbx">SMBx</a></td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stp">STP</a></td>
+<td><a href="#stx">STX</a></td>
+<td><a href="#sty">STY</a></td>
+<td><a href="#stz">STZ</a></td>
+<td><a href="#txx">TAX</a></td>
+<td><a href="#txx">TAY</a></td>
+<td><a href="#trb">TRB</a></td>
+</tr>
+<tr>
+<td><a href="#tsb">TSB</a></td>
+<td><a href="#txx">TSX</a></td>
+<td><a href="#txx">TXA</a></td>
+<td><a href="#txx">TXS</a></td>
+<td><a href="#txx">TYA</a></td>
+<td><a href="#wai">WAI</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="instructions-by-category">Instructions By Category<a class="headerlink" href="#instructions-by-category" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arithmetic</td>
+<td><a href="#adc">ADC</a></td>
+<td><a href="#sbc">SBC</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><a href="#and">AND</a></td>
+<td><a href="#eor">EOR</a></td>
+<td><a href="#ora">ORA</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bit Shift</td>
+<td><a href="#asl">ASL</a></td>
+<td><a href="#lsr">LSR</a></td>
+<td><a href="#rol">ROL</a></td>
+<td><a href="#ror">ROR</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Branch</td>
+<td><a href="#bbrx">BBRx</a></td>
+<td><a href="#bbsx">BBSx</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Test Bit</td>
+<td><a href="#bit">BIT</a></td>
+<td><a href="#trb">TRB</a></td>
+<td><a href="#tsb">TSB</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Branching</td>
+<td><a href="#bcc">BCC</a></td>
+<td><a href="#bcc">BCS</a></td>
+<td><a href="#bcc">BEQ</a></td>
+<td><a href="#bcc">BMI</a></td>
+<td><a href="#bcc">BNE</a></td>
+<td><a href="#bcc">BPL</a></td>
+<td><a href="#bcc">BVC</a></td>
+<td><a href="#bcc">BVS</a></td>
+<td><a href="#bcc">BRA</a></td>
+</tr>
+<tr>
+<td>Misc</td>
+<td><a href="#brk">BRK</a></td>
+<td><a href="#nop">NOP</a></td>
+<td><a href="#stp">STP</a></td>
+<td><a href="#wai">WAI</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Flags</td>
+<td><a href="#clc">CLC</a></td>
+<td><a href="#cld">CLD</a></td>
+<td><a href="#cli">CLI</a></td>
+<td><a href="#clv">CLV</a></td>
+<td><a href="#sec">SEC</a></td>
+<td><a href="#sed">SED</a></td>
+<td><a href="#sei">SEI</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Compare</td>
+<td><a href="#cmp">CMP</a></td>
+<td><a href="#cpx">CPX</a></td>
+<td><a href="#cpy">CPY</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Increment/Decrement</td>
+<td><a href="#dec">DEC</a></td>
+<td><a href="#dec">DEX</a></td>
+<td><a href="#dec">DEY</a></td>
+<td><a href="#inc">INX</a></td>
+<td><a href="#inc">INY</a></td>
+<td><a href="#inc">INC</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Flow</td>
+<td><a href="#jmp">JMP</a></td>
+<td><a href="#jsr">JSR</a></td>
+<td><a href="#rti">RTI</a></td>
+<td><a href="#rts">RTS</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Load Data</td>
+<td><a href="#lda">LDA</a></td>
+<td><a href="#ldx">LDX</a></td>
+<td><a href="#ldy">LDY</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Stack</td>
+<td><a href="#pha">PHA</a></td>
+<td><a href="#pha">PHP</a></td>
+<td><a href="#pha">PHX</a></td>
+<td><a href="#pha">PHY</a></td>
+<td><a href="#pla">PLA</a></td>
+<td><a href="#pla">PLP</a></td>
+<td><a href="#pla">PLX</a></td>
+<td><a href="#pla">PLY</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Bit Operations</td>
+<td><a href="#rmbx">RMBx</a></td>
+<td><a href="#smbx">SMBx</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Store Data</td>
+<td><a href="#sta">STA</a></td>
+<td><a href="#stx">STX</a></td>
+<td><a href="#sty">STY</a></td>
+<td><a href="#stz">STZ</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Transfer</td>
+<td><a href="#txx">TAX</a></td>
+<td><a href="#txx">TXA</a></td>
+<td><a href="#txx">TAY</a></td>
+<td><a href="#txx">TYA</a></td>
+<td><a href="#txx">TSX</a></td>
+<td><a href="#txx">TXS</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+
+<h3 id="adc">ADC<a class="headerlink" href="#adc" title="Permanent link">&para;</a></h3>
+<p>Add with Carry</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ADC #$20     Immediate      $69   2     2     NV----ZC 
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ADC $20      Zero Page      $65   2     3     NV----ZC 
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ADC $20,X    Zero Page,X    $75   2     4     NV----ZC 
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ADC $8080    Absolute       $6D   3     4     NV----ZC 
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ADC $8080,X  Absolute,X     $7D   3     4+    NV----ZC +p
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>ADC $8080,Y  Absolute,Y     $79   3     4+    NV----ZC +p
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ADC ($20,X)  Indirect,X     $61   2     6     NV----ZC 
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>ADC ($20),Y  Indirect,Y     $71   2     5+    NV----ZC +p
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ADC ($20)    ZP Indirect    $72   2     5     NV----ZC +c
+</span></code></pre></div>
+<p>Add a number to the Accumulator and stores the result in A.</p>
+<p>Use the Carry (C) or Overflow (V) flags to determine whether the result was too
+large for an 8 bit number.</p>
+<p>If C is set before operation, then 1 will be added to the result.</p>
+<p>C is set when result is more than 255 ($FF)<br />
+Z is set when result is zero<br />
+V is set when signed result is too large. (Goes below -128 or above 127).<br />
+N is set when result is negative (bit 7=1)  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="and">AND<a class="headerlink" href="#and" title="Permanent link">&para;</a></h3>
+<p>Logical And</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>AND #$20     Immediate      $29   2     2     N-----Z- 
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>AND $20      Zero Page      $25   2     3     N-----Z- 
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>AND $20,X    Zero Page,X    $35   2     4     N-----Z- 
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>AND $8080    Absolute       $2D   3     4     N-----Z- 
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>AND $8080,X  Absolute,X     $3D   3     4+    N-----Z- +p
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>AND $8080,Y  Absolute,Y     $39   3     4+    N-----Z- +p
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>AND ($20,X)  Indirect,X     $21   2     6     N-----Z- 
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>AND ($20),Y  Indirect,Y     $31   2     5+    N-----Z- +p
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>AND ($20)    ZP Indirect    $32   2     5     N-----Z- +c
+</span></code></pre></div>
+<p>Bitwise AND the provided value with the Accumulator.</p>
+<ul>
+<li>Sets N (Negative) flag if the bit 7 of the result is 1, and otherwise
+clears it.</li>
+<li>Sets Z (Zero) is the result is zero, and otherwise clears it  </li>
+</ul>
+<p><code>AND #$FF</code> will leave A unaffected (but still set the flags).<br />
+<code>AND #$00</code> will clear A.<br />
+<code>AND #$0F</code> will clear the high nibble of A, leaving a value of $00 to $0F
+in A.  </p>
+<table>
+<thead>
+<tr>
+<th>M</th>
+<th>A</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other Boolean Instructions:</strong><br />
+<a href="#eor">EOR</a> exclusive-OR<br />
+<a href="#ora">ORA</a> bitwise OR  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="asl">ASL<a class="headerlink" href="#asl" title="Permanent link">&para;</a></h3>
+<p>Arithmetic Shift Left</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ASL A        Accumulator    $0A   1     2     N-----ZC 
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>ASL $20      Zero Page      $06   2     5     N-----ZC
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>ASL $20,X    Zero Page,X    $16   2     6     N-----ZC
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ASL $8080    Absolute       $0E   3     6     N-----ZC
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>ASL $8080,X  Absolute,X     $1E   3     6+    N-----ZC +p
+</span></code></pre></div>
+<p>Shifts all bits to the left by one position, moving 0 into the low bit.</p>
+<p>0 is shifted into bit 0.<br />
+Bit 7 is shifted to Carry.  </p>
+<p><strong>Similar instructions:</strong><br />
+<a href="#lsr">LSR</a> is the opposite instruction and shifts to the right.<br />
+<a href="#rol">ROL</a> shifts left through Carry.</p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="bbrx">BBRx<a class="headerlink" href="#bbrx" title="Permanent link">&para;</a></h3>
+<p>Branch on Bit Reset</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>BBR0 $20,$8080 ZP Relative    $0F   3     5     -------- +c -816
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>BBR1 $20,$8080 ZP Relative    $1F   3     5     -------- +c -816
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>BBR2 $20,$8080 ZP Relative    $2F   3     5     -------- +c -816
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>BBR3 $20,$8080 ZP Relative    $3F   3     5     -------- +c -816
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>BBR4 $20,$8080 ZP Relative    $4F   3     5     -------- +c -816
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>BBR5 $20,$8080 ZP Relative    $5F   3     5     -------- +c -816
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>BBR6 $20,$8080 ZP Relative    $6F   3     5     -------- +c -816
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>BBR7 $20,$8080 ZP Relative    $7F   3     5     -------- +c -816
+</span></code></pre></div>
+<p>Branch to LABEL if bit x of zero page address is 0 where x is the number of the
+specific bit (0-7).</p>
+<p>+c: New for the 65C02
+-816: <em>Not available</em> on the 65C816  </p>
+<h4 id="bbr-example">BBR Example<a class="headerlink" href="#bbr-example" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">  </span><span class="nl">check_flag:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nf">BBR3</span><span class="w"> </span><span class="no">zeropage_flag</span><span class="p">,</span><span class="w"> </span><span class="no">flag_not_set</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nl">flag_set:</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nf">NOP</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="na">...</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nl">flag_not_set:</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nf">NOP</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="na">...</span>
+</span></code></pre></div>
+<p>The above BBR3 looks at value in zeropage_flag (here it's a label to an actual
+zero page address) and if bit 3 of the value is <em>zero</em> the branch would be
+taken to <code>@flag_not_set</code>.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="bbsx">BBSx<a class="headerlink" href="#bbsx" title="Permanent link">&para;</a></h3>
+<p>Branch on Bit Set</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>BBS0 $20,$8080 ZP Relative    $8F   3     5     -------- +c -816
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>BBS1 $20,$8080 ZP Relative    $9F   3     5     -------- +c -816
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>BBS2 $20,$8080 ZP Relative    $AF   3     5     -------- +c -816
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>BBS3 $20,$8080 ZP Relative    $BF   3     5     -------- +c -816
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>BBS4 $20,$8080 ZP Relative    $CF   3     5     -------- +c -816
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>BBS5 $20,$8080 ZP Relative    $DF   3     5     -------- +c -816
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>BBS6 $20,$8080 ZP Relative    $EF   3     5     -------- +c -816
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>BBS7 $20,$8080 ZP Relative    $FF   3     5     -------- +c -816
+</span></code></pre></div>
+<p>Branch to LABEL if bit x of zero page address is 1 where x is the number
+of the specific bit (0-7).</p>
+<p>+c: New for the 65C02
+-816: <em>Not available</em> on the 65C816  </p>
+<h4 id="bbs-example">BBS Example<a class="headerlink" href="#bbs-example" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nl">check_flag:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nf">BBS3</span><span class="w"> </span><span class="no">zeropage_flag</span><span class="p">,</span><span class="w"> </span><span class="no">flag_set</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nl">flag_not_set:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nf">NOP</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="na">...</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nl">flag_set:</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nf">NOP</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="na">...</span>
+</span></code></pre></div>
+<p>The above BBR3 looks at value in zeropage_flag (here it's a label to an actual
+zero page address) and if bit 3 of the value is <em>zero</em> the branch would be
+taken to <code>@flag_set</code>.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="bit">BIT<a class="headerlink" href="#bit" title="Permanent link">&para;</a></h3>
+<p>Test Bit</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>BIT $20      Zero Page      $24   2     3     NV----Z- 
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>BIT $8080    Absolute       $2C   3     4     NV----Z- 
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>BIT #$20     Immediate      $89   2     2     ------Z- +c
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>BIT $20,X    Zero Page,X    $34   2     4     NV----Z- +c
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>BIT $8080,X  Absolute,X     $3C   3     4+    NV----Z- +c +p
+</span></code></pre></div>
+<ul>
+<li>Sets Z (Zero) flag based on an AND of value provided to the Accumulator.</li>
+<li>Sets N (Negative) flag to the value of bit 7 at the provided address (NOTE: not with immediate).</li>
+<li>Sets V (Overflow) flag to the value of bit 6 at the provided address (NOTE: not with immediate).</li>
+</ul>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="bcc">B<em>cc</em><a class="headerlink" href="#bcc" title="Permanent link">&para;</a></h3>
+<p>Branch Instructions</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>BCC $8080    Relative       $90   2    2/3+   -------- +p Carry Clear
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>BCS $8080    Relative       $B0   2    2/3+   -------- +p Carry Set
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>BEQ $8080    Relative       $F0   2    2/3+   -------- +p Equal: Zero bit set
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>BMI $8080    Relative       $30   2    2/3+   -------- +p Negative bit set
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>BNE $8080    Relative       $D0   2    2/3+   -------- +p Not Equal: Zero bit clear
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>BPL $8080    Relative       $10   2    2/3+   -------- +p Negative bit clear
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>BVC $8080    Relative       $50   2    2/3+   -------- +p oVerflow Clear
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>BVS $8080    Relative       $70   2    2/3+   -------- +p oVerflow Set
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>BRA $8080    Relative       $80   2    3/4+   -------- +p +c Always
+</span></code></pre></div>
+<p>The branch instructions take the branch when the related flag is Set (1) or
+Clear (0).</p>
+<p>When combined with CMP, this is the 6502's "IF THEN" construct.</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="no">$1234</span><span class="w">  </span><span class="c1">; Reads the value of address $1234</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">CMP</span><span class="w"> </span><span class="c1">#$20   ; Compares it with the literal $20 (32)</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">BEQ</span><span class="w"> </span><span class="no">Match</span><span class="w">  </span><span class="c1">; If they are equal, move to the label &quot;Match&quot;.</span>
+</span></code></pre></div>
+<p>The operand is a <em>relative</em> address, based on the Program Counter at the start
+of the next opcode. As a result, you can only branch 127 bytes forward or 128
+bytes back. However, most assemblers take a label or an address literal. So
+the assembled value will be computed based on the PC and the entered value.</p>
+<p>For example, if the PC is <code>$1000</code>, the statement <code>BCS $1023</code> will be <code>$B0 $21</code>.</p>
+<p><code>BCC</code> also functions as "branch less-than" (<code>&lt;</code>) after a comparison (some
+assemblers support a <code>BLT</code> macro/alias).
+Similarly, <code>BCS</code> also functions as "branch greater-than-or-equal" (<code>&gt;=</code>) after
+a comparison (some assemblers support a <code>BGE</code> macro/alias).</p>
+<p>+p: Execution takes one additional cycle when branching crosses a page boundary.
++c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="brk">BRK<a class="headerlink" href="#brk" title="Permanent link">&para;</a></h3>
+<p>Break: Software Interrupt</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>BRK          Implied        $00   1     7     ---BD--- 
+</span></code></pre></div>
+<p>BRK is a software interrupt. With any interrupt several things happen:</p>
+<ol>
+<li>The Program Counter is incremented by 2 bytes.</li>
+<li>The new PC and flags are pushed onto the stack (pushed flags has B set on BRK).</li>
+<li>The B flag is set (but only valid in stack memory flags interrupt pushed).</li>
+<li>The D (Decimal) flag is cleared, forcing the CPU into binary mode.</li>
+<li>The CPU reads the address from the IRQ vector at $FFFE and jumps there.</li>
+</ol>
+<p>On the X16, BRK will jump out of the running program to the machine monitor.
+You can then examine the state of the CPU registers and memory.</p>
+<p>The B flag (as pushed on the stack) is used to distinguish a BRK from an NMI. An
+interrupt triggered by asserting the NMI pin does not set the B flag, and so the X16
+does a warm boot of BASIC, rather than jumping to MONitor.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="clc">CLC<a class="headerlink" href="#clc" title="Permanent link">&para;</a></h3>
+<p>Clear Carry</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>CLC          Implied        $18   1     2     -------C 
+</span></code></pre></div>
+<p>Clears the Carry flag. This is useful before ADC to prevent an extra 1 during
+addition. C is also often used in KERNAL routines to alter the operation of the
+routine or return certain information.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="cld">CLD<a class="headerlink" href="#cld" title="Permanent link">&para;</a></h3>
+<p>Clear Decimal Flag</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>CLD          Implied        $D8   1     2     ----D--- 
+</span></code></pre></div>
+<p>Clears the Decimal flag. This switches the CPU back to binary operation if it
+was previously in BCD mode.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
+<p>Clear Interrupt Disable</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>CLI          Implied        $58   1     2     -----I-- 
+</span></code></pre></div>
+<p>Clear Interrupt disable. This allows IRQ interrupts to proceed normally. NMI
+and RST are always enabled.</p>
+<p>Use SEI to disable interrupts</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="clv">CLV<a class="headerlink" href="#clv" title="Permanent link">&para;</a></h3>
+<p>Clear oVerflow</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>CLV          Implied        $B8   1     2     -V------ 
+</span></code></pre></div>
+<p>Clear the Overflow (V) flag after an arithmetic operation, such as ADC or SBC.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="cmp">CMP<a class="headerlink" href="#cmp" title="Permanent link">&para;</a></h3>
+<p>Compare A to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>CMP #$20     Immediate      $C9   2     2     N-----ZC 
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>CMP $20      Zero Page      $C5   2     3     N-----ZC 
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>CMP $20,X    Zero Page,X    $D5   2     4     N-----ZC 
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>CMP $8080    Absolute       $CD   3     4     N-----ZC 
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>CMP $8080,X  Absolute,X     $DD   3     4+    N-----ZC +p
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>CMP $8080,Y  Absolute,Y     $D9   3     4+    N-----ZC +p
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>CMP ($20,X)  Indirect,X     $C1   2     6     N-----ZC 
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>CMP ($20),Y  Indirect,Y     $D1   2     5+    N-----ZC +p
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>CMP ($20)    ZP Indirect    $D2   2     5     N-----ZC +c
+</span></code></pre></div>
+<p>Compares the value in the Accumulator (A) with the given value. It sets flags
+based on subtracting A - <em>Value</em>.</p>
+<ul>
+<li>Sets C (Carry) flag if the value in A is &gt;= given value</li>
+<li>Clears C (Carry) flag if the value in A is &lt; given value</li>
+<li>Sets Z (Zero) flag if the values are equal</li>
+<li>Clears Z (Zero) flag if the values are not equal</li>
+<li>Sets N (Negative) flag if value in A is &lt; given value</li>
+</ul>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="cpx">CPX<a class="headerlink" href="#cpx" title="Permanent link">&para;</a></h3>
+<p>Compare X to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>CPX #$20     Immediate      $E0   2     2     N-----ZC 
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>CPX $20      Zero Page      $E4   2     3     N-----ZC 
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>CPX $8080    Absolute       $EC   3     4     N-----ZC 
+</span></code></pre></div>
+<p>Compares the value in the X register with the given value. It sets flags
+based on subtracting X - <em>Value</em>.</p>
+<ul>
+<li>Sets C (Carry) flag if the value in X is &gt;= given value</li>
+<li>Clears C (Carry) flag if the value in X is &lt; given value</li>
+<li>Sets Z (Zero) flag if the values are equal</li>
+<li>Clears Z (Zero) flag if the values are not equal</li>
+<li>Sets N (Negative) flag if value in X is &lt; given value</li>
+</ul>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="cpy">CPY<a class="headerlink" href="#cpy" title="Permanent link">&para;</a></h3>
+<p>Compare Y to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>CPY #$20     Immediate      $C0   2     2     N-----ZC 
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>CPY $20      Zero Page      $C4   2     3     N-----ZC 
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>CPY $8080    Absolute       $CC   3     4     N-----ZC 
+</span></code></pre></div>
+<p>Compares the value in the Y register with the given value. It sets flags
+based on subtracting Y - <em>Value</em>.</p>
+<ul>
+<li>Sets C (Carry) flag if the value in Y is &gt;= given value</li>
+<li>Clears C (Carry) flag if the value in Y is &lt; given value</li>
+<li>Sets Z (Zero) flag if the values are equal</li>
+<li>Clears Z (Zero) flag if the values are not equal</li>
+<li>Sets N (Negative) flag if value in Y is &lt; given value</li>
+</ul>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="dec">DEC<a class="headerlink" href="#dec" title="Permanent link">&para;</a></h3>
+<p>Decrement Value</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>DEC A        Accumulator    $3A   1     2     N-----Z- +c
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>DEC $20      Zero Page      $C6   2     5     N-----Z- 
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>DEC $20,X    Zero Page,X    $D6   2     6     N-----Z- 
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>DEC $8080    Absolute       $CE   3     6     N-----Z- 
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>DEC $8080,X  Absolute,X     $DE   3     7     N-----Z- 
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>DEX          Implied        $CA   1     2     N-----Z- 
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>DEY          Implied        $88   1     2     N-----Z- 
+</span></code></pre></div>
+<p>Decrement value by one: this subtracts 1 from memory or the designated register,
+leaving the new value in its place.</p>
+<p><code>DEC</code> with an operand operates on memory.</p>
+<p><code>DEX</code> operates on the X register<br />
+<code>DEY</code> operates on the Y register<br />
+<code>DEC A</code> or <code>DEC</code> operates on the Accumulator.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p>+c: New for the 65C02  </p>
+<h4 id="16-bit-dec-example">16-bit DEC Example<a class="headerlink" href="#16-bit-dec-example" title="Permanent link">&para;</a></h4>
+<p>You can perform a 16-bit DEC by chaining two DECs together, testing the low
+byte before decrementing the high byte:</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">;16 bit decrement</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">      </span><span class="nf">LDA</span><span class="w"> </span><span class="no">Num_Low</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">      </span><span class="nf">BNE</span><span class="w"> </span><span class="no">skip</span>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">      </span><span class="nf">DEC</span><span class="w"> </span><span class="no">Num_High</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nl">skip:</span><span class="w"> </span><span class="nf">DEC</span><span class="w"> </span><span class="no">Num_Low</span>
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="eor">EOR<a class="headerlink" href="#eor" title="Permanent link">&para;</a></h3>
+<p>Exclusive OR</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>EOR #$20     Immediate      $49   2     2     N-----Z- 
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>EOR $20      Zero Page      $45   2     3     N-----Z- 
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>EOR $20,X    Zero Page,X    $55   2     4     N-----Z- 
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>EOR $8080    Absolute       $4D   3     4     N-----Z- 
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>EOR $8080,X  Absolute,X     $5D   3     4+    N-----Z- +p
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>EOR $8080,Y  Absolute,Y     $59   3     4+    N-----Z- +p
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>EOR ($20,X)  Indirect,X     $41   2     6     N-----Z- 
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>EOR ($20),Y  Indirect,Y     $51   2     5+    N-----Z- +p
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>EOR ($20)    ZP Indirect    $52   2     5     N-----Z- +c
+</span></code></pre></div>
+<p>Perform an exclusive OR of the given value in A
+(the accumulator), storing the result in A.</p>
+<p>The exclusive OR version of <a href="#ora">ORA</a>.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p>Exclusive OR returns a 1 bit for each bit that is different in the values
+tested. It returns a 0 for each bit that is the same.</p>
+<p><code>EOR #$00</code> has no effect on A, but still sets the Z and N flags.<br />
+<code>EOR #$FF</code> inverts the bits in A.  </p>
+<table>
+<thead>
+<tr>
+<th>M</th>
+<th>A</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other Boolean Instructions:</strong><br />
+<a href="#ora">ORA</a> bitwise OR<br />
+<a href="#and">AND</a> bitwise AND  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="inc">INC<a class="headerlink" href="#inc" title="Permanent link">&para;</a></h3>
+<p>Increment Value</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>INC A        Accumulator    $1A   1     2     N-----Z- +c
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>INC $20      Zero Page      $E6   2     5     N-----Z- 
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>INC $20,X    Zero Page,X    $F6   2     6     N-----Z- 
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>INC $8080    Absolute       $EE   3     6     N-----Z- 
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>INC $8080,X  Absolute,X     $FE   3     6/7   N-----Z- 
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>INX          Implied        $E8   1     2     N-----Z- 
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>INY          Implied        $C8   1     2     N-----Z- 
+</span></code></pre></div>
+<p>Increment by one: this adds 1 to memory or the designated register, leaving the
+new value in its place.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p><code>INC oper</code> operates on memory.<br />
+<code>INX</code> operates on the X register.<br />
+<code>INY</code> operates on the Y register.<br />
+<code>INC A</code> or <code>INC</code> with no operand operates on the Accumulator.  </p>
+<p>+c: New for the 65C02  </p>
+<h4 id="16-bit-inc-example">16-bit INC Example<a class="headerlink" href="#16-bit-inc-example" title="Permanent link">&para;</a></h4>
+<p>You can perform a 16-bit INC by chaining two INCs together, testing the low
+byte after incrementing it.</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1">;16 bit increment</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">        </span><span class="nf">INC</span><span class="w"> </span><span class="no">Addr_Low</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">        </span><span class="nf">BNE</span><span class="w"> </span><span class="no">skip</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">        </span><span class="nf">INC</span><span class="w"> </span><span class="no">Addr_High</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="nl">skip:</span><span class="w">   </span><span class="na">...</span>
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="jmp">JMP<a class="headerlink" href="#jmp" title="Permanent link">&para;</a></h3>
+<p>Jump to new address</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>JMP $8080    Absolute       $4C   3     3     -------- 
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>JMP ($8080)  Indirect       $6C   3     5     -------- 
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>JMP $8080,X  Absolute,X     $7C   3     6     -------- +c
+</span></code></pre></div>
+<p>Jump to specified memory location and begin execution from this point.</p>
+<p>Note for indirect jumps: The CPU does not correctly retrieve the second byte
+of the pointer from the next page, so you should never use a pointer address
+on the last byte of a page. ie: $12FF. <em>[Issue is fixed on 65C02]</em></p>
+<p>+c: New for the 65C02  </p>
+<h4 id="absolutex-and-jump-tables">(Absolute,X) and Jump Tables<a class="headerlink" href="#absolutex-and-jump-tables" title="Permanent link">&para;</a></h4>
+<p>(Absolute,X) is an additional mode for the 65C02 and is commonly used for
+implementing jump tables.</p>
+<p>So we might have something like:</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nl">important_jump_table:</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">  </span><span class="na">.word</span><span class="w"> </span><span class="no">routine1</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">  </span><span class="na">.word</span><span class="w"> </span><span class="no">routine2</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="na">...</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nf">LDX</span><span class="w"> </span><span class="c1">#$02     ; table index * 2</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="nf">JMP</span><span class="w"> </span><span class="p">(</span><span class="no">important_jump_table</span><span class="p">,</span><span class="no">x</span><span class="p">)</span>
+</span></code></pre></div>
+<p>The above would jump to the address of <code>routine2</code>, and is much faster than
+the old 6502 method of pushing the two bytes onto the stack and performing
+an RTS.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="jsr">JSR<a class="headerlink" href="#jsr" title="Permanent link">&para;</a></h3>
+<p>Jump to Subroutine</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>JSR $8080    Absolute       $20   3     6     -------- 
+</span></code></pre></div>
+<p>Stores the address of the Program Counter to the stack.<br />
+Jump to specified memory location and begin execution from this point.  </p>
+<p>This is used to run subroutines in user programs, as well as running KERNAL
+routines. RTS is used at the end of the routine to return to the instruction
+immediately after the JSR.</p>
+<p>Be careful to always match JSR and RTS, as imbalanced JSR/RTS operations will
+either overflow or underflow the stack.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="lda">LDA<a class="headerlink" href="#lda" title="Permanent link">&para;</a></h3>
+<p>Read memory to Accumulator</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>LDA #$20     Immediate      $A9   2     2     N-----Z- 
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>LDA $20      Zero Page      $A5   2     3     N-----Z- 
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>LDA $20,X    Zero Page,X    $B5   2     4     N-----Z- 
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>LDA $8080    Absolute       $AD   3     4     N-----Z- 
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>LDA $8080,X  Absolute,X     $BD   3     4+    N-----Z- +p
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>LDA $8080,Y  Absolute,Y     $B9   3     4+    N-----Z- +p
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>LDA ($20,X)  Indirect,X     $A1   2     6     N-----Z- 
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>LDA ($20),Y  Indirect,Y     $B1   2     5+    N-----Z- +p
+</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>LDA ($20)    ZP Indirect    $B2   2     5     N-----Z- +c
+</span></code></pre></div>
+<p>Place the given value from memory into the accumulator (A).</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="ldx">LDX<a class="headerlink" href="#ldx" title="Permanent link">&para;</a></h3>
+<p>Read memory to X Index Register</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>LDX #$20     Immediate      $A2   2     2     N-----Z- 
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>LDX $20      Zero Page      $A6   2     3     N-----Z- 
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>LDX $20,Y    Zero Page,Y    $B6   2     4     N-----Z- 
+</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>LDX $8080    Absolute       $AE   3     4     N-----Z- 
+</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>LDX $8080,Y  Absolute,Y     $BE   3     4+    N-----Z- +p
+</span></code></pre></div>
+<p>Place the given value from memory into the X register.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="ldy">LDY<a class="headerlink" href="#ldy" title="Permanent link">&para;</a></h3>
+<p>Read memory to Y Index Register</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>LDY #$20     Immediate      $A0   2     2     N-----Z- 
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>LDY $20      Zero Page      $A4   2     3     N-----Z- 
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>LDY $20,X    Zero Page,X    $B4   2     4     N-----Z- 
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>LDY $8080    Absolute       $AC   3     4     N-----Z- 
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>LDY $8080,X  Absolute,X     $BC   3     4+    N-----Z- +p
+</span></code></pre></div>
+<p>Place the given value from memory into the Y register.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="lsr">LSR<a class="headerlink" href="#lsr" title="Permanent link">&para;</a></h3>
+<p>Logical Shift Right</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>LSR A        Accumulator    $4A   1     2     N-----Z- 
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>LSR $20      Zero Page      $46   2     5     N-----Z- 
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>LSR $20,X    Zero Page,X    $56   2     6     N-----Z- 
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>LSR $8080    Absolute       $4E   3     6     N-----Z- 
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>LSR $8080,X  Absolute,X     $5E   3    6/7    N-----Z-
+</span></code></pre></div>
+<p>Shifts all bits to the right by one position.</p>
+<p>Bit 0 is shifted into Carry.<br />
+0 shifted into bit 7.  </p>
+<p><strong>Similar instructions:</strong><br />
+<a href="#asl">ASL</a> is the opposite instruction, shifting to the left.<br />
+<a href="#ror">ROR</a> rotates bit 0 through Carry to bit 7.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="nop">NOP<a class="headerlink" href="#nop" title="Permanent link">&para;</a></h3>
+<p>No Operation</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>NOP          Implied        $EA   1     2     -------- 
+</span></code></pre></div>
+<p>NOP simply does nothing for 2 clock cycles. No registers are affected, and no
+memory reads or writes occur. This can be used to delay the clock by 2 ticks.</p>
+<p>It's also a useful way to blank out unwanted instructions in memory or in
+a machine language program on disk. By changing the byte values of the opcode
+and operands to $EA, you can effectively cancel out an instruction.</p>
+<p>It is also useful for adding small delays to your code. For instance, to add a
+bit of delay when writing to the YM2151 chip (see <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/#vera-psg-and-pcm-programming">Chapter 11 - YM Write Procedure</a>).</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="ora">ORA<a class="headerlink" href="#ora" title="Permanent link">&para;</a></h3>
+<p>Logical OR</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>ORA #$20     Immediate      $09   2     2     N-----Z- 
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>ORA $20      Zero Page      $05   2     3     N-----Z- 
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>ORA $20,X    Zero Page,X    $15   2     4     N-----Z- 
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>ORA $8080    Absolute       $0D   3     4     N-----Z- 
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>ORA $8080,X  Absolute,X     $1D   3     4+    N-----Z- +p
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>ORA $8080,Y  Absolute,Y     $19   3     4+    N-----Z- +p
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>ORA ($20,X)  Indirect,X     $01   2     6     N-----Z- 
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>ORA ($20),Y  Indirect,Y     $11   2     5+    N-----Z- +p
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>ORA ($20)    ZP Indirect    $12   2     5     N-----Z- +c
+</span></code></pre></div>
+<p>Perform a logical OR of the given value in A
+(the Accumulator), storing the result in A.</p>
+<ul>
+<li>Sets N (Negative) flag if the two's compliment value is negative</li>
+<li>Sets Z (Zero) flag is the value is zero</li>
+</ul>
+<p><code>OR #$00</code> has no effect on A, but still sets the Z and N flags.<br />
+<code>OR #$FF</code> results in $FF.</p>
+<table>
+<thead>
+<tr>
+<th>M</th>
+<th>A</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Other Boolean Instructions:</strong><br />
+<a href="#eor">EOR</a> exclusive-OR<br />
+<a href="#and">AND</a> bitwise AND  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="pha">PHA<a class="headerlink" href="#pha" title="Permanent link">&para;</a></h3>
+<p>Push to stack</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>PHA          Implied        $48   1     3     -------- 
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>PHP          Implied        $08   1     3     -------- 
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>PHX          Implied        $DA   1     3     -------- +c
+</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>PHY          Implied        $5A   1     3     -------- +c
+</span></code></pre></div>
+<p>Pushes a register to the stack.</p>
+<p>This instruction copies the value in the affected register to the address
+of the stack pointer, then moves the stack pointer downward by one byte.</p>
+<p>Be careful to match Push and Pull operations so that you don't accidentally
+overflow or underflow the stack.</p>
+<p>PHP pushes the Flags, also called P for Program Status Register.</p>
+<p>The corresponding "Pull" instructions are <a href="#pla">PLA</a>, <a href="#pla">PHP</a>, <a href="#pla">PHX</a>,
+and <a href="#pla">PHY</a>.</p>
+<p>+c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="pla">PLA<a class="headerlink" href="#pla" title="Permanent link">&para;</a></h3>
+<p>Pull from stack</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>PLA          Implied        $68   1     4     N-----Z- 
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>PLP          Implied        $28   1     4     NV--DIZC 
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>PLX          Implied        $FA   1     4     N-----Z- +c
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>PLY          Implied        $7A   1     4     N-----Z- +c
+</span></code></pre></div>
+<p>Pulls a value from the stack into a register.</p>
+<p>This instruction moves the stack pointer up by one byte, then copies the value
+from the address of the stack pointer to the affected register.</p>
+<p>Be careful to match Push and Pull operations so that you don't accidentally
+overflow or underflow the stack.</p>
+<p>PLP pulls the Flags, also called P for Program Status Register.</p>
+<p>Use TXS or TSX to directly manage the stack pointer.</p>
+<p>The corresponding "Push" instructions are <a href="#pha">PHA</a>, <a href="#pha">PHP</a>, <a href="#pha">PHX</a>,
+and <a href="#pha">PHY</a>.</p>
+<p>+c: New for the 65C02  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="rmbx">RMBx<a class="headerlink" href="#rmbx" title="Permanent link">&para;</a></h3>
+<p>Memory Bit Operations</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>RMB0 $20     Zero Page      $07   2     5     -------- +c -816
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>RMB1 $20     Zero Page      $17   2     5     -------- +c -816
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>RMB2 $20     Zero Page      $27   2     5     -------- +c -816
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>RMB3 $20     Zero Page      $37   2     5     -------- +c -816
+</span><span id="__span-34-6"><a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>RMB4 $20     Zero Page      $47   2     5     -------- +c -816
+</span><span id="__span-34-7"><a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>RMB5 $20     Zero Page      $57   2     5     -------- +c -816
+</span><span id="__span-34-8"><a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>RMB6 $20     Zero Page      $67   2     5     -------- +c -816
+</span><span id="__span-34-9"><a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>RMB7 $20     Zero Page      $77   2     5     -------- +c -816
+</span></code></pre></div>
+<p>Set bit x to 0 at the given zero page address where x is the number of the
+specified bit (0-7).</p>
+<p>Often used in conjunction with <a href="#bbrx">BBR</a> and <a href="#bbsx">BBS</a>.</p>
+<p>+c: New for the 65C02
+-816: <em>Not available</em> on the 65C816  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="rol">ROL<a class="headerlink" href="#rol" title="Permanent link">&para;</a></h3>
+<p>Rotate Left</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>ROL A        Accumulator    $2A   1     2     N-----ZC 
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>ROL $20      Zero Page      $26   2     5     N-----ZC 
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>ROL $20,X    Zero Page,X    $36   2     6     N-----ZC 
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>ROL $8080    Absolute       $2E   3     6     N-----ZC 
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>ROL $8080,X  Absolute,X     $3E   3    6/7    N-----ZC +p
+</span></code></pre></div>
+<p>Rotate all bits to the left one position. The value in the carry (C) flag is
+shifted into bit 0 and the original bit 7 is shifted into the carry (C).</p>
+<p><a href="#asl">ASL</a> shifts left, moving 0 into bit 0<br />
+<a href="#ror">ROR</a> rotates to the right.</p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="ror">ROR<a class="headerlink" href="#ror" title="Permanent link">&para;</a></h3>
+<p>Rotate Right</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>ROR A        Accumulator    $6A   1     2     N-----ZC 
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>ROR $20      Zero Page      $66   2     5     N-----ZC 
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>ROR $20,X    Zero Page,X    $76   2     6     N-----ZC 
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>ROR $8080    Absolute       $7E   3     6     N-----ZC 
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>ROR $8080,X  Absolute,X     $6E   3    6/7    N-----ZC +p
+</span></code></pre></div>
+<p>Rotate all bits to the right one position. The value in
+the carry (C) flag is shifted into bit 7 and the original
+bit 0 is shifted into the carry (C).</p>
+<p><a href="#lsr">LSR</a> shifts right, placing 0 into bit 7.<br />
+<a href="#rol">ROL</a> rotates to the left.  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="rti">RTI<a class="headerlink" href="#rti" title="Permanent link">&para;</a></h3>
+<p>Return from Interrupt</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>RTI          Implied        $40   1     6     -------- 
+</span></code></pre></div>
+<p>Return from an interrupt by popping three values off the stack.
+The first is for the status register (P) followed by the two bytes of the
+program counter.</p>
+<p>Note that unlike <a href="#rts">RTS</a>, the popped address is the actual
+return address (rather than address-1).</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="rts">RTS<a class="headerlink" href="#rts" title="Permanent link">&para;</a></h3>
+<p>Return from Subroutine</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>RTS          Implied        $60   1     6     -------- 
+</span></code></pre></div>
+<p>Typically used at the end of a subroutine. It jumps
+back to the address after the <a href="#jsr">JSR</a> that called it
+by popping the top 2 bytes off the stack and transferring
+control to that address +1.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sbc">SBC<a class="headerlink" href="#sbc" title="Permanent link">&para;</a></h3>
+<p>Subtract With Carry</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>SBC #$20     Immediate      $E9   2     2     NV----ZC 
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>SBC $20      Zero Page      $E5   2     3     NV----ZC 
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>SBC $20,X    Zero Page,X    $F5   2     4     NV----ZC 
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a>SBC $8080    Absolute       $ED   3     4     NV----ZC 
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a>SBC $8080,X  Absolute,X     $FD   3     4+    NV----ZC +p
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>SBC $8080,Y  Absolute,Y     $F9   3     4+    NV----ZC +p
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a>SBC ($20,X)  Indirect,X     $E1   2     6     NV----ZC 
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>SBC ($20),Y  Indirect,Y     $F1   2     5+    NV----ZC +p
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a>SBC ($20)    ZP Indirect    $F2   2     5     NV----ZC +c
+</span></code></pre></div>
+<p>Subtract the operand from A and places the result in A.</p>
+<p>When Carry is 0, an additional 1 is subtracted.</p>
+<p>There is no "Subtract without carry". To do that, use SEC first to set the Carry
+flag.</p>
+<p>If D=1, subtraction is Binary Coded Decimal. If D=0 then subtraction is binary.</p>
+<p>C is clear when result is less than 0. (ie: Borrow took place)<br />
+Z is set when result is zero<br />
+V is set when signed result goes below -128 or above 127.<br />
+N is set when result is negative (bit 7=1)  </p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sec">SEC<a class="headerlink" href="#sec" title="Permanent link">&para;</a></h3>
+<p>Set Carry</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>SEC          Implied        $38   1     2     -------C 
+</span></code></pre></div>
+<p>Sets the Carry flag. This is used before SBC to prevent an extra subtract. C
+is also often used in KERNAL routines to alter the operation of the routine
+or return certain information.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sed">SED<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h3>
+<p>Set Decimal</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>SED          Implied        $F8   1     2     ----D--- 
+</span></code></pre></div>
+<p>Sets the Decimal flag. This will put the CPU in BCD mode, which affects the
+behavior of ADC and SBC.</p>
+<p>In binary mode, adding 1 to $09 will set the Accumulator to $0F.<br />
+In BCD mode, adding 1 to $09 will set the Accumulator to $10.  </p>
+<p>Using BCD allows for easier conversion of binary numbers to decimal. BCD also
+allows for storing decimal numbers without loss of precision due to power-of-2
+rounding.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sei">SEI<a class="headerlink" href="#sei" title="Permanent link">&para;</a></h3>
+<p>Set Interrupt Disable</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>SEI          Implied        $78   1     2     -----I-- 
+</span></code></pre></div>
+<p>Sets or clears the Interrupt Disable flag. When I is set, the CPU will not
+execute IRQ interrupts, even if the line is asserted. Use CLI to re-enable
+interrupts.</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="smbx">SMBx<a class="headerlink" href="#smbx" title="Permanent link">&para;</a></h3>
+<p>Set Memory Bit</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>SMB0 $20     Zero Page      $87   2     5     -------- +c -816
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>SMB1 $20     Zero Page      $97   2     5     -------- +c -816
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>SMB2 $20     Zero Page      $A7   2     5     -------- +c -816
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>SMB3 $20     Zero Page      $B7   2     5     -------- +c -816
+</span><span id="__span-43-6"><a id="__codelineno-43-6" name="__codelineno-43-6" href="#__codelineno-43-6"></a>SMB4 $20     Zero Page      $C7   2     5     -------- +c -816
+</span><span id="__span-43-7"><a id="__codelineno-43-7" name="__codelineno-43-7" href="#__codelineno-43-7"></a>SMB5 $20     Zero Page      $D7   2     5     -------- +c -816
+</span><span id="__span-43-8"><a id="__codelineno-43-8" name="__codelineno-43-8" href="#__codelineno-43-8"></a>SMB6 $20     Zero Page      $E7   2     5     -------- +c -816
+</span><span id="__span-43-9"><a id="__codelineno-43-9" name="__codelineno-43-9" href="#__codelineno-43-9"></a>SMB7 $20     Zero Page      $F7   2     5     -------- +c -816
+</span></code></pre></div>
+<p>Set bit x to 1 at the given zero page address where x is the number
+of the specific bit (0-7).</p>
+<p>Often used in conjunction with <a href="#bbrx">BBR</a> and <a href="#bbsx">BBS</a>.</p>
+<p>Specific to the 65C02 (<em>unavailable on the 65C816</em>)</p>
+<p>+c: New for the 65C02
+-816: <em>Not available</em> on the 65C816  </p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sta">STA<a class="headerlink" href="#sta" title="Permanent link">&para;</a></h3>
+<p>Store Accumulator contents to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>STA $20      Zero Page      $85   2     3     -------- 
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>STA $20,X    Zero Page,X    $95   2     4     -------- 
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>STA $8080    Absolute       $8D   3     4     -------- 
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>STA $8080,X  Absolute,X     $9D   3     5+    -------- +p
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>STA $8080,Y  Absolute,Y     $99   3     5+    -------- +p
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a>STA ($20,X)  Indirect,X     $81   2     6     -------- 
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>STA ($20),Y  Indirect,Y     $91   2     6+    -------- +p
+</span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>STA ($20)    ZP Indirect    $92   2     5     -------- +c
+</span></code></pre></div>
+<p>Place the given value from the accumulator (A) into memory.</p>
+<p>+p: Add 1 cycle if a page boundary is crossed when forming address.<br />
++c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="stp">STP<a class="headerlink" href="#stp" title="Permanent link">&para;</a></h3>
+<p>Stop</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>STP          Implied        $DB   1     3     -------- +c
+</span></code></pre></div>
+<p>Stops (or halts) the processor and places it in a lower power state until a
+hardware reset occurs. For the X16 emulator, when the debugger is enabled
+using the <code>-debug</code> command-line parameter, the STP instruction will break into
+the debugger automatically.</p>
+<p>If debugging is not enabled, the emulator will prompt the user to close the
+emulator or reset the emulation.</p>
+<p>+c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="stx">STX<a class="headerlink" href="#stx" title="Permanent link">&para;</a></h3>
+<p>Save X Index Register contents to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>STX $20      Zero Page      $86   2     3     -------- 
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>STX $20,Y    Zero Page,Y    $96   2     4     -------- 
+</span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>STX $8080    Absolute       $8E   3     4     -------- 
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="sty">STY<a class="headerlink" href="#sty" title="Permanent link">&para;</a></h3>
+<p>Save Y Index Register contents to memory</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>STY $20      Zero Page      $84   2     3     -------- 
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>STY $20,X    Zero Page,X    $94   2     4     -------- 
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>STY $8080    Absolute       $8C   3     4     -------- 
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="stz">STZ<a class="headerlink" href="#stz" title="Permanent link">&para;</a></h3>
+<p>Set memory to zero</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>STZ $20      Zero Page      $64   2     3     -------- +c
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a>STZ $20,X    Zero Page,X    $74   2     4     -------- +c
+</span><span id="__span-48-4"><a id="__codelineno-48-4" name="__codelineno-48-4" href="#__codelineno-48-4"></a>STZ $8080    Absolute       $9C   3     4     -------- +c
+</span><span id="__span-48-5"><a id="__codelineno-48-5" name="__codelineno-48-5" href="#__codelineno-48-5"></a>STZ $8080,X  Absolute,X     $9E   3     5     -------- +c
+</span></code></pre></div>
+<p>+c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="trb">TRB<a class="headerlink" href="#trb" title="Permanent link">&para;</a></h3>
+<p>Test and reset bit</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>TRB $20      Zero Page      $14   2     5     ------Z- +c
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>TRB $8080    Absolute       $1C   3     5     ------Z- +c
+</span></code></pre></div>
+<p>Effectively an inverted AND between memory and the Accumulator. The bits that
+are 1 in the Accumulator are set to 0 in memory.</p>
+<ul>
+<li>Sets Z (Zero) flag if all bits from the AND are zero.</li>
+</ul>
+<p>+c: New for the 65C02</p>
+<h4 id="trb-example">TRB Example<a class="headerlink" href="#trb-example" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="w">          </span><span class="c1">; Assume location $20 has a value of $11.</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$01  ; Load a bit mask of 0000 0001</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a><span class="nf">TRB</span><span class="w"> </span><span class="no">$20</span><span class="w">   </span><span class="c1">; Apply the mask and reset bit 0</span>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="w">          </span><span class="c1">; Location $20 now has a value of $10.</span>
+</span></code></pre></div>
+<p>This is conceptually similar to</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$01 ; We want to clear bit 1 of the data</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a><span class="nf">EOR</span><span class="w"> </span><span class="c1">#$FF ; Invert the mask, so $01 becomes $FE (1111 1110)</span>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="nf">AND</span><span class="w"> </span><span class="no">$20</span><span class="w">  </span><span class="c1">; AND with memory, saving the result in .A</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="nf">STA</span><span class="w"> </span><span class="no">$20</span><span class="w">  </span><span class="c1">; Store it back to memory.</span>
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="tsb">TSB<a class="headerlink" href="#tsb" title="Permanent link">&para;</a></h3>
+<p>Test and set bit</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>TSB $20      Zero Page      $04   2     5     ------Z- +c
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a>TSB $8080    Absolute       $0C   3     5     ------Z- +c
+</span></code></pre></div>
+<p>Performs an OR with each bit in the accumulator and memory.
+Each bit that is 1 in the Accumulator is set to 1 in memory. This is similar to
+an ORA operation, except that the result is stored in memory, not in A.</p>
+<p>The Z flag is set based on the final result of the operation, ie: the memory
+data is 0.</p>
+<p>+c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="txx">Txx<a class="headerlink" href="#txx" title="Permanent link">&para;</a></h3>
+<p>Transfer between registers</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>TAX          Implied        $AA   1     2     N-----Z- Copy from .A to .X
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>TXA          Implied        $8A   1     2     N-----Z- Copy from .X to .A
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a>TAY          Implied        $A8   1     2     N-----Z- Copy from .A to .Y
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>TYA          Implied        $98   1     2     N-----Z- Copy from .Y to .A
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>TSX          Implied        $BA   1     2     N-----Z- Copy from Stack Pointer to .X
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a>TXS          Implied        $9A   1     2     -------- Copy from .X to Stack Pointer
+</span></code></pre></div>
+<p>Copies data from one register to another.</p>
+<p>TSX and TSX copy between the Stack Pointer and the X register. This is the only
+way to directly control the Stack Pointer. To initialize the Stack Pointer to
+a specific address, you can use the following instructions.</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nf">LDX</span><span class="w"> </span><span class="c1">#$FF</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="nf">TXS</span>
+</span></code></pre></div>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h3 id="wai">WAI<a class="headerlink" href="#wai" title="Permanent link">&para;</a></h3>
+<p>Wait</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>SYNTAX       MODE           HEX  LEN  CYCLES  FLAGS    
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>WAI          Implied        $CB   1     3     -------- +c
+</span></code></pre></div>
+<p>Effectively stops the processor until a hardware interrupt occurs. The interrupt
+is processed immediately, and execution resumes in the Interrupt handler.</p>
+<p>NMI, IRQ, and RST (Reset) will recover from the WAI condition.</p>
+<p>Normally, an instruction completes its operation before actually handling an
+interrupt. But if WAI has executed, the CPU does not need to defer the
+interrupt, and so the interrupt can be handled immediately.</p>
+<p>+c: New for the 65C02</p>
+<hr />
+<p>[<a href="#instructions-by-number">Opcodes</a>] | [<a href="#instructions-by-name">By Name</a>] | [<a href="#instructions-by-category">By Category</a>]</p>
+<h2 id="status-flags">Status Flags<a class="headerlink" href="#status-flags" title="Permanent link">&para;</a></h2>
+<p>Flags are stored in the P register. PHP and PLP can be used
+to directly manipulate this register. Otherwise the flags
+are used to indicate certain statuses and changed by
+various instructions.</p>
+<p>P-Register:</p>
+<p><code>NV1B DIZC</code></p>
+<p>N = Negative<br />
+  V = oVerflow<br />
+  1 = Always 1<br />
+  B = Interrupt Flag<br />
+  D = Decimal Mode<br />
+  I = Interrupts Disabled<br />
+  Z = Zero<br />
+  C = Carry  </p>
+<h2 id="replacement-macros-for-bit-instructions">Replacement Macros for Bit Instructions<a class="headerlink" href="#replacement-macros-for-bit-instructions" title="Permanent link">&para;</a></h2>
+<p>Since <code>BBRx</code>, <code>BBSx</code>, <code>RMBx</code>, and <code>SMBx</code> should not be used, to maintain
+compatibility with the 65C816, here are some example macros that can be
+used to help convert existing software that may have been using these
+instructions:</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="na">.macro</span><span class="w"> </span><span class="no">bbs</span><span class="w"> </span><span class="no">bit_position</span><span class="p">,</span><span class="w"> </span><span class="no">data</span><span class="p">,</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="w"> </span><span class="na">.if</span><span class="w"> </span><span class="p">(</span><span class="no">bit_position</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="w">  </span><span class="nf">bit</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-4"><a id="__codelineno-56-4" name="__codelineno-56-4" href="#__codelineno-56-4"></a><span class="w">  </span><span class="nf">bmi</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-5"><a id="__codelineno-56-5" name="__codelineno-56-5" href="#__codelineno-56-5"></a><span class="w"> </span><span class="na">.else</span>
+</span><span id="__span-56-6"><a id="__codelineno-56-6" name="__codelineno-56-6" href="#__codelineno-56-6"></a><span class="w">  </span><span class="na">.if</span><span class="w"> </span><span class="p">(</span><span class="no">bit_position</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-56-7"><a id="__codelineno-56-7" name="__codelineno-56-7" href="#__codelineno-56-7"></a><span class="w">   </span><span class="nf">bit</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-8"><a id="__codelineno-56-8" name="__codelineno-56-8" href="#__codelineno-56-8"></a><span class="w">   </span><span class="nf">bvs</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-9"><a id="__codelineno-56-9" name="__codelineno-56-9" href="#__codelineno-56-9"></a><span class="w">  </span><span class="na">.else</span>
+</span><span id="__span-56-10"><a id="__codelineno-56-10" name="__codelineno-56-10" href="#__codelineno-56-10"></a><span class="w">   </span><span class="nf">lda</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-11"><a id="__codelineno-56-11" name="__codelineno-56-11" href="#__codelineno-56-11"></a><span class="w">   </span><span class="nf">and</span><span class="w"> </span><span class="mi">#1</span><span class="w"> </span><span class="err">&lt;&lt;</span><span class="w"> </span><span class="no">bit_position</span>
+</span><span id="__span-56-12"><a id="__codelineno-56-12" name="__codelineno-56-12" href="#__codelineno-56-12"></a><span class="w">   </span><span class="nf">bne</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-13"><a id="__codelineno-56-13" name="__codelineno-56-13" href="#__codelineno-56-13"></a><span class="w">  </span><span class="na">.endif</span>
+</span><span id="__span-56-14"><a id="__codelineno-56-14" name="__codelineno-56-14" href="#__codelineno-56-14"></a><span class="w">  </span><span class="na">.endif</span>
+</span><span id="__span-56-15"><a id="__codelineno-56-15" name="__codelineno-56-15" href="#__codelineno-56-15"></a><span class="na">.endmacro</span>
+</span><span id="__span-56-16"><a id="__codelineno-56-16" name="__codelineno-56-16" href="#__codelineno-56-16"></a>
+</span><span id="__span-56-17"><a id="__codelineno-56-17" name="__codelineno-56-17" href="#__codelineno-56-17"></a><span class="na">.macro</span><span class="w"> </span><span class="no">bbr</span><span class="w"> </span><span class="no">bit_position</span><span class="p">,</span><span class="w"> </span><span class="no">data</span><span class="p">,</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-18"><a id="__codelineno-56-18" name="__codelineno-56-18" href="#__codelineno-56-18"></a><span class="w"> </span><span class="na">.if</span><span class="w"> </span><span class="p">(</span><span class="no">bit_position</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+</span><span id="__span-56-19"><a id="__codelineno-56-19" name="__codelineno-56-19" href="#__codelineno-56-19"></a><span class="w">  </span><span class="nf">bit</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-20"><a id="__codelineno-56-20" name="__codelineno-56-20" href="#__codelineno-56-20"></a><span class="w">  </span><span class="nf">bpl</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-21"><a id="__codelineno-56-21" name="__codelineno-56-21" href="#__codelineno-56-21"></a><span class="w"> </span><span class="na">.else</span>
+</span><span id="__span-56-22"><a id="__codelineno-56-22" name="__codelineno-56-22" href="#__codelineno-56-22"></a><span class="w">  </span><span class="na">.if</span><span class="w"> </span><span class="p">(</span><span class="no">bit_position</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-56-23"><a id="__codelineno-56-23" name="__codelineno-56-23" href="#__codelineno-56-23"></a><span class="w">   </span><span class="nf">bit</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-24"><a id="__codelineno-56-24" name="__codelineno-56-24" href="#__codelineno-56-24"></a><span class="w">   </span><span class="nf">bvc</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-25"><a id="__codelineno-56-25" name="__codelineno-56-25" href="#__codelineno-56-25"></a><span class="w">  </span><span class="na">.else</span>
+</span><span id="__span-56-26"><a id="__codelineno-56-26" name="__codelineno-56-26" href="#__codelineno-56-26"></a><span class="w">   </span><span class="nf">lda</span><span class="w"> </span><span class="no">data</span>
+</span><span id="__span-56-27"><a id="__codelineno-56-27" name="__codelineno-56-27" href="#__codelineno-56-27"></a><span class="w">   </span><span class="nf">and</span><span class="w"> </span><span class="mi">#1</span><span class="w"> </span><span class="err">&lt;&lt;</span><span class="w"> </span><span class="no">bit_position</span>
+</span><span id="__span-56-28"><a id="__codelineno-56-28" name="__codelineno-56-28" href="#__codelineno-56-28"></a><span class="w">   </span><span class="nf">beq</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-29"><a id="__codelineno-56-29" name="__codelineno-56-29" href="#__codelineno-56-29"></a><span class="w">  </span><span class="na">.endif</span>
+</span><span id="__span-56-30"><a id="__codelineno-56-30" name="__codelineno-56-30" href="#__codelineno-56-30"></a><span class="w"> </span><span class="na">.endif</span>
+</span><span id="__span-56-31"><a id="__codelineno-56-31" name="__codelineno-56-31" href="#__codelineno-56-31"></a><span class="na">.endmacro</span>
+</span><span id="__span-56-32"><a id="__codelineno-56-32" name="__codelineno-56-32" href="#__codelineno-56-32"></a>
+</span><span id="__span-56-33"><a id="__codelineno-56-33" name="__codelineno-56-33" href="#__codelineno-56-33"></a><span class="na">.macro</span><span class="w"> </span><span class="no">rmb</span><span class="w"> </span><span class="no">bit</span><span class="p">,</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-34"><a id="__codelineno-56-34" name="__codelineno-56-34" href="#__codelineno-56-34"></a><span class="w"> </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#$1 &lt;&lt; bit</span>
+</span><span id="__span-56-35"><a id="__codelineno-56-35" name="__codelineno-56-35" href="#__codelineno-56-35"></a><span class="w"> </span><span class="nf">trb</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-36"><a id="__codelineno-56-36" name="__codelineno-56-36" href="#__codelineno-56-36"></a><span class="na">.endmacro</span>
+</span><span id="__span-56-37"><a id="__codelineno-56-37" name="__codelineno-56-37" href="#__codelineno-56-37"></a>
+</span><span id="__span-56-38"><a id="__codelineno-56-38" name="__codelineno-56-38" href="#__codelineno-56-38"></a><span class="na">.macro</span><span class="w"> </span><span class="no">smb</span><span class="w"> </span><span class="no">bit</span><span class="p">,</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-39"><a id="__codelineno-56-39" name="__codelineno-56-39" href="#__codelineno-56-39"></a><span class="w"> </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#$1 &lt;&lt; bit</span>
+</span><span id="__span-56-40"><a id="__codelineno-56-40" name="__codelineno-56-40" href="#__codelineno-56-40"></a><span class="w"> </span><span class="nf">tsb</span><span class="w"> </span><span class="no">destination</span>
+</span><span id="__span-56-41"><a id="__codelineno-56-41" name="__codelineno-56-41" href="#__codelineno-56-41"></a><span class="na">.endmacro</span>
+</span></code></pre></div>
+<p>The above is CA65 specific but the code should work similarly for other
+languages. The logic can also be used to if using an assembly language tool
+that does not have macro support with small changes.</p>
+<h2 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://www.6502.org/tutorials/6502opcodes.html">http://www.6502.org/tutorials/6502opcodes.html</a></li>
+<li><a href="http://6502.org/tutorials/65c02opcodes.html">http://6502.org/tutorials/65c02opcodes.html</a></li>
+<li><a href="https://www.pagetable.com/c64ref/6502/?cpu=65c02">https://www.pagetable.com/c64ref/6502/?cpu=65c02</a></li>
+<li><a href="http://www.oxyron.de/html/opcodesc02.html">http://www.oxyron.de/html/opcodesc02.html</a></li>
+<li><a href="https://www.nesdev.org/wiki/Status_flags">https://www.nesdev.org/wiki/Status_flags</a></li>
+<li><a href="https://skilldrick.github.io/easy6502/">https://skilldrick.github.io/easy6502/</a></li>
+<li><a href="https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf">https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf</a></li>
+<li><a href="https://www.westerndesigncenter.com/wdc/documentation/w65c816s.pdf">https://www.westerndesigncenter.com/wdc/documentation/w65c816s.pdf</a></li>
+</ul>
+<p>a different page  </p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" class="btn btn-neutral float-left" title="Appendix B: VERA Firmware Recovery"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" class="btn btn-neutral float-right" title="Appendix D: Official Expansion Cards">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

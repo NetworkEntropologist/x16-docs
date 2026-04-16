@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 8: Memory Map - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 8: Memory Map";
+        var mkdocs_page_input_path = "X16 Reference - 08 - Memory Map.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 8: Memory Map</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#banked-memory">Banked Memory</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rom-allocations">ROM Allocations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cartridge-allocation">Cartridge Allocation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ram-contents">RAM Contents</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#zero-page">Zero Page</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#banking">Banking</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#bank-0">Bank 0</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#io-area">I/O Area</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#expansion-cards-cartridges">Expansion Cards &amp; Cartridges</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 8: Memory Map</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-8-memory-map">Chapter 8: Memory Map<a class="headerlink" href="#chapter-8-memory-map" title="Permanent link">&para;</a></h1>
+<p>The Commander X16 has 512 KB of ROM and 2,088 KB (2 MB[^1] + 40 KB) of RAM with up to 3.5MB of RAM or ROM available to cartridges.</p>
+<p>Some of the ROM/RAM is always visible at certain address ranges, while the remaining ROM/RAM is banked into one of two address windows.</p>
+<p>This is an overview of the X16 memory map:</p>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$0000-\$9EFF</td>
+<td>Fixed RAM (40 KB minus 256 bytes)</td>
+</tr>
+<tr>
+<td>\$9F00-\$9FFF</td>
+<td>I/O Area (256 bytes)</td>
+</tr>
+<tr>
+<td>\$A000-\$BFFF</td>
+<td>Banked RAM (8 KB window into one of 256 banks for a total of 2 MB)</td>
+</tr>
+<tr>
+<td>\$C000-\$FFFF</td>
+<td>Banked System ROM and Cartridge ROM/RAM (16 KB window into one of 256 banks, see below)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="banked-memory">Banked Memory<a class="headerlink" href="#banked-memory" title="Permanent link">&para;</a></h2>
+<p>Writing to the following zero-page addresses sets the desired RAM or ROM bank:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0000</td>
+<td>Current RAM bank (0-255)</td>
+</tr>
+<tr>
+<td>$0001</td>
+<td>Current ROM/Cartridge bank (ROM is 0-31, Cartridge is 32-255)</td>
+</tr>
+</tbody>
+</table>
+<p>The currently set banks can also be read back from the respective memory locations. Both settings default to 0 on RESET.</p>
+<h2 id="rom-allocations">ROM Allocations<a class="headerlink" href="#rom-allocations" title="Permanent link">&para;</a></h2>
+<p>Here is the ROM/Cartridge bank allocation:</p>
+<table>
+<thead>
+<tr>
+<th>Bank</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>KERNAL</td>
+<td>KERNAL operating system and drivers</td>
+</tr>
+<tr>
+<td>1</td>
+<td>KEYBD</td>
+<td>Keyboard layout tables</td>
+</tr>
+<tr>
+<td>2</td>
+<td>CMDRDOS</td>
+<td>The computer-based CMDR-DOS for FAT32 SD cards</td>
+</tr>
+<tr>
+<td>3</td>
+<td>FAT32</td>
+<td>The FAT32 driver itself</td>
+</tr>
+<tr>
+<td>4</td>
+<td>BASIC</td>
+<td>BASIC interpreter</td>
+</tr>
+<tr>
+<td>5</td>
+<td>MONITOR</td>
+<td>Machine Language Monitor</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CHARSET</td>
+<td>PETSCII and ISO character sets (uploaded into VRAM)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>DIAG</td>
+<td>Memory diagnostic</td>
+</tr>
+<tr>
+<td>8</td>
+<td>GRAPH</td>
+<td>Kernal graph and font routines</td>
+</tr>
+<tr>
+<td>9</td>
+<td>DEMO</td>
+<td>Demo routines</td>
+</tr>
+<tr>
+<td>10</td>
+<td>AUDIO</td>
+<td>Audio API routines</td>
+</tr>
+<tr>
+<td>11</td>
+<td>UTIL</td>
+<td>System Configuration (Date/Time, Display Preferences)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>BANNEX</td>
+<td>BASIC Annex (code for some added BASIC functions)</td>
+</tr>
+<tr>
+<td>13-14</td>
+<td>X16EDIT</td>
+<td>The built-in text editor</td>
+</tr>
+<tr>
+<td>15</td>
+<td>BASLOAD</td>
+<td>A transpiler that converts BASLOAD dialect to BASIC V2</td>
+</tr>
+<tr>
+<td>16-31</td>
+<td>–</td>
+<td><em>[Currently unused]</em></td>
+</tr>
+<tr>
+<td>32-255</td>
+<td>–</td>
+<td>Cartridge RAM/ROM</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important</strong>: The layout of the banks may still change.</p>
+<h3 id="cartridge-allocation">Cartridge Allocation<a class="headerlink" href="#cartridge-allocation" title="Permanent link">&para;</a></h3>
+<p>Cartridges can use the remaining 32-255 banks in any combination of ROM, RAM, Memory-Mapped IO, etc. See Kevin's reference cartridge design
+for ideas on how this may be used. This provides up to 3.5MB of additional RAM or ROM.</p>
+<p>Bootable cartridge: See <a href="../X16%20Reference%20-%2014%20-%20Hardware/#booting-from-cartridges">Hardware - Booting from Cartridges</a></p>
+<p><strong>Important</strong>: The layout of the banks is not yet final.</p>
+<h2 id="ram-contents">RAM Contents<a class="headerlink" href="#ram-contents" title="Permanent link">&para;</a></h2>
+<p>This is the allocation of fixed RAM in the KERNAL/BASIC environment.</p>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$0000-\$00FF</td>
+<td>Zero page</td>
+</tr>
+<tr>
+<td>\$0100-\$01FF</td>
+<td>CPU stack</td>
+</tr>
+<tr>
+<td>\$0200-\$03FF</td>
+<td>KERNAL and BASIC variables, vectors</td>
+</tr>
+<tr>
+<td>\$0400-\$07FF</td>
+<td>Available for machine code programs or custom data storage</td>
+</tr>
+<tr>
+<td>\$0800-\$9EFF</td>
+<td>BASIC program/variables; available to the user</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>$0400-$07FF</code> can be seen as the equivalent of <code>$C000-$CFFF</code> on a C64. A typical use would be for helper machine code called by BASIC.</p>
+<h3 id="zero-page">Zero Page<a class="headerlink" href="#zero-page" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$0000-\$0001</td>
+<td>Banking registers</td>
+</tr>
+<tr>
+<td>\$0002-\$0021</td>
+<td>16 bit registers r0-r15 for KERNAL API</td>
+</tr>
+<tr>
+<td>\$0022-\$007F</td>
+<td>Available to the user</td>
+</tr>
+<tr>
+<td>\$0080-\$009C</td>
+<td>Used by KERNAL and DOS</td>
+</tr>
+<tr>
+<td>\$009D-\$00A8</td>
+<td>Reserved for DOS/BASIC</td>
+</tr>
+<tr>
+<td>\$00A9-\$00D3</td>
+<td>Used by the Math library (and BASIC)</td>
+</tr>
+<tr>
+<td>\$00D4-\$00FF</td>
+<td>Used by BASIC</td>
+</tr>
+</tbody>
+</table>
+<p>Machine code applications are free to reuse the BASIC area, and if they don't use the Math library, also that area.</p>
+<h3 id="banking">Banking<a class="headerlink" href="#banking" title="Permanent link">&para;</a></h3>
+<p>This is the allocation of banked RAM in the KERNAL/BASIC environment.</p>
+<table>
+<thead>
+<tr>
+<th>Bank</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Used for KERNAL/CMDR-DOS variables and buffers</td>
+</tr>
+<tr>
+<td>1-255</td>
+<td>Available to the user</td>
+</tr>
+</tbody>
+</table>
+<p>(On systems with only 512 KB RAM, banks 64-255 are unavailable.)</p>
+<p>During startup, the KERNAL activates RAM bank 1 as the default for the user.</p>
+<h3 id="bank-0">Bank 0<a class="headerlink" href="#bank-0" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$A000-\$BEFF</td>
+<td>System Reserved</td>
+</tr>
+<tr>
+<td>\$BF00-\$BFFF</td>
+<td>Parameter passing space</td>
+</tr>
+</tbody>
+</table>
+<p>You can use the space at $0:BF00-0:$BFFF to pass parameters between programs.
+This space is initialized to zeroes, so you may use it however you wish.</p>
+<p>The suggested use is to store a PETSCII string in this space and use
+semicolons to separate parameters. The string should be null terminated:</p>
+<p>Example:</p>
+<p><code>FRANK;3;BLUE\x00</code></p>
+<p>A program that reads the parameters is responsible for resetting the data to
+zeroes, so that another program does not see unexpected data and malfunction.</p>
+<h2 id="io-area">I/O Area<a class="headerlink" href="#io-area" title="Permanent link">&para;</a></h2>
+<p>This is the memory map of the I/O Area:</p>
+<table>
+<thead>
+<tr>
+<th>Addresses</th>
+<th>Description</th>
+<th>Speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\$9F00-\$9F0F</td>
+<td>VIA I/O controller #1. <a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/#chapter-12-io-programming">Details</a></td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>\$9F10-\$9F1F</td>
+<td>VIA I/O controller #2</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>\$9F20-\$9F3F</td>
+<td>VERA video controller. <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/#registers">Details</a></td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>\$9F40-\$9F41</td>
+<td>YM2151 audio controller. <a href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/#ym2151-opm-fm-synthesis">Details</a></td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>\$9F42-\$9F5F</td>
+<td>Unavailable</td>
+<td>---</td>
+</tr>
+<tr>
+<td>\$9F50-\$9F5F</td>
+<td>Planned for X16GS. <a href="https://x16community.github.io/faq/gs-faq.html">Details</a></td>
+<td>---</td>
+</tr>
+<tr>
+<td>\$9F60-\$9F7F</td>
+<td>Expansion Card Memory Mapped IO3</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>\$9F80-\$9F9F</td>
+<td>Expansion Card Memory Mapped IO4</td>
+<td>8 MHz</td>
+</tr>
+<tr>
+<td>\$9FA0-\$9FBF</td>
+<td>Expansion Card Memory Mapped IO5</td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>\$9FB0-\$9FBF</td>
+<td>Used by emulator. <a href="https://github.com/X16Community/x16-emulator?tab=readme-ov-file#emulator-io-registers">Details</a></td>
+<td>---</td>
+</tr>
+<tr>
+<td>\$9FC0-\$9FDF</td>
+<td>Expansion Card Memory Mapped IO6</td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>\$9FE0-\$9FFF</td>
+<td>Cartidge/Expansion Memory Mapped IO7</td>
+<td>2 MHz</td>
+</tr>
+<tr>
+<td>\$9FFF</td>
+<td>POST code. <a href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/#post">Details</a></td>
+<td>2 MHz</td>
+</tr>
+</tbody>
+</table>
+<h3 id="expansion-cards-cartridges">Expansion Cards &amp; Cartridges<a class="headerlink" href="#expansion-cards-cartridges" title="Permanent link">&para;</a></h3>
+<p>Expansion cards can be accessed via memory-mapped I/O (MMIO), as well as I2C. Cartridges are
+essentially expansion cards which are housed in an external enclosure and may contain RAM, ROM
+and an I2C EEPOM (for save data). Internal expansion cards may also use the RAM/ROM space,
+though this could cause conflicts.</p>
+<p>While they may be uncommon, since cartridges are essentially external expansion cards in a
+shell, that means they can also use MMIO. This is only necessary when a cartridge includes
+some sort of hardware expansion and MMIO was desired (as opposed to using the I2C bus). In
+that case, it is recommended cartridges use the IO7 range and that range should be the
+last option used by expansion cards in the system.
+<strong>MMIO is unneeded for cartridges which simply have RAM/ROM.</strong></p>
+<p>For more information, consult the
+<a href="../X16%20Reference%20-%2014%20-%20Hardware/#chapter-14-hardware-pinouts">Hardware</a> section of the manual.</p>
+<hr />
+<p>[^1]: Current development systems have 2 MB of bankable RAM.
+Actual hardware is currently planned to have an option of either 512 KB or 2 MB of RAM.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" class="btn btn-neutral float-left" title="Chapter 7: Machine Language Monitor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" class="btn btn-neutral float-right" title="Chapter 9: VERA Programmer's Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

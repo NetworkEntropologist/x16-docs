@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix H: How to update your X16 to latest release - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix H: How to update your X16 to latest release";
+        var mkdocs_page_input_path = "X16 Reference - Appendix H - Onboard Upgrade Guide.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix H: How to update your X16 to latest release</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table Of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#latest-release">Latest release</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#update-instructions">Update instructions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-note-down-your-current-romsmcvera-versions-recommended">Step 1: Note down your current ROM/SMC/VERA versions (recommended)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-take-a-backup-of-what-you-have">Step 2: Take a backup of what you have</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-download-files-and-place-on-sd-card">Step 3: Download files and place on SD card</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-4-update-vera-to-4801">Step 4: Update VERA to 48.0.1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-5-update-rom-to-r49">Step 5: Update ROM to R49</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-6-update-smc-to-4800">Step 6: Update SMC to 48.0.0</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-7-install-bootloader-v3">Step 7: Install bootloader v3</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-release-history">Appendix: Release history</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-stock-version-numbers">Appendix: Stock version numbers</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-how-to-downgrade-from-latest-release-to-first-release">Appendix: How to downgrade from latest release to first release</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix H: How to update your X16 to latest release</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-h-how-to-update-your-x16-to-latest-release">Appendix H: How to update your X16 to latest release<a class="headerlink" href="#appendix-h-how-to-update-your-x16-to-latest-release" title="Permanent link">&para;</a></h1>
+<p>These instructions will guide you how to update your X16 firmware from any previous version to the latest version. This guide will be updated once there are new releases. This guide is applicable for Gen 1 hardware, PRxxxxx boards.</p>
+<h2 id="table-of-contents">Table Of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#latest-release">Latest release</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#update-instructions">Update instructions</a></li>
+<li><a href="#appendix-release-history">Appendix: Release history</a></li>
+<li><a href="#appendix-stock-version-numbers">Appendix: Stock version numbers</a></li>
+<li><a href="#appendix-how-to-downgrade-from-latest-release-to-first-release">Appendix: How to downgrade from latest release to first release</a></li>
+</ol>
+<h2 id="latest-release">Latest release<a class="headerlink" href="#latest-release" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Firmware</th>
+<th>Version</th>
+<th>Date</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ROM</td>
+<td>R49</td>
+<td>2025-11-19</td>
+<td>https://github.com/X16Community/x16-rom/releases/tag/r49</td>
+</tr>
+<tr>
+<td>SMC</td>
+<td>48.0.0</td>
+<td>2024-12-23</td>
+<td>https://github.com/X16Community/x16-smc/releases/tag/r48.0.0</td>
+</tr>
+<tr>
+<td>VERA</td>
+<td>48.0.1</td>
+<td>2025-01-08</td>
+<td>https://github.com/X16Community/vera-module/releases/tag/v48.0.1</td>
+</tr>
+<tr>
+<td>SMC bootloader</td>
+<td>3</td>
+<td>2024-09-13</td>
+<td>https://github.com/X16Community/x16-smc-bootloader/releases/tag/v3</td>
+</tr>
+</tbody>
+</table>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware</td>
+<td>Gen 1 PRxxxxx board</td>
+</tr>
+<tr>
+<td>ROM</td>
+<td>Minimum version R43</td>
+</tr>
+<tr>
+<td>SMC</td>
+<td>Minimum version 43.0.0</td>
+</tr>
+<tr>
+<td>VERA</td>
+<td>No minimum version</td>
+</tr>
+</tbody>
+</table>
+<h2 id="update-instructions">Update instructions<a class="headerlink" href="#update-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-note-down-your-current-romsmcvera-versions-recommended">Step 1: Note down your current ROM/SMC/VERA versions (recommended)<a class="headerlink" href="#step-1-note-down-your-current-romsmcvera-versions-recommended" title="Permanent link">&para;</a></h3>
+<h4 id="11-romsmcvera-versions">1.1 ROM/SMC/VERA versions<a class="headerlink" href="#11-romsmcvera-versions" title="Permanent link">&para;</a></h4>
+<p>Use the <code>HELP</code> command to see which versions you currently have.
+You may want to take a picture of the screen or write it down, for future reference.</p>
+<h4 id="12-smc-bootloader-version">1.2 SMC bootloader version<a class="headerlink" href="#12-smc-bootloader-version" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Poll bootloader version with this command: <code>PRINT I2CPEEK($42,$8E)</code><ul>
+<li>This should be 2 if you have a stock PR board. Note that if you have bootloader 3 it may incorrectly display as 255.</li>
+</ul>
+</li>
+<li>If you have SMC version 47.2.3 or later, you can use the tool "SMCBLD7.PRG" inside [smc tools] (see step 3) to identify bootloader version based on its CRC-16 checksum, making this a more accurate bootloader test.</li>
+<li>Take a picture of the screen, for future reference.</li>
+</ul>
+<h3 id="step-2-take-a-backup-of-what-you-have">Step 2: Take a backup of what you have<a class="headerlink" href="#step-2-take-a-backup-of-what-you-have" title="Permanent link">&para;</a></h3>
+<h4 id="21-sd-card-highly-recommended">2.1 SD card (highly recommended)<a class="headerlink" href="#21-sd-card-highly-recommended" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Plug SD card in your PC and make a backup of all files. In case SD card gets corrupted, damaged, or you loose your files otherwise.</li>
+<li>If needed, you can download the latest version of the SD card bundle here: https://github.com/cx16forum/sdcard</li>
+</ul>
+<h4 id="22-romsmcvera-optional">2.2 ROM/SMC/VERA (optional)<a class="headerlink" href="#22-romsmcvera-optional" title="Permanent link">&para;</a></h4>
+<ul>
+<li>If you know your current version numbers (step 1), and do not care about rolling back, you can safely skip this step.</li>
+<li>If you like to preserve the history, and your version is not already archived, you may want to dump it before overwriting it.</li>
+</ul>
+<details><summary>CLICK FOR DETAILS</summary>
+<p>
+
+If your version is not archived (e.g. ROM prerelease), you may want to make a backup of this one (and give a heads-up on Discord, #kernel).
+  - Dump tool for ROM/SMC/VERA/RTC: https://cx16forum.com/forum/viewtopic.php?p=34970
+- Archive of official releases:
+  - ROM: https://github.com/X16Community/x16-rom/releases/
+  - SMC: https://github.com/X16Community/x16-smc/releases/
+  - VERA: https://github.com/X16Community/vera-module/releases/
+  - SMC bootloaders: https://github.com/X16Community/x16-smc-bootloader/releases
+- Unofficial releases, known to have been delivered with some machines:
+  - SMC 45.1.0: Dump: https://github.com/FlightControl-User/x16-flash/releases/download/r3.0.0/R45-BINS.zip
+  - SMC bootloader v2(bad): Dump: Inside [bootloader tools] https://github.com/X16Community/x16-smc/pull/53#issuecomment-2362330198 / src: https://github.com/X16Community/x16-smc/pull/20
+  - ROM R47 prerelease git 8929A57+: Dump: https://cx16forum.com/forum/viewtopic.php?p=31112 / src: X16Community/x16-rom#213 (exact source is ambiguous due to the +)
+  - ROM R47 prerelease git 33ACE3A4: Dump: https://cx16forum.com/forum/viewtopic.php?p=31112 / src: X16Community/x16-rom#241
+</p>
+</details>
+
+<h3 id="step-3-download-files-and-place-on-sd-card">Step 3: Download files and place on SD card<a class="headerlink" href="#step-3-download-files-and-place-on-sd-card" title="Permanent link">&para;</a></h3>
+<ul>
+<li>BIN files and their associated programming tool must stay in the same folder</li>
+<li>Note that the x16-flash tool (UPDATE.PRG) will attempt to program both ROM, SMC and VERA if it finds associated .BIN files in its folder, so make sure that its folder only contains ROM.BIN</li>
+</ul>
+<h4 id="suggested-folder-structure">Suggested folder structure:<a class="headerlink" href="#suggested-folder-structure" title="Permanent link">&para;</a></h4>
+<ul>
+<li>UPDATE<ul>
+<li>VERA<ul>
+<li>FLASHVERA.PRG</li>
+<li>VERA.BIN (downloaded file must be renamed to VERA.BIN)</li>
+</ul>
+</li>
+<li>ROM<ul>
+<li>UPDATE.PRG</li>
+<li>ROM.BIN</li>
+</ul>
+</li>
+<li>SMC<ul>
+<li>SMCUPDATE-x.x.x.PRG (do not rename)</li>
+</ul>
+</li>
+<li>SMCTOOLS<ul>
+<li>SMCBLD7.PRG</li>
+<li>SMCBLW19.PRG</li>
+<li>BOOT3.BIN</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>To organize multiple ROM and VERA versions on the SD card, you may e.g. add folders with version numbers, and place firmware inside.</p>
+<h4 id="downloads">Downloads:<a class="headerlink" href="#downloads" title="Permanent link">&para;</a></h4>
+<ul>
+<li>VERA 48.0.1<ul>
+<li>https://github.com/X16Community/vera-module/releases/tag/v48.0.1<ul>
+<li>Download Assets -&gt; VERA_48.0.1.BIN</li>
+</ul>
+</li>
+<li>https://github.com/mooinglemur/flashvera/releases/tag/v0.2<ul>
+<li>Download Assets -&gt; FLASHVERA.PRG</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ROM R49<ul>
+<li>https://github.com/X16Community/x16-rom/releases/tag/r49<ul>
+<li>Download Assets -&gt; Release.R49.ROM.Image.zip<ul>
+<li>Extract "rom.bin"</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>https://github.com/FlightControl-User/x16-flash/releases/tag/r3.0.0<ul>
+<li>Download Assets -&gt; CX16-UPDATE-R3.0.0.PRG</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SMC 48.0.0<ul>
+<li>https://github.com/X16Community/x16-smc/releases/tag/r48.0.0<ul>
+<li>Download Assets -&gt; X16-SMC_r48.0.0.zip<ul>
+<li>Extract "SMCUPDATE-48.0.0.PRG"</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SMC tools v6<ul>
+<li>https://github.com/X16Community/x16-smc/pull/53#issuecomment-2362330198<ul>
+<li>Download smc-flash-manipulation-6.zip<ul>
+<li>Extract files mentioned under SMCTOOLS above</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="copy-to-sd-card">Copy to SD card<a class="headerlink" href="#copy-to-sd-card" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Prepare the folder structure on the SD card.</li>
+<li>Copy downloaded files to SD card, inside the folder structure mentioned above.</li>
+<li>Rename files as needed. Uppercase/lowercase is not important.</li>
+</ul>
+<h4 id="navigating-the-file-system-on-x16">Navigating the file system on X16<a class="headerlink" href="#navigating-the-file-system-on-x16" title="Permanent link">&para;</a></h4>
+<ul>
+<li>To list files in current folder, or change folder, you use the commands <code>DOS"$"</code> or <code>DOS"CD:folder"</code>.</li>
+<li>A shortcut is to use the <code>@</code> prefix, e.g. <code>@$</code> and <code>@CD:folder</code></li>
+<li>To enter the VERA folder, you can e.g. use the command <code>@CD:/UPDATE/VERA</code></li>
+<li>You can also navigate like this:</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@CD:/UPDATE
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>@$
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>@CD:VERA
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>@$
+</span></code></pre></div>
+<h3 id="step-4-update-vera-to-4801">Step 4: Update VERA to 48.0.1<a class="headerlink" href="#step-4-update-vera-to-4801" title="Permanent link">&para;</a></h3>
+<p>VERA have best backward compatibility, and should be flashed first.
+- 48.0.1 supports at least ROM 47 prerelease, and probably older ROMs as well.
+- Release page: https://github.com/X16Community/vera-module/releases/tag/v48.0.1
+- Follow instructions on release page to program VERA.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@CD:/UPDATE/VERA
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>LOAD &quot;FLASHVERA.PRG&quot;
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>RUN
+</span></code></pre></div>
+<ul>
+<li>After programming, restart machine and type <code>HELP</code> to verify VERA version.</li>
+</ul>
+<h3 id="step-5-update-rom-to-r49">Step 5: Update ROM to R49<a class="headerlink" href="#step-5-update-rom-to-r49" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Minimum SMC version: 43.0.0</li>
+<li>Minimum VERA version: 0.3.1</li>
+<li>You may follow this guide: https://github.com/FlightControl-User/x16-flash</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@CD:/UPDATE/ROM
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>LOAD &quot;UPDATE.PRG&quot;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>RUN
+</span></code></pre></div>
+<ul>
+<li>Follow the instructions on screen.</li>
+<li>Note that the J1 jumper must be on, to allow ROM to be reprogrammed. Disconnect jumper after programming, to ensure ROM is write protected.</li>
+<li>Important: Only program ROM in this step, not VERA or SMC.</li>
+</ul>
+<h3 id="step-6-update-smc-to-4800">Step 6: Update SMC to 48.0.0<a class="headerlink" href="#step-6-update-smc-to-4800" title="Permanent link">&para;</a></h3>
+<ul>
+<li>To update SMC, a little program on the SMC called "bootloader" is used to replace its main program.</li>
+<li>All PR boards up to ~900 seem to have been delivered with version 45.1.0, and with a bootloader which claims to be version 2, but, unfortunately, is a corrupt version of version 2 (also referred to as the "bad" bootloader). This have the consequence that, if you attempt to program, the x16 will hang at the end of programming. If you attempt to fix the hang problem by disconnecting power, and plug it back in, your SMC will be "bricked", and you cannot use your x16 until you disconnect the SMC and program it manually using an external programmer or Arduino [recovery-with-arduino].</li>
+<li>To update your SMC with bad bootloader, you have 2 options:<ul>
+<li>Option 1: Disconnect the SMC, connect to an external programmer, and install latest firmware https://github.com/X16Community/x16-smc/blob/main/doc/recovery-with-arduino.md</li>
+<li>Option 2: Reset the SMC by shorting its reset pin to GND, using a jumper wire. Instruction: https://github.com/X16Community/x16-smc/blob/main/doc/update-with-bad-bootloader-v2.md<ul>
+<li>NB: If you plan to do option 2, ref the instructions, you should practice doing this reset while at the READY prompt. Once you get the hang of it, you can do it during programming. It is important that you get it correct at the critical moment when the SMC is hanging inside the bad bootloader.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If you have a different SMC version than 45.1.0, you most likely do not have the bad bootloader.</li>
+</ul>
+<h4 id="recommended-install-method-smcupdate-4800prg">Recommended install method, SMCUPDATE-48.0.0.PRG<a class="headerlink" href="#recommended-install-method-smcupdate-4800prg" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The recommended method to upgrade SMC to latest version 48.0.0, is to use an installer with version 48.0.0 bundled together with the installer.</li>
+<li>If there is a risk of having the bad v2 bootloader, have a jumper wire ready</li>
+<li>Load and run the installer
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@CD:/UPDATE/SMC
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>LOAD &quot;SMCUPDATE-48.0.0.PRG&quot;
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>RUN
+</span></code></pre></div></li>
+<li>Use the jumper wire if needed, ref the "update-with-bad-bootloader-v2.md" instructions</li>
+</ul>
+<h4 id="alternative-tools">Alternative tools<a class="headerlink" href="#alternative-tools" title="Permanent link">&para;</a></h4>
+<details><summary>CLICK FOR DETAILS</summary>
+<p>
+
+- The tool SMCUPDATE 2.0 allows you to specify a .hex file to install
+    - This tool works with bootloader 2, but not with bootloader 3
+    - Tool: https://github.com/stefan-b-jakobsson/x16-smc-update/releases/tag/2.0
+    - When prompted for file name, enter "x16-smc.ino.hex"
+- The tool x16-flash allows you to program the .bin file from the release page
+    - This tool ignores bootloader version, and works with both v2 and v3
+    - If bootloader version is 2, you cannot reprogram with the same version
+    - This tool gives bad recommendation in the case of bad bootloader
+    - Tool: https://github.com/FlightControl-User/x16-flash/releases/tag/r3.0.0
+- These tools can work with the .hex and .bin files found in the release page
+    - https://github.com/X16Community/x16-smc/releases/tag/r48.0.0
+
+</p>
+</details>
+
+<h3 id="step-7-install-bootloader-v3">Step 7: Install bootloader v3<a class="headerlink" href="#step-7-install-bootloader-v3" title="Permanent link">&para;</a></h3>
+<p>Follow instructions inside the text file in [smc tools] ("smc-flash-manipulation-6.zip")</p>
+<ul>
+<li>Run SMCBLD7.PRG to get bootloader checksum, version and failsafe status
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>@CD:/UPDATE/SMCTOOLS
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>LOAD &quot;SMCBLD7.PRG&quot;
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>RUN
+</span></code></pre></div></li>
+<li>Run SMCBLW19.PRG to install BOOT3.BIN
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>@CD:/UPDATE/SMCTOOLS
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>LOAD &quot;SMCBLW19.PRG&quot;
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>RUN
+</span></code></pre></div></li>
+<li>Run SMCBLD7.PRG to validate checksum again, confirm it BF63 (v3)</li>
+<li>To install "Boot v3 failsafe", you need to update SMC a second time (repeat step 6)</li>
+<li>Run SMCBLD7.PRG, to confirm that boot v3 failsafe is installed</li>
+</ul>
+<p>With Boot V3 failsafe installed, you have a fallback mechanism in case SMC firmware gets corrupted.</p>
+<h2 id="appendix-release-history">Appendix: Release history<a class="headerlink" href="#appendix-release-history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>ROM</th>
+<th>SMC</th>
+<th>VERA</th>
+<th>SMC bootloader</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-11-19</td>
+<td>R49</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Release R49 ("Pyrite")</td>
+</tr>
+<tr>
+<td>2025-01-08</td>
+<td></td>
+<td></td>
+<td>48.0.1</td>
+<td></td>
+<td>XOR Sawtooth + bus stability</td>
+</tr>
+<tr>
+<td>2024-12-23</td>
+<td></td>
+<td>48.0.0</td>
+<td></td>
+<td></td>
+<td>Kbd initstate, read fuse++</td>
+</tr>
+<tr>
+<td>2024-09-13</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>Boot v3, with failsafe</td>
+</tr>
+<tr>
+<td>2024-09-06</td>
+<td>R48</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Release R48 ("Cadmium")</td>
+</tr>
+<tr>
+<td>2024-07-05</td>
+<td></td>
+<td>47.2.3</td>
+<td></td>
+<td></td>
+<td>Bootloader manipulation ++</td>
+</tr>
+<tr>
+<td>2024-03-30</td>
+<td>R47</td>
+<td>47.0.0</td>
+<td>47.0.2</td>
+<td></td>
+<td>Release R47 ("Roswell")</td>
+</tr>
+<tr>
+<td>2023-12-24</td>
+<td>R47 pre 33ACE3A4*</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Unreleased ROM version*</td>
+</tr>
+<tr>
+<td>2023-11-20</td>
+<td></td>
+<td></td>
+<td>0.3.2</td>
+<td></td>
+<td>Experimental FX</td>
+</tr>
+<tr>
+<td>2023-11-06</td>
+<td>R47 pre 8929A57+*</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Unreleased ROM version*</td>
+</tr>
+<tr>
+<td>2023-11-06</td>
+<td>R46</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Release R46 ("Winnipeg")</td>
+</tr>
+<tr>
+<td>2023-10-18</td>
+<td></td>
+<td>45.1.0*</td>
+<td></td>
+<td></td>
+<td>Unreleased*, bootloader support</td>
+</tr>
+<tr>
+<td>2023-10-17</td>
+<td>R45</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Release R45 ("Nuuk")</td>
+</tr>
+<tr>
+<td>2023-10-04</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>Boot v2, auto power off</td>
+</tr>
+<tr>
+<td>2023-10-04</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2 (bad)*</td>
+<td>Bad version*</td>
+</tr>
+<tr>
+<td>2023-08-14</td>
+<td>R44</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Release R44 ("Milan")</td>
+</tr>
+<tr>
+<td>2023-08-09</td>
+<td></td>
+<td></td>
+<td>0.3.1</td>
+<td></td>
+<td>Experimental FX</td>
+</tr>
+<tr>
+<td>2023-05-17</td>
+<td>R43</td>
+<td>43.0.0</td>
+<td></td>
+<td></td>
+<td>Release R43 ("Stockholm")</td>
+</tr>
+<tr>
+<td>2023-04-19</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>Boot v1</td>
+</tr>
+<tr>
+<td>2023-03-23</td>
+<td></td>
+<td></td>
+<td>0.1.1</td>
+<td></td>
+<td>VERA 0.1.1</td>
+</tr>
+<tr>
+<td>2023-03-07</td>
+<td>R42</td>
+<td>R42</td>
+<td></td>
+<td></td>
+<td>Release R42 ("Cambridge")</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A few releases are not official, but, these have been delivered with some of the machines, see below.</li>
+</ul>
+<h2 id="appendix-stock-version-numbers">Appendix: Stock version numbers<a class="headerlink" href="#appendix-stock-version-numbers" title="Permanent link">&para;</a></h2>
+<details><summary>CLICK FOR DETAILS</summary>
+<p>
+
+This is based on feedback from users on Discord, and is very approximate. If you have updated info, feel free to send a message on Discord.
+
+### PR00001 to PR00300
+
+| Firmware        | Version              | Date       | Link                                                                                                                                                                  |
+|-----------------|----------------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ROM             | R47pre git 8929A57+* | 2023-11-06 | Build: https://cx16forum.com/forum/viewtopic.php?p=31112 / src: https://github.com/X16Community/x16-rom/pull/213 (exact source is ambiguous due to the +)             |
+| SMC             | 45.1.0*              | 2023-10-18 | Build: https://github.com/FlightControl-User/x16-flash/blob/main/arduino/x16-smc-r45.1-bootloader.hex / src: https://github.com/X16Community/x16-smc/pull/20          |
+| VERA            | 0.3.2                | 2023-11-20 | https://github.com/X16Community/vera-module/releases/tag/v0.3.2                                                                                                       |
+| SMC bootloader  | 2 (bad)*             | 2023-10-04 | Build: https://github.com/FlightControl-User/x16-flash/blob/main/arduino/x16-smc-r45.1-bootloader.hex / src: https://github.com/stople/x16-smc-bootloader/tree/bad_v2 |
+
+### PR00301 to PR00900
+
+| Firmware        | Version              | Date       | Link                                                                                                             |
+|-----------------|----------------------|------------|------------------------------------------------------------------------------------------------------------------|
+| ROM             | R47pre git 33ACE3A4* | 2023-12-24 | Build: https://cx16forum.com/forum/viewtopic.php?p=31112 / src: https://github.com/X16Community/x16-rom/pull/241 |
+| SMC             | 45.1.0*              | 2023-10-18 |                                                                                                                  |
+| VERA            | 0.3.2                | 2023-11-20 |                                                                                                                  |
+| SMC bootloader  | 2 (bad)*             | 2023-10-04 |                                                                                                                  |
+
+### PR00901 to PR01000
+
+| Firmware        | Version | Date       | Link                                                               |
+|-----------------|---------|------------|--------------------------------------------------------------------|
+| ROM             | R47     | 2024-03-30 | https://github.com/X16Community/x16-rom/releases/tag/r47           |
+| SMC             | 47.0.0  | 2024-03-30 | https://github.com/X16Community/x16-smc/releases/tag/r47.0.0       |
+| VERA            | 47.0.2  | 2024-03-30 | https://github.com/X16Community/vera-module/releases/tag/v47.0.2   |
+| SMC bootloader  | 2       | 2023-10-04 | https://github.com/X16Community/x16-smc-bootloader/releases/tag/v2 |
+
+### PR01001 to PR?????
+
+| Firmware        | Version | Date       | Link                                                               |
+|-----------------|---------|------------|--------------------------------------------------------------------|
+| ROM             | R48     | 2024-09-06 | https://github.com/X16Community/x16-rom/releases/tag/r48           |
+| SMC             | 47.2.3  | 2024-07-05 | https://github.com/X16Community/x16-smc/releases/tag/r47.2.3       |
+| VERA            | 47.0.2  | 2024-03-30 | https://github.com/X16Community/vera-module/releases/tag/v47.0.2   |
+| SMC bootloader  | 2       | 2023-10-04 | https://github.com/X16Community/x16-smc-bootloader/releases/tag/v2 |
+
+### Some stock versions
+| Machine | ROM                  | SMC     | VERA   | SMC bootloader |
+|---------|----------------------|---------|--------|----------------|
+| PR00015 | R47pre git 8929A57+* |         |        |                |
+| PR00102 | R47pre git 8929A57+* | 45.1.0* | 0.3.2  | 2 (bad)*       |
+| PR00499 | R47pre git 33ACE3A4* |         |        |                |
+| PR00831 | R47pre git 33ACE3A4* | 45.1.0* | 0.3.2  | 2 (bad)*       |
+| PR00923 | R47                  | 47.0.0  | 47.0.2 | 2              |
+| PR01011 | R48                  | 47.2.3  | 47.0.2 | 2              |
+
+</p>
+</details>
+
+<h2 id="appendix-how-to-downgrade-from-latest-release-to-first-release">Appendix: How to downgrade from latest release to first release<a class="headerlink" href="#appendix-how-to-downgrade-from-latest-release-to-first-release" title="Permanent link">&para;</a></h2>
+<details><summary>CLICK FOR DETAILS</summary>
+<p>
+
+### Step 1: Downgrade bootloader
+This is optional, as all bootloaders are backward compatible. If you do not plan to downgrade bootloader, go to step 2.
+
+Run SMCBLD7.PRG. Check if "Boot v3 failsafe" is installed. If it is, and you plan to downgrade to bootloader v2 or older, you must:
+- Ensure [any working SMC programming tool and SMC version] is present on SD card
+    - SMCUPDATE-47.2.3 can be used
+    - NB: x16-flash with bootloader 2 rejects programming SMC to the same version!
+- Downgrade bootloader, using SMCBLW19.PRG
+- Computer is now in a critical state. If you power it off, it is bricked.
+- In this state, you must perform a SMC programming, to any version, with any tool, to uninstall "boot v3 failsafe".
+    - If you installed bad v2 bootloader, remember to reset it using jumper wire
+
+### Step 2: Downgrade SMC
+Downgrade SMC using any tool
+- SMCUPDATE or x16-update
+- Note that SMC 45.1.0* or newer is needed if you want to use the bootloader afterwards
+- SMC older than R42 is intended for an incompatible hardware revision
+
+### Step 3: Downgrade ROM
+Downgrade ROM
+- ROM older than R42 is intended for an incompatible hardware revision
+
+### Step 4: Downgrade VERA
+Downgrade VERA
+- If using VERA.BIN from release page, use the associated FLASHVERA
+- If using VERA.BIN released together with x16-flash, use x16-flash to program it
+
+</p>
+</details>
+
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/" class="btn btn-neutral float-left" title="Appendix G: ZSM File Format"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/" class="btn btn-neutral float-right" title="Appendix I: Character Sets">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

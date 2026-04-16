@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Appendix E: Diagnostic Bank - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Appendix E: Diagnostic Bank";
+        var mkdocs_page_input_path = "X16 Reference - Appendix E - Diagnostic Bank.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2011%20-%20Sound%20Programming/">Chapter 11: Sound Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Appendix E: Diagnostic Bank</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#index">Index</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-diagnostics">Running Diagnostics</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#post">POST</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#functional-system">Functional system</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#non-functional-system">Non functional system</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#progress-indicators">Progress indicators</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#without-screen">Without screen</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#with-screen">With screen</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#error-communication">Error communication</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-algorithm">Test algorithm</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#theory">Theory</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Appendix E: Diagnostic Bank</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="appendix-e-diagnostic-bank">Appendix E: Diagnostic Bank<a class="headerlink" href="#appendix-e-diagnostic-bank" title="Permanent link">&para;</a></h1>
+<p>The Diagnostic ROM bank can run a full diagnostic on the system memory (base + 512K-2048K extended) of the Commander X16.</p>
+<h2 id="index">Index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#Running-Diagnostics">Running Diagnostics</a></li>
+<li><a href="#Progress-Indicators">Progress indicators</a><ul>
+<li><a href="#without-screen">Without screen</a></li>
+<li><a href="#with-screen">With screen</a></li>
+</ul>
+</li>
+<li><a href="#Error-communication">Error communication</a></li>
+<li><a href="#test-algorithm">Test algorithm</a><ul>
+<li><a href="#theory">Theory</a></li>
+<li><a href="#implementation">Implementation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="running-diagnostics">Running Diagnostics<a class="headerlink" href="#running-diagnostics" title="Permanent link">&para;</a></h2>
+<h3 id="post">POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
+<p>As of R49, short, rudimentary diagnostics are run against the VIA#1,
+zeropage, and stack RAM upon every powerup. If either of these tests
+fail, the diagnostic ROM will attempt to initialize the VERA to show
+a failure code on screen.</p>
+<p>During these rudimentary tests and upon failure, POST codes can be sent to I/O address
+$9FFF, which resides in the IO7 range.  Before writing a code to this
+address, the system will attempt to read from $9FFF to check for
+an expansion card's presence. If there is no card present, or if the
+card handling the range does not respond to reads at this address, it
+will act as an open bus read, and return $9F.  An open bus read will
+cause the POST code to be written.  If any other value besides $9F is
+read from $9FFF, the write is skipped.  This design allows POST codes
+to be written in the presence of passive logical analysis hardware
+while hopefully avoiding putting other expansion cards into a bad
+state.</p>
+<p>POST code format: <code>%FSSSCCCC</code><br />
+F = 1 for a critical fault (system will not continue booting), 0 for normal operation<br />
+<code>SSS</code> = subsystem<br />
+<code>CCCCCCC</code> = code  </p>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%000</code></td>
+<td>Generic status</td>
+</tr>
+<tr>
+<td><code>%001</code></td>
+<td>VERA</td>
+</tr>
+<tr>
+<td><code>%010</code></td>
+<td>VIA#1</td>
+</tr>
+<tr>
+<td><code>%011</code></td>
+<td>RAM</td>
+</tr>
+</tbody>
+</table>
+<p>The following table is a list of POST codes. In rows containing two codes,
+the first code indicates the check is about to start, and the second code
+indicates a failure of the check.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$01</code></td>
+<td>POST complete</td>
+</tr>
+<tr>
+<td><code>$20/$A0</code></td>
+<td>Check VIA#1</td>
+</tr>
+<tr>
+<td><code>$30/$B0</code></td>
+<td>Check zeropage RAM</td>
+</tr>
+<tr>
+<td><code>$31/$B1</code></td>
+<td>Check stack RAM</td>
+</tr>
+<tr>
+<td><code>$90</code></td>
+<td>POST failure: Waiting for VERA init</td>
+</tr>
+<tr>
+<td><code>$91</code></td>
+<td>POST failure: Initializing VERA</td>
+</tr>
+<tr>
+<td><code>$92</code></td>
+<td>POST failure: VERA not ready</td>
+</tr>
+</tbody>
+</table>
+<h3 id="functional-system">Functional system<a class="headerlink" href="#functional-system" title="Permanent link">&para;</a></h3>
+<p>The memory diagnostics can be started in two different ways. If the system is functional enough to actually boot into BASIC, the diagnostics can be started from there with the following:<br />
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="vg">BANK</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="il">7</span><span class="o">:</span><span class="w"> </span><span class="vg">SYS</span><span class="w"> </span><span class="err">$</span><span class="vg">C000</span>
+</span></code></pre></div></p>
+<p>It is also possible to jump directly to the diagnostic ROM bank from assembly.<br />
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="nf">lda</span><span class="w"> </span><span class="c1">#$07    ; ROM bank 7 is the diagnostic bank</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nf">sta</span><span class="w"> </span><span class="no">$01</span><span class="w">     </span><span class="c1">; Write ROM bank to ROM bank registers</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nf">jmp</span><span class="w"> </span><span class="no">$C000</span><span class="w">   </span><span class="c1">; Jump to beginning of diagnostic ROM</span>
+</span></code></pre></div></p>
+<p>NOTE: The Diagnostic ROM is not able to return to BASIC or any program that has called. The only way to exit the Diagnostic ROM is by resetting or power cycling the system.</p>
+<h3 id="non-functional-system">Non functional system<a class="headerlink" href="#non-functional-system" title="Permanent link">&para;</a></h3>
+<p>If the Commander X16 is not able to boot into BASIC, the memory diagnostics can be started by keeping the power button pressed for about a second when powering on the system.<br />
+This will make the Commander X16 boot directly into the diagnostic ROM bank and start the memory diagnostics.</p>
+<h2 id="progress-indicators">Progress indicators<a class="headerlink" href="#progress-indicators" title="Permanent link">&para;</a></h2>
+<h3 id="without-screen">Without screen<a class="headerlink" href="#without-screen" title="Permanent link">&para;</a></h3>
+<p>When the diagnostic ROM bank starts, it will use the activity LED to indicate the progress.<br />
+* ON - while zero-page memory is tested (very brief)
+* OFF - for 1st test of base memory (\$0100-\$9EFF)
+* ON - for 2nd test of base memory (\$0100-\$9EFF)
+* OFF - for 3rd test of base memory (\$0100-\$9EFF)
+* ON - for 4th test of base memory (\$0100-\$9EFF)</p>
+<p>After the initial test of base memory, the number of available memory banks is tested, VERA is initialized and both the activity LED and the keyboard LEDs are used to indicate the progress.<br />
+The keyboard LEDs are used as a binary counter:<br />
+| Num | Binary | Num Lock | Caps Lock | Scroll Lock |
+|-----|--------|----------|-----------|-------------|
+|  0  |  000   |    0     |     0     |      0      |
+|  1  |  001   |    0     |     0     |      1      |
+|  2  |  010   |    0     |     1     |      0      |
+|  3  |  011   |    0     |     1     |      1      |
+|  4  |  100   |    1     |     0     |      0      |
+|  5  |  101   |    1     |     0     |      1      |
+|  6  |  110   |    1     |     1     |      0      |
+|  7  |  111   |    1     |     1     |      1      |</p>
+<h4 id="main-test-loop">Main test loop<a class="headerlink" href="#main-test-loop" title="Permanent link">&para;</a></h4>
+<p>During the first test iteration, the keyboard LEDs will display 0 0 1<br />
+When the test is done, the activity light will blink once.<br />
+During the second test iteration, the keyboard LEDs will display 0 1 0<br />
+When the test is done, the activity light will blink once.<br />
+During the third test iteration, the keyboard LEDs will display 0 1 1<br />
+When the test is done, the activity light will blink once.<br />
+During the fourth test iteration, the keyboard LEDs will display 1 0 0<br />
+When the test is done, the activity light will blink once.  </p>
+<p>As the last part of the test loop, the base memory is tested. Keyboard LEDs will show 1 0 1<br />
+When the test loop is done, keyboard LEDs will show 1 1 1 and the activity LED will blink 3 times before starting over.</p>
+<h3 id="with-screen">With screen<a class="headerlink" href="#with-screen" title="Permanent link">&para;</a></h3>
+<p>When the base memory has been tested the first time, VERA is initialized with output to VGA.<br />
+On the screen there is detailed information about the progress of each test iteration.<br />
+Each time through the main test loop, the output of VERA will be switched between VGA and Composite/S-Video.  </p>
+<h2 id="error-communication">Error communication<a class="headerlink" href="#error-communication" title="Permanent link">&para;</a></h2>
+<p>If an error is detected before VERA is initialized, the error will be reported with the activity LED by blinking every half second 3 times, staying off for 1 second and repeating. - All tests stop.  </p>
+<p>This means that if an error occurs before VERA is initialized, you have no way of figuring out exactly where the error is, but you do know that the error has happened in base memory.  </p>
+<p>When the initial test of base memory has succeeded and VERA is initialized, any errors will be reported to the display. Only if more than 32 errors are encountered, will the tests stop and the activity LED will flash the same way as when an error is encountered before VERA initialization.  </p>
+<p>Even when tests are stopped, VERA output will still be switched between VGA and Composite/S-Video about every minute.</p>
+<p>The error codes on screen are as follows:
+<img alt="Error code definition" src="../images/Appendix_E/mem-diag-error-code.jpg" /></p>
+<h2 id="test-algorithm">Test algorithm<a class="headerlink" href="#test-algorithm" title="Permanent link">&para;</a></h2>
+<h3 id="theory">Theory<a class="headerlink" href="#theory" title="Permanent link">&para;</a></h3>
+<p>RAM diagnostics are performed with the March C- algorithm. This algorithm should be fairly good at finding most common memory errors.  </p>
+<p>In short, the algorithm is described as follows:
+1. Write 0 to all memory cells
+2. For each cell, check that it contains 0 and write 1 in ascending order
+3. For each cell, check that it contains 1 and write 0 in ascending order
+4. For each cell, check that it contains 0 and write 1 in descending order
+5. For each cell, check that it contains 1 and write 0 in descending order
+6. Check that all cells contain 0</p>
+<p>On the Commander X16 and most other 6502 based computers, above algorithm would take a very long time to complete. For this reason, the algorithm has been modified slightly to write and compare entire bytes instead of single bits.
+To catch most memory errors, the following bit patterns are tested:
+* 0000 0000
+* 0101 0101
+* 0011 0011
+* 0000 1111</p>
+<p>The algorithm is then implemented in the following way:
+1. Write pattern to all memory addresses
+2. For each address, check the pattern and write the inverted pattern in ascending order
+3. For each address, check the inverted pattern and write the original pattern in ascending order
+4. For each address, check the original pattern and write the inverted pattern in descending order
+5. For each address, check the inverted pattern and write the original pattern in descending order
+6. Check all addresses contain the original pattern</p>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<p>When memory test starts, the first thing that happens is that zero-page is tested by itself. If this test passes, the rest of base memory is tested from \$0100-\$9EFF while ensuring that these tests do not affect zero-page memory.  </p>
+<p>When base memory has passed the initial test, zero-page is used for variables and stack pointer is initialized to enable pushing and popping of registers and function calls.<br />
+VERA is initialized and the number of memory banks is tested.  </p>
+<p>All available memory banks are tested together as opposed to checking and clearing a single memory page at a time.<br />
+When all memory banks have been tested, the base memory \$0200-\$9EFF is tested again.  </p>
+<p>Memory banks and base memory is tested in continuous loop.  </p>
+<p>If an error is detected, this is either communicated through the activity LED, if VERA has not yet been initialized, or by writing information about the error on the display.</p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" class="btn btn-neutral float-left" title="Appendix D: Official Expansion Cards"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" class="btn btn-neutral float-right" title="Appendix F: The 65C816 Processor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

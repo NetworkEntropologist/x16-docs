@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="The Network Entropologist" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Chapter 11: Sound Programming - x16-docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chapter 11: Sound Programming";
+        var mkdocs_page_input_path = "X16 Reference - 11 - Sound Programming.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> x16-docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2001%20-%20Overview/">Chapter 1: Overview</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2002%20-%20Getting%20Started/">Chapter 2: Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2003%20-%20Editor/">Chapter 3: Editor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2004%20-%20BASIC/">Chapter 4: BASIC Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2005%20-%20KERNAL/">Chapter 5: KERNAL</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2006%20-%20Math%20Library/">Chapter 6: Math Library</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2007%20-%20Machine%20Language%20Monitor/">Chapter 7: Machine Language Monitor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2008%20-%20Memory%20Map/">Chapter 8: Memory Map</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/">Chapter 9: VERA Programmer's Reference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/">Chapter 10: VERA FX Reference</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chapter 11: Sound Programming</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#audio-bank-api">Audio bank API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#audio-api-routines">Audio API routines</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#a-note-on-semitones-get-it">A note on semitones (get it?)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#direct-communication-with-the-ym2151-and-vera-psg-vs-api">Direct communication with the YM2151 and VERA PSG vs API</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vera-psg-and-pcm-programming">VERA PSG and PCM Programming</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ym2151-opm-fm-synthesis">YM2151 (OPM) FM Synthesis</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ym2151-communication">YM2151 Communication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ym-write-procedure">YM Write Procedure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#write-timing">Write Timing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-code">Example Code</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ym2151-internal-addressing">YM2151 Internal Addressing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ym2151-register-map">YM2151 Register Map</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#global-settings">Global Settings</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2012%20-%20IO%20Programming/">Chapter 12: I/O Programming</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2013%20-%20Working%20with%20CMDR-DOS/">Chapter 13: Working With CMDR-DOS</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2014%20-%20Hardware/">Chapter 14: Hardware Pinouts</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%2015%20-%20Upgrade%20Guide/">Chapter 15: Upgrade Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20A%20-%20Sound/">Appendix A: Sound</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20B%20-%20VERA%20Recovery/">Appendix B: VERA Firmware Recovery</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20C%20-%2065C02%20Processor/">Appendix C: The 65C02 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20D%20-%20Official%20Expansion%20Cards/">Appendix D: Official Expansion Cards</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20E%20-%20Diagnostic%20Bank/">Appendix E: Diagnostic Bank</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20F%20-%2065C816%20Processor/">Appendix F: The 65C816 Processor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20G%20-%20ZSM%20File%20Format/">Appendix G: ZSM File Format</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20H%20-%20Onboard%20Upgrade%20Guide/">Appendix H: How to update your X16 to latest release</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20I%20-%20Character%20Sets/">Appendix I: Character Sets</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../X16%20Reference%20-%20Appendix%20J%20-%20ROM%20Recovery/">Appendix J: ROM Recovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">x16-docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chapter 11: Sound Programming</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-11-sound-programming">Chapter 11: Sound Programming<a class="headerlink" href="#chapter-11-sound-programming" title="Permanent link">&para;</a></h1>
+<h2 id="audio-bank-api">Audio bank API<a class="headerlink" href="#audio-bank-api" title="Permanent link">&para;</a></h2>
+<p>The Commander X16 provides many convenience routines for controlling the YM2151 and VERA PSG. These are called similarly to how KERNAL API calls are done in machine language.</p>
+<p>In order to gain access to these routines, you must either use <code>jsrfar</code> from the KERNAL API:</p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">AUDIO_BANK</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$0A</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">jsr</span><span class="w"> </span><span class="no">jsrfar</span><span class="w">  </span><span class="c1">; $FF6E</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">.word</span><span class="w"> </span><span class="no">ym_init</span><span class="w"> </span><span class="c1">; $C063</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="na">.byte</span><span class="w"> </span><span class="no">AUDIO_BANK</span>
+</span></code></pre></div>
+<p>or switch to ROM bank <code>$0A</code> directly:</p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">lda</span><span class="w"> </span><span class="c1">#$0A ; Audio bank number</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nf">sta</span><span class="w"> </span><span class="no">$01</span><span class="w">  </span><span class="c1">; ROM bank register</span>
+</span></code></pre></div>
+<p>Conveniently, the KERNAL API still exists in this bank, and calling a KERNAL API routine will automatically switch your ROM bank back to the KERNAL bank to perform the routine and then switch back right before returning, so there's usually no need for your audio-centric program to switch away from the audio bank to perform the occasional KERNAL API call.</p>
+<h3 id="audio-api-routines">Audio API routines<a class="headerlink" href="#audio-api-routines" title="Permanent link">&para;</a></h3>
+<p>For the audio chips, some of the documentation uses the words <em>channel</em> and <em>voice</em> interchangeably. This table of API routines uses <em>channel</em> for the 8 on the YM2151, and <em>voice</em> for the 16 on the PSG.</p>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Address</th>
+<th>Class</th>
+<th>Description</th>
+<th>Inputs</th>
+<th>Returns</th>
+<th>Preserves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audio_init</code></td>
+<td><code>$C09F</code></td>
+<td>-</td>
+<td>Wrapper routine that calls both <code>psg_init</code> and <code>ym_init</code> followed by <code>ym_loaddefpatches</code>. This is the routine called by the KERNAL at reset.</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_fmchordstring</code></td>
+<td><code>$C08D</code></td>
+<td>BASIC</td>
+<td>Starts playing all of notes specified in a string. This uses the same parser as <code>bas_fmplaystring</code> but instead of playing the notes in sequence, it starts playback of each note in the string, on many channels as is necessary, then returns to the caller without delay. The first FM channel that is used is the one specified by calling <code>bas_playstringvoice</code> prior to calling this routine. The string pointer must point to low RAM (<code>$0000</code>-<code>$9EFF</code>).</td>
+<td>.A = string length <br/> .X .Y = pointer to string</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_fmfreq</code></td>
+<td><code>$C000</code></td>
+<td>BASIC</td>
+<td>Plays a note specified in Hz on an FM channel</td>
+<td>.A = channel <br/> .X .Y = 16-bit frequency in Hz <br/> c clear = normal <br/> c set = no retrigger</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_fmnote</code></td>
+<td><code>$C003</code></td>
+<td>BASIC</td>
+<td>Plays a note specified in BASIC format on an FM channel</td>
+<td>.A = channel <br/> .X = note (BASIC format) </br> .Y = fractional semitone <br/> c clear = normal <br/> c set = no retrigger</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_fmplaystring</code></td>
+<td><code>$C006</code></td>
+<td>BASIC</td>
+<td>Plays a note script using the FM channel which was specified on a previous call to <code>bas_playstringvoice</code>. This string pointer must point to low RAM (<code>$0000</code>-<code>$9EFF</code>). This routine depends on interrupts being enabled. In particular, it uses <code>WAI</code> as a delay for timing, so it expects IRQ to be asserted and acknowledged once per video frame, which is the case by default on the system. Stops playback and returns control if the STOP key is pressed.</td>
+<td>.A = string length <br/> .X .Y = pointer to string</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_fmvib</code></td>
+<td><code>$C009</code></td>
+<td>BASIC</td>
+<td>Sets the LFO speed and both amplitude and frequency depth based on inputs. Also sets the LFO waveform to triangle.</td>
+<td>.A = speed </br> .X = PMD/AMD depth</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_playstringvoice</code></td>
+<td><code>$C00C</code></td>
+<td>BASIC</td>
+<td>Preparatory routine for <code>bas_fmplaystring</code> and <code>bas_psgplaystring</code> to set the voice/channel number for playback</td>
+<td>.A = PSG/YM voice/channel</td>
+<td>none</td>
+<td>.A .X</td>
+</tr>
+<tr>
+<td><code>bas_psgchordstring</code></td>
+<td><code>$C090</code></td>
+<td>BASIC</td>
+<td>Starts playing all of notes specified in a string. This uses the same parser as <code>bas_psgplaystring</code> but instead of playing the notes in sequence, it starts playback of each note in the string, on many voices as is necessary, then returns to the caller without delay. The first PSG voice that is used is the one specified by calling <code>bas_playstringvoice</code> prior to calling this routine. The string pointer must point to low RAM (<code>$0000</code>-<code>$9EFF</code>).</td>
+<td>.A = string length <br/> .X .Y = pointer to string</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_psgfreq</code></td>
+<td><code>$C00F</code></td>
+<td>BASIC</td>
+<td>Plays a note specified in Hz on a PSG voice</td>
+<td>.A = voice <br/> .X .Y = 16-bit frequency</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_psgnote</code></td>
+<td><code>$C012</code></td>
+<td>BASIC</td>
+<td>Plays a note specified in BASIC format on a PSG voice</td>
+<td>.A = voice <br/> .X = note (BASIC format) </br> .Y = fractional semitone</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_psgwav</code></td>
+<td><code>$C015</code></td>
+<td>BASIC</td>
+<td>Sets a waveform and duty cycle for a PSG voice</td>
+<td>.A = voice </br> .X 0-63 = Pulse, 1/128 - 64/128 duty cycle <br/> .X 64-127 = Sawtooth <br/> .X 128-191 = Triangle <br/> .X 192-255 = Noise</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>bas_psgplaystring</code></td>
+<td><code>$C018</code></td>
+<td>BASIC</td>
+<td>Plays a note script using the PSG voice which was specified on a previous call to <code>bas_playstringvoice</code>. This string pointer must point to low RAM (<code>$0000</code>-<code>$9EFF</code>). This routine depends on interrupts being enabled. In particular, it uses <code>WAI</code> as a delay for timing, so it expects IRQ to be asserted and acknowledged once per video frame, which is the case by default on the system. Stops playback and returns control if the STOP key is pressed.</td>
+<td>.A = string length <br/> .X .Y = pointer to string</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_bas2fm</code></td>
+<td><code>$C01B</code></td>
+<td>Conversion</td>
+<td>Convert a note in BASIC format to a YM2151 KC code</td>
+<td>.X = note (BASIC format)</td>
+<td>.X = note (YM2151 KC) <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_bas2midi</code></td>
+<td><code>$C01E</code></td>
+<td>Conversion</td>
+<td>Convert a note in BASIC format to a MIDI note number</td>
+<td>.X = note (BASIC format)</td>
+<td>.X = MIDI note <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_bas2psg</code></td>
+<td><code>$C021</code></td>
+<td>Conversion</td>
+<td>Convert a note in BASIC format to a PSG frequency</td>
+<td>.X = note (BASIC format) <br/> .Y = fractional semitone</td>
+<td>.X .Y = PSG frequency <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_fm2bas</code></td>
+<td><code>$C024</code></td>
+<td>Conversion</td>
+<td>Convert a note in YM2151 KC format to a note in BASIC format</td>
+<td>.X = YM2151 KC</td>
+<td>.X = note (BASIC format) <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_fm2midi</code></td>
+<td><code>$C027</code></td>
+<td>Conversion</td>
+<td>Convert a note in YM2151 KC format to a MIDI note number</td>
+<td>.X = YM2151 KC</td>
+<td>.X = MIDI note <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_fm2psg</code></td>
+<td><code>$C02A</code></td>
+<td>Conversion</td>
+<td>Convert a note in YM2151 KC format to a PSG frequency</td>
+<td>.X = YM2151 KC <br/> .Y = fractional semitone</td>
+<td>.X .Y = PSG frequency <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_freq2bas</code></td>
+<td><code>$C02D</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in Hz to a note in BASIC format and a fractional semitone</td>
+<td>.X .Y = 16-bit frequency in Hz</td>
+<td>.X = note (BASIC format) <br/> .Y = fractional semitone <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_freq2fm</code></td>
+<td><code>$C030</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in Hz to YM2151 KC and a fractional semitone (YM2151 KF)</td>
+<td>.X .Y = 16-bit frequency in Hz</td>
+<td>.X = YM2151 KC <br/> .Y = fractional semitone (YM2151 KF) <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_freq2midi</code></td>
+<td><code>$C033</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in Hz to a MIDI note and a fractional semitone</td>
+<td>.X .Y = 16-bit frequency in Hz</td>
+<td>.X = MIDI note <br/> .Y = fractional semitone <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_freq2psg</code></td>
+<td><code>$C036</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in Hz to a VERA PSG frequency</td>
+<td>.X .Y = 16-bit frequency in Hz</td>
+<td>.X .Y = 16-bit frequency in VERA PSG format <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_midi2bas</code></td>
+<td><code>$C039</code></td>
+<td>Conversion</td>
+<td>Convert a MIDI note to a note in BASIC format</td>
+<td>.X = MIDI note</td>
+<td>.X = note (BASIC format) <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_midi2fm</code></td>
+<td><code>$C03C</code></td>
+<td>Conversion</td>
+<td>Convert a MIDI note to a YM2151 KC. Fractional semitone is unneeded as it is identical to KF already.</td>
+<td>.X = MIDI note.</td>
+<td>.X = YM2151 KC <br/> c clear = success <br/> c set = error</td>
+<td>.Y</td>
+</tr>
+<tr>
+<td><code>notecon_midi2psg</code></td>
+<td><code>$C03F</code></td>
+<td>Conversion</td>
+<td>Convert a MIDI note and fractional semitone to a PSG frequency</td>
+<td>.X = MIDI note <br/> .Y = fractional semitone</td>
+<td>.X .Y = 16-bit frequency in VERA PSG format <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_psg2bas</code></td>
+<td><code>$C042</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in VERA PSG format to a note in BASIC format and a fractional semitone</td>
+<td>.X .Y = 16-bit frequency in VERA PSG format</td>
+<td>.X = note (BASIC format) <br/> .Y = fractional semitone <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_psg2fm</code></td>
+<td><code>$C045</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in VERA PSG format to YM2151 KC and a fractional semitone (YM2151 KF)</td>
+<td>.X .Y = 16-bit frequency in VERA PSG format</td>
+<td>.X = YM2151 KC <br/> .Y = fractional semitone (YM2151 KF) <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>notecon_psg2midi</code></td>
+<td><code>$C048</code></td>
+<td>Conversion</td>
+<td>Convert a frequency in VERA PSG format to a MIDI note and a fractional semitone</td>
+<td>.X .Y = 16-bit frequency in VERA PSG format</td>
+<td>.X = MIDI note <br/> .Y = fractional semitone <br/> c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_getatten</code></td>
+<td><code>$C093</code></td>
+<td>VERA PSG</td>
+<td>Retrieve the attenuation value for a voice previously set by <code>psg_setatten</code></td>
+<td>.A = voice</td>
+<td>.X = attenuation value</td>
+<td>.A</td>
+</tr>
+<tr>
+<td><code>psg_getpan</code></td>
+<td><code>$C096</code></td>
+<td>VERA PSG</td>
+<td>Retrieve the simple panning value that is currently set for a voice.</td>
+<td>.A = voice</td>
+<td>.X = pan value</td>
+<td>.A</td>
+</tr>
+<tr>
+<td><code>psg_init</code></td>
+<td><code>$C04B</code></td>
+<td>VERA PSG</td>
+<td>Initialize the state of the PSG. Silence all voices. Reset the attenuation levels to 0. Set "playstring" defaults including <code>O4</code>, <code>T120</code>, <code>S1</code>, and <code>L4</code>. Set all PSG voices to the pulse waveform at 50% duty with panning set to both L+R</td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_playfreq</code></td>
+<td><code>$C04E</code></td>
+<td>VERA PSG</td>
+<td>Turn on a PSG voice at full volume (factoring in attenuation) and set its frequency</td>
+<td>.A = voice <br/> .X .Y = 16 bit frequency in VERA PSG format</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_read</code></td>
+<td><code>$C051</code></td>
+<td>VERA PSG</td>
+<td>Read a value from one of the VERA PSG registers. If the selected register is a volume register, return either the cooked value (attenuation applied) or the raw value (as received by <code>psg_write</code> or <code>psg_setvol</code>, or as set by <code>psg_playfreq</code>) depending on the state of the carry flag</td>
+<td>.X = PSG register address (offset from <code>$1F9C0</code>) <br/> c clear = if volume, return raw <br/> c set = if volume, return cooked</td>
+<td>.A = register value</td>
+<td>.X</td>
+</tr>
+<tr>
+<td><code>psg_setatten</code></td>
+<td><code>$C054</code></td>
+<td>VERA PSG</td>
+<td>Set the attenuation value for a PSG voice. The valid range is from <code>$00</code> (full volume) to <code>$3F</code> (fully muted). API routines which affect volume will deduct the attenuation value from the intended volume before setting it. Calls to this routine while a note is playing will change the output volume of the voice immediately. This control can be considered a "master volume" for the voice.</td>
+<td>.A = voice <br/> .X = attenuation</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_setfreq</code></td>
+<td><code>$C057</code></td>
+<td>VERA PSG</td>
+<td>Set the frequency of a PSG voice without changing any other attributes of the voice</td>
+<td>.A = voice <br/> .X .Y = 16 bit frequency in VERA PSG format</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_setpan</code></td>
+<td><code>$C05A</code></td>
+<td>VERA PSG</td>
+<td>Set the simple panning for the voice. A value of <code>0</code> will silence the voice entirely until another pan value is set.</td>
+<td>.A = voice <br/> .X 0 = none <br/> .X 1 = left <br/> .X 2 = right <br/> .X 3 = both</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_setvol</code></td>
+<td><code>$C05D</code></td>
+<td>VERA PSG</td>
+<td>Set the volume for the voice. The volume that's written to the VERA has attenuation applied. Valid volumes range from <code>$00</code> to <code>$3F</code> inclusive</td>
+<td>.A = voice <br/> .X = volume</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>psg_write</code></td>
+<td><code>$C060</code></td>
+<td>VERA PSG</td>
+<td>Write a value to one of the VERA PSG registers. If the selected register is a volume register, attenuation will be applied before the value is written to the VERA</td>
+<td>.A = value <br/>.X = PSG register address (offset from <code>$1F9C0</code>)</td>
+<td>none</td>
+<td>.A .X</td>
+</tr>
+<tr>
+<td><code>psg_write_fast</code></td>
+<td><code>$C0A2</code></td>
+<td>VERA PSG</td>
+<td>Same effect as <code>psg_write</code> but does not preserve the state of the VERA CTRL and ADDR registers. It also assumes VERA_CTRL bit 0 is clear, VERA_ADDR0_H = $01 (auto increment 0 recommended), and VERA_ADDR0_M = $F9.  This routine is meant for use by sound engines that typically write out multiple PSG registers in a loop.</td>
+<td>.A = value <br/>.X = PSG register address (offset from <code>$1F9C0</code>)</td>
+<td>none</td>
+<td>.A .X</td>
+</tr>
+<tr>
+<td><code>ym_getatten</code></td>
+<td><code>$C099</code></td>
+<td>YM2151</td>
+<td>Retrieve the attenuation value for a channel previously set by <code>ym_setatten</code></td>
+<td>.A = channel</td>
+<td>.X = attenuation value</td>
+<td>.A</td>
+</tr>
+<tr>
+<td><code>ym_getpan</code></td>
+<td><code>$C09C</code></td>
+<td>YM2151</td>
+<td>Retrieve the simple panning value that is currently set for a channel.</td>
+<td>.A = channel</td>
+<td>.X = pan value</td>
+<td>.A</td>
+</tr>
+<tr>
+<td><code>ym_init</code></td>
+<td><code>$C063</code></td>
+<td>YM2151</td>
+<td>Initialize the state of the YM chip. Silence all channels by setting the release part of the ADSR envelope to max and then setting all channels to released. Reset all attenuation levels to 0. Set "playstring" defaults including <code>O4</code>, <code>T120</code>, <code>S1</code>, and <code>L4</code>. Set panning for all channels set to both L+R. Reset LFO state. Set all of the other registers to <code>$00</code></td>
+<td>none</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_loaddefpatches</code></td>
+<td><code>$C066</code></td>
+<td>YM2151</td>
+<td>Load a default set of patches into the 8 channels.<br/> <code>C0: Piano (0)</code><br/><code>C1: E. Piano (5)</code><br/><code>C2: Vibraphone (11)</code><br/><code>C3: Fretless (35)</code><br/> <code>C4: Violin (40)</code><br/><code>C5: Trumpet (56)</code><br/><code>C6: Blown Bottle (76)</code><br/><code>C7: Fantasia (88)</code></td>
+<td>none</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_loadpatch</code></td>
+<td><code>$C069</code></td>
+<td>YM2151</td>
+<td>Load into a channel a patch preset by number (0-161) from the audio bank, or from an arbitrary memory location. High RAM addresses (<code>$A000</code>-<code>$BFFF</code>) are accepted in this mode.</td>
+<td>.A = channel<br/>c clear = .X .Y = patch address<br/>c set = .X = patch number</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_loadpatchlfn</code></td>
+<td><code>$C06C</code></td>
+<td>YM2151</td>
+<td>Load patch into a channel by way of an open logical file number. This routine will read 26 bytes from the open file, or possibly fewer bytes if there's an error condition. The routine will leave the file open on return. On return if c is set, check .A for the error code.</td>
+<td>.A = channel<br/>.X = Logical File Number</td>
+<td>c clear = success <br/> c set .A=0 = YM error <br/> c set .A&amp;3=2 = read timeout <br/> c set .A&amp;3=3 = file not open<br/> c set .A&amp;64=64 = EOF<br/> c set .A&amp;128=128 = device not present</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_playdrum</code></td>
+<td><code>$C06F</code></td>
+<td>YM2151</td>
+<td>Load a patch associated with a MIDI drum note number and trigger it on a channel. Valid drum note numbers mirror the General MIDI percussion standard and range from 25 (Snare Roll) through 87 (Open Surdo). Note 0 will release the note. After the drum is played, the channel will still contain the patch for the drum sound and thus may not sound musical if you attempt to play notes on it before loading another instrument patch.</td>
+<td>.A = channel<br/>.X = drum note</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_playnote</code></td>
+<td><code>$C072</code></td>
+<td>YM2151</td>
+<td>Set a KC/KF on a channel and optionally trigger it.</td>
+<td>.A = channel<br/>.X = KC<br/>.Y = KF (fractional semitone)<br/>c clear = trigger<br/>c set = no trigger</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_setatten</code></td>
+<td><code>$C075</code></td>
+<td>YM2151</td>
+<td>Set the attenuation value for a channel. The valid range is from <code>$00</code> (full volume) to <code>$7F</code> (fully muted). API routines which affect TL or CON will add the attenuation value to the intended TL on operators that are carriers before setting it. Calls to this routine will change the TL of the channel's carriers immediately. This control can be considered a "master volume" for the channel.</td>
+<td>.A = channel <br/> .X = attenuation</td>
+<td>c clear = success <br/> c set = error</td>
+<td>.A .X</td>
+</tr>
+<tr>
+<td><code>ym_setdrum</code></td>
+<td><code>$C078</code></td>
+<td>YM2151</td>
+<td>Load a patch associated with a MIDI drum note number and set the KC/KF for it on a channel. Called by <code>ym_playdrum</code>.</td>
+<td>.A = channel<br/>.X = drum note</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_setnote</code></td>
+<td><code>$C07B</code></td>
+<td>YM2151</td>
+<td>Set a KC/KF on a channel. Called by <code>ym_playnote</code>.</td>
+<td>.A = channel<br/>.X = KC<br/>.Y = KF (fractional semitone)</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_setpan</code></td>
+<td><code>$C07E</code></td>
+<td>YM2151</td>
+<td>Set the simple panning for the channel. A value of <code>0</code> will silence the channel entirely until another pan value is set.</td>
+<td>.A = channel <br/> .X 0 = none <br/> .X 1 = left <br/> .X 2 = right <br/> .X 3 = both</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_read</code></td>
+<td><code>$C081</code></td>
+<td>YM2151</td>
+<td>Read a value from the in-RAM shadow of one of the YM2151 registers. The YM2151's internal registers cannot be read from, but this API keeps state of what was written, so this routine will be able to retrieve chip values for you. If the selected register is a TL register, return either the cooked value (attenuation applied) or the raw value (as received by <code>ym_write</code>) depending on the state of the carry flag</td>
+<td>.X = YM2151 register address <br/> c clear = if TL, return raw <br/> c set = if TL, return cooked</td>
+<td>.A = register value<br/>c clear = success <br/> c set = error</td>
+<td>.X</td>
+</tr>
+<tr>
+<td><code>ym_release</code></td>
+<td><code>$C084</code></td>
+<td>YM2151</td>
+<td>Release a note on a channel. If a note is not playing, this routine has no tangible effect</td>
+<td>.A = channel</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_trigger</code></td>
+<td><code>$C087</code></td>
+<td>YM2151</td>
+<td>Trigger the currently configured note on a channel, optionally releasing the channel first depending on the state of the carry flag.</td>
+<td>.A = channel <br/>c clear = release first<br/> c set = no release</td>
+<td>c clear = success <br/> c set = error</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ym_write</code></td>
+<td><code>$C08A</code></td>
+<td>YM2151</td>
+<td>Write a value to one of the YM2151 registers and to the in-RAM shadow copy. If the selected register is a TL register, attenuation will be applied before the value is written. Writes which affect which operators are carriers will have TL values for that channel appropriately recalculated and rewritten</td>
+<td>.A = value <br/>.X = YM register address</td>
+<td>c clear = success <br/> c set = error</td>
+<td>.A .X</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-note-on-semitones-get-it">A note on semitones (get it?)<a class="headerlink" href="#a-note-on-semitones-get-it" title="Permanent link">&para;</a></h2>
+<p>It may be advantageous to consider storing note data internally as the MIDI
+representation with a fractional component if you want things like pitch slides
+to behave the same way between the PSG and YM2151.</p>
+<p>Essentially, it can be thought of as an 8.8 fixed point 16-bit number.</p>
+<p>The YM2151 handles semitones differently than the PSG and requires converting
+the MIDI note to the appropriate KC value using <code>notecon_midi2fm</code>. KF is the
+fractional semitone (albeit with only the top 6-bits used)
+and requires no conversion.</p>
+<p>The PSG, by contrast, operates with linear pitch which is why
+<code>notecon_midi2psg</code> also takes the fractional component (y) as input.</p>
+<p>Thus, if you manage all your pitch slides using MIDI notes along with a fractional
+component, you can then convert this directly over to PSG or YM2151 as required
+and end up with the same pitch (or close enough to it).</p>
+<h2 id="direct-communication-with-the-ym2151-and-vera-psg-vs-api">Direct communication with the YM2151 and VERA PSG vs API<a class="headerlink" href="#direct-communication-with-the-ym2151-and-vera-psg-vs-api" title="Permanent link">&para;</a></h2>
+<p>Use of the API routines above is not required to access the capabilities of the sound chips. However, mixing raw writes to a chip and API access for the same chip is not recommended, particularly where PSG volumes and YM2151 TL and RLFBCON registers are concerned. The API processes volumes, calculating attenuation and adjusting the output volume accordingly, and the API will be oblivious to direct manipulation of the sound chips.</p>
+<p>The sections below describe how to do raw access to the sound chips outside of the API.</p>
+<h2 id="vera-psg-and-pcm-programming">VERA PSG and PCM Programming<a class="headerlink" href="#vera-psg-and-pcm-programming" title="Permanent link">&para;</a></h2>
+<ul>
+<li>For VERA PSG and PCM, refer to <a href="../X16%20Reference%20-%2009%20-%20VERA%20Programmer%27s%20Reference/#chapter-9-vera-programmers-reference">Chapter 9</a>.</li>
+</ul>
+<h2 id="ym2151-opm-fm-synthesis">YM2151 (OPM) FM Synthesis<a class="headerlink" href="#ym2151-opm-fm-synthesis" title="Permanent link">&para;</a></h2>
+<p>The Yamaha YM2151 (OPM) sound chip is an FM synthesizer ASIC in the Commander X16.
+It is connected to the system bus at I/O address <code>0x9F40</code> (address register) and at <code>0x9F41</code> (data register). It has 8 independent voices with 4 FM operators each. Each
+voice is capable of left/right/both audio channel output. The four operators of each channel may be connected in one of 8 pre-defined "connection algorithms" in order to produce a wide variety of timbres.</p>
+<h3 id="ym2151-communication">YM2151 Communication<a class="headerlink" href="#ym2151-communication" title="Permanent link">&para;</a></h3>
+<p>There are 3 basic operations to communicate with the YM chip: Reading its status,
+address select, and data write. These are performed by reading from or writing to
+one of the two I/O addresses as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Name</th>
+<th>Read Action</th>
+<th>Write Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x9F40</td>
+<td><code>YM_address</code></td>
+<td>Undefined (returns ?)</td>
+<td>Selects the internal register address where data is written.</td>
+</tr>
+<tr>
+<td>0x9F41</td>
+<td><code>YM_data</code></td>
+<td>Returns the <code>YM_status</code> byte</td>
+<td>Writes the value into the currently-selected internal address.</td>
+</tr>
+</tbody>
+</table>
+<p>The values stored in the YM's internal registers are write-only. If you need
+to know the values in the registers, you must store a copy of the values somewhere in memory as you write updates to the YM.</p>
+<h3 id="ym-write-procedure">YM Write Procedure<a class="headerlink" href="#ym-write-procedure" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Ensure YM is not busy (see Write Timing below).</li>
+<li>Select the desired internal register address by writing it into <code>YM_address</code>.</li>
+<li>Write the new value for this register into <code>YM_data</code>.</li>
+</ol>
+<p><em>Note:</em> You may write into the same register multiple times without repeating a write to <code>YM_address</code>. The same register will be updated with each data write.</p>
+<h3 id="write-timing">Write Timing<a class="headerlink" href="#write-timing" title="Permanent link">&para;</a></h3>
+<p><strong>The YM2151 is sensitive to the speed at which you write data into it. If you
+make writes when it is not ready to receive them, they will be dropped and the sound output will be corrupted.</strong></p>
+<p>You must include a delay between writes to the address select register ($9F40) and the subsequent data write. 10 CPU cycles is the recommended minimum delay.</p>
+<p>The YM becomes <code>BUSY</code> for approximately 150 CPU cycles' (at 8Mhz) whenever it receives a data write. <em>Any writes into YM_data during this <code>BUSY</code> period will be ignored!</em></p>
+<p>In order to avoid this, you can use the <code>BUSY</code> flag which is bit 7 of the <code>YM status</code> byte. Read the status byte from <code>YM_data</code> ($9F41). If the top bit (7) is set, the YM may not be written into at this time. Note that it is not <em>required</em> that you read <code>YM_status</code>, only that writes occur no less than ~150 CPU cycles apart. For instance, BASIC executes slowly enough that you are in no danger of writing into the YM too quickly, so BASIC programs may skip checking <code>YM_status</code>.</p>
+<p>Lastly, the <code>BUSY</code> flag sometimes takes a (very) short period before it goes high. This has only been observed when IMMEDIATELY polling the flag after a write into <code>YM_data.</code> As long as your code does not do so, this quirk should not be an issue.</p>
+<h3 id="example-code">Example Code<a class="headerlink" href="#example-code" title="Permanent link">&para;</a></h3>
+<p><strong>Assembly Language:</strong></p>
+<div class="language-ASM highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nl">check_busy:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nf">BIT</span><span class="w"> </span><span class="no">YM_data</span><span class="w">      </span><span class="c1">; check busy flag</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nf">BMI</span><span class="w"> </span><span class="no">check_busy</span><span class="w">   </span><span class="c1">; wait until busy flag is clear</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$08         ; Select YM register $08 (Key-Off/On)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nf">STA</span><span class="w"> </span><span class="no">YM_addr</span><span class="w">      </span><span class="c1">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nf">NOP</span><span class="w">              </span><span class="c1">;&lt;-+</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nf">NOP</span><span class="w">              </span><span class="c1">;  |</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nf">NOP</span><span class="w">              </span><span class="c1">;  +--slight pause before writing data</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nf">NOP</span><span class="w">              </span><span class="c1">;  |</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nf">NOP</span><span class="w">              </span><span class="c1">;&lt;-+</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="nf">LDA</span><span class="w"> </span><span class="c1">#$04         ; Write $04 (Release note on channel 4).</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nf">STA</span><span class="w"> </span><span class="no">YM_data</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="nf">RTS</span>
+</span></code></pre></div>
+<p><strong>BASIC:</strong></p>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">YA</span><span class="o">=</span><span class="err">$</span><span class="il">9</span><span class="vg">F40</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">YM_ADDRESS</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">YD</span><span class="o">=</span><span class="err">$</span><span class="il">9</span><span class="vg">F41</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">YM_DATA</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nl">30</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YA</span><span class="p">,</span><span class="err">$</span><span class="il">29</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">CHANNEL</span><span class="w"> </span><span class="il">1</span><span class="w"> </span><span class="vg">NOTE</span><span class="w"> </span><span class="vg">SELECT</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nl">40</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="err">$</span><span class="il">4</span><span class="vg">A</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">SET</span><span class="w"> </span><span class="vg">NOTE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">CONCERT</span><span class="w"> </span><span class="vg">A</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nl">50</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YA</span><span class="p">,</span><span class="err">$</span><span class="il">08</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">SELECT</span><span class="w"> </span><span class="vg">THE</span><span class="w"> </span><span class="kr">KEY</span><span class="w"> </span><span class="kr">ON</span><span class="o">/</span><span class="k">OFF</span><span class="w"> </span><span class="vg">REGISTER</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nl">60</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="err">$</span><span class="il">00</span><span class="o">+</span><span class="il">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">RELEASE</span><span class="w"> </span><span class="k">ANY</span><span class="w"> </span><span class="vg">NOTE</span><span class="w"> </span><span class="vg">ALREADY</span><span class="w"> </span><span class="vg">PLAYING</span><span class="w"> </span><span class="kr">ON</span><span class="w"> </span><span class="vg">CHANNEL</span><span class="w"> </span><span class="il">1</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nl">70</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="err">$</span><span class="il">78</span><span class="o">+</span><span class="il">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="kr">KEY</span><span class="o">-</span><span class="kr">ON</span><span class="w"> </span><span class="vg">VOICE</span><span class="w"> </span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="kr">PLAY</span><span class="w"> </span><span class="vg">THE</span><span class="w"> </span><span class="vg">NOTE</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nl">80</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">I</span><span class="o">=</span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="il">100</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">NEXT</span><span class="w"> </span><span class="vg">I</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">DELAY</span><span class="w"> </span><span class="kr">WHILE</span><span class="w"> </span><span class="vg">NOTE</span><span class="w"> </span><span class="vg">PLAYS</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nl">90</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="err">$</span><span class="il">00</span><span class="o">+</span><span class="il">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">RELEASE</span><span class="w"> </span><span class="vg">THE</span><span class="w"> </span><span class="vg">NOTE</span>
+</span></code></pre></div>
+<h2 id="ym2151-internal-addressing">YM2151 Internal Addressing<a class="headerlink" href="#ym2151-internal-addressing" title="Permanent link">&para;</a></h2>
+<p>The YM register address space can be thought of as being divided into 3 ranges:</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 .. 1F</td>
+<td>Global Values</td>
+<td>Affect individual global parameters such as LFO frequency, noise enable, etc.</td>
+</tr>
+<tr>
+<td>20 .. 3F</td>
+<td>Channel CFG</td>
+<td>Parameters in groups of 8, one per channel. These affect the whole channel.</td>
+</tr>
+<tr>
+<td>40 .. FF</td>
+<td>Operator CFG</td>
+<td>Parameters in groups of 32 - these map to individual operators of each voice.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ym2151-register-map">YM2151 Register Map<a class="headerlink" href="#ym2151-register-map" title="Permanent link">&para;</a></h2>
+<h3 id="global-settings">Global Settings<a class="headerlink" href="#global-settings" title="Permanent link">&para;</a></h3>
+<table>
+  <tr>
+    <th>Addr</th>
+    <th>Register</th>
+    <th>Bit 7</th>
+    <th>Bit 6</th>
+    <th>Bit 5</th>
+    <th>Bit 4</th>
+    <th>Bit 3</th>
+    <th>Bit 2</th>
+    <th>Bit 1</th>
+    <th>Bit 0</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$01</td>
+    <td>Test Register</td>
+    <td>!</td>
+    <td>!</td>
+    <td>!</td>
+    <td>!</td>
+    <td>!</td>
+    <td>!</td>
+    <TD>LR</TD>
+    <td>!</td>
+    <td>
+      Bit 1 is the LFO reset bit. Setting it disables the LFO and holds the oscillator at 0. Clearing it enables the LFO.<br />
+      All other bits control various test functions and should not be written into.
+    </td>
+  </tr>
+  <tr>
+    <td>$08</td>
+    <td>Key Control</td>
+    <td>.</td>
+    <td>C2</td>
+    <td>M2</td>
+    <td>C1</td>
+    <td>M1</td>
+    <td colspan="3">CHA</td>
+    <td>
+      Starts and Releases notes on the 8 channels.<br />
+      Setting/Clearing bits for M1,C1,M2,C2 controls the key state
+      for those operators on channel CHA.<br />
+      NOTE: The operator order is different than the order they
+      appear in the Operator configuration registers!
+    </td>
+  </tr>
+  <tr>
+    <td>$0F</td>
+    <td>Noise Control</td>
+    <td>NE</td>
+    <td>.</td>
+    <td>.</td>
+    <td colspan="5">NFRQ</td>
+    <td>
+      NE = Noise Enable<br />
+      NFRQ = Noise Frequency<br />
+      When eabled, C2 of channel 7 will use a noise waveform instead
+      of a sine waveform.
+    </td>
+  </tr>
+  <tr>
+    <td>$10</td>
+    <td>Ta High</td>
+    <td colspan="8">CLKA1</td>
+    <td>Top 8 bits of Timer A period setting</td>
+  </tr>
+  <tr>
+    <td>$11</td>
+    <td>Ta Low</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td colspan="2">CLKA2</td>
+    <td>Bottom 2 bits of Timer A period setting</td>
+  </tr>
+  <tr>
+    <td>$12</td>
+    <td>Timer B</td>
+    <td colspan="8">CLKB</td>
+    <td>Timer B period setting</td>
+  </tr>
+  <tr>
+    <td>$14</td>
+    <td>IRQ Control</td>
+    <td>CSM</td>
+    <td>.</td>
+    <td colspan="2">Clock ACK</td>
+    <td colspan="2">IRQ EN</td>
+    <td colspan="2">Clock Start</td>
+    <td>
+      CSM: When a timer expires, trigger note key-on for all channels.<br />
+      For the other 3 fields, lower bit = Timer A, upper bit = Timer B.<br />
+      Clock ACK: clears the timer's bit in the YM_status byte and acknowledges the IRQ.<br />
+    </td>
+  </tr>
+  <tr>
+    <td>$18</td>
+    <td>LFO Freq.</td>
+    <td colspan="8">LFRQ</td>
+    <td>Sets LFO frequency.<br />
+    $00 = ~0.008Hz<br />
+    $FF = ~32.6Hz</td>
+  </tr>
+  <tr>
+    <td rowspan="2">$19</td>
+    <td rowspan="2">LFO Amplitude</td>
+    <td>0</td>
+    <td colspan="7">AMD</td>
+    <td rowspan="2">
+      AMD = Amplitude Modulation Depth<br />
+      PMD = Phase Modulation (vibrato) Depth<br />
+      Bit 7 determines which parameter is being set when writing into
+      this register.
+    </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td colspan="7">PMD</td>
+  </tr>
+  <tr>
+    <td>$1B</td>
+    <td>CT / LFO Waveform</td>
+    <td colspan="2">CT</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td>.</td>
+    <td colspan="2">W</td>
+    <td>
+      CT: sets output pins CT1 and CT1 high or low. (not connected to anything in X16)<br />
+      W: LFO Waveform: 0-4 = Saw, Square, Triangle, Noise<br />
+      For sawtooth: PM->////  AM->\\\\
+    </td>
+  </tr>
+</table>
+
+<h4 id="channel-cfg-registers">Channel CFG Registers<a class="headerlink" href="#channel-cfg-registers" title="Permanent link">&para;</a></h4>
+<table>
+  <tr>
+    <th>Register Range</th>
+    <th>Bit 7</th>
+    <th>Bit 6</th>
+    <th>Bit 5</th>
+    <th>Bit 4</th>
+    <th>Bit 3</th>
+    <th>Bit 2</th>
+    <th>Bit 1</th>
+    <th>Bit 0</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$20 + channel</td>
+    <td colspan="2">RL</td>
+    <td colspan="3">FB</td>
+    <td colspan="3">CON</td>
+    <td rowspan="4">
+      <dl>
+        <dt>RL</dt><dd>Right/Left Output Enable</dd>
+        <dt>FB</dt><dd>M1 Feedback Level</dd>
+        <dt>CON</dt><dd>Operator connection algorithm</dd>
+        <dt>KC</dt><dd>Key Code</dd>
+        <dt>KF</dt><dd>Key Fraction</dd>
+        <dt>PMS</dt><dd>Phase Modulation Sensitivity</dd>
+        <dt>AMS</dt><dd>Amplitude Modulation Sensitivity</dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>$28 + channel</td>
+    <td>.</td>
+    <td colspan="7">KC</td>
+  </tr>
+  <tr>
+    <td>$30 + channel</td>
+    <td colspan="6">KF</td>
+    <td>.</td>
+    <td>.</td>
+  </tr>
+  <tr>
+    <td>$38 + channel</td>
+    <td>.</td>
+    <td colspan="3">PMS</td>
+    <td>.</td>
+    <td>.</td>
+    <td colspan="2">AMS</td>
+  </tr>
+</table>
+
+<h4 id="operator-cfg-registers">Operator CFG Registers<a class="headerlink" href="#operator-cfg-registers" title="Permanent link">&para;</a></h4>
+<table>
+  <tr>
+    <th>Register Range</th>
+    <th>Operator</th>
+    <th>Bit 7</th>
+    <th>Bit 6</th>
+    <th>Bit 5</th>
+    <th>Bit 4</th>
+    <th>Bit 3</th>
+    <th>Bit 2</th>
+    <th>Bit 1</th>
+    <th>Bit 0</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$40</td>
+    <td>M1: $40+channel</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" colspan="3">DT1</td>
+    <td rowspan="4" colspan="4">MUL</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>DT1</dt><dd>Detune Amount (fine)</dd>
+        <dt>MUL</dt><dd>Frequency Multiplier</dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $48+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $50+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $58+channel</td>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$60</td>
+    <td>M1: $60+channel</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" colspan="7">TL</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>TL</dt><dd>Total Level (volume attenuation)<br/>
+                       (0=max, $7F=min)
+        </dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $68+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $70+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $78+channel</td>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$80</td>
+    <td>M1: $80+channel</td>
+    <td rowspan="4" colspan="2">KS</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" colspan="5">AR</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>KS</dt><dd>Key Scaling (ADSR rate scaling)</dd>
+        <dt>AR</dt><dd>Attack Rate</dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $88+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $90+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $98+channel</td>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$A0</td>
+    <td>M1: $A0+channel</td>
+    <td rowspan="4">A<br />M<br /><br />E<br />n<br />a</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" colspan="5">D1R</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>AM-Ena</dt><dd>Amplitude Modulation Enable</dd>
+        <dt>D1R</dt><dd>Decay Rate 1<br />
+                        (From peak down to sustain level)
+        </dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $A8+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $B0+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $B8+channel</td>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$C0</td>
+    <td>M1: $C0+channel</td>
+    <td rowspan="4" colspan="2">DT2</td>
+    <td rowspan="4" >.</td>
+    <td rowspan="4" colspan="5">D2R</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>DT2</dt><dd>Detune Amount (coarse)</dd>
+        <dt>D2R</dt><dd>Decay Rate 2<br />
+                        (During sustain phase)
+        </dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $C8+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $D0+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $D8+channel</td>
+  </tr>
+  <tr>
+    <td rowspan="4" valign="top">$E0</td>
+    <td>M1: $E0+channel</td>
+    <td rowspan="4" colspan="4">D1L</td>
+    <td rowspan="4" colspan="4">RR</td>
+    <td rowspan="4" valign="top">
+      <dl>
+        <dt>D1L</dt><dd>Decay 1 Level (Sustain level)<br />
+                        Level at which decay switches from D1R to D2R
+        </dd>
+        <dt>RR</dt><dd>Release Rate</dd>
+      </dl>
+    </td>
+  </tr>
+  <tr>
+    <td>M2: $E8+channel</td>
+  </tr>
+  <tr>
+    <td>C1: $F0+channel</td>
+  </tr>
+  <tr>
+    <td>C2: $F8+channel</td>
+  </tr>
+</table>
+
+<h1 id="ym2151-register-details">YM2151 Register Details<a class="headerlink" href="#ym2151-register-details" title="Permanent link">&para;</a></h1>
+<h2 id="global-parameters">Global Parameters<a class="headerlink" href="#global-parameters" title="Permanent link">&para;</a></h2>
+<p><strong>LR</strong> (LFO Reset)</p>
+<p>Register $01, bit 1</p>
+<p>Setting this bit will disable the LFO and hold it at level 0. Clearing this bit
+allows the LFO to operate as normal. (See LFRQ for further info)</p>
+<p><strong>KON</strong> (KeyON)</p>
+<p>Register $08</p>
+<ul>
+<li>
+<p>Bits 0-2: Channel_Number</p>
+</li>
+<li>
+<p>Bits 3-6: Operator M1, C1, M2, C2 control bits:</p>
+</li>
+<li>0: Releases note on operator</li>
+<li>0-&gt;1: Triggers note attack on operator</li>
+<li>1-&gt;1: No effect</li>
+</ul>
+<p>Use this register to start/stop notes. Typically, all 4 operators are triggered/released
+together at once. Writing a value of $78+channel_number will start a note on all 4 OPs,
+and writing a value of $00+channel_number will stop a note on all 4 OPs.</p>
+<p><strong>NE</strong> (Noise Enable)</p>
+<p>Register $0F, Bit 7</p>
+<p>When set, the C2 operator of channel 7 will use a noise waveform instead of a sine.</p>
+<p><strong>NFRQ</strong> (Noise Frequency)</p>
+<p>Register $0F, Bits 0-4</p>
+<p>Sets the noise frequency, $00 is the lowest and $1F is the highest. NE bit must be
+set in order for this to have any effect. Only affects operator C2 on channel 7.</p>
+<p><strong>CLKA1</strong> (Clock A, high order bits)</p>
+<p>Register $10, Bits 0-7</p>
+<p>This is the high-order value for Clock A (a 10-bit value).</p>
+<p><strong>CLKA2</strong> (Clock A, low order bits)</p>
+<p>Register $11, Bits 0-1</p>
+<p>Sets the 2 low-order bits for Clock A (a 10-bit value).</p>
+<p>Timer A's period is
+Computed as (64*(1024-ClkA)) / PhiM ms.  (PhiM = 3579.545Khz)</p>
+<p><strong>CLKB</strong> (Clock B)</p>
+<p>Register $12, Bits 0-7</p>
+<p>Sets the Clock B period. The period for Timer B is computed as (1024*(256-CLKB)) / PhiM ms. (PhiM = 3579.545Khz)</p>
+<p><strong>CSM</strong></p>
+<p>Register $14, Bit 7</p>
+<p>When set, the YM2151 will generate a KeyON attack on all 8 channels whenever TimerA overflows.</p>
+<p><strong>Clock ACK</strong></p>
+<p>Register $14, Bits 4-5</p>
+<p>Clear (acknowledge) IRQ status generated by TimerA and TimerB (respectively).</p>
+<p><strong>IRQ EN</strong></p>
+<p>Register $14, Bits 2-3</p>
+<p>When set, enables IRQ generation when TimerA or TimerB (respectively) overflow.
+The IRQ status of the two timers is checked by reading from the YM2151_STATUS byte.
+Bit 0 = Timer A IRQ status, and Bit 1 = Timer B IRQ status. Note that these status
+bits are only active if the timer has overflowed AND has its IRQ_EN bit set.</p>
+<p><strong>Clock Start</strong></p>
+<p>Register $14, Bits 0-1</p>
+<p>When set, these bits clear the TimerA and TimerB (respectively) counters and starts
+it running.</p>
+<p><strong>LFRQ</strong> (LFO Frequency)</p>
+<p>Register $18, Bits 0-7</p>
+<p>Sets the LFO frequency.</p>
+<ul>
+<li>$00 = ~0.008Hz</li>
+<li>$FF = ~32.6Hz</li>
+</ul>
+<p>Note that even setting the value zero here results in a positive LFO frequency. Any channels sensitive to the LFO will still be affected by the LFO unless the <code>LR</code> bit is set in register $01 to completely disable it.</p>
+<p><strong>AMD</strong> (Amplitude Modulation Depth)</p>
+<p>Register $19 Bits 0-6, Bit 7 clearParameters</p>
+<p>Sets the peak strength of the LFO's Amplitude Modulation effect. Note that bit 7 of the value written into $19 must be clear in order to set the AMD. If bit 7 is set, the write will be interpreted as PMD.</p>
+<p><strong>PMD</strong> (Phase Modulation Depth)</p>
+<p>Register $19 Bits 0-6, Bit 7 set</p>
+<p>Sets the peak strength of the LFO's Phase Modulation effect. Note that bit 7 of the value written into $19 must be set in order to set the PMD. If bit 7 is clear, the value is interpreted as AMD.</p>
+<p><strong>CT</strong> (Control pins)</p>
+<p>Register $1B, Bits 6-7</p>
+<p>These bits set the electrical state of the two CT pins to on/off. These pins are not connected to anything in the X16 and have no effect.</p>
+<p><strong>W</strong> (LFO Waveform)</p>
+<p>Register $1B, Bits 0-1</p>
+<p>Sets the LFO waveform:
+0: Sawtooth, 1: Square (50% duty cycle), 2: Triangle, 3: Noise</p>
+<h2 id="channel-control-parameters">Channel Control Parameters<a class="headerlink" href="#channel-control-parameters" title="Permanent link">&para;</a></h2>
+<p><strong>RL</strong> (Right/Left output enable)</p>
+<p>Register $20 (+ channel), Bits 6-7</p>
+<p>Setting/Clearing these bits enables/disables audio output for the selected channel. (bit6=left, bit7=right)</p>
+<p><strong>FB</strong> (M1 Self-Feedback)</p>
+<p>Register $20 (+ channel), bits 3-5</p>
+<p>Sets the amount of self feedback on operator M1 for the selected channel. 0=none, 7=max</p>
+<p><strong>CON</strong> (Connection Algorithm)</p>
+<p>Register $20 (+ channel), bits 0-2</p>
+<p>Sets the selected channel to connect the 4 operators in one of 8 arrangements.</p>
+<p>[insert picture here]</p>
+<p><strong>KC</strong> (Key Code - Note selection)</p>
+<p>Register $28 + channel, bits 0-6</p>
+<p>Sets the octave and semitone for the selected channel.
+Bits 4-6 specify the octave (0-7) and bits 0-3 specify the semitone:</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>8</th>
+<th>9</th>
+<th>A</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C&#9839;</td>
+<td>D</td>
+<td>D&#9839;</td>
+<td>E</td>
+<td>F</td>
+<td>F&#9839;</td>
+<td>G</td>
+<td>G&#9839;</td>
+<td>A</td>
+<td>A&#9839;</td>
+<td>B</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<p>Note that natural C is at the TOP of the selected octave, and that
+each 4th value is skipped. Thus if concert A (A-4, 440hz) is KC=$4A, then middle C is KC=$3E</p>
+<p><strong>KF</strong> (Key Fraction)</p>
+<p>Register $30 + channel, Bits 2-7</p>
+<p>Raises the pitch by 1/64th of a semitone * the KF value.</p>
+<p><strong>PMS</strong> (Phase Modulation Sensitivity)</p>
+<p>Register $38 + channel, Bits 4-6</p>
+<p>Sets the Phase Modulation (vibrato) sensitivity of the selected channel. The resulting vibrato depth is determined by the combination of the global PMD setting (see above) modified by each channel's PMS.</p>
+<p>Sensitivity values: (+/- cents)</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5</td>
+<td>10</td>
+<td>20</td>
+<td>50</td>
+<td>100</td>
+<td>400</td>
+<td>700</td>
+</tr>
+</tbody>
+</table>
+<p><strong>AMS</strong> (Amplitude Modulation Sensitivity)</p>
+<p>Register $38 + channel, Bits 0-1</p>
+<p>Sets the Amplitude Modulation sensitivity of the selected channel. Note that each operator may individually enable or disable this effect on its output by setting/clearing the AMS-Ena bit (see below). Operators acting as outputs will exhibit a tremolo effect (varying volume) and operators acting as modulators will vary their effectiveness on the timbre when enabled for amplitude modulation.</p>
+<p>Sensitivity values: (dB)</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>23.90625</td>
+<td>47.8125</td>
+<td>95.625</td>
+</tr>
+</tbody>
+</table>
+<h2 id="operator-control-parameters">Operator Control Parameters<a class="headerlink" href="#operator-control-parameters" title="Permanent link">&para;</a></h2>
+<p>Operators are arranged as follows:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>M1</th>
+<th>M2</th>
+<th>C1</th>
+<th>C2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>index</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>These are the names used throughout this document for consistency, but they may function as either modulators or carriers, depending on which <code>CON</code> ALG is used.</p>
+<p>The Operator Control parameters are mapped to channels/operators as follows: Register + 8*op + channel. You may also choose to think of these register addresses as using bits 0-2 = channel, bits 3-4 = operator, and bits 5-7 = parameter. This reference will refer to them using the address range, e.g. $60-$7F = TL. To set TL for channel 2, operator 1, the register address would be $6A ($60 + 1*8 + 2).</p>
+<p><strong>DT1</strong> (Detune 1 - fine detune)</p>
+<p>Registers \$40-\$5F, Bits 4-6</p>
+<p>Detunes the operator from the channel's main pitch. Values 0 and 4=no detuning.
+Values 1-3=detune up, 5-7 = detune down.<br/>
+The amount of detuning varies with pitch. It decreases as the channel's pitch increases.</p>
+<p><strong>MUL</strong> (Frequency Multiplier)</p>
+<p>Registers \$40-\$5F, Bits 0-3</p>
+<p>If MUL=0, it multiplies the operator's frequency by 0.5<br/>
+Otherwise, the frequency is multiplied by the value in MUL (1,2,3...etc)</p>
+<p><strong>TL</strong> (Total Level - attenuation)</p>
+<p>Registers \$60-\$7F, Bits 0-6</p>
+<p>This is essentially "volume control" - It is an attenuation value, so $00 = maximum level and $7F is minimum level. On output operators, this is the volume output by that operator. On modulating operators, this affects the amount of modulation done to other operators.</p>
+<p><strong>KS</strong> (Key Scaling)</p>
+<p>Registers \$80-\$9F, Bits 6-7</p>
+<p>Controls the speed of the ADSR progression. The KS value sets four different levels of scaling. Key scaling increases along with the pitch set in KC. 0=min, 3=max</p>
+<p><strong>AR</strong> (Attack Rate)</p>
+<p>Registers \$80-\$9F, Bits 0-4</p>
+<p>Sets the attack rate of the ADSR envelope. 0=slowest, $1F=fastest</p>
+<p><strong>AMS-Enable</strong> (Amplitude Modulation Sensitivity Enable)</p>
+<p>Registers \$A0-\$BF, Bit 7</p>
+<p>If set, the operator's output level will be affected by the LFO according to the channel's AMS setting. If clear, the operator will not be affected.</p>
+<p><strong>D1R</strong> (Decay Rate 1)</p>
+<p>Registers \$A0-\$BF, Bits 0-4</p>
+<p>Controls the rate at which the level falls from peak down to the sustain level (D1L). 0=none, $1F=fastest.</p>
+<p><strong>DT2</strong> (Detune 2 - coarse)</p>
+<p>Registers \$C0-\$DF, Bits 6-7</p>
+<p>Sets a strong detune amount to the operator's frequency. Yamaha suggests that this is most useful for sound effects. 0=off,</p>
+<p><strong>D2R</strong> (Decay Rate 2)</p>
+<p>Registers \$C0-\$DF, Bits 0-4</p>
+<p>Sets the Decay2 rate, which takes effect once the level has fallen from peak down to the sustain level (D1L). This rate continues
+until the level reaches zero or until the note is released.</p>
+<p>0=none, $1F=fastest</p>
+<p><strong>D1L</strong></p>
+<p>Registers \$E0-\$FF, Bits 4-7</p>
+<p>Sets the level at which the ADSR envelope changes decay rates from D1R to D2R. 0=minimum (no D2R), $0F=maximum (immediately at peak, which effectively disables D1R)</p>
+<p><strong>RR</strong></p>
+<p>Registers \$E0-\$FF, Bitst 0-3</p>
+<p>Sets the rate at which the level drops to zero when a note is released. 0=none, $0F=fastest</p>
+<p><br/></p>
+<hr />
+<h1 id="getting-sound-out-of-the-ym2151-a-brief-tutorial">Getting sound out of the YM2151 (a brief tutorial)<a class="headerlink" href="#getting-sound-out-of-the-ym2151-a-brief-tutorial" title="Permanent link">&para;</a></h1>
+<p>While there is a large number of parameters that affect the sound of the YM2151, its operation can be thought of in simplified terms if you consider that there are basically three components to deal with: Instrument configuration (patch), voice pitch selection,
+and "pressing/releasing" the "key" to trigger (begin) and release (end) notes. It's essentially the
+same as using a music keyboard. Pressing an instrument button (e.g. Marimba) makes the keyboard
+sound like a Marimba. Once this is done, you press a key on the keyboard to play a note,
+and release it to stop the note. With the YM, loading a patch (pressing the Marimba button) entails setting all of
+the various operators' registers on the voice(s) you want the instrument to be used on.
+On the music keyboard, pitch and note stop/start are done with a single piano key. In the
+YM2151, these are two distinct actions.</p>
+<p>For this tutorial, we will start with the simplest operation, (triggering notes) and proceed to note selection, and finally patch configuration.</p>
+<h2 id="triggering-and-releasing-notes">Triggering and Releasing Notes<a class="headerlink" href="#triggering-and-releasing-notes" title="Permanent link">&para;</a></h2>
+<p><strong>Key On/Off (KON) Register ($08):</strong></p>
+<p>This is probably the most important single register in the YM2151. It is used to trigger and release notes. It controls the key on/off state for all 8 channels. A note is triggered whenever its key state changes from off to on, and is released whenever the state changes from on to off. Repeated writes of the same state (off-&gt;off or on-&gt;on) have no effect.</p>
+<p>Whenever an operator is triggered, it progresses through the states of attack, decay1, and sustain/decay2. Whenever an active note is released, it enters the release state where the volume decreases until reaching zero. It then remains silent until the next time the operator is triggered. If you are familiar with the C64 SID chip, this is the same behavior as the "gate" bit on that chip.</p>
+<p>Key state and voice selection are both contained in the value written into the KON register as follows:</p>
+<ul>
+<li>Key ON = $78 + channel number</li>
+<li>Key OFF = $0 + channel number</li>
+</ul>
+<p><strong>Simple Examples:</strong></p>
+<p>To release the note in channel 4: write $08 to <code>YM_address</code> ($9F40) and then write \$04 (\$00+4) to <code>YM_data</code> (\$9F41).</p>
+<p>To begin a note on channel 7, write $08 into <code>YM_address</code> to select the KON register. Then write \$7F (\$78+7) into <code>YM_data</code></p>
+<p>If the current key state of a channel is not known, you can write key off and then key on immediately (after waiting for the YM busy period to end, of course):</p>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">POKE</span><span class="w"> </span><span class="err">$</span><span class="il">9</span><span class="vg">F40</span><span class="p">,</span><span class="err">$</span><span class="il">08</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">SELECT</span><span class="w"> </span><span class="kr">KEY</span><span class="w"> </span><span class="kr">ON</span><span class="o">/</span><span class="k">OFF</span><span class="w"> </span><span class="vg">REGISTER</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kr">POKE</span><span class="w"> </span><span class="err">$</span><span class="il">9</span><span class="vg">F41</span><span class="p">,</span><span class="err">$</span><span class="il">07</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="kr">KEY</span><span class="w"> </span><span class="k">OFF</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">VOICE</span><span class="w"> </span><span class="il">7</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kr">POKE</span><span class="w"> </span><span class="err">$</span><span class="il">9</span><span class="vg">F41</span><span class="p">,</span><span class="err">$</span><span class="il">7</span><span class="vg">F</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="kr">KEY</span><span class="w"> </span><span class="kr">ON</span><span class="w">  </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">VOICE</span><span class="w"> </span><span class="il">7</span>
+</span></code></pre></div>
+<p><em>Remember: BASIC is slow enough that you do not need to poll the <code>YM_status</code> byte, but assembly and other languages will need to do so.</em></p>
+<p>The ADSR parameters will be discussed in more detail later.</p>
+<p><strong>Advanced:</strong></p>
+<p>Each channel (voice) of the YM2151 uses 4 operators which can be gated together or independently. Independent triggering gives lots of advanced possibilities. To trigger and release operators independently, you use different values than \$78 or \$00. These values are composed by 4 bits which signal the on/off state for each operator.</p>
+<p>Suppose a note is playing on channel 2 with all 4 operators active. You can release only the M1 operator by writing \$72 into register \$08.</p>
+<p><strong>The KON value format:</strong></p>
+<table>
+  <tr>
+    <td>7</td>
+    <td>6</td>
+    <td>5</td>
+    <td>4</td>
+    <td>3</td>
+    <td>2</td>
+    <td>1</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td> - </td>
+    <td>C2</td>
+    <td>M2</td>
+    <td>C1</td>
+    <td>M1</td>
+    <td colspan="3">Channel</td>
+  </tr>
+</table>
+
+<h2 id="pitch-control">Pitch Control<a class="headerlink" href="#pitch-control" title="Permanent link">&para;</a></h2>
+<h3 id="ym-registers">YM Registers<a class="headerlink" href="#ym-registers" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>KC</code> = $28 + channel number</li>
+<li><code>KF</code> = $30 + channel number</li>
+</ul>
+<p>For note selection, each voice has two parameters: <code>KC</code> (Key Code) and <code>KF</code> (Key Fraction).
+These are set in register ranges $28 and $30, respectively. The KC codes correspond
+directly to the notes of the chromatic scale. Each value maps to a specific octave &amp; semitone. The <code>KF</code> value can even be ignored
+for basic musical playback. It is mostly useful for vibrato or pitch bend effects. <code>KF</code> raises
+the pitch selected in <code>KC</code> in 1/64th increments of the way up to the next semitone.</p>
+<p>Like all registers in the YM, whenever a channel's <code>KC</code> or <code>KF</code> value is written, it takes effect immediately. If a note is playing, its pitch immediately changes. When triggering new notes, it is not important whether you write the pitch or key the note first. This happens quickly in real-time and you will not hear any real difference. Changing the pitch without re-triggering the ADSR envelope is how to achieve pitch slides or a legato effect.</p>
+<h4 id="key-code-kc">Key Code (KC)<a class="headerlink" href="#key-code-kc" title="Permanent link">&para;</a></h4>
+<p><code>KC</code> codes are "conveniently" arranged so that the upper nybble is the octave (0-7) and the
+lower nybble is the pitch. The pitches are arranged as follows within an octave:</p>
+<table>
+<thead>
+<tr>
+<th>Note</th>
+<th>C&#9839;</th>
+<th>D</th>
+<th>D&#9839;</th>
+<th>E</th>
+<th>F</th>
+<th>F&#9839;</th>
+<th>G</th>
+<th>G&#9839;</th>
+<th>A</th>
+<th>A&#9839;</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Low Nybble (hex)</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+<td>9</td>
+<td>A</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+</tr>
+</tbody>
+</table>
+<p>(Note that every 4th value is skipped.)</p>
+<p>Combine the above with an octave to get a note's <code>KC</code> value. For instance: concert A (440hz) is (by sheer coincidence) <code>$4A</code>. Middle C is <code>$3E</code>, and so forth.</p>
+<h4 id="key-fraction-kf">Key Fraction (KF)<a class="headerlink" href="#key-fraction-kf" title="Permanent link">&para;</a></h4>
+<p><code>KF</code> values are written into the top 6 bits of the voice's <code>KF</code> register. Basically the value is <code>0, 1&lt;&lt;2, 2&lt;&lt;2, .. 63&lt;&lt;2</code></p>
+<h2 id="loading-a-patch">Loading a patch<a class="headerlink" href="#loading-a-patch" title="Permanent link">&para;</a></h2>
+<p>The patch configuration is by far the most complicated aspect of using the YM. If you take as given that a voice has a patch loaded, then playing notes on it is fairly straightforward. For the
+moment, we will assume a pre-patched voice.</p>
+<p>To get started quickly, here is some BASIC code to patch voice 0 with a marimba tone:</p>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nl">5</span><span class="w"> </span><span class="vg">YA</span><span class="o">=</span><span class="err">$</span><span class="il">9</span><span class="vg">F40</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="vg">YD</span><span class="o">=</span><span class="err">$</span><span class="il">9</span><span class="vg">F41</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="vg">V</span><span class="o">=</span><span class="il">0</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nl">10</span><span class="w"> </span><span class="kr">REM</span><span class="o">:</span><span class="w"> </span><span class="vg">MARIMBA</span><span class="w"> </span><span class="vg">PATCH</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">YM</span><span class="w"> </span><span class="vg">VOICE</span><span class="w"> </span><span class="il">0</span><span class="w"> </span><span class="p">(</span><span class="vg">SET</span><span class="w"> </span><span class="vg">V</span><span class="o">=</span><span class="il">0</span><span class="o">.</span><span class="mf">.7</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">OTHER</span><span class="w"> </span><span class="vg">VOICES</span><span class="p">)</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nl">20</span><span class="w"> </span><span class="kd">DATA</span><span class="w"> </span><span class="err">$</span><span class="vg">DC</span><span class="p">,</span><span class="err">$</span><span class="il">00</span><span class="p">,</span><span class="err">$</span><span class="il">1</span><span class="vg">B</span><span class="p">,</span><span class="err">$</span><span class="il">67</span><span class="p">,</span><span class="err">$</span><span class="il">61</span><span class="p">,</span><span class="err">$</span><span class="il">31</span><span class="p">,</span><span class="err">$</span><span class="il">21</span><span class="p">,</span><span class="err">$</span><span class="il">17</span><span class="p">,</span><span class="err">$</span><span class="il">1</span><span class="vg">F</span><span class="p">,</span><span class="err">$</span><span class="il">0</span><span class="vg">A</span><span class="p">,</span><span class="err">$</span><span class="vg">DF</span><span class="p">,</span><span class="err">$</span><span class="il">5</span><span class="vg">F</span><span class="p">,</span><span class="err">$</span><span class="vg">DE</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nl">30</span><span class="w"> </span><span class="kd">DATA</span><span class="w"> </span><span class="err">$</span><span class="vg">DE</span><span class="p">,</span><span class="err">$</span><span class="il">0</span><span class="vg">E</span><span class="p">,</span><span class="err">$</span><span class="il">10</span><span class="p">,</span><span class="err">$</span><span class="il">09</span><span class="p">,</span><span class="err">$</span><span class="il">07</span><span class="p">,</span><span class="err">$</span><span class="il">00</span><span class="p">,</span><span class="err">$</span><span class="il">05</span><span class="p">,</span><span class="err">$</span><span class="il">07</span><span class="p">,</span><span class="err">$</span><span class="il">04</span><span class="p">,</span><span class="err">$</span><span class="vg">FF</span><span class="p">,</span><span class="err">$</span><span class="vg">A0</span><span class="p">,</span><span class="err">$</span><span class="il">16</span><span class="p">,</span><span class="err">$</span><span class="il">17</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nl">40</span><span class="w"> </span><span class="kr">READ</span><span class="w"> </span><span class="vg">D</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nl">50</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YA</span><span class="p">,</span><span class="err">$</span><span class="il">20</span><span class="o">+</span><span class="vg">V</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="vg">D</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nl">60</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">A</span><span class="o">=</span><span class="err">$</span><span class="il">38</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="err">$</span><span class="vg">F8</span><span class="w"> </span><span class="k">STEP</span><span class="w"> </span><span class="il">8</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nl">70</span><span class="w"> </span><span class="kr">READ</span><span class="w"> </span><span class="vg">D</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YA</span><span class="p">,</span><span class="vg">A</span><span class="o">+</span><span class="vg">V</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">POKE</span><span class="w"> </span><span class="vg">YD</span><span class="p">,</span><span class="vg">D</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nl">80</span><span class="w"> </span><span class="kr">NEXT</span><span class="w"> </span><span class="vg">A</span>
+</span></code></pre></div>
+<p>Once a voice has been patched as above, you can now POKE notes into it with very few commands for each note.</p>
+<p>Patches consist mostly of ADSR envelope parameters. A complete patch contains values for the \$20 range register (LR|FB|CON), for the \$38 range register (AMS|PMS), and 4 values for each of the parameter ranges starting at \$40. (4 operators per voice means 4 values per parameter). Since this is a huge amount of flexibility, it is recommended to experiment with instrument creation in an application such as a chip tracker or VST, as the creative process of instrument design is very hands-on and subjective.</p>
+<h2 id="using-the-lfo">Using the LFO<a class="headerlink" href="#using-the-lfo" title="Permanent link">&para;</a></h2>
+<p>There is a single global LFO in the YM2151 which can affect the level (volume) and/or pitch of all 8 channels simultaneously. It has a single frequency and waveform setting which must be shared among all channels, and shared between both phase and amplitude modulation. The global parameters <code>AMD</code> and <code>PMD</code> act as modifiers to the sensitivity settings of the channels. While the frequency and waveform of the LFO pattern must be shared, the depths of the two types of modulation are independent of each other.</p>
+<p>You can re-trigger the LFO by setting and then clearing the <code>LR</code> bit in the test register ($01).</p>
+<h3 id="vibrato">Vibrato<a class="headerlink" href="#vibrato" title="Permanent link">&para;</a></h3>
+<p>Use Phase Modulation on the desired channels. The <code>PMS</code> parameter for each channel allows them to vary their vibrato depths individually. Channels with <code>PMS</code> set to zero will have no vibrato. The values given earlier in the <code>PMS</code> parameter description represent their maximum amount of affect. These values are modified by the global <code>PMD.</code> A <code>PMD</code> value of \$7F means 100% effectiveness, \$40 means all channels' vibrato depths will be reduced by half, etc.</p>
+<p>The vibrato speed is global, depending solely on the value set to <code>LFRQ.</code></p>
+<h3 id="amplitude-modulation">Amplitude Modulation<a class="headerlink" href="#amplitude-modulation" title="Permanent link">&para;</a></h3>
+<p>Amplitude modulation works similarly to phase modulation, except that the intensity is a combination of the per-channel <code>AMS</code> value modified by the global <code>AMD</code> value. Additionally, within channels having non-zero amplitude modulation sensitivity, individual operators must have their <code>AMS-en</code> bit enabled in order to be affected by the modulation.</p>
+<p>If the active operators are acting as carriers (generating output directly), then amplitude modulation will vary the volume of the sound being produced by that operator. This can be described as a "tremolo" effect. If the operators are acting as modulators, then the timbre of the voice will vary as the output level of the affected operators increases and decreases. You may simultaneously enable amplitude modulation on both types of operators.</p>
+<p>The amplitude modulation speed is global, depending solely on the value set to <code>LFRQ.</code></p>
+<!-- For PDF formatting -->
+<div class="page-break"></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" class="btn btn-neutral float-left" title="Chapter 10: VERA FX Reference"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/" class="btn btn-neutral float-right" title="Chapter 12: I/O Programming">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../X16%20Reference%20-%2010%20-%20VERA%20FX%20Reference/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../X16%20Reference%20-%2012%20-%20IO%20Programming/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
