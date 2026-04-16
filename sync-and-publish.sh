@@ -36,6 +36,10 @@ find docs/ -type l -exec rm -f {} \; 2>/dev/null || true
 echo "🏗️ Building documentation..."
 mkdocs build
 
+echo "Deleting docs/ directory from git tracking..."
+# Remove docs/ from git tracking but keep the files in the filesystem
+git rm -r --cached docs/ 2>/dev/null || true
+
 
 echo "Staging and committing changes..."
 git add .
