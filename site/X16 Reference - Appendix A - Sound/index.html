@@ -1096,9 +1096,9 @@ maintains an internal state for most note parameters.</p>
 <p>Each token may be followed by optional modifiers such as numbers or symbols. Options to a token must be given in the order they are expected, and must have no spacing between them. Tokens may have spaces between them as desired. Any unknown
 characters are ignored.</p>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4&quot;</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">DEFAULT</span><span class="w"> </span><span class="vg">LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">QUARTER</span><span class="w"> </span><span class="vg">NOTE</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A2. C+.&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">VALID</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A.2 C.+&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">INVALID</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"L4"</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">DEFAULT</span><span class="w"> </span><span class="vg">LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vg">QUARTER</span><span class="w"> </span><span class="vg">NOTE</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"A2. C+."</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">VALID</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"A.2 C.+"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">REM</span><span class="w"> </span><span class="vg">INVALID</span>
 </span></code></pre></div>
 The valid command plays A as a dotted half, followed by C&#9839; as a dotted quarter.</p>
 <p>The invalid example would play A as a dotted quarter (not half) because length must come before dots. Next, it would ignore the 2 as garbage. Then it would play natural C (not sharp) as a dotted quarter. Finally, it would ignore the + as garbage, because sharp/flat must precede length and dot.</p>
@@ -1109,7 +1109,7 @@ The valid command plays A as a dotted half, followed by C&#9839; as a dotted qua
 <li>Syntax: <code>&lt;A-G&gt;[&lt;+/-&gt;][&lt;length&gt;][.]</code></li>
 </ul>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;A+2A4C.G-8.&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"A+2A4C.G-8."</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, plays in the current octave an <strong>A&#9839;</strong> <a href="#" title="minim">half note<sup>?</sup></a> followed by an <strong>A</strong> <a href="#" title="crotchet">quarter note<sup>?</sup></a>, followed by <strong>C</strong> dotted quarter note, followed by <strong>G&#9837;</strong> dotted <a href="#" title="quaver">eighth note<sup>?</sup></a>.</p>
 <p>Lengths and dots after the note name or rest set the length just for the current note or rest.  To set the default length for subsequent notes and rests, use the <code>L</code> macro.</p>
@@ -1119,7 +1119,7 @@ On the YM2151 using channel 0, plays in the current octave an <strong>A&#9839;</
 <li>Syntax: <code>R[&lt;length&gt;][.]</code></li>
 </ul>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;CR2DRE&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"CR2DRE"</span>
 </span></code></pre></div>
 On the VERA PSG using voice 0, plays in the current octave a <strong>C</strong> quarter note, followed by a half rest (silence), followed by a quarter <strong>D</strong>, followed by a quarter rest (silence), and finally a quarter <strong>E</strong>.</p>
 <p>The numeral <code>2</code> in <code>R2</code> sets the length for the <code>R</code> itself but does not alter the
@@ -1136,9 +1136,9 @@ default note length (assumed as 4 - quarter notes in this example).</p>
 * L4. = dotted quarter note (1.5x the length)
 * L4.. = double-dotted quarter note (1.75x the length)</p>
 <p>Example program:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"L4"</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nl">20</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">I</span><span class="o">=</span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="il">2</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;CDECL8&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"CDECL8"</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nl">40</span><span class="w"> </span><span class="kr">NEXT</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, this program, when RUN, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> <strong>C</strong> first as quarter notes, then as eighth notes the second time around.</p>
@@ -1151,7 +1151,7 @@ On the YM2151 using channel 0, this program, when RUN, plays in the current octa
 <p><code>S1</code> is the default value, which plays a note for 7/8 of the duration of the note, and releases the note for the remaining 1/8 of the note's duration.</p>
 <p>You can think of <code>S</code> is, out of 8, how much space is put between the notes.</p>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;L4S1CDES0CDES4CDE&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"L4S1CDES0CDES4CDE"</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> three times, first with normal articulation, next with legato (notes all run together and without retriggering), and finally with a moderate staccato.</p>
 <h3 id="explicit-retrigger">Explicit retrigger<a class="headerlink" href="#explicit-retrigger" title="Permanent link">&para;</a></h3>
@@ -1160,7 +1160,7 @@ On the YM2151 using channel 0, plays in the current octave the sequence <strong>
 <li>Syntax: <code>K</code></li>
 </ul>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;S0CDEKFGA&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"S0CDEKFGA"</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, plays in the current octave the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong> using legato, only triggering on the first note, then the sequence <strong>F</strong> <strong>G</strong> <strong>A</strong> the same way. The note <strong>F</strong> is triggered without needing to release the previous note early.</p>
 <h3 id="octave">Octave<a class="headerlink" href="#octave" title="Permanent link">&para;</a></h3>
@@ -1169,7 +1169,7 @@ On the YM2151 using channel 0, plays in the current octave the sequence <strong>
 <li>Syntax: <code>O&lt;0-7&gt;</code></li>
 </ul>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O4AO2AO6CDE&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"O4AO2AO6CDE"</span>
 </span></code></pre></div>
 On the VERA PSG using voice 0, changes to octave 4 and plays <strong>A</strong> (440Hz), then switches to octave 2, and plays <strong>A</strong> (110Hz), then switches to octave 6 and plays the sequence <strong>C</strong> <strong>D</strong> <strong>E</strong></p>
 <h3 id="octave-up">Octave Up<a class="headerlink" href="#octave-up" title="Permanent link">&para;</a></h3>
@@ -1179,7 +1179,7 @@ On the VERA PSG using voice 0, changes to octave 4 and plays <strong>A</strong> 
 </ul>
 <p>If the octave would go above 7, this macro has no effect.</p>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O4AB&gt;C+DE&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"O4AB&gt;C+DE"</span>
 </span></code></pre></div>
 On the VERA PSG using voice 0, changes to octave 4 and plays the first five notes of the <strong>A major</strong> scale by switching to octave 5 starting at the <strong>C&#9839;</strong></p>
 <h3 id="octave-down">Octave Down<a class="headerlink" href="#octave-down" title="Permanent link">&para;</a></h3>
@@ -1189,7 +1189,7 @@ On the VERA PSG using voice 0, changes to octave 4 and plays the first five note
 </ul>
 <p>If the octave would go below 0, this macro has no effect.
 Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;O5GF+EDC&lt;BAG&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"O5GF+EDC&lt;BAG"</span>
 </span></code></pre></div>
 On the VERA PSG using voice 0, changes to octave 5 and plays the <strong>G major</strong> scale from the top down by switching to octave 4 starting at the <strong>B</strong></p>
 <h3 id="tempo">Tempo<a class="headerlink" href="#tempo" title="Permanent link">&para;</a></h3>
@@ -1200,8 +1200,8 @@ On the VERA PSG using voice 0, changes to octave 5 and plays the <strong>G major
 <p>High tempo values and short notes tend to have inaccurate lengths due to quantization error. Delays within a string do keep track of fractional frames so the overall playback length should be relatively consistent.</p>
 <p>Low tempo values that cause delays (lengths) to exceed 255 frames will also end up being inaccurate. For very long notes, it may be better to use legato to string several together.</p>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;T120C4CGGAAGR&quot;</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;T180C4CGGAAGR&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"T120C4CGGAAGR"</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"T180C4CGGAAGR"</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, plays in the current octave the first 7 notes of <em>Twinkle Twinkle Little Star</em>, first at 120 beats per minute, then again 1.5 times as fast at 180 beats per minute.</p>
 <h3 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
@@ -1211,7 +1211,7 @@ On the YM2151 using channel 0, plays in the current octave the first 7 notes of 
 </ul>
 <p>This macro mirrors the <code>PSGVOL</code> and <code>FMVOL</code> BASIC commands for setting a channel or voice's volume. 0 is silent, 63 is maximum volume.</p>
 <p>Example:
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;V40ECV45ECV50ECV55ECV60ECV63EC&quot;</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="vg">FMPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"V40ECV45ECV50ECV55ECV60ECV63EC"</span>
 </span></code></pre></div>
 On the YM2151 using channel 0, starting at a moderate volume, plays the sequence <strong>E</strong> <strong>C</strong>, repeatedly, increasing the volume steadily each time.</p>
 <h3 id="panning">Panning<a class="headerlink" href="#panning" title="Permanent link">&para;</a></h3>
@@ -1224,9 +1224,9 @@ On the YM2151 using channel 0, starting at a moderate volume, plays the sequence
 3 = Both  </p>
 <p>Example:
 <div class="language-BASIC highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nl">10</span><span class="w"> </span><span class="kr">FOR</span><span class="w"> </span><span class="vg">I</span><span class="o">=</span><span class="il">1</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="il">4</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;P1CP2B+&quot;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"P1CP2B+"</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nl">30</span><span class="w"> </span><span class="kr">NEXT</span><span class="w"> </span><span class="vg">I</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nl">40</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;P3C&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="nl">40</span><span class="w"> </span><span class="vg">PSGPLAY</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"P3C"</span>
 </span></code></pre></div>
 On the VERA PSG using voice 0, in the current octave, repeatedly plays a <strong>C</strong> out of the left speaker, then a <strong>B&#9839;</strong> (effectively a <strong>C</strong> one octave higher) out of the right speaker.  After 4 such loops, it plays a <strong>C</strong> out of both speakers.</p>
 <h3 id="instrument-change">Instrument change<a class="headerlink" href="#instrument-change" title="Permanent link">&para;</a></h3>
@@ -1238,7 +1238,7 @@ On the VERA PSG using voice 0, in the current octave, repeatedly plays a <strong
 <p>Example:
 <div class="language-BASIC highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">FMINIT</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">FMVIB</span><span class="w"> </span><span class="il">200</span><span class="p">,</span><span class="il">15</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMCHORD</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">&quot;I11CI11EI11G&quot;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nl">30</span><span class="w"> </span><span class="vg">FMCHORD</span><span class="w"> </span><span class="il">0</span><span class="p">,</span><span class="s2">"I11CI11EI11G"</span>
 </span></code></pre></div>
 This program sets up appropriate vibrato/tremolo and plays a C major chord with the vibraphone patch across FM channels 0, 1, and 2.</p>
 <!-- For PDF formatting -->

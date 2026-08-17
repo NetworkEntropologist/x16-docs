@@ -2192,7 +2192,7 @@ Registers affected: .A .P  </p>
 <p><strong>EXAMPLES:</strong></p>
 <div class="language-ASM highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nf">LDX</span><span class="w"> </span><span class="c1">#$6F ; RTC device</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">LDY</span><span class="w"> </span><span class="c1">#$20 ; start of NVRAM inside RTC</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#&#39;X&#39;</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">LDA</span><span class="w"> </span><span class="c1">#'X'</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">i2c_write_byte</span><span class="w"> </span><span class="c1">; write first byte of NVRAM</span>
 </span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
 </span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nf">LDX</span><span class="w"> </span><span class="c1">#$42 ; System Management Controller</span>
@@ -2552,7 +2552,7 @@ Error returns: Does not return  </p>
 <p><strong>Description:</strong> Call this to enter BASIC mode, either through a cold start (c=1) or a warm start (c=0).</p>
 <p><strong>EXAMPLE:</strong></p>
 <div class="language-ASM highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nf">CLC</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">JMP</span><span class="w"> </span><span class="no">enter_basic</span><span class="w"> </span><span class="c1">; returns to the &quot;READY.&quot; prompt</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">JMP</span><span class="w"> </span><span class="no">enter_basic</span><span class="w"> </span><span class="c1">; returns to the "READY." prompt</span>
 </span></code></pre></div>
 <hr />
 <h4 id="function-name-entropy_get">Function Name: entropy_get<a class="headerlink" href="#function-name-entropy_get" title="Permanent link">&para;</a></h4>
@@ -2579,7 +2579,7 @@ Registers affected: .A .X .Y  </p>
 </span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">      </span><span class="nf">LSR</span>
 </span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">      </span><span class="nf">LSR</span><span class="w">       </span><span class="c1">; combine resulting 8 bits</span>
 </span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">      </span><span class="nf">EOR</span><span class="w"> </span><span class="no">tmp</span><span class="w">   </span><span class="c1">; to get 4 bits</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">      </span><span class="nf">AND</span><span class="w"> </span><span class="mi">#7</span><span class="w">    </span><span class="c1">; we&#39;re down to values 0-7</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">      </span><span class="nf">AND</span><span class="w"> </span><span class="mi">#7</span><span class="w">    </span><span class="c1">; we're down to values 0-7</span>
 </span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">      </span><span class="nf">CMP</span><span class="w"> </span><span class="mi">#0</span>
 </span><span id="__span-16-16"><a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">      </span><span class="nf">BEQ</span><span class="w"> </span><span class="no">again</span><span class="w"> </span><span class="c1">; 0 is illegal</span>
 </span><span id="__span-16-17"><a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">      </span><span class="nf">CMP</span><span class="w"> </span><span class="mi">#7</span>
@@ -2812,7 +2812,7 @@ Registers affected: .A .X .Y  </p>
 </span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="w">    </span><span class="nf">JSR</span><span class="w"> </span><span class="no">$FFD5</span><span class="w"> </span><span class="c1">; LOAD</span>
 </span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="w">    </span><span class="nf">RTS</span>
 </span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="nl">FN:</span>
-</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">    </span><span class="na">.byte</span><span class="w"> </span><span class="s">&quot;MYFILENAME.EXT&quot;</span>
+</span><span id="__span-17-21"><a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a><span class="w">    </span><span class="na">.byte</span><span class="w"> </span><span class="s">"MYFILENAME.EXT"</span>
 </span><span id="__span-17-22"><a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="nf">FNEND</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">*</span>
 </span></code></pre></div>
 <hr />
@@ -3058,16 +3058,16 @@ Registers affected: .A .X .Y .P r0  </p>
 </span><span id="__span-21-19"><a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w">  </span><span class="nf">jsr</span><span class="w"> </span><span class="no">EXTAPI</span>
 </span><span id="__span-21-20"><a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">  </span><span class="nf">rts</span>
 </span><span id="__span-21-21"><a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>
-</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="nl">string1:</span><span class="w"> </span><span class="na">.byte</span><span class="w"> </span><span class="s">&quot;HELP&quot;</span><span class="p">,</span><span class="mi">13</span>
+</span><span id="__span-21-22"><a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="nl">string1:</span><span class="w"> </span><span class="na">.byte</span><span class="w"> </span><span class="s">"HELP"</span><span class="p">,</span><span class="mi">13</span>
 </span><span id="__span-21-23"><a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="nl">string1_end:</span>
 </span><span id="__span-21-24"><a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a><span class="nl">string9:</span>
 </span><span id="__span-21-25"><a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="nl">string9_end:</span>
 </span></code></pre></div>
 <p>BASIC equivalent:</p>
-<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">A$</span><span class="o">=</span><span class="s2">&quot;HELP&quot;</span><span class="o">+</span><span class="kr">CHR$</span><span class="p">(</span><span class="il">13</span><span class="p">)</span>
+<div class="language-BASIC highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nl">10</span><span class="w"> </span><span class="vg">A$</span><span class="o">=</span><span class="s2">"HELP"</span><span class="o">+</span><span class="kr">CHR$</span><span class="p">(</span><span class="il">13</span><span class="p">)</span>
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nl">20</span><span class="w"> </span><span class="vg">K</span><span class="o">=</span><span class="il">1</span>
 </span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nl">30</span><span class="w"> </span><span class="kr">GOSUB</span><span class="w"> </span><span class="nl">100</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nl">40</span><span class="w"> </span><span class="vg">A$</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nl">40</span><span class="w"> </span><span class="vg">A$</span><span class="o">=</span><span class="s2">""</span>
 </span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="nl">50</span><span class="w"> </span><span class="vg">K</span><span class="o">=</span><span class="il">9</span>
 </span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="nl">60</span><span class="w"> </span><span class="kr">GOSUB</span><span class="w"> </span><span class="nl">100</span>
 </span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nl">70</span><span class="w"> </span><span class="kr">END</span>
@@ -3448,7 +3448,7 @@ Registers affected: .A .X .Y .P r1  </p>
 </span><span id="__span-27-49"><a id="__codelineno-27-49" name="__codelineno-27-49" href="#__codelineno-27-49"></a><span class="w">        </span><span class="nf">ply</span>
 </span><span id="__span-27-50"><a id="__codelineno-27-50" name="__codelineno-27-50" href="#__codelineno-27-50"></a><span class="w">        </span><span class="nf">rts</span>
 </span><span id="__span-27-51"><a id="__codelineno-27-51" name="__codelineno-27-51" href="#__codelineno-27-51"></a>
-</span><span id="__span-27-52"><a id="__codelineno-27-52" name="__codelineno-27-52" href="#__codelineno-27-52"></a><span class="nl">filename:</span><span class="w"> </span><span class="na">.byte</span><span class="w"> </span><span class="s">&quot;data.lzsa&quot;</span>
+</span><span id="__span-27-52"><a id="__codelineno-27-52" name="__codelineno-27-52" href="#__codelineno-27-52"></a><span class="nl">filename:</span><span class="w"> </span><span class="na">.byte</span><span class="w"> </span><span class="s">"data.lzsa"</span>
 </span><span id="__span-27-53"><a id="__codelineno-27-53" name="__codelineno-27-53" href="#__codelineno-27-53"></a><span class="nf">filename_len</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">*-</span><span class="no">filename</span>
 </span></code></pre></div>
 <hr />
@@ -3520,7 +3520,7 @@ Registers affected: .A .X .P  </p>
 <p>This example shows a potential check for a game which needs a 65C816 processor, as well as having 24-bit memory accessible at &gt;= $010000.</p>
 <div class="language-ASM highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nf">EXTAPI</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="no">$FEAB</span>
 </span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="na">.setcpu</span><span class="w"> </span><span class="s">&quot;65816&quot;</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="na">.setcpu</span><span class="w"> </span><span class="s">"65816"</span>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">    </span><span class="c1">; instead of using the `has_machine_property` to check for</span>
 </span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">    </span><span class="c1">; the presence of a 65C816, it is faster and uses fewer code</span>
 </span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">    </span><span class="c1">; bytes to do it this way.  On the 65C02, the SEP opcode</span>
@@ -3543,11 +3543,11 @@ Registers affected: .A .X .P  </p>
 </span><span id="__span-28-23"><a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>
 </span><span id="__span-28-24"><a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a><span class="w">    </span><span class="nf">jmp</span><span class="w"> </span><span class="no">init_game</span>
 </span><span id="__span-28-25"><a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a><span class="err">@</span><span class="nl">nofar:</span>
-</span><span id="__span-28-26"><a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="w">    </span><span class="c1">; tell the user that the system is unsupported because it doesn&#39;t have the memory model we need.</span>
+</span><span id="__span-28-26"><a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a><span class="w">    </span><span class="c1">; tell the user that the system is unsupported because it doesn't have the memory model we need.</span>
 </span><span id="__span-28-27"><a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a><span class="w">    </span><span class="nf">rts</span>
 </span><span id="__span-28-28"><a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>
 </span><span id="__span-28-29"><a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a><span class="err">@</span><span class="nf">c02</span>
-</span><span id="__span-28-30"><a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a><span class="w">    </span><span class="c1">; tell the user that the system is unsupported because it&#39;s not a 65C816</span>
+</span><span id="__span-28-30"><a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a><span class="w">    </span><span class="c1">; tell the user that the system is unsupported because it's not a 65C816</span>
 </span><span id="__span-28-31"><a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a><span class="w">    </span><span class="nf">rts</span>
 </span></code></pre></div>
 <hr />
@@ -3723,7 +3723,7 @@ Registers affected: .A, .X, .Y</p>
 <div class="language-ASM highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="mi">#0</span>
 </span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nf">LDX</span><span class="w"> </span><span class="c1">#&lt;MY_CHARSET</span>
 </span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="nf">LDY</span><span class="w"> </span><span class="c1">#&gt;MY_CHARSET</span>
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">screen_set_charset</span><span class="w"> </span><span class="c1">; UPLOAD CUSTOM CHARSET &quot;MY_CHARSET&quot;</span>
+</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="nf">JSR</span><span class="w"> </span><span class="no">screen_set_charset</span><span class="w"> </span><span class="c1">; UPLOAD CUSTOM CHARSET "MY_CHARSET"</span>
 </span></code></pre></div>
 <hr />
 <h4 id="function-name-jsrfar">Function Name: JSRFAR<a class="headerlink" href="#function-name-jsrfar" title="Permanent link">&para;</a></h4>

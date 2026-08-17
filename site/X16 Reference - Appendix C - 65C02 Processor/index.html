@@ -1165,7 +1165,7 @@ Clear (0).</p>
 <p>When combined with CMP, this is the 6502's "IF THEN" construct.</p>
 <div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nf">LDA</span><span class="w"> </span><span class="no">$1234</span><span class="w">  </span><span class="c1">; Reads the value of address $1234</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">CMP</span><span class="w"> </span><span class="c1">#$20   ; Compares it with the literal $20 (32)</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">BEQ</span><span class="w"> </span><span class="no">Match</span><span class="w">  </span><span class="c1">; If they are equal, move to the label &quot;Match&quot;.</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nf">BEQ</span><span class="w"> </span><span class="no">Match</span><span class="w">  </span><span class="c1">; If they are equal, move to the label "Match".</span>
 </span></code></pre></div>
 <p>The operand is a <em>relative</em> address, based on the Program Counter at the start
 of the next opcode. As a result, you can only branch 127 bytes forward or 128
